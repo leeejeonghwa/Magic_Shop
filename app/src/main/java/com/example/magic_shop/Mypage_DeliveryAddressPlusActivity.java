@@ -7,19 +7,19 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DeliveryAddressManageActivity extends AppCompatActivity {
+public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mypage_setting);
+        setContentView(R.layout.mypage_activity_delivery_address_plus);
         getWindow().setWindowAnimations(0);
 
-        Button btn_user_info = (Button) findViewById(R.id.btn_user_info);
-        btn_user_info.setOnClickListener(new View.OnClickListener() {
+        Button btn_back = (Button) findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InputPasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
                 startActivity(intent);
             }
         });
@@ -29,7 +29,7 @@ public class DeliveryAddressManageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });

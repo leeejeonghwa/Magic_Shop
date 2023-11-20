@@ -7,19 +7,29 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MypageSettingActivity extends AppCompatActivity {
+public class Mypage_SettingActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mypage_setting);
+        setContentView(R.layout.mypage_activity_setting);
         getWindow().setWindowAnimations(0);
+
+        Button btn_back = (Button) findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button btn_user_info = (Button) findViewById(R.id.btn_user_info);
         btn_user_info.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InputPasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_InputPasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -29,7 +39,7 @@ public class MypageSettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +49,7 @@ public class MypageSettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +59,7 @@ public class MypageSettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_RefundAccountManageActivity.class);
                 startActivity(intent);
             }
         });

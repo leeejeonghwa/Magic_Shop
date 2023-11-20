@@ -10,8 +10,8 @@
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="845dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/mypage_setting"
@@ -36,6 +36,7 @@
         android:id="@+id/btn_user_info"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="88dp"
         android:background="#00FF0000"
         app:layout_constraintEnd_toEndOf="parent"
