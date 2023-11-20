@@ -3,8 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/activity_user_info_change.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2984375" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_delivery_address_manage.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_delivery_check.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_delivery_plus.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_input_password.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_mypage.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_mypage_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_mypage_setting.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_order_delivery_list.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_refund_account_change.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_refund_exchange_check.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_refund_exchange_list.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_review_list.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_review_write.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_user_info_change.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1852355072463768" />
       </map>
     </option>
   </component>

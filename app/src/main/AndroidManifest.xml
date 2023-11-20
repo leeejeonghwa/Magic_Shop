@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TEST">
         <activity
-            android:name=".MypageActivity"
+            android:name=".MypageMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="MypageSettingActivity"/>
+        <activity android:name="InputPasswordActivity"/>
     </application>
-
 </manifest>
