@@ -23,6 +23,7 @@
         <activity android:name=".Mypage_UserInfoChangeActivity"/>
         <activity android:name=".Mypage_ChangePasswordActivity"/>
         <activity android:name=".Mypage_DeliveryAddressManageActivity"/>
+        <activity android:name=".Mypage_DeliveryAddressEditActivity"/>
         <activity android:name=".Mypage_DeliveryAddressPlusActivity"/>
         <activity android:name=".Mypage_RefundAccountManageActivity"/>
         <activity android:name=".Mypage_OrderDeliveryListActivity"/>

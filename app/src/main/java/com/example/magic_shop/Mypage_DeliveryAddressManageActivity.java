@@ -20,16 +20,21 @@ import java.util.List;
 
 public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
-    private List<AddressItem> getAddressList() {
+    public List<AddressItem> getAddressList() {
         List<AddressItem> addressList = new ArrayList<>();
 
         // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
         addressList.add(new AddressItem("집", "010-1234-5678", "서울시 강남구"));
         addressList.add(new AddressItem("회사", "010-9876-5432", "경기도 수원시"));
+        addressList.add(new AddressItem("친구집", "010-9876-5432", "경기도 수원시"));
+        addressList.add(new AddressItem("회사2", "010-9876-5432", "경기도 수원시"));
+        addressList.add(new AddressItem("회사3", "010-9876-5432", "경기도 수원시"));
         // ... 추가적인 데이터
 
         return addressList;
     }
+
+    public Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,17 +66,19 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         List<AddressItem> addressList = getAddressList(); // 여러 배송지 정보를 가져오는 메서드
-        AddressAdapter adapter = new AddressAdapter(addressList, Mypage_DeliveryAddressManageActivity.this);
+        AddressAdapter adapter = new AddressAdapter(addressList, this);
         recyclerView.setAdapter(adapter);
+
+        Log.d("Debug", "AddressList size: " + addressList.size());
     }
 
     // AddressItem 클래스는 각 배송지 정보를 나타냅니다.
-    private static class AddressItem {
+    public class AddressItem {
         String name;
         String phoneNumber;
         String address;
 
-        AddressItem(String name, String phoneNumber, String address) {
+        public AddressItem(String name, String phoneNumber, String address) {
             this.name = name;
             this.phoneNumber = phoneNumber;
             this.address = address;
@@ -79,9 +86,9 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
     }
 
     // AddressAdapter 클래스는 RecyclerView에 데이터를 바인딩합니다.
-    public static class AddressAdapter extends RecyclerView.Adapter<AddressViewHolder> {
-        public List<AddressItem> addressList;
-        public Context context;
+    public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressViewHolder> {
+        private List<AddressItem> addressList;
+        private Context context;
 
         AddressAdapter(List<AddressItem> addressList, Context context) {
             this.addressList = addressList;
@@ -91,9 +98,9 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         @NonNull
         @Override
         public AddressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_address, parent, false);
-            return new AddressViewHolder(view);
+            Context context = parent.getContext(); // Context 설정
+            View view = LayoutInflater.from(context).inflate(R.layout.item_address, parent, false);
+            return new AddressViewHolder(view, context);
         }
 
         @Override
@@ -106,43 +113,46 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         public int getItemCount() {
             return addressList.size();
         }
-    }
 
-    // AddressViewHolder 클래스는 각 아이템의 뷰를 관리합니다.
-    public static class AddressViewHolder extends RecyclerView.ViewHolder {
-        private final TextView nameTextView;
-        private final TextView phoneNumberTextView;
-        private final TextView addressTextView;
-        public final Button addressEditButton;
+        // AddressViewHolder 클래스는 각 아이템의 뷰를 관리합니다.
+        public class AddressViewHolder extends RecyclerView.ViewHolder {
+            private final TextView nameTextView;
+            private final TextView phoneNumberTextView;
+            private final TextView addressTextView;
+            public final Button addressEditButton;
+            private final Context context;
 
-        AddressViewHolder(View itemView) {
-            super(itemView);
-            nameTextView = itemView.findViewById(R.id.address_name);
-            phoneNumberTextView = itemView.findViewById(R.id.address_phone_number);
-            addressTextView = itemView.findViewById(R.id.address);
-            addressEditButton = itemView.findViewById(R.id.btn_address_edit);
+            public AddressViewHolder(View itemView, Context context) {
+                super(itemView);
+                this.context = context;
+                nameTextView = itemView.findViewById(R.id.address_name);
+                phoneNumberTextView = itemView.findViewById(R.id.address_phone_number);
+                addressTextView = itemView.findViewById(R.id.address);
+                addressEditButton = itemView.findViewById(R.id.btn_address_edit);
 
-            // 아이템 뷰에 클릭 리스너 설정
-            addressEditButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 클릭 이벤트 처리
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        // 다음 화면으로 이동하는 코드
-                        Intent intent = new Intent(context, Mypage_DeliveryAddressEditActivity.class);
-                        // 필요하다면 인텐트에 데이터를 추가할 수 있음
-                        // intent.putExtra("key", value);
-                        context.startActivity(intent);
+                addressEditButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 클릭 이벤트 처리
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // 다음 화면으로 이동하는 코드
+                            AddressItem addressItem = addressList.get(position);
+                            Intent intent = new Intent(context, Mypage_DeliveryAddressEditActivity.class);
+                            intent.putExtra("name", addressItem.name);
+                            intent.putExtra("phoneNumber", addressItem.phoneNumber);
+                            intent.putExtra("address", addressItem.address);
+                            context.startActivity(intent);
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
 
-        void bind(AddressItem addressItem) {
-            nameTextView.setText(addressItem.name);
-            phoneNumberTextView.setText(addressItem.phoneNumber);
-            addressTextView.setText(addressItem.address);
+            void bind(AddressItem addressItem) {
+                nameTextView.setText(addressItem.name);
+                phoneNumberTextView.setText(addressItem.phoneNumber);
+                addressTextView.setText(addressItem.address);
+            }
         }
     }
 }

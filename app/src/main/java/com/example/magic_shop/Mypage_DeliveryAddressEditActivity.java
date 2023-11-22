@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,5 +24,15 @@ public class Mypage_DeliveryAddressEditActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Intent intent = getIntent();
+
+        TextView address_name = findViewById(R.id.address_name);
+        TextView address_phoneNumber = findViewById(R.id.address_phone_number);
+        TextView address = findViewById(R.id.address);
+
+        address_name.setText(intent.getStringExtra("name"));
+        address_phoneNumber.setText(intent.getStringExtra("phoneNumber"));
+        address.setText(intent.getStringExtra("address"));
     }
 }
