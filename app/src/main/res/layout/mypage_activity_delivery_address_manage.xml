@@ -2,44 +2,154 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="411dp"
-    android:layout_height="845dp"
-    android:clipToOutline="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="411dp"
-        android:layout_height="845dp"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/mypage_delivery_address_manage"
+        android:alpha="0.2"
+        android:src="@drawable/mypage_delivery_address_manage_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btn_back"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:background="#00FF0000"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/btn_delivery_address_plus"
-        android:layout_width="362dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="776dp"
-        android:background="#00FF0000"
+        android:id="@+id/btn_home"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_home"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="22dp"
+        android:text="주소 관리"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/delivery_address_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="배송지 1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+
+    <TextView
+        android:id="@+id/default_delivery_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/rounded_border"
+        android:padding="6dp"
+        android:text="기본배송지"
+        android:textColor="@color/main"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.373"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/address_1_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="010-1111-1111"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delivery_address_1"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/address_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="전북 전주시 어쩌고 저쩌고"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_1_phone_number"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btn_address_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_border_gray"
+        android:minWidth="50dp"
+        android:minHeight="0dp"
+        android:padding="4dp"
+        android:text="수정"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_1"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btn_delivery_address_plus"
+        android:layout_width="360dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="26dp"
+        android:background="@color/main"
+        android:text="주소 추가"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

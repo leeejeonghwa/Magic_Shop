@@ -5,6 +5,9 @@
       <map>
         <entry key="app/src/main/res/drawable/activity_user_info_change.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/round_border_black.xml" value="0.15033783783783783" />
+        <entry key="app/src/main/res/drawable/rounded_border.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/rounded_border_black.xml" value="0.14932432432432433" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/activity_delivery_address_manage.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_delivery_address_plus.xml" value="0.25" />
@@ -26,6 +29,8 @@
         <entry key="app/src/main/res/layout/activity_review_write.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/activity_user_info_change.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_main.xml" value="0.20108695652173914" />
       </map>
     </option>
   </component>
