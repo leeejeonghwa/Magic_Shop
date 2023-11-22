@@ -37,38 +37,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="22dp"
-        android:text="주소 관리"
+        android:text="주소 변경"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="380dp"
-        android:layout_height="670dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_title" />
-
-
-    <Button
-        android:id="@+id/btn_delivery_address_plus"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
-        android:background="@color/main"
-        android:text="주소 추가"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
