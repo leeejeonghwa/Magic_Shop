@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Magic_Shop</string>
+    <string name="category_top">상의</string>
+    <string name="category_outer">아우터</string>
+    <string name="category_pants">바지</string>
+    <string name="category_skirt_one_piece">스커트/원피스</string>
+    <string name="category_shoes">신발</string>
+    <string name="category_bag">가방</string>
+
+    <string name="category_top_1">상의 전체</string>
+    <string name="category_top_2">상의 신상</string>
+    <string name="category_top_3">맨투맨/스웨트 셔츠</string>
+    <string name="category_top_4">셔츠/블라우스</string>
+    <string name="category_top_5">후드 티셔츠</string>
+    <string name="category_top_6">니트 스웨터</string>
+    <string name="category_top_7">피케/카라 티셔츠</string>
+    <string name="category_top_8">긴소매 티셔츠</string>
+    <string name="category_top_9">반소매 티셔츠</string>
+    <string name="category_top_10">민소매 티셔츠</string>
+    <string name="category_top_11">스포츠 상의</string>
+    <string name="category_top_12">기타 상의</string>
+
+
+
+
+
 </resources>

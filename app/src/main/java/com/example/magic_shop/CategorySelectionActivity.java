@@ -3,6 +3,7 @@ package com.example.magic_shop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,16 +14,81 @@ public class CategorySelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_selection);
 
-        // 새 페이지의 동작을 여기에 추가
 
-        findViewById(R.id.btn1_id).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 버튼을 클릭했을 때 SecondActivity로 이동하는 Intent 생성
-                Intent intent = new Intent(CategorySelectionActivity.this, CategoryProductListActivity.class);
-                startActivity(intent); // Intent를 사용하여 SecondActivity 시작
-            }
-        });
+        for (int buttonId : topButtonIds) {
+            findViewById(buttonId).setOnClickListener(new DetailedCategoryButtonClickListener());
+        }
+
+        for (int buttonId : buttonIds) {
+            findViewById(buttonId).setOnClickListener(new CategoryButtonClickListener());
+        }
+
+
+    }
+
+    private final int[] buttonIds = {
+            R.id.btn_top_id,
+            R.id.btn_outer_id,
+            R.id.btn_pants_id,
+            R.id.btn_skirt_one_piece_id,
+            R.id.btn_shoes_id,
+            R.id.btn_bag_id
+    };
+
+    private final int[] topButtonIds = {
+            R.id.btn_top1_id,
+            R.id.btn_top2_id,
+            R.id.btn_top3_id,
+            R.id.btn_top4_id,
+            R.id.btn_top5_id,
+            R.id.btn_top6_id,
+            R.id.btn_top7_id,
+            R.id.btn_top8_id,
+            R.id.btn_top9_id,
+            R.id.btn_top10_id,
+            R.id.btn_top11_id,
+            R.id.btn_top12_id
+    };
+
+
+
+    private class CategoryButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+
+            Button btn = findViewById(view.getId());
+            btn.setBackgroundColor(getResources().getColor(android.R.color.white));
+            btn.setTextColor(getResources().getColor(R.color.category_main_color));
+
+            changeAllButtonColors(view.getId());
+
+
+        }
+    }
+
+    private class DetailedCategoryButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(CategorySelectionActivity.this, CategoryProductListActivity.class);
+            startActivity(intent); // Intent를 사용하여 SecondActivity 시작
+
+        }
+    }
+
+    // 추가 메서드: 버튼의 초기 모양을 설정하는 함수
+    private void resetButtonAppearance(int buttonId) {
+        Button button = findViewById(buttonId);
+        button.setBackgroundColor(getResources().getColor(R.color.category_background_color));
+        button.setTextColor(getResources().getColor(R.color.category_text_color));
+    }
+
+    private void changeAllButtonColors(int clickedButtonId) {
+
+        for (int buttonId : buttonIds) {
+            if (buttonId != clickedButtonId) resetButtonAppearance(buttonId);
+
+        }
     }
 
 

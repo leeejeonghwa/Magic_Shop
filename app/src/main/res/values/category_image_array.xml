@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="image_array">
+        <item>@drawable/category_top</item>
+        <item>@drawable/category_outer</item>
+        <item>@drawable/category_pants</item>
+        <item>@drawable/category_skirt_one_piece</item>
+        <item>@drawable/category_shoes</item>
+        <item>@drawable/category_bag</item>
+
+        <!-- Add more items for each image file -->
+    </string-array>
+
+</resources>
