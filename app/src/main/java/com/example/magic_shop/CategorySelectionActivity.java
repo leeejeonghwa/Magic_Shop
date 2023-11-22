@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,14 +20,16 @@ public class CategorySelectionActivity extends AppCompatActivity {
             findViewById(buttonId).setOnClickListener(new DetailedCategoryButtonClickListener());
         }
 
-        for (int buttonId : buttonIds) {
+        for (int buttonId : categoryButtonIds) {
             findViewById(buttonId).setOnClickListener(new CategoryButtonClickListener());
         }
 
 
     }
 
-    private final int[] buttonIds = {
+    private ImageView imageView;
+
+    private final int[] categoryButtonIds = {
             R.id.btn_top_id,
             R.id.btn_outer_id,
             R.id.btn_pants_id,
@@ -50,6 +53,17 @@ public class CategorySelectionActivity extends AppCompatActivity {
             R.id.btn_top12_id
     };
 
+    private final int[] categoryImageSources = {
+            R.drawable.category_top,
+            R.drawable.category_outer,
+            R.drawable.category_pants,
+            R.drawable.category_skirt_one_piece,
+            R.drawable.category_shoes,
+            R.drawable.category_bag
+    };
+
+
+
 
 
     private class CategoryButtonClickListener implements View.OnClickListener {
@@ -60,8 +74,14 @@ public class CategorySelectionActivity extends AppCompatActivity {
             btn.setBackgroundColor(getResources().getColor(android.R.color.white));
             btn.setTextColor(getResources().getColor(R.color.category_main_color));
 
-            changeAllButtonColors(view.getId());
+            changeButtonColorsWithoutSelected(view.getId());
 
+            for (int i=0; i<6; i++) {
+                if (view.getId() == categoryButtonIds[i]) {
+                    imageView = findViewById(R.id.category_top_id);
+                    imageView.setImageResource(categoryImageSources[i]);
+                }
+            }
 
         }
     }
@@ -83,9 +103,9 @@ public class CategorySelectionActivity extends AppCompatActivity {
         button.setTextColor(getResources().getColor(R.color.category_text_color));
     }
 
-    private void changeAllButtonColors(int clickedButtonId) {
+    private void changeButtonColorsWithoutSelected(int clickedButtonId) {
 
-        for (int buttonId : buttonIds) {
+        for (int buttonId : categoryButtonIds) {
             if (buttonId != clickedButtonId) resetButtonAppearance(buttonId);
 
         }
