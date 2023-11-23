@@ -32,4 +32,5 @@
         <activity android:name=".Mypage_ReviewListActivity"/>
 
     </application>
+
 </manifest>

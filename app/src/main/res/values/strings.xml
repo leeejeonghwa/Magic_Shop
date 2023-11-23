@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Magic_Shop</string>
+    <string name="app_name">Magic Shop</string>
+    <string name="magic_shop">Magic Shop</string>
+
 </resources>

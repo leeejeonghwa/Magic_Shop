@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="magic_shop">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">#8E8BD8</item>
+        <!-- 다른 스타일 속성들 -->
+    </style>
+</resources>
