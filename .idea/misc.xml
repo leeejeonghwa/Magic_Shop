@@ -37,7 +37,9 @@
         <entry key="app/src/main/res/layout/activity_user_info_change.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/item_address.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_order_list.xml" value="0.15778688524590165" />
+        <entry key="app/src/main/res/layout/item_refund_exchange.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_change_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_edit.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.165" />
