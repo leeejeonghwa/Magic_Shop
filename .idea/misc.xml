@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/activity_user_info_change.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/bg_round_checkbox_button.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/bg_round_checkbox_off.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/bg_round_checkbox_on.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/checkbox.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/edit_text_rounded_border_gray.xml" value="0.19163879598662206" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/round_border_black.xml" value="0.15033783783783783" />
         <entry key="app/src/main/res/drawable/rounded_border.xml" value="0.19358108108108107" />
         <entry key="app/src/main/res/drawable/rounded_border_black.xml" value="0.14932432432432433" />
+        <entry key="app/src/main/res/drawable/rounded_border_gray.xml" value="0.19358108108108107" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/activity_delivery_address_manage.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_delivery_address_plus.xml" value="0.25" />
@@ -33,8 +39,17 @@
         <entry key="app/src/main/res/layout/mypage_activity_change_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_edit.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.16051912568306012" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_check.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_input_password.xml" value="0.15437158469945356" />
         <entry key="app/src/main/res/layout/mypage_activity_main.xml" value="0.20108695652173914" />
+        <entry key="app/src/main/res/layout/mypage_activity_order_delivery_list.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/mypage_activity_refund_account_manage.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_refund_exchange_list.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_review_list.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_review_write.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_setting.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.15437158469945356" />
       </map>
     </option>
   </component>

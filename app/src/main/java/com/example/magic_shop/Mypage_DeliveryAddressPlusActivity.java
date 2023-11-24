@@ -23,5 +23,15 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btn_address_plus_check = (Button) findViewById(R.id.btn_delivery_address_plus_check);
+        btn_address_plus_check.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
