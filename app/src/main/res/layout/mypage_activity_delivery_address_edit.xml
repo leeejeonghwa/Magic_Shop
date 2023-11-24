@@ -8,10 +8,10 @@
 
     <Button
         android:id="@+id/btn_back"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="26dp"
         android:background="@drawable/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,10 +21,10 @@
 
     <Button
         android:id="@+id/btn_home"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="360dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/btn_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
@@ -37,14 +37,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="21dp"
-        android:text="주소 관리"
-        android:textSize="22sp"
+        android:layout_marginTop="26dp"
+        android:text="주소 수정"
         android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
+
 
     <TextView
         android:id="@+id/address_name"
