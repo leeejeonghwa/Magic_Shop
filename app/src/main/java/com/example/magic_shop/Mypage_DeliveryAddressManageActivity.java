@@ -61,15 +61,13 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.address_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         List<AddressItem> addressList = getAddressList(); // 여러 배송지 정보를 가져오는 메서드
         AddressAdapter adapter = new AddressAdapter(addressList, this);
         recyclerView.setAdapter(adapter);
-
-        Log.d("Debug", "AddressList size: " + addressList.size());
     }
 
     // AddressItem 클래스는 각 배송지 정보를 나타냅니다.
@@ -85,7 +83,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         }
     }
 
-    // AddressAdapter 클래스는 RecyclerView에 데이터를 바인딩합니다.
+    // AddressAdapter 클래스는 RecyclerView 데이터를 바인딩합니다.
     public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressViewHolder> {
         private List<AddressItem> addressList;
         private Context context;
@@ -147,7 +145,6 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                     }
                 });
             }
-
             void bind(AddressItem addressItem) {
                 nameTextView.setText(addressItem.name);
                 phoneNumberTextView.setText(addressItem.phoneNumber);

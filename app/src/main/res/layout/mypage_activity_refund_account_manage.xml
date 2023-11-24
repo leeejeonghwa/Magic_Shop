@@ -7,18 +7,6 @@
     android:clipToOutline="true"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="411dp"
-        android:layout_height="845dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/mypage_refund_account_change"
-        android:alpha="0.3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/btn_back"
@@ -61,17 +49,122 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/btn_refund_account_change_confirm"
-        android:layout_width="178dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="384dp"
-        android:background="#00FF0000"
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:text="예금주"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_rounded_border_gray"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <TextView
+        android:id="@+id/textViewBank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="입금 은행"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextBank"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_rounded_border_gray"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBank" />
+
+    <TextView
+        android:id="@+id/textViewAccountNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="계좌번호"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBank"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextAccountNumber"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_rounded_border_gray"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAccountNumber" />
+
+    <Button
+        android:id="@+id/btn_refund_account_change_confirm"
+        android:layout_width="170dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="24dp"
+        android:background="@color/main"
+        android:text="완료"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccountNumber"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
+    <Button
+        android:id="@+id/btn_refund_account_change_remove"
+        android:layout_width="170dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="24dp"
+        android:background="@color/main"
+        android:text="삭제"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccountNumber"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
