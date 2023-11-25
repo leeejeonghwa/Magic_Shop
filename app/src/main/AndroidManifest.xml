@@ -30,6 +30,8 @@
         <activity android:name=".Mypage_RefundExchangeListActivity"/>
         <activity android:name=".Mypage_ReviewWriteActivity"/>
         <activity android:name=".Mypage_ReviewListActivity"/>
+        <activity android:name=".CategoryProductListActivity" />
+        <activity android:name=".CategorySelectionActivity" />
 
     </application>
 

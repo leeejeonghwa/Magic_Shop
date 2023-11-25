@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/imageTextContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- 왼쪽에 그림 2 -->
+        <android.widget.Button
+            android:id="@+id/category_back_id"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="14dp"
+
+            android:background="@drawable/category_back"
+            android:contentDescription="My Button Description"/>
+
+        <TextView
+            android:id="@+id/category_text"
+            android:layout_width="12dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:text="" />
+
+        <android.widget.Button
+            android:id="@+id/category_menu_id"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/category_menu_icon"
+            android:contentDescription="My Button Description"/>
+
+        <TextView
+            android:id="@+id/category_text2"
+            android:layout_width="58dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:text="" />
+
+        <!-- 상단에 텍스트 뷰 -->
+        <TextView
+            android:id="@+id/category_text_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/category_top"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/category_text3"
+            android:layout_width="159dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/imageTextContainer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageTextContainer"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <HorizontalScrollView
+            android:id="@+id/category_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/buttonContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="전체"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상의 신상"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="맨투맨/스웨트셔츠"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="셔츠/블라우스"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="후드 티셔츠"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="니트/스웨터"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="피케/카라 티셔츠"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="긴소매 티셔츠"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반소매 티셔츠"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="민소매 티셔츠"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="스포츠 상의"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기타 상의"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/category_text_color" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
