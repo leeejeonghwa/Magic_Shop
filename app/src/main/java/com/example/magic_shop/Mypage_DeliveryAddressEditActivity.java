@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Mypage_DeliveryCheckActivity extends AppCompatActivity {
+public class Mypage_DeliveryAddressEditActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_delivery_check);
+        setContentView(R.layout.mypage_activity_delivery_address_edit);
         getWindow().setWindowAnimations(0);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -20,17 +20,20 @@ public class Mypage_DeliveryCheckActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_OrderDeliveryListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
                 startActivity(intent);
             }
         });
 
         Intent intent = getIntent();
 
-        TextView product_name = findViewById(R.id.productName);
-        TextView trackingNumber = findViewById(R.id.trackingNumber);
+        TextView address_name = findViewById(R.id.address_name);
+        TextView address_phoneNumber = findViewById(R.id.address_phone_number);
+        TextView address = findViewById(R.id.address);
 
-        product_name.setText(intent.getStringExtra("productName"));
-        trackingNumber.setText(intent.getStringExtra("trackingNumber"));
+        address_name.setText(intent.getStringExtra("name"));
+        address_phoneNumber.setText(intent.getStringExtra("phoneNumber"));
+        address.setText(intent.getStringExtra("address"));
     }
+
 }

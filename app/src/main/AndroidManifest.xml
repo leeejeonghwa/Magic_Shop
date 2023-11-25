@@ -23,16 +23,18 @@
         <activity android:name=".Mypage_UserInfoChangeActivity"/>
         <activity android:name=".Mypage_ChangePasswordActivity"/>
         <activity android:name=".Mypage_DeliveryAddressManageActivity"/>
+        <activity android:name=".Mypage_DeliveryAddressEditActivity"/>
         <activity android:name=".Mypage_DeliveryAddressPlusActivity"/>
         <activity android:name=".Mypage_RefundAccountManageActivity"/>
         <activity android:name=".Mypage_OrderDeliveryListActivity"/>
         <activity android:name=".Mypage_DeliveryCheckActivity"/>
         <activity android:name=".Mypage_RefundExchangeListActivity"/>
+        <activity android:name=".Mypage_UnreviewedListActivity"/>
+        <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".Mypage_ReviewWriteActivity"/>
-        <activity android:name=".Mypage_ReviewListActivity"/>
+        <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".CategoryProductListActivity" />
         <activity android:name=".CategorySelectionActivity" />
 
     </application>
-
 </manifest>
