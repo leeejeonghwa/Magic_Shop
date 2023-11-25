@@ -1,5 +1,23 @@
 <resources>
-    <string name="app_name">Magic_Shop</string>
+    <string name="app_name">Magic Shop</string>
+    <string name="magic_shop">Magic Shop</string>
+
+    <string name="magic_shop_1">
+            @Magic_Shop
+</string>
+
+    <string name="some_id"> 로그인
+</string>
+
+    <string name="some_id1">
+로그인
+</string>
+
+    <string name="register">
+회원 가입
+</string>
+
+
     <string name="category_top">상의</string>
     <string name="category_outer">아우터</string>
     <string name="category_pants">바지</string>
