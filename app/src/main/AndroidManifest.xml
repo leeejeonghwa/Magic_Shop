@@ -32,6 +32,9 @@
         <activity android:name=".Mypage_UnreviewedListActivity"/>
         <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".Mypage_ReviewWriteActivity"/>
+        <activity android:name=".Mypage_ReviewedListActivity"/>
+        <activity android:name=".CategoryProductListActivity" />
+        <activity android:name=".CategorySelectionActivity" />
 
     </application>
 </manifest>

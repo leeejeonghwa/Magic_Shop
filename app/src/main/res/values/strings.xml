@@ -1,3 +1,121 @@
 <resources>
-    <string name="app_name">Magic_Shop</string>
+    <string name="app_name">Magic Shop</string>
+    <string name="magic_shop">Magic Shop</string>
+
+    <string name="magic_shop_1">
+            @Magic_Shop
+</string>
+
+    <string name="some_id"> 로그인
+</string>
+
+    <string name="some_id1">
+로그인
+</string>
+
+    <string name="register">
+회원 가입
+</string>
+
+
+    <string name="category_top">상의</string>
+    <string name="category_outer">아우터</string>
+    <string name="category_pants">바지</string>
+    <string name="category_skirt_one_piece">스커트/원피스</string>
+    <string name="category_shoes">신발</string>
+    <string name="category_bag">가방</string>
+
+    <string name="category_top_1">상의 전체</string>
+    <string name="category_top_2">상의 신상</string>
+    <string name="category_top_3">맨투맨/스웨트 셔츠</string>
+    <string name="category_top_4">셔츠/블라우스</string>
+    <string name="category_top_5">후드 티셔츠</string>
+    <string name="category_top_6">니트 스웨터</string>
+    <string name="category_top_7">피케/카라 티셔츠</string>
+    <string name="category_top_8">긴소매 티셔츠</string>
+    <string name="category_top_9">반소매 티셔츠</string>
+    <string name="category_top_10">민소매 티셔츠</string>
+    <string name="category_top_11">스포츠 상의</string>
+    <string name="category_top_12">기타 상의</string>
+
+    <string name="category_outer_1">아우터 전체</string>
+    <string name="category_outer_2">아우터 신상</string>
+    <string name="category_outer_3">후드 집업</string>
+    <string name="category_outer_4">패딩</string>
+    <string name="category_outer_5">레더/라이더스 재킷</string>
+    <string name="category_outer_6">무스탕/퍼</string>
+    <string name="category_outer_7">코트</string>
+    <string name="category_outer_8">슈트/블레이저 재킷</string>
+    <string name="category_outer_9">카디건</string>
+    <string name="category_outer_10">아노락 재킷</string>
+    <string name="category_outer_11">베스트</string>
+    <string name="category_outer_12">기타 아우터</string>
+
+    <string name="category_pants_1">바지 전체</string>
+    <string name="category_pants_2">바지 신상</string>
+    <string name="category_pants_3">데님 팬츠</string>
+    <string name="category_pants_4">코튼 팬츠</string>
+    <string name="category_pants_5">슈트 팬츠/슬랙스</string>
+    <string name="category_pants_6">트레이닝/조기 팬츠</string>
+    <string name="category_pants_7">숏 팬츠</string>
+    <string name="category_pants_8">레깅스</string>
+    <string name="category_pants_9">점프 슈트/오버올</string>
+    <string name="category_pants_10">미디 팬츠</string>
+    <string name="category_pants_11">스포츠 하의</string>
+    <string name="category_pants_12">기타 바지</string>
+
+    <string name="category_skirt_one_piece_1">스커트 전체</string>
+    <string name="category_skirt_one_piece_2">스커트 신상</string>
+    <string name="category_skirt_one_piece_3">미니 스커트</string>
+    <string name="category_skirt_one_piece_4">미디 스커트</string>
+    <string name="category_skirt_one_piece_5">롱 스커트</string>
+    <string name="category_skirt_one_piece_6">기타 스커트</string>
+    <string name="category_skirt_one_piece_7">원피스 전체</string>
+    <string name="category_skirt_one_piece_8">원피스 신상</string>
+    <string name="category_skirt_one_piece_9">미니 원피스</string>
+    <string name="category_skirt_one_piece_10">미디 원피스</string>
+    <string name="category_skirt_one_piece_11">롱 원피스</string>
+    <string name="category_skirt_one_piece_12">기타 원피스</string>
+
+    <string name="category_shoes_1">신발 전체</string>
+    <string name="category_shoes_2">신발 신상</string>
+    <string name="category_shoes_3">구두</string>
+    <string name="category_shoes_4">로퍼</string>
+    <string name="category_shoes_5">힐/펌프스</string>
+    <string name="category_shoes_6">플랫 슈즈</string>
+    <string name="category_shoes_7">블로퍼</string>
+    <string name="category_shoes_8">샌들/슬리퍼</string>
+    <string name="category_shoes_9">스니커즈</string>
+    <string name="category_shoes_10">부츠</string>
+    <string name="category_shoes_11">모카신/보트 슈즈</string>
+    <string name="category_shoes_12">기타 신발</string>
+
+    <string name="category_bag_1">가방 전체</string>
+    <string name="category_bag_2">가방 신상</string>
+    <string name="category_bag_3">백팩</string>
+    <string name="category_bag_4">메신저/크로스백</string>
+    <string name="category_bag_5">숄더백</string>
+    <string name="category_bag_6">토트백</string>
+    <string name="category_bag_7">에코백</string>
+    <string name="category_bag_8">클러치/파우치 백</string>
+    <string name="category_bag_9">웨이스트 백</string>
+    <string name="category_bag_10">캐리어</string>
+    <string name="category_bag_11">브리프 케이스</string>
+    <string name="category_bag_12">기타 가방</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <ImageView
+        android:id="@+id/search_window_id"
+        android:layout_width="301dp"
+        android:layout_height="45dp"
+        android:src="@drawable/search_window"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.267"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <ImageView
+        android:id="@+id/shopping_basket_id"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/category_shopping_basket"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032" />
+
+
+
+    <View
+        android:id="@+id/category_component_box_id"
+        android:layout_width="413dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="32dp"
+        android:background="#F4F4F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shopping_basket_id" />
+
+
+
+    <ImageView
+        android:id="@+id/category_component_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/category_component"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <ImageView
+        android:id="@+id/category_component2_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/category_component"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <ImageView
+        android:id="@+id/category_component3_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/category_component"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <ImageView
+        android:id="@+id/category_component4_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/category_component"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.667"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <ImageView
+        android:id="@+id/category_component5_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/category_component"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+
+    <!-- Second ScrollView -->
+
+    <ScrollView
+        android:id="@+id/first_scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Description of your first scroll view"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/second_scroll_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/category_component_box_id"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Add your existing views or other views here -->
+
+            <!-- ImageView 1 -->
+
+            <!-- ImageView 2 -->
+
+            <android.widget.Button
+                android:id="@+id/btn_top_id"
+                android:layout_width="163dp"
+                android:layout_height="60dp"
+                android:layout_margin="0dp"
+                android:text="@string/category_top"
+                android:textColor="@color/category_main_color"
+                android:background="@drawable/category_btn_selected"
+                android:contentDescription="My Button Description" />
+
+            <android.widget.Button
+                android:id="@+id/btn_outer_id"
+                android:layout_width="163dp"
+                android:layout_height="60dp"
+                android:layout_margin="0dp"
+                android:text="@string/category_outer"
+                android:textColor="@color/category_text_color"
+                android:background="@drawable/category_btn"
+                android:contentDescription="My Button Description" />
+
+            <android.widget.Button
+                android:id="@+id/btn_pants_id"
+                android:layout_width="163dp"
+                android:layout_height="60dp"
+                android:layout_margin="0dp"
+                android:text="@string/category_pants"
+                android:textColor="@color/category_text_color"
+                android:background="@drawable/category_btn"
+                android:contentDescription="My Button Description" />
+
+            <android.widget.Button
+                android:id="@+id/btn_skirt_one_piece_id"
+                android:layout_width="163dp"
+                android:layout_height="60dp"
+                android:layout_margin="0dp"
+                android:textColor="@color/category_text_color"
+                android:background="@drawable/category_btn"
+                android:contentDescription="My Button Description"
+                android:text="@string/category_skirt_one_piece" />
+
+            <android.widget.Button
+                android:id="@+id/btn_shoes_id"
+                android:layout_width="163dp"
+                android:layout_height="60dp"
+                android:layout_margin="0dp"
+                android:text="@string/category_shoes"
+                android:textColor="@color/category_text_color"
+                android:background="@drawable/category_btn"
+                android:contentDescription="My Button Description" />
+
+            <android.widget.Button
+                android:id="@+id/btn_bag_id"
+                android:layout_width="163dp"
+                android:layout_height="60dp"
+                android:layout_margin="0dp"
+                android:text="@string/category_bag"
+                android:textColor="@color/category_text_color"
+                android:background="@drawable/category_btn"
+                android:contentDescription="My Button Description" />
+
+            <android.widget.Button
+                android:id="@+id/btn_etc_id"
+                android:layout_width="163dp"
+                android:layout_height="349dp"
+                android:layout_margin="0dp"
+                android:textColor="@color/category_text_color"
+                android:background="@drawable/category_btn"
+                android:contentDescription="My Button Description" />
+
+
+
+
+
+
+
+            <!-- Add your existing views or other views here -->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/second_scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/category_component_box_id"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/first_scroll_view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="36dp" />
+
+            <ImageView
+                android:id="@+id/category_ad_id"
+                android:layout_width="244dp"
+                android:layout_height="142dp"
+                android:src="@drawable/category_ad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.97"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.279" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="38dp" />
+
+            <!-- FrameLayout 추가 -->
+            <FrameLayout
+                android:layout_width="249dp"
+                android:layout_height="424dp">
+
+
+                <ImageView
+                    android:id="@+id/category_top_id"
+                    android:layout_width="249dp"
+                    android:layout_height="424dp"
+                    android:src="@drawable/category_top"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <!-- Second row of buttons and textview -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_top1_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top2_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top3_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="130dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_top4_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top5_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top6_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="232dp"
+                    android:gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_top7_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top8_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top9_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="340dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_top10_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top11_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+                    <Button
+                        android:id="@+id/btn_top12_id"
+                        android:layout_width="60dp"
+                        android:layout_height="66dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="My Button Description" />
+
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="138dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
