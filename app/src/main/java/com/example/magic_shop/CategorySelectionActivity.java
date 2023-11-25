@@ -10,24 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CategorySelectionActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.category_selection);
-
-
-        for (int buttonId : topButtonIds) {
-            findViewById(buttonId).setOnClickListener(new DetailedCategoryButtonClickListener());
-        }
-
-        for (int buttonId : categoryButtonIds) {
-            findViewById(buttonId).setOnClickListener(new CategoryButtonClickListener());
-        }
-
-
-    }
-
     private ImageView imageView;
+
+    private int selectedCategory = 0;
+
+    CategorySelection categorySelection = CategorySelection.getInstance();
 
     private final int[] categoryButtonIds = {
             R.id.btn_top_id,
@@ -38,7 +25,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
             R.id.btn_bag_id
     };
 
-    private final int[] topButtonIds = {
+    private final int[] detailedButtonIds = {
             R.id.btn_top1_id,
             R.id.btn_top2_id,
             R.id.btn_top3_id,
@@ -64,6 +51,22 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.category_selection);
+
+
+        for (int buttonId : detailedButtonIds) {
+            findViewById(buttonId).setOnClickListener(new DetailedCategoryButtonClickListener());
+        }
+
+        for (int buttonId : categoryButtonIds) {
+            findViewById(buttonId).setOnClickListener(new CategoryButtonClickListener());
+        }
+
+
+    }
 
 
     private class CategoryButtonClickListener implements View.OnClickListener {
@@ -80,6 +83,8 @@ public class CategorySelectionActivity extends AppCompatActivity {
                 if (view.getId() == categoryButtonIds[i]) {
                     imageView = findViewById(R.id.category_top_id);
                     imageView.setImageResource(categoryImageSources[i]);
+                    categorySelection.changeCategory(i);
+                    break;
                 }
             }
 
@@ -89,6 +94,14 @@ public class CategorySelectionActivity extends AppCompatActivity {
     private class DetailedCategoryButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+
+            int clickedId = view.getId();
+
+            for(int i=0; i<12; i++) {
+                if (clickedId == detailedButtonIds[i]) {
+                    categorySelection.setSelectedDetailedCategory(i);
+                }
+            }
 
             Intent intent = new Intent(CategorySelectionActivity.this, CategoryProductListActivity.class);
             startActivity(intent); // Intent를 사용하여 SecondActivity 시작
@@ -110,6 +123,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
         }
     }
+
 
 
 }
