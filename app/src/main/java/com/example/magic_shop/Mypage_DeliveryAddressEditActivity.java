@@ -35,4 +35,5 @@ public class Mypage_DeliveryAddressEditActivity extends AppCompatActivity {
         address_phoneNumber.setText(intent.getStringExtra("phoneNumber"));
         address.setText(intent.getStringExtra("address"));
     }
+
 }
