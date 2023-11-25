@@ -87,7 +87,7 @@ public class Mypage_RefundExchangeListActivity extends AppCompatActivity {
         @Override
         public RefundExchangeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             Context context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(context).inflate(R.layout.item_refund_exchange, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_refund_exchange, parent, false);
             return new RefundExchangeViewHolder(view, context);
         }
 

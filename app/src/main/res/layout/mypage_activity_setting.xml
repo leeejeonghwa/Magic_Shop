@@ -14,7 +14,7 @@
         android:layout_height="26dp"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="26dp"
-        android:background="@drawable/btn_back"
+        android:background="@drawable/mypage_btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
         android:layout_height="30dp"
         android:layout_marginLeft="360dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/btn_home"
+        android:background="@drawable/mypage_btn_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="46dp"
         android:layout_marginTop="12dp"
         android:text="이름"
         android:textColor="@color/black"
@@ -77,6 +77,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_user_info"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="12dp"
+        android:text="홍길동"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/btn_user_info"
         tools:ignore="HardcodedText" />
 
@@ -97,11 +113,27 @@
         tools:ignore="HardcodedText" />
 
     <TextView
+        android:id="@+id/phoneNumber_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="14dp"
+        android:text="010-1111-1111"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/name_view"
+        tools:ignore="HardcodedText" />
+
+    <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="38dp"
         android:layout_marginTop="14dp"
         android:text="이메일"
         android:textColor="@color/black"
@@ -110,6 +142,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/email_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="14dp"
+        android:text="magicshop@naver.com"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber_view"
         tools:ignore="HardcodedText" />
 
     <Button

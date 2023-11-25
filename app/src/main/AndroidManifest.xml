@@ -29,8 +29,9 @@
         <activity android:name=".Mypage_OrderDeliveryListActivity"/>
         <activity android:name=".Mypage_DeliveryCheckActivity"/>
         <activity android:name=".Mypage_RefundExchangeListActivity"/>
+        <activity android:name=".Mypage_UnreviewedListActivity"/>
+        <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".Mypage_ReviewWriteActivity"/>
-        <activity android:name=".Mypage_ReviewListActivity"/>
 
     </application>
 </manifest>

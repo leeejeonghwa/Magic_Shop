@@ -50,7 +50,6 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
             }
         });
 
-
         RecyclerView recyclerView = findViewById(R.id.order_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -85,7 +84,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
         @Override
         public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             Context context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(context).inflate(R.layout.item_order, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_order, parent, false);
             return new OrderViewHolder(view, context);
         }
 
@@ -102,6 +101,8 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView trackingNumberTextView;
+            public final Button deliveryCheckButton;
+            public final Button reviewWriteButton;
             private final Context context;
 
             public OrderViewHolder(View itemView, Context context) {
@@ -110,6 +111,40 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.order_date);
                 productNameTextView = itemView.findViewById(R.id.order_productName);
                 trackingNumberTextView = itemView.findViewById(R.id.order_trackingNumber);
+                deliveryCheckButton = itemView.findViewById(R.id.btn_deliveryCheck);
+                reviewWriteButton = itemView.findViewById(R.id.btn_review_write);
+
+                deliveryCheckButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 클릭 이벤트 처리
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // 다음 화면으로 이동하는 코드
+                            OrderItem orderItem = orderList.get(position);
+                            Intent intent = new Intent(context, Mypage_DeliveryCheckActivity.class);
+                            intent.putExtra("date", orderItem.date);
+                            intent.putExtra("productName", orderItem.productName);
+                            intent.putExtra("trackingNumber", orderItem.trackingNumber);
+                            context.startActivity(intent);
+                        }
+                    }
+                });
+
+                reviewWriteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 클릭 이벤트 처리
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // 다음 화면으로 이동하는 코드
+                            OrderItem orderItem = orderList.get(position);
+                            Intent intent = new Intent(context, Mypage_ReviewWriteActivity.class);
+                            intent.putExtra("productName", orderItem.productName);
+                            context.startActivity(intent);
+                        }
+                    }
+                });
             }
 
             void bind(OrderItem orderItem) {

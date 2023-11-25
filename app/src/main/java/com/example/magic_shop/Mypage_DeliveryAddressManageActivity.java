@@ -3,7 +3,6 @@ package com.example.magic_shop;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,7 +96,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         @Override
         public AddressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             Context context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(context).inflate(R.layout.item_address, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_address, parent, false);
             return new AddressViewHolder(view, context);
         }
 

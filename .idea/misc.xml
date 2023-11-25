@@ -7,6 +7,9 @@
         <entry key="app/src/main/res/drawable/bg_round_checkbox_button.xml" value="0.19358108108108107" />
         <entry key="app/src/main/res/drawable/bg_round_checkbox_off.xml" value="0.19358108108108107" />
         <entry key="app/src/main/res/drawable/bg_round_checkbox_on.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/btn_bottom_border_black.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/btn_bottom_border_unclicked.xml" value="0.19163879598662206" />
+        <entry key="app/src/main/res/drawable/button_bottom_border.xml" value="0.19163879598662206" />
         <entry key="app/src/main/res/drawable/checkbox.xml" value="0.19358108108108107" />
         <entry key="app/src/main/res/drawable/edit_text_rounded_border_gray.xml" value="0.19163879598662206" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2984375" />
@@ -40,7 +43,9 @@
         <entry key="app/src/main/res/layout/item_order.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_order_list.xml" value="0.15778688524590165" />
         <entry key="app/src/main/res/layout/item_refund_exchange.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/mypage_activity_change_password.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_review.xml" value="0.1799863387978142" />
+        <entry key="app/src/main/res/layout/item_reviewed.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_activity_change_password.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_edit.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.165" />
@@ -50,10 +55,16 @@
         <entry key="app/src/main/res/layout/mypage_activity_order_delivery_list.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_refund_account_manage.xml" value="0.15437158469945356" />
         <entry key="app/src/main/res/layout/mypage_activity_refund_exchange_list.xml" value="0.15437158469945356" />
-        <entry key="app/src/main/res/layout/mypage_activity_review_list.xml" value="0.15437158469945356" />
-        <entry key="app/src/main/res/layout/mypage_activity_review_write.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_review_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_activity_review_write.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_reviewed_list.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_activity_setting.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_reviewed.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_unreviewed.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_border_gray"
+        android:background="@drawable/mypage_rounded_border_gray"
         android:minWidth="50dp"
         android:minHeight="0dp"
         android:padding="4dp"

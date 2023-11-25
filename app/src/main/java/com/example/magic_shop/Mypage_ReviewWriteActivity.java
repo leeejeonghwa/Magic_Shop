@@ -6,8 +6,20 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Mypage_ReviewWriteActivity extends AppCompatActivity {
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage_activity_review_write);
@@ -18,19 +30,26 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_UnreviewedListActivity.class);
                 startActivity(intent);
             }
         });
 
-        Button btn_review_list = (Button) findViewById(R.id.btn_review_list);
-        btn_review_list.setOnClickListener(new View.OnClickListener() {
+        Button btn_review_submit = (Button) findViewById(R.id.btn_review_submit);
+        btn_review_submit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_ReviewListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_ReviewedListActivity.class);
                 startActivity(intent);
             }
         });
+
+        Intent intent = getIntent();
+
+        TextView productName = findViewById(R.id.productName);
+
+        productName.setText(intent.getStringExtra("productName"));
     }
 }
+
