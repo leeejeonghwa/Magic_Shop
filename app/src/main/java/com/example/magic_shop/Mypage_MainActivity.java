@@ -49,7 +49,7 @@ public class Mypage_MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_ReviewWriteActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_UnreviewedListActivity.class);
                 startActivity(intent);
             }
         });
