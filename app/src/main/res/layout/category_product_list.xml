@@ -6,14 +6,14 @@
 
     <LinearLayout
         android:id="@+id/TextContainer"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 왼쪽에 그림 2 -->
         <android.widget.Button
@@ -22,7 +22,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="14dp"
             android:background="@drawable/category_back"
-            android:contentDescription="My Button Description"/>
+            android:contentDescription="My Button Description" />
 
         <TextView
             android:id="@+id/category_text"
@@ -36,7 +36,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/category_menu_icon"
-            android:contentDescription="My Button Description"/>
+            android:contentDescription="My Button Description" />
 
         <TextView
             android:id="@+id/category_text2"
@@ -51,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_gravity="center"
             android:text="@string/category_top"
             android:textColor="#000000"
             android:textSize="18sp" />
@@ -196,7 +197,7 @@
         android:id="@+id/rectangle_id"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/category_text_color"
+        android:background="@color/category_light_gray_color"
         app:layout_constraintBottom_toBottomOf="@id/category_horizontal_scrollview_id" />
 
     <TextView
@@ -238,7 +239,7 @@
                         android:layout_width="205dp"
                         android:layout_height="200dp"
                         android:layout_margin="0dp"
-                        android:background="@color/category_main_color"
+                        android:background="@color/category_light_gray_color"
                         android:contentDescription="My Button Description"
                         />
 
@@ -285,7 +286,7 @@
                         android:layout_width="205dp"
                         android:layout_height="200dp"
                         android:layout_margin="0dp"
-                        android:background="@color/category_main_color"
+                        android:background="@color/category_light_gray_color"
                         android:contentDescription="My Button Description"
                         />
 
@@ -338,7 +339,7 @@
                         android:layout_width="205dp"
                         android:layout_height="200dp"
                         android:layout_margin="0dp"
-                        android:background="@color/category_main_color"
+                        android:background="@color/category_light_gray_color"
                         android:contentDescription="My Button Description"
                         />
 
@@ -385,7 +386,7 @@
                         android:layout_width="205dp"
                         android:layout_height="200dp"
                         android:layout_margin="0dp"
-                        android:background="@color/category_main_color"
+                        android:background="@color/category_light_gray_color"
                         android:contentDescription="My Button Description"
                         />
 
@@ -440,7 +441,7 @@
                         android:layout_width="205dp"
                         android:layout_height="200dp"
                         android:layout_margin="0dp"
-                        android:background="@color/category_main_color"
+                        android:background="@color/category_light_gray_color"
                         android:contentDescription="My Button Description"
                         />
 
