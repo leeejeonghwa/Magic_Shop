@@ -93,20 +93,13 @@ public class CategoryProductListActivity extends AppCompatActivity {
             if (categorySelection.getSelectedDetailedCategory() == i) {
                 Button btn = findViewById(detailedCategoryBtns[i]);
                 btn.setTextColor(getResources().getColor(R.color.category_main_color));
-                detailedCategoryScroll(detailedCategoryBtns[i]);
-                Log.d("Scroll", "Scrolling to button: " + i);
 
                 break;
             }
         }
     }
 
-    public void detailedCategoryScroll(int btnId) {
-        HorizontalScrollView horizontalScrollView = findViewById(R.id.category_scroll);
-        LinearLayout buttonContainer = findViewById(R.id.buttonContainer);
-        Button btn = findViewById(btnId);
-        horizontalScrollView.scrollTo(btn.getLeft(), 0);
-    }
+
 
 
 
