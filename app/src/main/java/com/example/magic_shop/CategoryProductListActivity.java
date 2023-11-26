@@ -1,5 +1,6 @@
 package com.example.magic_shop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,6 +61,14 @@ public class CategoryProductListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish(); // 현재 액티비티 종료
+            }
+        });
+
+        findViewById(R.id.category_search_id).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryProductListActivity.this, CategorySelectionActivity.class);
+                startActivity(intent); // Intent를 사용하여 SecondActivity 시작
             }
         });
     }
