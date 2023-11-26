@@ -65,6 +65,14 @@ public class CategorySelectionActivity extends AppCompatActivity {
             findViewById(buttonId).setOnClickListener(new CategoryButtonClickListener());
         }
 
+        findViewById(R.id.category_search_id).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategorySelectionActivity.this, CategorySelectionActivity.class);
+                startActivity(intent); // Intent를 사용하여 SecondActivity 시작
+            }
+        });
+
 
     }
 

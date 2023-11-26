@@ -416,5 +416,53 @@
         </LinearLayout>
     </ScrollView>
 
+    <View
+        android:id="@+id/bar_rectangle_id"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#8E8BD8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+
+    <View
+        android:id="@+id/go_home_id"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:background="@drawable/gohome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <View
+        android:id="@+id/category_search_id"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/category_search"
+        app:layout_constraintBottom_toBottomOf="@+id/bar_rectangle_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <View
+        android:id="@+id/mypage_id"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:background="@drawable/mypage"
+        app:layout_constraintBottom_toBottomOf="@+id/bar_rectangle_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.800"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
