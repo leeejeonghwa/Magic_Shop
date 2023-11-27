@@ -10,7 +10,7 @@
     <ScrollView
         android:id="@+id/second_scroll_view"
         android:layout_width="411dp"
-        android:layout_height="960dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -190,6 +190,7 @@
         </LinearLayout>
     </ScrollView>
 
+
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="411dp"
@@ -237,6 +238,7 @@
         app:layout_constraintStart_toEndOf="@+id/magic_shop"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
 
     <View
         android:id="@+id/shoppingcart"
@@ -344,7 +346,21 @@
         app:layout_constraintStart_toEndOf="@+id/magic_shop"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
-    />
+
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/search"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/shoppingcart"
+        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintStart_toEndOf="@+id/magic_shop"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_1"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,34 +5,204 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="390dp"
-        android:layout_height="789dp"
-        app:srcCompat="@drawable/search_page"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="7dp"
-        tools:ignore="MissingConstraints"/>
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="스커트"
+        app:layout_constraintEnd_toEndOf="@+id/go_skirt_btn"
+        app:layout_constraintStart_toStartOf="@+id/go_skirt_btn"
+        app:layout_constraintTop_toTopOf="@+id/go_skirt_btn" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="가방"
+        app:layout_constraintEnd_toEndOf="@+id/go_bag_btn"
+        app:layout_constraintStart_toStartOf="@+id/go_bag_btn"
+        app:layout_constraintTop_toTopOf="@+id/go_bag_btn" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="신발"
+        app:layout_constraintEnd_toEndOf="@+id/go_shoes_btn"
+        app:layout_constraintStart_toStartOf="@+id/go_shoes_btn"
+        app:layout_constraintTop_toTopOf="@+id/go_shoes_btn" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="280dp"
-        android:layout_height="80dp"
+        android:layout_width="304dp"
+        android:layout_height="78dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintHorizontal_bias="0.359"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.002"
         app:srcCompat="@drawable/search_window" />
 
     <TextView
-        android:id="@+id/cancel_text"
+        android:id="@+id/cancel_text5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="취소"
-        tools:layout_editor_absoluteX="319dp"
-        tools:layout_editor_absoluteY="26dp"
+        android:layout_marginTop="172dp"
+        android:text="카테고리"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/cancel_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="최근 검색어"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/go_shoes_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="16dp"
+        android:text="신발"
+        app:layout_constraintBottom_toBottomOf="@+id/go_bag_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/go_top_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="8dp"
+        android:text="상의"
+        app:layout_constraintEnd_toStartOf="@+id/go_pants_btn"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/go_pants_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="8dp"
+        android:text="하의"
+        app:layout_constraintBottom_toBottomOf="@+id/go_top_btn"
+        app:layout_constraintEnd_toStartOf="@+id/go_skirt_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/go_outer_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="8dp"
+        android:text="아우터"
+        app:layout_constraintBottom_toBottomOf="@+id/go_skirt_btn"
+        app:layout_constraintEnd_toStartOf="@+id/go_bag_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/go_bag_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="8dp"
+        android:text="가방"
+        app:layout_constraintBottom_toBottomOf="@+id/go_outer_btn"
+        app:layout_constraintEnd_toStartOf="@+id/go_shoes_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/go_skirt_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="8dp"
+        android:text="스커트"
+        app:layout_constraintBottom_toBottomOf="@+id/go_pants_btn"
+        app:layout_constraintEnd_toStartOf="@+id/go_outer_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="상의"
+        app:layout_constraintEnd_toEndOf="@+id/go_top_btn"
+        app:layout_constraintStart_toStartOf="@+id/go_top_btn"
+        app:layout_constraintTop_toTopOf="@+id/go_top_btn" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="하의"
+        app:layout_constraintEnd_toEndOf="@+id/go_pants_btn"
+        app:layout_constraintStart_toStartOf="@+id/go_pants_btn"
+        app:layout_constraintTop_toTopOf="@+id/go_pants_btn" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="아우터"
+        app:layout_constraintEnd_toEndOf="@+id/go_outer_btn"
+        app:layout_constraintStart_toStartOf="@+id/go_outer_btn"
+        app:layout_constraintTop_toBottomOf="@+id/go_outer_btn" />
+
+    <EditText
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:text="magicshop 그랜드 오픈!"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/search_data_delete_btn"
+        android:layout_width="57dp"
+        android:layout_height="21dp"
+        android:background="@android:color/transparent"
+        android:text="모두 삭제"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_text3"
+        app:layout_constraintEnd_toEndOf="@+id/cancel_btn2"
+        app:layout_constraintTop_toTopOf="@+id/cancel_text3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/cancel_btn2"
+        android:layout_width="33dp"
+        android:layout_height="17dp"
+        android:background="@android:color/transparent"
+        android:text="취소"
+        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toTopOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.64" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
