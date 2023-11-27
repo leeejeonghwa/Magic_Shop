@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/top_toorbar"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/back_btn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="371dp"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/detailpage_back_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="@+id/top_toorbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="80dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="15dp"
+        android:text="상품 정보"
+        android:textColor="#FF000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="@+id/top_toorbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/home_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/detailpage_home_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+    <View
+        android:id="@+id/search_btn"
+        android:layout_width="28dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="327dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/detailpage_search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bag_btn"
+        android:layout_width="22dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="365dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/detailpage_bag_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <android.widget.Button
+        android:id="@+id/btn_buy"
+        android:layout_width="412dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="616dp"
+        android:background="#8E8BD8"
+        android:text="구매하기"
+        android:textColor="#FFFFFFFF"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ScrollView
+        android:layout_width="410dp"
+        android:layout_height="716dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="58dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="239dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/view"
+                android:background="@color/white" />
+
+            <View
+                android:id="@+id/ellipse_1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_above="@id/view2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="368dp"
+                android:layout_marginBottom="-38dp"
+                android:background="#8E8BD8" />
+
+            <TextView
+                android:id="@+id/brandText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/view2"
+                android:layout_marginEnd="-75dp"
+                android:layout_marginBottom="-36dp"
+                android:layout_toStartOf="@id/ellipse_1"
+                android:text="브랜드" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:layout_below="@id/view2"
+                android:background="@color/white" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
