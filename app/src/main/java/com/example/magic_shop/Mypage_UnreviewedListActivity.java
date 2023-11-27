@@ -25,7 +25,6 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
         // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
         unreviewedList.add(new UnreviewedItem("상품 A", "2023-11-25"));
         unreviewedList.add(new UnreviewedItem("상품 B", "2023-11-25"));
-        // ... 추가적인 데이터
 
         return unreviewedList;
     }
