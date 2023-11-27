@@ -24,12 +24,12 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_change_password = (Button) findViewById(R.id.btn_change_password);
-        btn_change_password.setOnClickListener(new View.OnClickListener() {
+        Button btn_address_plus_check = (Button) findViewById(R.id.btn_delivery_address_plus_check);
+        btn_address_plus_check.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_ChangePasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
                 startActivity(intent);
             }
         });

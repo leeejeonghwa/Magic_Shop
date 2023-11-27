@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.magic_shop">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,7 +34,8 @@
 <!--        <activity android:name=".Mypage_ReviewListActivity"/>-->
 
         <activity
-            android:name=".Detailpage_MainActivity"
+
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -40,7 +43,23 @@
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Detailpage_MainObtionSelectActivity" />
+
+        <activity android:name=".Mypage_SettingActivity"/>
+        <activity android:name=".Mypage_InputPasswordActivity"/>
+        <activity android:name=".Mypage_UserInfoChangeActivity"/>
+        <activity android:name=".Mypage_ChangePasswordActivity"/>
+        <activity android:name=".Mypage_DeliveryAddressManageActivity"/>
+        <activity android:name=".Mypage_DeliveryAddressEditActivity"/>
+        <activity android:name=".Mypage_DeliveryAddressPlusActivity"/>
+        <activity android:name=".Mypage_RefundAccountManageActivity"/>
+        <activity android:name=".Mypage_OrderDeliveryListActivity"/>
+        <activity android:name=".Mypage_DeliveryCheckActivity"/>
+        <activity android:name=".Mypage_RefundExchangeListActivity"/>
+        <activity android:name=".Mypage_UnreviewedListActivity"/>
+        <activity android:name=".Mypage_ReviewedListActivity"/>
+        <activity android:name=".Mypage_ReviewWriteActivity"/>
+        <activity android:name=".CategoryProductListActivity" />
+        <activity android:name=".CategorySelectionActivity" />
 
     </application>
 </manifest>
