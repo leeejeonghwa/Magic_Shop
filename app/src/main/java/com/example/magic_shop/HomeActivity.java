@@ -32,6 +32,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Button mypage_btn = (Button) findViewById(R.id.mypage);
+        mypage_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Mypage_MainActivity.class); //쇼핑카트로 바꿔주기
+                startActivity(intent);
+            }
+        });
 
 
     }

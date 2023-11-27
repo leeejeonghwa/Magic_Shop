@@ -281,7 +281,7 @@
     <!--    app:layout_constraintVertical_bias="0.542" />-->
 
 
-    <View
+    <Button
         android:id="@+id/gohome"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
@@ -292,7 +292,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <View
+    <Button
         android:id="@+id/category_search"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
@@ -304,7 +304,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <View
+    <Button
         android:id="@+id/mypage"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
@@ -341,6 +341,7 @@
         android:layout_marginTop="15.6dp"
         android:layout_marginRight="6.25dp"
         android:elevation="4dp"
+        android:background="@drawable/shoppingcart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toEndOf="@+id/magic_shop"
