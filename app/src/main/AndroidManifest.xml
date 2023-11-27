@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.magic_shop">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,15 +11,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TEST">
+<!--        <activity-->
+<!--            android:name=".Mypage_MainActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name=".Mypage_SettingActivity"/>-->
+<!--        <activity android:name=".Mypage_InputPasswordActivity"/>-->
+<!--        <activity android:name=".Mypage_UserInfoChangeActivity"/>-->
+<!--        <activity android:name=".Mypage_ChangePasswordActivity"/>-->
+<!--        <activity android:name=".Mypage_DeliveryAddressManageActivity"/>-->
+<!--        <activity android:name=".Mypage_DeliveryAddressPlusActivity"/>-->
+<!--        <activity android:name=".Mypage_RefundAccountManageActivity"/>-->
+<!--        <activity android:name=".Mypage_OrderDeliveryListActivity"/>-->
+<!--        <activity android:name=".Mypage_DeliveryCheckActivity"/>-->
+<!--        <activity android:name=".Mypage_RefundExchangeListActivity"/>-->
+<!--        <activity android:name=".Mypage_ReviewWriteActivity"/>-->
+<!--        <activity android:name=".Mypage_ReviewListActivity"/>-->
+
         <activity
+
             android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
         <activity android:name=".Mypage_UserInfoChangeActivity"/>

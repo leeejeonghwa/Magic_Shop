@@ -29,56 +29,60 @@
         tools:layout_editor_absoluteY="23dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/et_name"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:background="@drawable/inputbutton"
+        android:background="@drawable/input_button"
         android:ems="10"
+        android:hint=" 이름"
         android:inputType="text"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="115dp" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/et_nickname"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:background="@drawable/inputbutton"
+        android:background="@drawable/input_button"
         android:ems="10"
+        android:hint=" 닉네임"
         android:inputType="text"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="301dp" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/et_password"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:background="@drawable/inputbutton"
+        android:background="@drawable/input_button"
         android:ems="10"
+        android:hint=" 비밀번호"
         android:inputType="text"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="400dp" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/et_check"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:background="@drawable/inputbutton"
+        android:background="@drawable/input_button"
         android:ems="10"
+        android:hint=" 비밀번호 확인"
         android:inputType="text"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="492dp" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/et_id"
         android:layout_width="211dp"
         android:layout_height="53dp"
-        android:background="@drawable/inputbutton"
+        android:background="@drawable/input_button"
         android:ems="10"
-        android:hint=" "
+        android:hint=" 아이디 "
         android:inputType="text"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
@@ -135,8 +139,18 @@
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="466dp" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원 종류 선택"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="567dp" />
+
     <android.widget.Button
-        android:id="@+id/duplicate_confirmation_button"
+        android:id="@+id/btn_duplicate_confirmation"
         android:layout_width="122dp"
         android:layout_height="57dp"
         android:background="@drawable/duplicate_confirmation_button"
@@ -147,18 +161,47 @@
         tools:layout_editor_absoluteY="205dp" />
 
     <android.widget.Button
-        android:id="@+id/register"
+        android:id="@+id/register_button"
         android:layout_width="411dp"
         android:layout_height="65dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/register_button"
+        android:background="@drawable/login_button"
         android:text="회원 가입"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="701dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="669dp" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="153dp"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_check"
+        app:layout_constraintVertical_bias="0.356">
+
+        <RadioButton
+            android:id="@+id/radio_button_purchaser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="구매자"
+            tools:layout_editor_absoluteX="112dp"
+            tools:layout_editor_absoluteY="596dp" />
+
+        <RadioButton
+            android:id="@+id/radio_button_seller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="판매자 "
+            tools:layout_editor_absoluteX="30dp"
+            tools:layout_editor_absoluteY="596dp" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
