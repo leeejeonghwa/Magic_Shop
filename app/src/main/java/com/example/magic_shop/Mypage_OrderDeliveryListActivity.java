@@ -130,21 +130,6 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-                reviewWriteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 클릭 이벤트 처리
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            // 다음 화면으로 이동하는 코드
-                            OrderItem orderItem = orderList.get(position);
-                            Intent intent = new Intent(context, Mypage_ReviewWriteActivity.class);
-                            intent.putExtra("productName", orderItem.productName);
-                            context.startActivity(intent);
-                        }
-                    }
-                });
             }
 
             void bind(OrderItem orderItem) {
