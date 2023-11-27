@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TEST">
         <activity
-            android:name=".Mypage_MainActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,6 @@
         <activity android:name=".Mypage_UnreviewedListActivity"/>
         <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".Mypage_ReviewWriteActivity"/>
-        <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".CategoryProductListActivity" />
         <activity android:name=".CategorySelectionActivity" />
 

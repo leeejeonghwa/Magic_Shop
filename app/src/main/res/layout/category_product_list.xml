@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/imageTextContainer"
-        android:layout_width="wrap_content"
+        android:id="@+id/TextContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 왼쪽에 그림 2 -->
         <android.widget.Button
@@ -19,9 +21,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="14dp"
-
             android:background="@drawable/category_back"
-            android:contentDescription="My Button Description"/>
+            android:contentDescription="My Button Description" />
 
         <TextView
             android:id="@+id/category_text"
@@ -35,7 +36,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/category_menu_icon"
-            android:contentDescription="My Button Description"/>
+            android:contentDescription="My Button Description" />
 
         <TextView
             android:id="@+id/category_text2"
@@ -50,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_gravity="center"
             android:text="@string/category_top"
             android:textColor="#000000"
             android:textSize="18sp" />
@@ -60,25 +62,21 @@
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:text="" />
+
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/imageTextContainer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageTextContainer"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+
 
         <HorizontalScrollView
-            android:id="@+id/category_scroll"
+            android:id="@+id/category_horizontal_scrollview_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/TextContainer">
 
             <LinearLayout
-                android:id="@+id/buttonContainer"
+                android:id="@+id/horizontal_buttonContainer_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -87,102 +85,465 @@
                     android:id="@+id/button1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
-                    android:text="전체"
+                    android:text="@string/category_top_1"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="상의 신상"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_2"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
-                    android:text="맨투맨/스웨트셔츠"
+                    android:text="@string/category_top_3"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="셔츠/블라우스"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_4"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="후드 티셔츠"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_5"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="니트/스웨터"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_6"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="피케/카라 티셔츠"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_7"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="긴소매 티셔츠"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_8"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="반소매 티셔츠"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_9"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="민소매 티셔츠"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_10"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="스포츠 상의"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_11"
                     android:textColor="@color/category_text_color" />
 
                 <Button
                     android:id="@+id/button12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="기타 상의"
+                    android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
+                    android:text="@string/category_top_12"
                     android:textColor="@color/category_text_color" />
 
             </LinearLayout>
         </HorizontalScrollView>
 
-    </LinearLayout>
+
+    <View
+        android:id="@+id/rectangle_id"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/category_light_gray_color"
+        app:layout_constraintBottom_toBottomOf="@id/category_horizontal_scrollview_id" />
+
+    <TextView
+        android:id="@+id/winter_update_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:gravity="center"
+        android:text="@string/category_winter_update"
+        android:textColor="@color/category_main_color"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/category_horizontal_scrollview_id" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="Description of your first scroll view"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/winter_update_text_id">
+
+        <LinearLayout
+            android:id="@+id/linear_view_all_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linear_view_vertical_id1"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.widget.Button
+                        android:id="@+id/btn_product_id1"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="0dp"
+                        android:background="@color/category_light_gray_color"
+                        android:contentDescription="My Button Description"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_brand_text_id1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="브랜드 명"
+                        android:textSize="10sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_name_text_id1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="61dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:text="상품 이름"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_price_text_id1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="49dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="1000000원"
+                        android:textSize="15sp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_view_vertical_id2"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.widget.Button
+                        android:id="@+id/btn_product_id2"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="0dp"
+                        android:background="@color/category_light_gray_color"
+                        android:contentDescription="My Button Description"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_brand_text_id2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="브랜드 명"
+                        android:textSize="10sp"/>
+
+                    <TextView
+                        android:id="@+id/product_name_text_id2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="61dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:text="상품 이름"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_price_text_id2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="49dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="1000000원"
+                        android:textSize="15sp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linear_view_vertical_id3"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.widget.Button
+                        android:id="@+id/btn_product_id3"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="0dp"
+                        android:background="@color/category_light_gray_color"
+                        android:contentDescription="My Button Description"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_brand_text_id3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="브랜드 명"
+                        android:textSize="10sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_name_text_id3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="61dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:text="상품 이름"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_price_text_id3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="49dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="1000000원"
+                        android:textSize="15sp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_view_vertical_id4"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.widget.Button
+                        android:id="@+id/btn_product_id4"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="0dp"
+                        android:background="@color/category_light_gray_color"
+                        android:contentDescription="My Button Description"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_brand_text_id4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="브랜드 명"
+                        android:textSize="10sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_name_text_id4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="61dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:text="상품 이름"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_price_text_id4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="49dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="1000000원"
+                        android:textSize="15sp"
+                        />
+
+                </LinearLayout>
 
 
-</RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linear_view_vertical_id5"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.widget.Button
+                        android:id="@+id/btn_product_id5"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="0dp"
+                        android:background="@color/category_light_gray_color"
+                        android:contentDescription="My Button Description"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_brand_text_id5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="브랜드 명"
+                        android:textSize="10sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_name_text_id5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="61dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:text="상품 이름"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/product_price_text_id5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="49dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="1000000원"
+                        android:textSize="15sp"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="230dp" />
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+    <View
+        android:id="@+id/bar_rectangle_id"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#8E8BD8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+
+    <View
+        android:id="@+id/go_home_id"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:background="@drawable/gohome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <View
+        android:id="@+id/category_search_id"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/category_search"
+        app:layout_constraintBottom_toBottomOf="@+id/bar_rectangle_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <View
+        android:id="@+id/mypage_id"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:background="@drawable/mypage"
+        app:layout_constraintBottom_toBottomOf="@+id/bar_rectangle_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.800"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
