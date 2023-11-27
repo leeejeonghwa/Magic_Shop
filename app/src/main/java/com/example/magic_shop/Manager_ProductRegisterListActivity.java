@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Manager_ProductUnregisteredActivity extends AppCompatActivity {
+public class Manager_ProductRegisterListActivity extends AppCompatActivity {
 
     public List<ProductUnregisteredItem> getProductUnregisteredList() {
         List<ProductUnregisteredItem> productUnregisteredList = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Manager_ProductUnregisteredActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.manager_activity_product_unregistered);
+        setContentView(R.layout.manager_activity_product_register);
         getWindow().setWindowAnimations(0);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -55,7 +55,7 @@ public class Manager_ProductUnregisteredActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Manager_ProductRegisteredActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Manager_ProductRegisterListActivity.class);
                 startActivity(intent);
             }
         });
@@ -64,7 +64,7 @@ public class Manager_ProductUnregisteredActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ProductUnregisteredItem> productUnregisteredList = getProductUnregisteredList(); // 여러 배송지 정보를 가져오는 메서드
+        List<ProductUnregisteredItem> productUnregisteredList = getProductUnregisteredList();
         ProductUnregisteredAdapter adapter = new ProductUnregisteredAdapter(productUnregisteredList, this);
         recyclerView.setAdapter(adapter);
     }
@@ -96,7 +96,7 @@ public class Manager_ProductUnregisteredActivity extends AppCompatActivity {
         @Override
         public ProductUnregisteredViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             Context context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(context).inflate(R.layout.manager_item_product_unregistered, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.manager_item_product_register, parent, false);
             return new ProductUnregisteredViewHolder(view, context);
         }
 
@@ -134,7 +134,7 @@ public class Manager_ProductUnregisteredActivity extends AppCompatActivity {
                         if (position != RecyclerView.NO_POSITION) {
                             // 다음 화면으로 이동하는 코드
                             ProductUnregisteredItem productUnregisteredItem = productUnregisteredList.get(position);
-                            Intent intent = new Intent(context, Manager_ProductRegisteredActivity.class);
+                            Intent intent = new Intent(context, Manager_ProductRegisterListActivity.class);
                             intent.putExtra("date", productUnregisteredItem.date);
                             intent.putExtra("productName", productUnregisteredItem.productName);
                             intent.putExtra("trackingNumber", productUnregisteredItem.productSize);

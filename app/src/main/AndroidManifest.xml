@@ -34,8 +34,20 @@
         <activity android:name=".Mypage_ReviewWriteActivity"/>
         <activity android:name=".CategoryProductListActivity" />
         <activity android:name=".CategorySelectionActivity" />
-        <activity android:name=".Manager_ProductUnregisteredActivity" />
-        <activity android:name=".Manager_ProductRegisteredActivity" />
+        <activity android:name=".Manager_MainActivity" />
+        <activity android:name=".Manager_ProductRegisterListActivity" />
+        <activity android:name=".Manager_ProductReviseListActivity" />
+        <activity android:name=".Manager_ProductDeleteListActivity" />
+        <activity android:name=".Seller_MainActivity" />
+        <activity android:name=".Seller_ProductListActivity" />
+        <activity android:name=".Seller_ProductRegisterActivity" />
+        <activity android:name=".Seller_ProductRegisterRequestActivity" />
+        <activity android:name=".Seller_ProductRegisterRequestListActivity" />
+        <activity android:name=".Seller_ProductReviseActivity" />
+        <activity android:name=".Seller_ProductReviseRequestActivity" />
+        <activity android:name=".Seller_ProductReviseRequestListActivity" />
+        <activity android:name=".Seller_ProductDeleteActivity" />
+
 
     </application>
 </manifest>

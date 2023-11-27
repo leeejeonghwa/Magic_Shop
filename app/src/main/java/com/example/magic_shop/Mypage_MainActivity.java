@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,7 +19,17 @@ public class Mypage_MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Manager_ProductUnregisteredActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_seller = (Button) findViewById(R.id.btn_seller);
+        btn_seller.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seller_MainActivity.class);
                 startActivity(intent);
             }
         });
