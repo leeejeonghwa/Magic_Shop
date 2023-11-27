@@ -18,7 +18,7 @@ public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detailpage_main_obtion_select);
+        setContentView(R.layout.detailpage_activity_main_obtion_select);
 
         btnOption = findViewById(R.id.btn_option);
         btnColor = findViewById(R.id.btn_color);
