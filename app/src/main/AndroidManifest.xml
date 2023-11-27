@@ -37,7 +37,6 @@
         <activity android:name=".Manager_MainActivity" />
         <activity android:name=".Manager_ProductRegisterListActivity" />
         <activity android:name=".Manager_ProductReviseListActivity" />
-        <activity android:name=".Manager_ProductDeleteListActivity" />
         <activity android:name=".Seller_MainActivity" />
         <activity android:name=".Seller_ProductListActivity" />
         <activity android:name=".Seller_ProductRegisterActivity" />

@@ -50,16 +50,6 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_review_list = (Button) findViewById(R.id.btn_product_registered_list);
-        btn_review_list.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Manager_ProductRegisterListActivity.class);
-                startActivity(intent);
-            }
-        });
-
         RecyclerView recyclerView = findViewById(R.id.product_unregistered_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

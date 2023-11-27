@@ -47,42 +47,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/btn_product_unregistered_list"
-        android:layout_width="205dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/mypage_btn_bottom_border_clicked"
-        android:text="등록 요청"
-        android:textSize="20sp"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <Button
-        android:id="@+id/btn_product_registered_list"
-        android:layout_width="205dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/mypage_btn_bottom_border_unclicked"
-        android:paddingBottom="10dp"
-        android:text="등록 완료"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_unregistered_recyclerView"
         android:layout_width="390dp"
         android:layout_height="0dp"
-        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
