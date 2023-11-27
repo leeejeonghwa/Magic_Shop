@@ -9,9 +9,10 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/mypage_btn_bottom_border_clicked.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/mypage_square_border.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/register_button.xml" value="0.2585" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/activity_home.xml" value="0.18" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_product_list.xml" value="0.35054347826086957" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_selection.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_selection.xml" value="0.33" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/detailpage_activity_main.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/detailpage_activity_main_obtion_select.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/detailpage_activity_main_review.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/loginpage.xml" value="0.2013677811550152" />
@@ -30,13 +31,16 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_review_write.xml" value="0.2672239108409321" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_reviewed_list.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_setting.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_address.xml" value="0.348731884057971" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_order.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_refund_exchange.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_reviewed.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_unreviewed.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/register.xml" value="0.2013677811550152" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/register_page.xml" value="0.348731884057971" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/search.xml" value="0.33" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/search.xml" value="0.22" />
       </map>
     </option>
   </component>
