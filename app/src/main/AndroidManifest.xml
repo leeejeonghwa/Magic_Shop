@@ -43,7 +43,8 @@
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".SearchActivity"/>
+        <activity android:name=".Mypage_MainActivity"/>
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
         <activity android:name=".Mypage_UserInfoChangeActivity"/>
