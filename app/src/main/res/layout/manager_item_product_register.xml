@@ -7,17 +7,17 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
     <TextView
-        android:id="@+id/order_date"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text=""
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,19 +25,19 @@
         android:id="@+id/productImage"
         android:layout_width="80dp"
         android:layout_height="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/mypage_clothes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_date" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <TextView
-        android:id="@+id/order_productName"
+        android:id="@+id/productName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
         android:text=""
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -45,51 +45,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
 
     <TextView
-        android:id="@+id/textTrackingNumber"
+        android:id="@+id/productSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="16dp"
-        android:text="운송장 번호"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:text=""
+        android:textColor="#575757"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toBottomOf="@+id/order_productName" />
+        app:layout_constraintTop_toBottomOf="@+id/productName" />
 
     <TextView
-        android:id="@+id/order_trackingNumber"
+        android:id="@+id/slashSeparator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="16dp"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:text="/"
+        android:textColor="#575757"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textTrackingNumber"
-        app:layout_constraintTop_toBottomOf="@+id/order_productName" />
+        app:layout_constraintStart_toEndOf="@+id/productSize"
+        app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+    <TextView
+        android:id="@+id/productQuantify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="#575757"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/slashSeparator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productName"
+        app:layout_constraintHorizontal_bias="0.0" />
+
 
     <Button
-        android:id="@+id/btn_deliveryCheck"
+        android:id="@+id/btn_product_register"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@color/main"
         android:padding="4dp"
-        android:text="배송 조회"
+        android:text="확인"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productImage" />
 
