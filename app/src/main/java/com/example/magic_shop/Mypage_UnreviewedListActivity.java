@@ -25,10 +25,6 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
         // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
         unreviewedList.add(new UnreviewedItem("상품 A", "2023-11-25"));
         unreviewedList.add(new UnreviewedItem("상품 B", "2023-11-25"));
-        unreviewedList.add(new UnreviewedItem("상품 C", "2023-11-25"));
-        unreviewedList.add(new UnreviewedItem("상품 D", "2023-11-25"));
-        unreviewedList.add(new UnreviewedItem("상품 E", "2023-11-25"));
-        // ... 추가적인 데이터
 
         return unreviewedList;
     }
@@ -64,7 +60,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<UnreviewedItem> unreviewedList = getUnreviewedList(); // 여러 배송지 정보를 가져오는 메서드
+        List<UnreviewedItem> unreviewedList = getUnreviewedList();
         UnreviewedAdapter adapter = new UnreviewedAdapter(unreviewedList, this);
         recyclerView.setAdapter(adapter);
     }

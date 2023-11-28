@@ -9,8 +9,8 @@
 
     <ScrollView
         android:id="@+id/second_scroll_view"
-        android:layout_width="411dp"
-        android:layout_height="960dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -46,7 +46,7 @@
 
                 <ImageView
                     android:id="@+id/category_top_id"
-                    android:layout_width="413dp"
+                    android:layout_width="match_parent"
                     android:layout_height="540dp"
                     android:src="@drawable/home"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -62,15 +62,6 @@
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
-
-                    <Button
-                        android:id="@+id/btn_viewtop"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
-                        android:layout_marginEnd="68dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="My Button Description"
-                        app:layout_constraintStart_toStartOf="parent" />
 
                     <Button
                         android:id="@+id/btn_viewpants"
@@ -89,7 +80,7 @@
                         android:contentDescription="My Button Description" />
 
                     <Button
-                        android:id="@+id/btn_viewouter"
+                        android:id="@+id/btn_viewbag"
                         android:layout_width="46dp"
                         android:layout_height="46dp"
                         android:layout_marginEnd="8dp"
@@ -97,7 +88,7 @@
                         android:contentDescription="My Button Description" />
 
                     <Button
-                        android:id="@+id/btn_viewbag"
+                        android:id="@+id/btn_viewouter"
                         android:layout_width="46dp"
                         android:layout_height="46dp"
                         android:layout_marginEnd="8dp"
@@ -190,6 +181,7 @@
         </LinearLayout>
     </ScrollView>
 
+
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="411dp"
@@ -238,6 +230,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+
     <View
         android:id="@+id/shoppingcart"
         android:layout_width="33.75dp"
@@ -256,31 +249,19 @@
     <!-- Auto layout, variables, and unit scale are not yet supported -->
 
     <View
-        android:id="@+id/rectangle_5"
-        android:layout_width="412dp"
-        android:layout_height="69dp"
+        android:id="@+id/bar_rectangle_id"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="#8E8BD8"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_1"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp" />
-
-    <!--    &lt;!&ndash; 바뀐 부분 &ndash;&gt;-->
-    <!--    app:layout_constraintStart_toStartOf="parent"-->
-    <!--    app:layout_constraintTop_toTopOf="@+id/rectangle_5"-->
-    <!--    app:layout_constraintVertical_bias="0.542" />-->
-
-    <!--    ]]>-->
-    <!--    app:layout_constraintStart_toEndOf="@+id/mypage"-->
-    <!--    app:layout_constraintTop_toTopOf="@+id/rectangle_5"-->
-    <!--    app:layout_constraintVertical_bias="0.542" />-->
+        app:layout_constraintVertical_bias="1.0" />
 
 
-    <View
-        android:id="@+id/gohome"
+
+    <Button
+        android:id="@+id/go_home_id"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
         android:background="@drawable/gohome"
@@ -290,30 +271,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <View
-        android:id="@+id/category_search"
+    <Button
+        android:id="@+id/category_search_id"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/category_search"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_5"
-        app:layout_constraintEnd_toStartOf="@+id/gohome"
+        app:layout_constraintBottom_toBottomOf="@+id/bar_rectangle_id"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <View
-        android:id="@+id/mypage"
+    <Button
+        android:id="@+id/mypage_id"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
         android:background="@drawable/mypage"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_5"
+        app:layout_constraintBottom_toBottomOf="@+id/bar_rectangle_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.800"
-        app:layout_constraintStart_toEndOf="@+id/gohome"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
-
     <Button
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
@@ -338,13 +319,30 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="15.6dp"
         android:layout_marginRight="6.25dp"
+        android:background="@drawable/shoppingcart"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toEndOf="@+id/magic_shop"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
-    />
+
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="33.75dp"
+        android:layout_height="33.75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/search"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/shoppingcart"
+        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintStart_toEndOf="@+id/magic_shop"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_1"
+        tools:ignore="MissingConstraints" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

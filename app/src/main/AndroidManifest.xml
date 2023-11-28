@@ -1,30 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.magic_shop">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TEST"
-        tools:targetApi="m">
+        android:theme="@style/Theme.TEST">
+<!--        <activity-->
+<!--            android:name=".Mypage_MainActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name=".Mypage_SettingActivity"/>-->
+<!--        <activity android:name=".Mypage_InputPasswordActivity"/>-->
+<!--        <activity android:name=".Mypage_UserInfoChangeActivity"/>-->
+<!--        <activity android:name=".Mypage_ChangePasswordActivity"/>-->
+<!--        <activity android:name=".Mypage_DeliveryAddressManageActivity"/>-->
+<!--        <activity android:name=".Mypage_DeliveryAddressPlusActivity"/>-->
+<!--        <activity android:name=".Mypage_RefundAccountManageActivity"/>-->
+<!--        <activity android:name=".Mypage_OrderDeliveryListActivity"/>-->
+<!--        <activity android:name=".Mypage_DeliveryCheckActivity"/>-->
+<!--        <activity android:name=".Mypage_RefundExchangeListActivity"/>-->
+<!--        <activity android:name=".Mypage_ReviewWriteActivity"/>-->
+<!--        <activity android:name=".Mypage_ReviewListActivity"/>-->
+
         <activity
-            android:name=".LoginActivity"
+
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".SearchActivity"/>
+        <activity android:name=".Mypage_MainActivity"/>
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
         <activity android:name=".Mypage_UserInfoChangeActivity"/>
@@ -41,6 +61,19 @@
         <activity android:name=".Mypage_ReviewWriteActivity"/>
         <activity android:name=".CategoryProductListActivity" />
         <activity android:name=".CategorySelectionActivity" />
+        <activity android:name=".Manager_MainActivity" />
+        <activity android:name=".Manager_ProductRegisterListActivity" />
+        <activity android:name=".Manager_ProductReviseListActivity" />
+        <activity android:name=".Seller_MainActivity" />
+        <activity android:name=".Seller_ProductListActivity" />
+        <activity android:name=".Seller_ProductRegisterActivity" />
+        <activity android:name=".Seller_ProductRegisterRequestActivity" />
+        <activity android:name=".Seller_ProductRegisterRequestListActivity" />
+        <activity android:name=".Seller_ProductReviseActivity" />
+        <activity android:name=".Seller_ProductReviseRequestActivity" />
+        <activity android:name=".Seller_ProductReviseRequestListActivity" />
+        <activity android:name=".Seller_ProductDeleteActivity" />
+
 
     </application>
 </manifest>

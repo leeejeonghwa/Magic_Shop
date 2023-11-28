@@ -14,6 +14,26 @@ public class Mypage_MainActivity extends AppCompatActivity {
         setContentView(R.layout.mypage_activity_main);
         getWindow().setWindowAnimations(0);
 
+        Button btn_manager = (Button) findViewById(R.id.btn_manager);
+        btn_manager.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_seller = (Button) findViewById(R.id.btn_seller);
+        btn_seller.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seller_MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button imageButton = (Button) findViewById(R.id.btn_setting);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
