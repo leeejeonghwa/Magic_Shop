@@ -2,20 +2,13 @@
     <string name="app_name">Magic Shop</string>
     <string name="magic_shop">Magic Shop</string>
 
-    <string name="magic_shop_1">
-            @Magic_Shop
-</string>
+    <string name="magic_shop_1" > Magic_Shop </string>
 
-    <string name="some_id"> 로그인
-</string>
+    <string name="some_id"> 로그인</string>
 
-    <string name="some_id1">
-로그인
-</string>
+    <string name="some_id1"> 로그인 </string>
 
-    <string name="register">
-회원 가입
-</string>
+    <string name="register"> 회원 가입 </string>
 
 
     <string name="category_top">상의</string>
@@ -104,18 +97,6 @@
     <string name="category_bag_12">기타 가방</string>
 
     <string name="category_winter_update"># 2023 겨울 신상 업데이트</string>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </resources>

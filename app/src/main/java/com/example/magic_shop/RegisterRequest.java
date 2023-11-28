@@ -9,20 +9,18 @@ import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
 
-    // 서버 URL 설정 ( PHP 파일 연동 )
-    final static private String URL = "http://210.117.175.207:6005/register.php";
-    private Map<String, String> map;
+    final static private String URL = "http://210.117.175.207:8976/register.php";
+    private final Map<String, String> map;
 
-
-    public RegisterRequest(String userID, String userPassword, String userName, String userNickname , int userType, Response.Listener<String> listener) {
-        super(Method.POST, URL, listener, null);
+    public RegisterRequest(String userID, String userPassword, String userName, String userNickname, String userType, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+        super(Method.POST, URL, listener, errorListener);
 
         map = new HashMap<>();
-        map.put("userID",userID);
+        map.put("userID", userID);
         map.put("userPassword", userPassword);
         map.put("userName", userName);
         map.put("userNickname", userNickname);
-        map.put("userClassification", userType + " ");
+        map.put("userType", userType);
     }
 
     @Override
@@ -30,3 +28,4 @@ public class RegisterRequest extends StringRequest {
         return map;
     }
 }
+
