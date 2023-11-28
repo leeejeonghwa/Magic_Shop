@@ -83,7 +83,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
         @NonNull
         @Override
         public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Context context = parent.getContext(); // Context 설정
+            Context context = parent.getContext();
             View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_order, parent, false);
             return new OrderViewHolder(view, context);
         }
