@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckDuplicateRequest extends StringRequest {
-    final static private String URL = "http://210.117.175.207:6005/CheckDuplicateID.php";
-    private Map<String, String> parameters;
+    private static final String URL = "http://210.117.175.207:8976/CheckDuplicateID.php";
+    private final Map<String, String> parameters;
 
-    public CheckDuplicateRequest(String userID, Response.Listener<String> listener) {
-        super(Method.POST, URL, listener, null);
+    public CheckDuplicateRequest(String userID, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+        super(Method.POST, URL, listener, errorListener);
         parameters = new HashMap<>();
         parameters.put("userID", userID);
     }
