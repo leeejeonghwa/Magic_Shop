@@ -3,7 +3,6 @@ package com.example.magic_shop;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +15,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
     private Button btn_login, btn_register;
@@ -62,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String userPass = jsonObject.getString("userPassword");
 
                                 Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, LoginRequest.MainActivity.class);
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPass", userPass);
                                 startActivity(intent);

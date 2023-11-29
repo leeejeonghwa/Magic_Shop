@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="스커트"
-        app:layout_constraintEnd_toEndOf="@+id/go_skirt_btn"
-        app:layout_constraintStart_toStartOf="@+id/go_skirt_btn"
-        app:layout_constraintTop_toTopOf="@+id/go_skirt_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_skirt_one_piece_id"
+        app:layout_constraintStart_toStartOf="@+id/btn_skirt_one_piece_id"
+        app:layout_constraintTop_toTopOf="@+id/btn_skirt_one_piece_id" />
 
     <TextView
         android:id="@+id/textView11"
@@ -33,9 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="가방"
-        app:layout_constraintEnd_toEndOf="@+id/go_bag_btn"
-        app:layout_constraintStart_toStartOf="@+id/go_bag_btn"
-        app:layout_constraintTop_toTopOf="@+id/go_bag_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_bag_id"
+        app:layout_constraintStart_toStartOf="@+id/btn_bag_id"
+        app:layout_constraintTop_toTopOf="@+id/btn_bag_id" />
 
 
     <TextView
@@ -44,9 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="신발"
-        app:layout_constraintEnd_toEndOf="@+id/go_shoes_btn"
-        app:layout_constraintStart_toStartOf="@+id/go_shoes_btn"
-        app:layout_constraintTop_toTopOf="@+id/go_shoes_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_shoes_id"
+        app:layout_constraintStart_toStartOf="@+id/btn_shoes_id"
+        app:layout_constraintTop_toTopOf="@+id/btn_shoes_id" />
 
 
     <TextView
@@ -74,70 +74,70 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/go_shoes_btn"
+        android:id="@+id/btn_shoes_id"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="16dp"
         android:text="신발"
-        app:layout_constraintBottom_toBottomOf="@+id/go_bag_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_bag_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/go_top_btn"
+        android:id="@+id/btn_top_id"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="192dp"
         android:layout_marginEnd="8dp"
         android:text="상의"
-        app:layout_constraintEnd_toStartOf="@+id/go_pants_btn"
+        app:layout_constraintEnd_toStartOf="@+id/btn_pants_id"
         app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/go_pants_btn"
+        android:id="@+id/btn_pants_id"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:text="하의"
-        app:layout_constraintBottom_toBottomOf="@+id/go_top_btn"
-        app:layout_constraintEnd_toStartOf="@+id/go_skirt_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_top_id"
+        app:layout_constraintEnd_toStartOf="@+id/btn_skirt_one_piece_id"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/go_outer_btn"
+        android:id="@+id/btn_outer_id"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:text="아우터"
-        app:layout_constraintBottom_toBottomOf="@+id/go_skirt_btn"
-        app:layout_constraintEnd_toStartOf="@+id/go_bag_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_skirt_one_piece_id"
+        app:layout_constraintEnd_toStartOf="@+id/btn_bag_id"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/go_bag_btn"
+        android:id="@+id/btn_bag_id"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:text="가방"
-        app:layout_constraintBottom_toBottomOf="@+id/go_outer_btn"
-        app:layout_constraintEnd_toStartOf="@+id/go_shoes_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_outer_id"
+        app:layout_constraintEnd_toStartOf="@+id/btn_shoes_id"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/go_skirt_btn"
+        android:id="@+id/btn_skirt_one_piece_id"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:text="스커트"
-        app:layout_constraintBottom_toBottomOf="@+id/go_pants_btn"
-        app:layout_constraintEnd_toStartOf="@+id/go_outer_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_pants_id"
+        app:layout_constraintEnd_toStartOf="@+id/btn_outer_id"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -147,9 +147,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="상의"
-        app:layout_constraintEnd_toEndOf="@+id/go_top_btn"
-        app:layout_constraintStart_toStartOf="@+id/go_top_btn"
-        app:layout_constraintTop_toTopOf="@+id/go_top_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_top_id"
+        app:layout_constraintStart_toStartOf="@+id/btn_top_id"
+        app:layout_constraintTop_toTopOf="@+id/btn_top_id" />
 
     <TextView
         android:id="@+id/textView8"
@@ -157,18 +157,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="하의"
-        app:layout_constraintEnd_toEndOf="@+id/go_pants_btn"
-        app:layout_constraintStart_toStartOf="@+id/go_pants_btn"
-        app:layout_constraintTop_toTopOf="@+id/go_pants_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_pants_id"
+        app:layout_constraintStart_toStartOf="@+id/btn_pants_id"
+        app:layout_constraintTop_toTopOf="@+id/btn_pants_id" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:text="아우터"
-        app:layout_constraintEnd_toEndOf="@+id/go_outer_btn"
-        app:layout_constraintStart_toStartOf="@+id/go_outer_btn"
-        app:layout_constraintTop_toBottomOf="@+id/go_outer_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_outer_id"
+        app:layout_constraintStart_toStartOf="@+id/btn_outer_id"
+        app:layout_constraintTop_toBottomOf="@+id/btn_outer_id" />
 
     <EditText
         android:id="@+id/textView13"

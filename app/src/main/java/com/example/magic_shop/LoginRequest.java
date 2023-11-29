@@ -1,5 +1,9 @@
 package com.example.magic_shop;
 
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -26,5 +30,14 @@ public class LoginRequest extends StringRequest {
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
         return map;
+    }
+
+    public static class MainActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_home);
+        }
     }
 }
