@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -8,7 +9,7 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/mypage_btn_bottom_border_clicked.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/mypage_square_border.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/register_button.xml" value="0.2585" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_product_list.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_selection.xml" value="0.33" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/detailpage_activity_main.xml" value="0.348731884057971" />
@@ -43,7 +44,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
