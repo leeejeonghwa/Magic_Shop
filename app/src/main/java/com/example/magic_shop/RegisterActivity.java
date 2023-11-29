@@ -21,9 +21,10 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass, et_confirm_password, et_name, et_nickname;
-    private Button btn_register, btnCheckDuplicate;
+    private Button btn_register, btnCheckDuplicate,backButton;
     private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,17 @@ public class RegisterActivity extends AppCompatActivity {
                 }).start();
             }
         });
+
+
+        backButton = findViewById(R.id.back_btn);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);} });
+
 
         btn_register = findViewById(R.id.register_button);
         btn_register.setOnClickListener(new View.OnClickListener() {
