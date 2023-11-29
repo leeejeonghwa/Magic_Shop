@@ -24,11 +24,11 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
         List<ProductReviseItem> productReviseList = new ArrayList<>();
 
         // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 A", "S", "1"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 B", "M", "2"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 C", "L", "3"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 D", "S", "4"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 E", "M", "5"));
+        productReviseList.add(new ProductReviseItem("2023-11-27", "브랜드 A", "상품 A", "S", "1"));
+        productReviseList.add(new ProductReviseItem("2023-11-27", "브랜드 A", "상품 B", "M", "2"));
+        productReviseList.add(new ProductReviseItem("2023-11-27", "브랜드 A", "상품 C", "L", "3"));
+        productReviseList.add(new ProductReviseItem("2023-11-27", "브랜드 A", "상품 D", "S", "4"));
+        productReviseList.add(new ProductReviseItem("2023-11-27", "브랜드 A", "상품 E", "M", "5"));
         // ... 추가적인 데이터
 
         return productReviseList;
@@ -61,12 +61,14 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
 
     public class ProductReviseItem {
         String date;
+        String sellerName;
         String productName;
         String productSize;
         String productQuantify;
 
-        public ProductReviseItem(String date, String productName, String productSize, String productQuantify) {
+        public ProductReviseItem(String date, String sellerName, String productName, String productSize, String productQuantify) {
             this.date = date;
+            this.sellerName = sellerName;
             this.productName = productName;
             this.productSize = productSize;
             this.productQuantify = productQuantify;
@@ -101,6 +103,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
 
         public class ProductReviseViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
+            private final TextView sellerNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productQuantifyTextView;
@@ -111,15 +114,17 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 dateTextView = itemView.findViewById(R.id.date);
+                sellerNameTextView = itemView.findViewById(R.id.sellerName);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
-                productReviseButton = itemView.findViewById(R.id.btn_product_register);
+                productReviseButton = itemView.findViewById(R.id.btn_product_revise);
 
             }
 
             void bind(ProductReviseItem productUnregisteredItem) {
                 dateTextView.setText(productUnregisteredItem.date);
+                sellerNameTextView.setText(productUnregisteredItem.sellerName);
                 productNameTextView.setText(productUnregisteredItem.productName);
                 productSizeTextView.setText(productUnregisteredItem.productSize);
                 productQuantifyTextView.setText(productUnregisteredItem.productQuantify);

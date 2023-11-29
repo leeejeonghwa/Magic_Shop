@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Seller_MainActivity extends AppCompatActivity {
+public class Seller_MypageMainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.seller_activity_main);
+        setContentView(R.layout.seller_activity_mypage_main);
         getWindow().setWindowAnimations(0);
 
         Button btn_mypage = (Button) findViewById(R.id.btn_mypage);
@@ -30,6 +30,16 @@ public class Seller_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button imageButton = (Button) findViewById(R.id.btn_setting);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
                 startActivity(intent);
             }
         });
@@ -73,5 +83,36 @@ public class Seller_MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btn_order_delivery_list = (Button) findViewById(R.id.btn_order_delivery_list);
+        btn_order_delivery_list.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seller_OrderDeliveryListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_refund_exchange_list = (Button) findViewById(R.id.btn_refund_exchange_list);
+        btn_refund_exchange_list.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seller_RefundExchangeListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_review_write = (Button) findViewById(R.id.btn_review_list);
+        btn_review_write.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seller_ReviewListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }

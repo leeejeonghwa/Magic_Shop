@@ -24,11 +24,11 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
         List<ProductUnregisteredItem> productUnregisteredList = new ArrayList<>();
 
         // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "상품 A", "S", "1"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "상품 B", "M", "2"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "상품 C", "L", "3"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "상품 D", "S", "4"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "상품 E", "M", "5"));
+        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 A", "S", "1"));
+        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 B", "M", "2"));
+        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 C", "L", "3"));
+        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 D", "S", "4"));
+        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 E", "M", "5"));
         // ... 추가적인 데이터
 
         return productUnregisteredList;
@@ -61,12 +61,14 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
 
     public class ProductUnregisteredItem {
         String date;
+        String sellerName;
         String productName;
         String productSize;
         String productQuantify;
 
-        public ProductUnregisteredItem(String date, String productName, String productSize, String productQuantify) {
+        public ProductUnregisteredItem(String date, String sellerName, String productName, String productSize, String productQuantify) {
             this.date = date;
+            this.sellerName = sellerName;
             this.productName = productName;
             this.productSize = productSize;
             this.productQuantify = productQuantify;
@@ -101,6 +103,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
 
         public class ProductUnregisteredViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
+            private final TextView sellerNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productQuantifyTextView;
@@ -112,6 +115,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                 this.context = context;
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
+                sellerNameTextView = itemView.findViewById(R.id.sellerName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
                 productRegisterButton = itemView.findViewById(R.id.btn_product_register);
@@ -126,6 +130,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                             ProductUnregisteredItem productUnregisteredItem = productUnregisteredList.get(position);
                             Intent intent = new Intent(context, Manager_ProductRegisterListActivity.class);
                             intent.putExtra("date", productUnregisteredItem.date);
+                            intent.putExtra("productName", productUnregisteredItem.sellerName);
                             intent.putExtra("productName", productUnregisteredItem.productName);
                             intent.putExtra("trackingNumber", productUnregisteredItem.productSize);
                             intent.putExtra("trackingNumber", productUnregisteredItem.productQuantify);
@@ -137,6 +142,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
 
             void bind(ProductUnregisteredItem productUnregisteredItem) {
                 dateTextView.setText(productUnregisteredItem.date);
+                sellerNameTextView.setText(productUnregisteredItem.sellerName);
                 productNameTextView.setText(productUnregisteredItem.productName);
                 productSizeTextView.setText(productUnregisteredItem.productSize);
                 productQuantifyTextView.setText(productUnregisteredItem.productQuantify);
