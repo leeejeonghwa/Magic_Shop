@@ -1,35 +1,33 @@
 package com.example.magic_shop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-public class Detailpage_MainActivity extends AppCompatActivity {
+public class Detailpage_MainSizeActivity extends AppCompatActivity {
 
     private Button btnBuy;
     private Button btnReview;
-    private Button btnSize;
     private Button btnAsk;
-
+    private Button btnProduct;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detailpage_activity_main);
+        setContentView(R.layout.detailpage_activity_main_size);
 
         btnBuy = findViewById(R.id.btn_buy);
         btnReview = findViewById(R.id.reviewBtn);
-        btnSize = findViewById(R.id.sizeBtn);
+        btnProduct = findViewById(R.id.productBtn);
         btnAsk = findViewById(R.id.askBtn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);
-        btnSize.setVisibility(View.VISIBLE);
+        btnProduct.setVisibility(View.VISIBLE);
         btnAsk.setVisibility(View.VISIBLE);
 
 
@@ -50,10 +48,10 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSize.setOnClickListener(new View.OnClickListener() {
+        btnProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +59,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         btnAsk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_MainAskActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
                 startActivity(intent);
             }
         });
@@ -69,3 +67,4 @@ public class Detailpage_MainActivity extends AppCompatActivity {
     }
 
 }
+
