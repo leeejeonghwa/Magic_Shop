@@ -16,7 +16,7 @@
 
         <activity
 
-            android:name=".Detailpage_MainActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchActivity"/>
-            <activity android:name=".RegisterActivity"/>
         <activity android:name=".Mypage_MainActivity"/>
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
@@ -48,8 +47,6 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".Detailpage_MainObtionSelectActivity"/>
         <activity android:name=".RegisterActivity"/>
-        <activity android:name=".Detailpage_MainReviewActivity"/>
-        <activity android:name=".Detailpage_MainObtionSelectActivity"/>
         <activity android:name=".Detailpage_MainSizeActivity"/>
         <activity android:name=".Detailpage_MainAskActivity"/>
         <activity android:name=".Detailpage_AllReviewActivity"/>
@@ -71,8 +68,6 @@
         <activity android:name=".Seller_OrderDeliveryListActivity" />
         <activity android:name=".Seller_RefundExchangeListActivity" />
         <activity android:name=".Seller_ReviewListActivity" />
-
-
 
     </application>
 </manifest>

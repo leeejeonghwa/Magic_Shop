@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("LoginActivity", "로그인 버튼 클릭됨");
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
                 String userID = et_id.getText().toString();
                 System.out.println(userID);
@@ -58,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Log.d("LoginActivity", "서버 응답");
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { // 로그인에 성공한 경우

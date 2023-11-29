@@ -175,7 +175,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        Button mypage_btn = (Button) findViewById(R.id.mypage_id);
+        mypage_btn = (Button) findViewById(R.id.mypage_id);
         mypage_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
