@@ -44,66 +44,138 @@
                 <!-- Second row of buttons and textview -->
 
 
-                <ImageView
-                    android:id="@+id/category_top_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="540dp"
-                    android:src="@drawable/home"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/category_top_id"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="540dp"-->
+<!--                    android:src="@drawable/home"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintVertical_bias="0.0" />-->
+<!--                -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="51dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal"
+                    >
+
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="카테고리"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
                     android:layout_gravity="start|top"
                     android:layout_marginTop="47dp"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-
-                    <Button
-                        android:id="@+id/btn_viewpants"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
-                        android:layout_marginEnd="42dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="My Button Description" />
+                    >
 
                     <Button
-                        android:id="@+id/btn_viewskirt"
-                        android:layout_width="51dp"
-                        android:layout_height="51dp"
-                        android:layout_marginEnd="68dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="My Button Description" />
-
-                    <Button
-                        android:id="@+id/btn_viewbag"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
                         android:layout_marginEnd="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="My Button Description" />
-
+                        android:background="@color/black"></Button>
                     <Button
-                        android:id="@+id/btn_viewouter"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
                         android:layout_marginEnd="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="My Button Description" />
-
+                        android:background="@color/black"></Button>
                     <Button
-                        android:id="@+id/btn_viewshoes"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
                         android:layout_marginEnd="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="My Button Description" />
+                        android:background="@color/black"></Button>
+                    <Button
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@color/black"></Button>
+                    <Button
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@color/black"></Button>
+                    <Button
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@color/black"></Button>
 
 
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="103dp"
+                    android:gravity="center_horizontal"
+                    >
+
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:text="상의" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="0dp"
+                        android:text="하의" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="-15dp"
+                        android:text="스커트/원피스" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="-8dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="아우터" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
+                        android:text="가방" />
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="-16"
+                        android:layout_weight="1"
+                        android:text="신발" />
                 </LinearLayout>
 
                 <LinearLayout
