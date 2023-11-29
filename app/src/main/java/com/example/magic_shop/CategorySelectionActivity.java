@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CategorySelectionActivity extends AppCompatActivity {
 
+
     private ImageView imageView;
 
     private int selectedCategory = 0;
@@ -55,6 +56,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_selection);
+        getWindow().setWindowAnimations(0);
 
 
         for (int buttonId : detailedButtonIds) {

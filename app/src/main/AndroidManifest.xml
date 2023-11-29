@@ -46,6 +46,7 @@
         </activity>
         <activity android:name=".SearchActivity"/>
             <activity android:name=".RegisterActivity"/>
+        <activity android:name=".HomeActivity"/>
         <activity android:name=".Mypage_MainActivity"/>
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
@@ -66,7 +67,9 @@
         <activity android:name=".Manager_MainActivity" />
         <activity android:name=".Manager_ProductRegisterListActivity" />
         <activity android:name=".Manager_ProductReviseListActivity" />
-        <activity android:name=".Seller_MainActivity" />
+        <activity android:name=".Manager_SellerListActivity" />
+        <activity android:name=".Manager_SellerRegisterRequestListActivity" />
+        <activity android:name=".Seller_MypageMainActivity" />
         <activity android:name=".Seller_ProductListActivity" />
         <activity android:name=".Seller_ProductRegisterActivity" />
         <activity android:name=".Seller_ProductRegisterRequestActivity" />
@@ -75,6 +78,9 @@
         <activity android:name=".Seller_ProductReviseRequestActivity" />
         <activity android:name=".Seller_ProductReviseRequestListActivity" />
         <activity android:name=".Seller_ProductDeleteActivity" />
+        <activity android:name=".Seller_OrderDeliveryListActivity" />
+        <activity android:name=".Seller_RefundExchangeListActivity" />
+        <activity android:name=".Seller_ReviewListActivity" />
 
 
     </application>

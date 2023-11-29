@@ -46,7 +46,7 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
                 startActivity(intent);
             }
         });
