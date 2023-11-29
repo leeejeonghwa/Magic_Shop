@@ -144,6 +144,15 @@
                 android:layout_marginBottom="5dp"
                 android:background="@color/white" />
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="273dp"
+                android:layout_height="203dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/category_ad" />
+
+
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
@@ -152,27 +161,27 @@
                 android:layout_marginBottom="5dp"
                 android:background="@color/white" />
 
-            <View
+            <ImageView
                 android:id="@+id/ellipse_1"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 android:layout_above="@id/view2"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="370dp"
-                android:layout_marginBottom="-38dp"
-                android:background="#8E8BD8" />
+                android:layout_marginEnd="365dp"
+                android:layout_marginBottom="-40dp"
+                android:src="@drawable/category_ad"
+                />
 
             <TextView
                 android:id="@+id/brandText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/view2"
-                android:layout_marginEnd="-75dp"
+                android:layout_marginEnd="-80dp"
                 android:layout_marginBottom="-36dp"
                 android:layout_toStartOf="@id/ellipse_1"
                 android:text="브랜드"
-                android:textColor="#FF000000" />
-
+                android:textColor="#FF000000"/>
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
@@ -223,6 +232,17 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/deliveryText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/view4"
+                android:layout_marginStart="70dp"
+                android:layout_marginBottom="-27dp"
+                android:text="마켓 직접 배송(우체국 택배)"
+                android:textColor="#FF000000"
+                android:textSize="11sp" />
+
+            <TextView
                 android:id="@+id/scheduleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -232,6 +252,17 @@
                 android:text="출발예정"
                 android:textColor="#8E8BD8"
                 android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/scheduleText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/view4"
+                android:layout_marginStart="70dp"
+                android:layout_marginBottom="-55dp"
+                android:text="지금 주문하면 12/6(수) 이내 출발 90%"
+                android:textColor="#FF000000"
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/informationText"
@@ -310,6 +341,25 @@
                 android:layout_height="700dp"
                 android:layout_below="@id/view7"
                 android:background="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="260dp"
+                android:layout_height="249dp"
+                android:layout_above="@id/view7"
+                android:layout_marginStart="75dp"
+                android:layout_marginBottom="-311dp"
+                android:src="@drawable/category_ad"/>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="258dp"
+                android:layout_height="68dp"
+                android:layout_above="@id/view7"
+                android:layout_marginStart="90dp"
+                android:layout_marginBottom="-389dp"
+                android:text="옷 설명"
+                android:textColor="#FF000000"/>
 
 
         </RelativeLayout>

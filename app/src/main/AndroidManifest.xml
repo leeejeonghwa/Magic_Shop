@@ -35,7 +35,7 @@
 
         <activity
 
-            android:name=".HomeActivity"
+            android:name=".Detailpage_MainActivity"
             android:exported="true">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -60,6 +60,12 @@
         <activity android:name=".Mypage_ReviewWriteActivity"/>
         <activity android:name=".CategoryProductListActivity" />
         <activity android:name=".CategorySelectionActivity" />
+        <activity android:name=".Detailpage_MainReviewActivity"/>
+        <activity android:name=".Detailpage_MainObtionSelectActivity"/>
+        <activity android:name=".Detailpage_MainSizeActivity"/>
+        <activity android:name=".Detailpage_MainAskActivity"/>
+        <activity android:name=".Detailpage_AllReviewActivity"/>
+        <activity android:name=".Detailpage_MainOptionSelectCompleteActivity"/>
 
     </application>
 </manifest>
