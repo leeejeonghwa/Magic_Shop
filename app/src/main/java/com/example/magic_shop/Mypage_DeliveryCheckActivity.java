@@ -20,8 +20,7 @@ public class Mypage_DeliveryCheckActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_OrderDeliveryListActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

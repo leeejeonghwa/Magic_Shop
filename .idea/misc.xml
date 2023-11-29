@@ -2,18 +2,118 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/activity_user_info_change.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/bg_round_checkbox_button.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/bg_round_checkbox_off.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/bg_round_checkbox_on.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/btn_bottom_border_black.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/btn_bottom_border_unclicked.xml" value="0.19163879598662206" />
+        <entry key="app/src/main/res/drawable/button_bottom_border.xml" value="0.19163879598662206" />
+        <entry key="app/src/main/res/drawable/checkbox.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/edit_text_rounded_border_gray.xml" value="0.19163879598662206" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/round_border_black.xml" value="0.15033783783783783" />
+        <entry key="app/src/main/res/drawable/rounded_border.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/rounded_border_black.xml" value="0.14932432432432433" />
+        <entry key="app/src/main/res/drawable/rounded_border_gray.xml" value="0.19358108108108107" />
+        <entry key="app/src/main/res/drawable/square_border.xml" value="0.19163879598662206" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_delivery_address_manage.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_delivery_address_plus.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_delivery_check.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_delivery_plus.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_input_password.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_mypage.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_mypage_main.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_mypage_setting.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_order_delivery_list.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_order_delivery_manage.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/activity_refund_account_change.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_refund_account_manage.xml" value="0.13968579234972678" />
+        <entry key="app/src/main/res/layout/activity_refund_exchange_check.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/activity_refund_exchange_list.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_refund_exchange_manage.xml" value="0.13968579234972678" />
+        <entry key="app/src/main/res/layout/activity_review_list.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_review_write.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_user_info_change.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/item_address.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_order_list.xml" value="0.15778688524590165" />
+        <entry key="app/src/main/res/layout/item_refund_exchange.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_review.xml" value="0.1799863387978142" />
+        <entry key="app/src/main/res/layout/item_reviewed.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/manageer_activity_main.xml" value="0.14002732240437157" />
+        <entry key="app/src/main/res/layout/manager_activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/manager_activity_product_delete.xml" value="0.11885245901639344" />
+        <entry key="app/src/main/res/layout/manager_activity_product_register.xml" value="0.1253415300546448" />
+        <entry key="app/src/main/res/layout/manager_activity_product_register_wait.xml" value="0.13422131147540983" />
+        <entry key="app/src/main/res/layout/manager_activity_product_registered.xml" value="0.14002732240437157" />
+        <entry key="app/src/main/res/layout/manager_activity_product_revise.xml" value="0.14002732240437157" />
+        <entry key="app/src/main/res/layout/manager_activity_product_unregistered.xml" value="0.1362704918032787" />
+        <entry key="app/src/main/res/layout/manager_item_product_delete.xml" value="0.11885245901639344" />
+        <entry key="app/src/main/res/layout/manager_item_product_regist_wait.xml" value="0.13422131147540983" />
+        <entry key="app/src/main/res/layout/manager_item_product_register.xml" value="0.1253415300546448" />
+        <entry key="app/src/main/res/layout/manager_item_product_registered.xml" value="0.14002732240437157" />
+        <entry key="app/src/main/res/layout/manager_item_product_revise.xml" value="0.14002732240437157" />
+        <entry key="app/src/main/res/layout/manager_item_product_unregistered.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_activity_change_password.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_edit.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_check.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_activity_input_password.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_order_delivery_list.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_refund_account_manage.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_refund_exchange_list.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_review_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_activity_review_write.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_reviewed_list.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_activity_setting.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_reviewed.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_unreviewed.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/selleer_activity_product_revise_request.xml" value="0.11646174863387979" />
+        <entry key="app/src/main/res/layout/seller_activity_main.xml" value="0.1253415300546448" />
+        <entry key="app/src/main/res/layout/seller_activity_product.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_activity_product_delete.xml" value="0.11646174863387979" />
+        <entry key="app/src/main/res/layout/seller_activity_product_delete_list.xml" value="0.13968579234972678" />
+        <entry key="app/src/main/res/layout/seller_activity_product_list.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_activity_product_register.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_activity_product_register_list.xml" value="0.1253415300546448" />
+        <entry key="app/src/main/res/layout/seller_activity_product_register_request.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_activity_product_register_request_list.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_activity_product_revise.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_activity_product_revise_list.xml" value="0.13968579234972678" />
+        <entry key="app/src/main/res/layout/seller_activity_product_revise_request.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/seller_activity_product_revise_request_list.xml" value="0.11646174863387979" />
+        <entry key="app/src/main/res/layout/seller_item_product.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_item_product_delete.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_item_product_register.xml" value="0.1253415300546448" />
+        <entry key="app/src/main/res/layout/seller_item_product_register_request.xml" value="0.12807377049180327" />
+        <entry key="app/src/main/res/layout/seller_item_product_revise.xml" value="0.13968579234972678" />
+        <entry key="app/src/main/res/layout/seller_item_product_revise_request.xml" value="0.11646174863387979" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/duplicate_confirmation_button.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/mypage_bg_round_checkbox_off.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/mypage_btn_bottom_border_clicked.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/mypage_square_border.xml" value="0.2585" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/drawable/register_button.xml" value="0.2585" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_product_list.xml" value="0.35054347826086957" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_selection.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/category_selection.xml" value="0.33" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/detailpage_activity_main.xml" value="0.348731884057971" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/detailpage_activity_main_obtion_select.xml" value="0.348731884057971" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/detailpage_activity_main_review.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/loginpage.xml" value="0.2013677811550152" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/main_activity.xml" value="0.2672239108409321" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_change_password.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_delivery_address_edit.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.2672239108409321" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.2672239108409321" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_delivery_check.xml" value="0.2672239108409321" />
@@ -26,11 +126,16 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_review_write.xml" value="0.2672239108409321" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_reviewed_list.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_setting.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.2672239108409321" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_address.xml" value="0.348731884057971" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_order.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_refund_exchange.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_reviewed.xml" value="0.35054347826086957" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/mypage_item_unreviewed.xml" value="0.348731884057971" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/register.xml" value="0.2013677811550152" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/search.xml" value="0.5" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/register_page.xml" value="0.348731884057971" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Magic_Shop/app/src/main/res/layout/search.xml" value="0.22" />
       </map>
     </option>
   </component>

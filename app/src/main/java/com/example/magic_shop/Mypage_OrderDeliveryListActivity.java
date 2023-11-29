@@ -83,7 +83,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
         @NonNull
         @Override
         public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Context context = parent.getContext(); // Context 설정
+            Context context = parent.getContext();
             View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_order, parent, false);
             return new OrderViewHolder(view, context);
         }
@@ -126,21 +126,6 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                             intent.putExtra("date", orderItem.date);
                             intent.putExtra("productName", orderItem.productName);
                             intent.putExtra("trackingNumber", orderItem.trackingNumber);
-                            context.startActivity(intent);
-                        }
-                    }
-                });
-
-                reviewWriteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 클릭 이벤트 처리
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            // 다음 화면으로 이동하는 코드
-                            OrderItem orderItem = orderList.get(position);
-                            Intent intent = new Intent(context, Mypage_ReviewWriteActivity.class);
-                            intent.putExtra("productName", orderItem.productName);
                             context.startActivity(intent);
                         }
                     }

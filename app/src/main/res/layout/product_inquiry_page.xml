@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/top_toorbar"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="371dp"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/detailpage_back_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="@+id/top_toorbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_Product_inquiry"
+        android:layout_width="127dp"
+        android:layout_height="34dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/Product_inquiry"
+        android:textAppearance="@style/some_id"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.013"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/home_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/detailpage_home_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+    <View
+        android:id="@+id/search_btn"
+        android:layout_width="28dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="327dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/detailpage_search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bag_btn"
+        android:layout_width="22dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="365dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/detailpage_bag_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.Button
+        android:id="@+id/btn_enroll"
+        android:layout_width="207dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/login_button"
+        android:text="취소"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <android.widget.Button
+        android:id="@+id/btn_Cancellation"
+        android:layout_width="207dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/login_button"
+        android:text="등록"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="410dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="58dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <View
+                android:id="@+id/view15"
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="-2dp"
+                android:background="#FFFFFF" />
+
+            <View
+                android:id="@+id/view20"
+                android:layout_width="match_parent"
+                android:layout_height="139dp"
+                android:layout_below="@+id/view15"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="-2dp"
+                android:background="#FFFFFF" />
+
+            <View
+                android:id="@+id/view21"
+                android:layout_width="match_parent"
+                android:layout_height="474dp"
+                android:layout_above="@+id/et_Product_inquiry_title"
+                android:layout_below="@+id/view15"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="158dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="-425dp"
+                android:background="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="146dp"
+                android:layout_height="117dp"
+                android:layout_alignBottom="@+id/view15"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="264dp"
+                android:layout_marginBottom="12dp"
+                app:srcCompat="@drawable/category_component" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/view15"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="149dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="204dp"
+                android:layout_marginBottom="103dp"
+                android:text="상품명" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/view15"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="162dp"
+                android:layout_marginEnd="340dp"
+                android:layout_marginBottom="-43dp"
+                android:text="문의 유형" />
+
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="136dp"
+                android:layout_height="21dp"
+                android:layout_alignBottom="@+id/view15"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="314dp"
+                android:layout_marginEnd="266dp"
+                android:layout_marginBottom="-187dp"
+                android:text="문의 상세 내용" />
+
+            <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="165dp"
+                    android:layout_height="37dp"
+                    android:layout_alignTop="@+id/view20"
+                    android:layout_alignBottom="@+id/view20"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="216dp"
+                    android:layout_marginBottom="62dp"
+                    android:text="사이즈" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="165dp"
+                    android:layout_height="37dp"
+                    android:layout_alignTop="@+id/view20"
+                    android:layout_alignBottom="@+id/view20"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="89dp"
+                    android:layout_marginEnd="217dp"
+                    android:layout_marginBottom="13dp"
+                    android:text="배송" />
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="165dp"
+                    android:layout_height="37dp"
+                    android:layout_alignTop="@+id/view20"
+                    android:layout_alignBottom="@+id/view20"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="219dp"
+                    android:layout_marginTop="91dp"
+                    android:layout_marginEnd="26dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="재입고" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="165dp"
+                    android:layout_height="37dp"
+                    android:layout_alignTop="@+id/view20"
+                    android:layout_alignBottom="@+id/view20"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="42dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="60dp"
+                    android:text="상세문의" />
+
+
+            <EditText
+                android:id="@+id/et_Product_inquiry_title"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_below="@+id/view20"
+                android:layout_alignBottom="@+id/view20"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="59dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginBottom="-102dp"
+                android:background="#D9D9D9"
+                android:ems="10"
+                android:hint=" 제목: 15자 이내 입력"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.156"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et_Product_inquiry_title"
+                android:layout_alignBottom="@+id/et_Product_inquiry_title"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="53dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="-314dp"
+                android:background="#D9D9D9"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint=" 상세 문의 내용 입력"
+                android:inputType="textMultiLine" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
