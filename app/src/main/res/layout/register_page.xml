@@ -15,18 +15,12 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/register"
         android:textAppearance="@style/register"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="23dp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="32dp"
-        android:layout_height="26dp"
-        app:srcCompat="@drawable/back_button"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="23dp" />
+        app:layout_constraintBottom_toTopOf="@+id/et_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/et_name"
@@ -36,21 +30,30 @@
         android:ems="10"
         android:hint=" 이름"
         android:inputType="text"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="115dp" />
+        app:layout_constraintBottom_toTopOf="@+id/et_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.753"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/et_nickname"
         android:layout_width="350dp"
         android:layout_height="55dp"
+        android:layout_marginTop="300dp"
         android:background="@drawable/input_button"
         android:ems="10"
         android:hint=" 닉네임"
         android:inputType="text"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="301dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/et_password"
@@ -60,33 +63,44 @@
         android:ems="10"
         android:hint=" 비밀번호"
         android:inputType="text"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="400dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/et_check"
+        android:id="@+id/et_confirm_pass"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:background="@drawable/input_button"
         android:ems="10"
         android:hint=" 비밀번호 확인"
         android:inputType="text"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="492dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
+        app:layout_constraintVertical_bias="0.181"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/et_id"
         android:layout_width="211dp"
         android:layout_height="53dp"
+        android:layout_marginStart="28dp"
         android:background="@drawable/input_button"
         android:ems="10"
         android:hint=" 아이디 "
         android:inputType="text"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="209dp" />
+        app:layout_constraintBottom_toTopOf="@+id/et_nickname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.842"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView"
@@ -94,19 +108,28 @@
         android:layout_height="wrap_content"
         android:text="이름"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="89dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="아이디"
         android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="183dp" />
+        app:layout_constraintBottom_toTopOf="@+id/et_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_name"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
@@ -114,9 +137,13 @@
         android:layout_height="wrap_content"
         android:text="닉네임"
         android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="275dp" />
+        app:layout_constraintBottom_toTopOf="@+id/et_nickname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_id"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView4"
@@ -124,41 +151,59 @@
         android:layout_height="wrap_content"
         android:text="비밀번호"
         android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="374dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452"
+        tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_confirm_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비밀번호 확인
-"
+        android:layout_marginTop="12dp"
+        android:text="비밀번호 확인"
         android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="466dp" />
+        app:layout_constraintBottom_toTopOf="@+id/et_check"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="회원 종류 선택"
         android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="567dp" />
+        app:layout_constraintBottom_toTopOf="@+id/radio_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_check"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints,UnknownId" />
 
     <android.widget.Button
         android:id="@+id/btn_duplicate_confirmation"
-        android:layout_width="122dp"
-        android:layout_height="57dp"
+        android:layout_width="129dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/duplicate_confirmation_button"
         android:text="중복 확인"
         android:textColor="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="258dp"
-        tools:layout_editor_absoluteY="205dp" />
+        app:layout_constraintBottom_toTopOf="@+id/et_nickname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintStart_toEndOf="@+id/et_id"
+        app:layout_constraintTop_toBottomOf="@+id/et_name"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <android.widget.Button
         android:id="@+id/register_button"
@@ -170,9 +215,13 @@
         android:text="회원 가입"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="669dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nickname"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -181,10 +230,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_check"
-        app:layout_constraintVertical_bias="0.356">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.793">
 
         <RadioButton
             android:id="@+id/radio_button_purchaser"
@@ -202,6 +251,22 @@
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="596dp" />
     </RadioGroup>
+
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/detailpage_back_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
