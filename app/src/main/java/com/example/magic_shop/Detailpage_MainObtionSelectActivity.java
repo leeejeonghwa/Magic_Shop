@@ -15,6 +15,9 @@ public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
     private Button btnSize_M;
     private Button btnSize_L;
     private Button btnBack;
+
+    private String color; // 현재 선택된 색상
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,6 @@ public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
         btnSize_L.setVisibility(View.GONE);
         btnBack.setVisibility(View.VISIBLE);
 
-
         // btnBuy의 클릭 이벤트 처리
         btnColorSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +49,6 @@ public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
                 // btnBuy를 숨기고 btnOption을 보이도록 변경
                 btnColor.setVisibility(View.VISIBLE);
                 btnSizeSelect.setVisibility(View.GONE);
-
             }
         });
 
@@ -58,10 +59,9 @@ public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
                 btnColor.setVisibility(View.GONE);
                 btnColorSelect.setVisibility(View.VISIBLE);
                 btnSizeSelect.setVisibility(View.VISIBLE);
-
+                color = "검정";
             }
         });
-
 
         btnSizeSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,24 +76,21 @@ public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
         btnSize_S.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // btnBuy를 숨기고 btnOption을 보이도록 변경
-
+                moveToNextActivity("S");
             }
         });
 
         btnSize_M.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // btnBuy를 숨기고 btnOption을 보이도록 변경
-
+                moveToNextActivity("M");
             }
         });
 
         btnSize_L.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // btnBuy를 숨기고 btnOption을 보이도록 변경
-
+                moveToNextActivity("L");
             }
         });
 
@@ -112,5 +109,12 @@ public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void moveToNextActivity(String size) {
+        Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectCompleteActivity.class);
+        intent.putExtra("color", color);
+        intent.putExtra("size", size);
+        startActivity(intent);
     }
 }

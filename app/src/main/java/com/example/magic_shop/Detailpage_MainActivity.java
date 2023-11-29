@@ -24,9 +24,14 @@ public class Detailpage_MainActivity extends AppCompatActivity {
 
         btnBuy = findViewById(R.id.btn_buy);
         btnReview = findViewById(R.id.reviewBtn);
+        btnSize = findViewById(R.id.sizeBtn);
+        btnAsk = findViewById(R.id.askBtn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);
+        btnSize.setVisibility(View.VISIBLE);
+        btnAsk.setVisibility(View.VISIBLE);
+
 
         // btnBuy의 클릭 이벤트 처리
         btnBuy.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +46,22 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainReviewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAsk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Detailpage_MainAskActivity.class);
                 startActivity(intent);
             }
         });
