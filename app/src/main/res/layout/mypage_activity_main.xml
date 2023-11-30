@@ -9,27 +9,16 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_manager"
-        android:layout_width="100dp"
-        android:layout_height="46dp"
+        android:id="@+id/btn_logout"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="16dp"
-        android:text="관리자"
+        android:layout_marginTop="20dp"
+        android:background="@color/main"
+        android:text="logout"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btn_seller"
-        android:layout_width="100dp"
-        android:layout_height="46dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="16dp"
-        android:text="판매자"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />

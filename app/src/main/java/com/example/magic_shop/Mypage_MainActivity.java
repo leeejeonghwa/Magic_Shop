@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,25 +23,36 @@ public class Mypage_MainActivity extends AppCompatActivity {
         setContentView(R.layout.mypage_activity_main);
         getWindow().setWindowAnimations(0);
 
-        Button btn_manager = (Button) findViewById(R.id.btn_manager);
-        btn_manager.setOnClickListener(new View.OnClickListener() {
+        Button btn_logout = (Button) findViewById(R.id.btn_logout);
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        // SessionManager를 통해 로그인 상태 확인
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_seller = (Button) findViewById(R.id.btn_seller);
-        btn_seller.setOnClickListener(new View.OnClickListener() {
+        String userID = sessionManager.getUserId();
+        String userPassword = sessionManager.getUserPassword();
+        String userName = sessionManager.getUserName();
+        String userNickname = sessionManager.getUserNickname();
+        String userClassification = sessionManager.getUserClassification();
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
-                startActivity(intent);
-            }
-        });
+        if (sessionManager.isLoggedIn()) {
+            // 로그인한 경우
+            btn_logout.setVisibility(View.VISIBLE);
+
+            // 로그아웃 버튼 클릭 시 로그아웃 수행
+            btn_logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 로그아웃 처리
+                    sessionManager.logout();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            // 로그인하지 않은 경우
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        }
 
         Button imageButton = (Button) findViewById(R.id.btn_setting);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -104,9 +114,6 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        String userID = getIntent().getStringExtra("userID"); // 로그인 액티비티에서 전달받은 아이디
-        String userPassword = getIntent().getStringExtra("userPassword"); // 로그인 액티비티에서 전달받은 비밀번
-
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -119,7 +126,7 @@ public class Mypage_MainActivity extends AppCompatActivity {
                         String userID = jsonObject.getString("userID");
                         String userPassword = jsonObject.getString("userPassword");
                         String userNickname = jsonObject.getString("userNickname");
-                        String userClassification = jsonObject.getString("userClassification");
+                        String userType = jsonObject.getString("userType");
 
                         // 닉네임을 표시할 View에 표시
                         TextView nicknameTextView = findViewById(R.id.user_name);
@@ -133,7 +140,7 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         };
 
-        LoginRequest loginRequest = new LoginRequest(userID, userPassword, responseListener);
+        LoginRequest loginRequest = new LoginRequest(Mypage_MainActivity.this, userID, userPassword, responseListener);
         RequestQueue queue = Volley.newRequestQueue(Mypage_MainActivity.this);
         queue.add(loginRequest);
 

@@ -20,7 +20,7 @@ import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
-    private Button btn_login, btn_register;
+    private Button btn_login, btn_register, btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         et_pass = findViewById(R.id.et_pass);
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
+        btn_back = findViewById(R.id.btn_back);
 
 
         // 회원가입 버튼을 클릭 시 수행
@@ -39,7 +40,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,13 +73,26 @@ public class LoginActivity extends AppCompatActivity {
                                 // 로그인 성공 시 로그인 상태를 저장
                                 // SessionManager를 통해 로그인 여부를 true로 설정
                                 SessionManager sessionManager = new SessionManager(getApplicationContext());
-                                sessionManager.setLogin(true);
+                                sessionManager.setLogin(true, userID, userPass);
 
                                 String userID = jsonObject.getString("userID");
                                 String userPassword = jsonObject.getString("userPassword");
+                                String userType = jsonObject.getString("userType"); // 사용자 유형 추가
 
                                 Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, Mypage_MainActivity.class);
+
+                                // 사용자 유형에 따라 리다이렉션 설정
+                                Intent intent;
+                                if ("A".equals(userType)) {
+                                    intent = new Intent(LoginActivity.this, Mypage_MainActivity.class);
+                                } else if ("B".equals(userType)) {
+                                    intent = new Intent(LoginActivity.this, Seller_MypageMainActivity.class);
+                                } else {
+                                    // 다른 사용자 유형 처리 또는 오류 표시
+                                    Toast.makeText(getApplicationContext(), "유효하지 않은 사용자 유형", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPassword", userPassword);
                                 startActivity(intent);
@@ -82,7 +105,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
+
+                LoginRequest loginRequest = new LoginRequest(LoginActivity.this, userID, userPass, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }

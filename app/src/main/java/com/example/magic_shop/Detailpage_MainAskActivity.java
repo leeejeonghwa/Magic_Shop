@@ -86,7 +86,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnProductAsk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_ProductIquiryPageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_ProductInquiryPageActivity.class);
                 startActivity(intent);
             }
         });

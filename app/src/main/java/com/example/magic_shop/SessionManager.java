@@ -4,51 +4,62 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SessionManager extends AppCompatActivity {
+public class SessionManager extends AppCompatActivity{
     private static final String PREF_NAME = "LoginPref";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
+    private static final String KEY_USER_ID = "userID";
+    private static final String KEY_USER_PASSWORD = "userPassword";
     private static final String KEY_USER_NAME = "userName";
-    private static final String KEY_USER_EMAIL = "userEmail";
-    private static final String KEY_AV_RESTART = "avdRestart";
+    private static final String KEY_USER_NICKNAME = "userNickname";
+    private static final String KEY_USER_TYPE = "userType";
 
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private Context context;
-    private boolean isLoggedInNow;
 
     public SessionManager(Context context) {
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = pref.edit();
-        isLoggedInNow = pref.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
-    public void setLogin(boolean isLoggedIn) {
-        isLoggedInNow = isLoggedIn;
+    public void setLogin(boolean isLoggedIn, String userID, String userPassword) {
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn);
+        editor.putString(KEY_USER_ID, userID);
+        editor.putString(KEY_USER_PASSWORD, userPassword);
+        // 다른 사용자 정보 저장
         editor.apply();
     }
 
     public boolean isLoggedIn() {
-        return isLoggedInNow;
+        return pref.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
-    public void resetLogin() {
-        isLoggedInNow = false;
-        editor.putBoolean(KEY_IS_LOGGED_IN, false);
-        editor.putBoolean(KEY_AV_RESTART, false);
-        // 사용자 정보 초기화
-        editor.remove(KEY_USER_NAME);
-        editor.remove(KEY_USER_EMAIL);
-        editor.apply();
+    public String getUserId() {
+        return pref.getString(KEY_USER_ID, "");
     }
 
-    public boolean isAVDRestarted() {
-        return pref.getBoolean(KEY_AV_RESTART, false);
+    public String getUserPassword() {
+        return pref.getString(KEY_USER_PASSWORD, "");
     }
 
-    public void setAVDRestarted(boolean isRestarted) {
-        editor.putBoolean(KEY_AV_RESTART, isRestarted);
+    public String getUserName() {
+        return pref.getString(KEY_USER_NAME, "");
+    }
+
+    public String getUserNickname() {
+        return pref.getString(KEY_USER_NICKNAME, "");
+    }
+
+    public String getUserClassification() {
+        return pref.getString(KEY_USER_TYPE, "");
+    }
+
+
+    // 다른 사용자 정보를 가져오는 메소드들 추가
+
+    public void logout() {
+        editor.clear();
         editor.apply();
     }
 }
