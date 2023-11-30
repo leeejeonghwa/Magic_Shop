@@ -122,6 +122,7 @@
         <entry key="app/src/main/res/layout/payment_completed_page.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/product_inquiry_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/selleer_activity_product_revise_request.xml" value="0.11646174863387979" />
+        <entry key="app/src/main/res/layout/seller_activity_input_password.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/seller_activity_main.xml" value="0.1253415300546448" />
         <entry key="app/src/main/res/layout/seller_activity_mypage_main.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/seller_activity_order_delivery_list.xml" value="0.18704710144927536" />
@@ -139,6 +140,10 @@
         <entry key="app/src/main/res/layout/seller_activity_product_revise_request_list.xml" value="0.11646174863387979" />
         <entry key="app/src/main/res/layout/seller_activity_refund_exchange_list.xml" value="0.19519927536231885" />
         <entry key="app/src/main/res/layout/seller_activity_review_list.xml" value="0.18704710144927536" />
+        <entry key="app/src/main/res/layout/seller_activity_setting.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/seller_activity_user_info_change.xml" value="0.16802536231884058" />
+        <entry key="app/src/main/res/layout/seller_change_password.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/seller_item_order.xml" value="0.1766304347826087" />
         <entry key="app/src/main/res/layout/seller_item_product.xml" value="0.12807377049180327" />
         <entry key="app/src/main/res/layout/seller_item_product_delete.xml" value="0.12807377049180327" />
         <entry key="app/src/main/res/layout/seller_item_product_register.xml" value="0.1253415300546448" />

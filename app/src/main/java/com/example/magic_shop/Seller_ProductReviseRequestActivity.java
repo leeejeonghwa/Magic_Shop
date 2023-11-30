@@ -20,8 +20,7 @@ public class Seller_ProductReviseRequestActivity extends AppCompatActivity{
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_ProductReviseActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

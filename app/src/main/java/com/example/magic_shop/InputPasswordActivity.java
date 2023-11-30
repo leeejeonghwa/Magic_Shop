@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Mypage_DeliveryCheckActivity extends AppCompatActivity {
+public class InputPasswordActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_delivery_check);
+        setContentView(R.layout.activity_input_password);
         getWindow().setWindowAnimations(0);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -29,17 +28,19 @@ public class Mypage_DeliveryCheckActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
                 startActivity(intent);
             }
         });
 
-        Intent intent = getIntent();
+        Button btn_change_password_check = (Button) findViewById(R.id.btn_change_password_check);
+        btn_change_password_check.setOnClickListener(new View.OnClickListener() {
 
-        TextView product_name = findViewById(R.id.productName);
-        TextView trackingNumber = findViewById(R.id.trackingNumber);
-
-        product_name.setText(intent.getStringExtra("productName"));
-        trackingNumber.setText(intent.getStringExtra("trackingNumber"));
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserInfoChangeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

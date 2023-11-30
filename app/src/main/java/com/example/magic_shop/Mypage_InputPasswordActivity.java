@@ -11,7 +11,7 @@ public class Mypage_InputPasswordActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_input_password);
+        setContentView(R.layout.activity_input_password);
         getWindow().setWindowAnimations(0);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -19,7 +19,16 @@ public class Mypage_InputPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
+                onBackPressed();
+            }
+        });
+
+        Button btn_home = (Button) findViewById(R.id.btn_home);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -29,11 +38,9 @@ public class Mypage_InputPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_UserInfoChangeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UserInfoChangeActivity.class);
                 startActivity(intent);
             }
         });
-
-
     }
 }

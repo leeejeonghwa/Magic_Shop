@@ -59,7 +59,7 @@ public class Seller_MypageMainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_SettingActivity.class);
                 startActivity(intent);
             }
         });

@@ -13,16 +13,6 @@ public class Manager_MainActivity extends AppCompatActivity {
         setContentView(R.layout.manager_activity_main);
         getWindow().setWindowAnimations(0);
 
-        Button btn_mypage = (Button) findViewById(R.id.btn_mypage);
-        btn_mypage.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Button btn_seller_list = (Button) findViewById(R.id.btn_seller_list);
         btn_seller_list.setOnClickListener(new View.OnClickListener() {
 

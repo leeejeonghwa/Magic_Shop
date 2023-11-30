@@ -30,12 +30,12 @@
         <activity android:name=".Mypage_MainActivity"/>
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
-        <activity android:name=".Mypage_UserInfoChangeActivity"/>
+        <activity android:name=".UserInfoChangeActivity"/>
         <activity android:name=".Mypage_ChangePasswordActivity"/>
         <activity android:name=".Mypage_DeliveryAddressManageActivity"/>
         <activity android:name=".Mypage_DeliveryAddressEditActivity"/>
         <activity android:name=".Mypage_DeliveryAddressPlusActivity"/>
-        <activity android:name=".Mypage_RefundAccountManageActivity"/>
+        <activity android:name=".RefundAccountManageActivity"/>
         <activity android:name=".Mypage_OrderDeliveryListActivity"/>
         <activity android:name=".Mypage_DeliveryCheckActivity"/>
         <activity android:name=".Mypage_RefundExchangeListActivity"/>
@@ -59,6 +59,9 @@
         <activity android:name=".Manager_SellerListActivity" />
         <activity android:name=".Manager_SellerRegisterRequestListActivity" />
         <activity android:name=".Seller_MypageMainActivity" />
+        <activity android:name=".Seller_SettingActivity" />
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".InputPasswordActivity" />
         <activity android:name=".Seller_ProductListActivity" />
         <activity android:name=".Seller_ProductRegisterActivity" />
         <activity android:name=".Seller_ProductRegisterRequestActivity" />
@@ -67,8 +70,6 @@
         <activity android:name=".Seller_ProductReviseRequestActivity" />
         <activity android:name=".Seller_ProductReviseRequestListActivity" />
         <activity android:name=".Seller_ProductDeleteActivity" />
-
-
         <activity android:name=".Seller_OrderDeliveryListActivity" />
         <activity android:name=".Seller_RefundExchangeListActivity" />
         <activity android:name=".Seller_ReviewListActivity" />

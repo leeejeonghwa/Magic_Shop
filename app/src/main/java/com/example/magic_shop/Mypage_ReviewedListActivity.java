@@ -51,6 +51,16 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
             }
         });
 
+        Button btn_home = (Button) findViewById(R.id.btn_home);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button btn_review_list = (Button) findViewById(R.id.btn_unreviewed_list);
         btn_review_list.setOnClickListener(new View.OnClickListener() {
 

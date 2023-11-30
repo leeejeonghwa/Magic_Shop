@@ -7,11 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_refund_account_manage);
+        setContentView(R.layout.activity_change_password);
         getWindow().setWindowAnimations(0);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -19,17 +19,16 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
-        Button btn_refund_account_change = (Button) findViewById(R.id.btn_refund_account_change_confirm);
-        btn_refund_account_change.setOnClickListener(new View.OnClickListener() {
+        Button btn_home = (Button) findViewById(R.id.btn_home);
+        btn_home.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
