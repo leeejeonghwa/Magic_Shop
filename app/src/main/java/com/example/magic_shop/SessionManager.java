@@ -11,7 +11,7 @@ public class SessionManager extends AppCompatActivity{
     private static final String KEY_USER_PASSWORD = "userPassword";
     private static final String KEY_USER_NAME = "userName";
     private static final String KEY_USER_NICKNAME = "userNickname";
-    private static final String KEY_USER_CLASSIFICATION = "userClassification";
+    private static final String KEY_USER_TYPE = "userType";
 
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -52,7 +52,7 @@ public class SessionManager extends AppCompatActivity{
     }
 
     public String getUserClassification() {
-        return pref.getString(KEY_USER_CLASSIFICATION, "");
+        return pref.getString(KEY_USER_TYPE, "");
     }
 
 

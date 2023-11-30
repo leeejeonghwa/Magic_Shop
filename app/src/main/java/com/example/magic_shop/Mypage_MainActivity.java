@@ -126,7 +126,7 @@ public class Mypage_MainActivity extends AppCompatActivity {
                         String userID = jsonObject.getString("userID");
                         String userPassword = jsonObject.getString("userPassword");
                         String userNickname = jsonObject.getString("userNickname");
-                        String userClassification = jsonObject.getString("userClassification");
+                        String userType = jsonObject.getString("userType");
 
                         // 닉네임을 표시할 View에 표시
                         TextView nicknameTextView = findViewById(R.id.user_name);
