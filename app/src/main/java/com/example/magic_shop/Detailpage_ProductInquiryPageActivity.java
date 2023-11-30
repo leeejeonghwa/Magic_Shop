@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Detailpage_ProductIquiryPageActivity extends AppCompatActivity {
+public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     private Button btnBack;
     private Button btnEnroll;
     private Button btnCancellation;

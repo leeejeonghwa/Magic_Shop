@@ -52,7 +52,7 @@
         <activity android:name=".Detailpage_AllReviewActivity"/>
         <activity android:name=".Detailpage_MainOptionSelectCompleteActivity"/>
         <activity android:name=".Detailpage_OrderInquiryPageActivity"/>
-        <activity android:name=".Detailpage_ProductIquiryPageActivity"/>
+        <activity android:name=".Detailpage_ProductInquiryPageActivity"/>
         <activity android:name=".Manager_MainActivity" />
         <activity android:name=".Manager_ProductRegisterListActivity" />
         <activity android:name=".Manager_ProductReviseListActivity" />
