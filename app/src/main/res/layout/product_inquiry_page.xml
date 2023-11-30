@@ -36,7 +36,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
         app:layout_constraintEnd_toEndOf="@+id/top_toorbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
     <TextView
@@ -250,60 +251,64 @@
                 android:text="문의 상세 내용" />
 
             <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="165dp"
-                    android:layout_height="37dp"
-                    android:layout_alignTop="@+id/view20"
-                    android:layout_alignBottom="@+id/view20"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="29dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="216dp"
-                    android:layout_marginBottom="62dp"
-                    android:text="사이즈" />
+                android:id="@+id/radioButton"
+                android:layout_width="165dp"
+                android:layout_height="37dp"
+                android:layout_alignTop="@+id/view20"
+                android:layout_alignBottom="@+id/view20"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="216dp"
+                android:layout_marginBottom="62dp"
+                android:text="사이즈"
+                tools:ignore="TouchTargetSizeCheck" />
 
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="165dp"
-                    android:layout_height="37dp"
-                    android:layout_alignTop="@+id/view20"
-                    android:layout_alignBottom="@+id/view20"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginTop="89dp"
-                    android:layout_marginEnd="217dp"
-                    android:layout_marginBottom="13dp"
-                    android:text="배송" />
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="165dp"
+                android:layout_height="37dp"
+                android:layout_alignTop="@+id/view20"
+                android:layout_alignBottom="@+id/view20"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="89dp"
+                android:layout_marginEnd="217dp"
+                android:layout_marginBottom="13dp"
+                android:text="배송"
+                tools:ignore="TouchTargetSizeCheck" />
 
-                <RadioButton
-                    android:id="@+id/radioButton5"
-                    android:layout_width="165dp"
-                    android:layout_height="37dp"
-                    android:layout_alignTop="@+id/view20"
-                    android:layout_alignBottom="@+id/view20"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="219dp"
-                    android:layout_marginTop="91dp"
-                    android:layout_marginEnd="26dp"
-                    android:layout_marginBottom="11dp"
-                    android:text="재입고" />
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="165dp"
+                android:layout_height="37dp"
+                android:layout_alignTop="@+id/view20"
+                android:layout_alignBottom="@+id/view20"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="219dp"
+                android:layout_marginTop="91dp"
+                android:layout_marginEnd="26dp"
+                android:layout_marginBottom="11dp"
+                android:text="재입고"
+                tools:ignore="TouchTargetSizeCheck" />
 
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    android:layout_width="165dp"
-                    android:layout_height="37dp"
-                    android:layout_alignTop="@+id/view20"
-                    android:layout_alignBottom="@+id/view20"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="220dp"
-                    android:layout_marginTop="42dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="60dp"
-                    android:text="상세문의" />
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="165dp"
+                android:layout_height="37dp"
+                android:layout_alignTop="@+id/view20"
+                android:layout_alignBottom="@+id/view20"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="220dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="60dp"
+                android:text="상세문의"
+                tools:ignore="TouchTargetSizeCheck" />
 
 
             <EditText
@@ -328,7 +333,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.156"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/editTextTextMultiLine"
