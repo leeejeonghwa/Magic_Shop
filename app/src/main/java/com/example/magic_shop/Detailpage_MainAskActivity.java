@@ -42,7 +42,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainObtionSelectActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
                 startActivity(intent);
             }
         });
@@ -74,7 +74,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnProductAsk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_ProductIquiryPageActivity.class);
                 startActivity(intent);
             }
         });
@@ -82,7 +82,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnOrderAsk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
+                Intent intent = new Intent(getApplicationContext(),Detailpage_OrderInquiryPageActivity.class);
                 startActivity(intent);
             }
         });
