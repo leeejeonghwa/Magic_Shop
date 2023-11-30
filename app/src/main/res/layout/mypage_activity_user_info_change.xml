@@ -70,12 +70,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="이름"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_info_change"
         tools:ignore="HardcodedText" />
@@ -116,12 +116,12 @@
 
 
     <TextView
-        android:id="@+id/phoneNumber"
+        android:id="@+id/userNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="38dp"
-        android:text="휴대전화"
+        android:text="닉네임"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +131,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextPhoneNumber"
+        android:id="@+id/editTextUserNickname"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
     <Button
-        android:id="@+id/btn_phone_number_change"
+        android:id="@+id/btn_user_nickname_change"
         android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
@@ -159,55 +159,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextPhoneNumber"
+        app:layout_constraintStart_toEndOf="@+id/editTextUserNickname"
         app:layout_constraintTop_toBottomOf="@+id/btn_name_change"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="40dp"
-        android:text="이메일"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
-        tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/mypage_edit_text_rounded_border_gray"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber" />
-
-    <Button
-        android:id="@+id/btn_email_change"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/main"
-        android:text="변경"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextEmail"
-        app:layout_constraintTop_toBottomOf="@+id/btn_phone_number_change"
         tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
 
