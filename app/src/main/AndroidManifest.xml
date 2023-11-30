@@ -16,7 +16,7 @@
 
         <activity
 
-            android:name=".HomeActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchActivity"/>
+        <activity android:name=".HomeActivity"/>
         <activity android:name=".Mypage_MainActivity"/>
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
@@ -44,7 +45,6 @@
         <activity android:name=".CategorySelectionActivity" />
         <activity android:name=".Detailpage_MainActivity"/>
         <activity android:name=".Detailpage_MainReviewActivity"/>
-        <activity android:name=".LoginActivity"/>
         <activity android:name=".Detailpage_MainOptionSelectActivity"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".Detailpage_MainSizeActivity"/>
