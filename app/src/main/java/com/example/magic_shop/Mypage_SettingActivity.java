@@ -85,7 +85,7 @@ public class Mypage_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RefundAccountManageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_RefundAccountManageActivity.class);
                 startActivity(intent);
             }
         });

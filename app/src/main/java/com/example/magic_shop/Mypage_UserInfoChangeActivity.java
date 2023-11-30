@@ -7,11 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Mypage_InputPasswordActivity extends AppCompatActivity {
+public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_password);
+        setContentView(R.layout.activity_user_info_change);
         getWindow().setWindowAnimations(0);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -33,14 +33,25 @@ public class Mypage_InputPasswordActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_change_password_check = (Button) findViewById(R.id.btn_change_password_check);
-        btn_change_password_check.setOnClickListener(new View.OnClickListener() {
+        Button btn_name_change = (Button) findViewById(R.id.btn_name_change);
+        btn_name_change.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_UserInfoChangeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
                 startActivity(intent);
             }
         });
+
+        Button btn_user_nick_name_change = (Button) findViewById(R.id.btn_user_nickname_change);
+        btn_user_nick_name_change.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserInfoChangeActivity extends AppCompatActivity {
+public class Seller_UserInfoChangeActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,25 @@ public class UserInfoChangeActivity extends AppCompatActivity {
             }
         });
 
+        Button btn_name_change = (Button) findViewById(R.id.btn_name_change);
+        btn_name_change.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seller_SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_user_nick_name_change = (Button) findViewById(R.id.btn_user_nickname_change);
+        btn_user_nick_name_change.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Seller_SettingActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

@@ -55,7 +55,7 @@ public class Seller_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InputPasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_InputPasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,7 +75,7 @@ public class Seller_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RefundAccountManageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_RefundAccountManageActivity.class);
                 startActivity(intent);
             }
         });

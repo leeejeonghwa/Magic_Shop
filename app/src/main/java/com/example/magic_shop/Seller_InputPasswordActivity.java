@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class InputPasswordActivity extends AppCompatActivity {
+public class Seller_InputPasswordActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class InputPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class InputPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), UserInfoChangeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_UserInfoChangeActivity.class);
                 startActivity(intent);
             }
         });
