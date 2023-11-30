@@ -11,6 +11,9 @@ public class Detailpage_ProductIquiryPageActivity extends AppCompatActivity {
     private Button btnBack;
     private Button btnEnroll;
     private Button btnCancellation;
+    private Button btnBag;
+    private Button btnHome;
+    private Button btnSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,10 +22,16 @@ public class Detailpage_ProductIquiryPageActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.back_btn);
         btnEnroll = findViewById(R.id.btn_enroll);
         btnCancellation = findViewById(R.id.btn_Cancellation);
+        btnHome = findViewById(R.id.home_btn);
+        btnBag = findViewById(R.id.bag_btn);
+        btnSearch = findViewById(R.id.search_btn);
 
         btnBack.setVisibility(View.VISIBLE);
         btnEnroll.setVisibility(View.VISIBLE);
         btnCancellation.setVisibility(View.VISIBLE);
+        btnBag.setVisibility(View.VISIBLE);
+        btnHome.setVisibility(View.VISIBLE);
+        btnSearch.setVisibility(View.VISIBLE);
 
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +57,31 @@ public class Detailpage_ProductIquiryPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

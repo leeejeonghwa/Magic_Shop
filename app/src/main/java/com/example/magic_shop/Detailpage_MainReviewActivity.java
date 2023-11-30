@@ -13,6 +13,10 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
     private Button btnSize;
     private Button btnAsk;
     private Button btnAllReview;
+    private Button btnBack;
+    private Button btnBag;
+    private Button btnHome;
+    private Button btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,10 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
         btnSize = findViewById(R.id.sizeBtn);
         btnAsk = findViewById(R.id.askBtn);
         btnAllReview = findViewById(R.id.allReviewBtn);
+        btnBack = findViewById(R.id.back_btn);
+        btnHome = findViewById(R.id.home_btn);
+        btnBag = findViewById(R.id.bag_btn);
+        btnSearch = findViewById(R.id.search_btn);
 
 
         btnBuy.setVisibility(View.VISIBLE);
@@ -31,6 +39,10 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
         btnSize.setVisibility(View.VISIBLE);
         btnAsk.setVisibility(View.VISIBLE);
         btnAllReview.setVisibility(View.VISIBLE);
+        btnBack.setVisibility(View.VISIBLE);
+        btnBag.setVisibility(View.VISIBLE);
+        btnHome.setVisibility(View.VISIBLE);
+        btnSearch.setVisibility(View.VISIBLE);
 
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +76,38 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
             }
         });
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Detailpage_MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
-
+        btnBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

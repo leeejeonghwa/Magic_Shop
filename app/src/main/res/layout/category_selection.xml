@@ -9,11 +9,11 @@
 
 
 
-    <ImageView
+    <Button
         android:id="@+id/search_window_id"
         android:layout_width="301dp"
         android:layout_height="45dp"
-        android:src="@drawable/search_window"
+        android:background="@drawable/search_window"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.267"
@@ -21,11 +21,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.032" />
 
-    <ImageView
+    <Button
         android:id="@+id/shopping_basket_id"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:src="@drawable/category_shopping_basket"
+        android:background="@drawable/category_shopping_basket"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.926"
@@ -428,7 +428,7 @@
 
 
 
-    <View
+    <Button
         android:id="@+id/go_home_id"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
@@ -439,7 +439,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <View
+    <Button
         android:id="@+id/category_search_id"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"
@@ -452,7 +452,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <View
+    <Button
         android:id="@+id/mypage_id"
         android:layout_width="33.75dp"
         android:layout_height="33.75dp"

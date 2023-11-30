@@ -16,8 +16,7 @@ public class OrderFormActivity extends AppCompatActivity {
         findViewById(R.id.back_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OrderFormActivity.this, ShoppingBasketActivity.class);
-                startActivity(intent); // Intent를 사용하여 SecondActivity 시작
+                finish();
             }
         });
 
