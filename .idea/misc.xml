@@ -111,9 +111,9 @@
         <entry key="app/src/main/res/layout/mypage_activity_review_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_review_write.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_reviewed_list.xml" value="0.14173497267759563" />
-        <entry key="app/src/main/res/layout/mypage_activity_setting.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_setting.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.14173497267759563" />
-        <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_item_reviewed.xml" value="0.14173497267759563" />
