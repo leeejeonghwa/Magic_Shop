@@ -2,10 +2,19 @@ package com.example.magic_shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Mypage_SettingActivity extends AppCompatActivity {
 
@@ -13,6 +22,14 @@ public class Mypage_SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage_activity_setting);
         getWindow().setWindowAnimations(0);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+
+        String userID = sessionManager.getUserId();
+        String userPassword = sessionManager.getUserPassword();
+        String userName = sessionManager.getUserName();
+        String userNickname = sessionManager.getUserNickname();
+        String userClassification = sessionManager.getUserClassification();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +80,34 @@ public class Mypage_SettingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.d("Mypage_SettingActivity", "서버 응답");
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean success = jsonObject.getBoolean("success");
+                    if (success) {
+                        String userName = jsonObject.getString("userName");
+                        String userID = jsonObject.getString("userID");
+                        String userPassword = jsonObject.getString("userPassword");
+                        String userNickname = jsonObject.getString("userNickname");
+                        String userType = jsonObject.getString("userType");
+
+                        TextView userNameTextView = findViewById(R.id.user_name_view);
+                        userNameTextView.setText(userName);
+                    } else {
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        LoginRequest loginRequest = new LoginRequest(Mypage_SettingActivity.this, userID, userPassword, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(Mypage_SettingActivity.this);
+        queue.add(loginRequest);
     }
 
 }
