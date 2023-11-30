@@ -30,12 +30,19 @@ public class Mypage_MainActivity extends AppCompatActivity {
 
         String userID = sessionManager.getUserId();
         String userPassword = sessionManager.getUserPassword();
-        String userName = sessionManager.getUserName();
-        String userNickname = sessionManager.getUserNickname();
-        String userClassification = sessionManager.getUserClassification();
 
+        // 로그인 상태 확인
         if (sessionManager.isLoggedIn()) {
-            // 로그인한 경우
+            // 로그인된 경우 유저 타입 확인
+            String userType = sessionManager.getUserType();
+            // 판매자인 경우 판매자 마이페이지로 이동
+            if ("B".equals(userType)) {
+                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+
             btn_logout.setVisibility(View.VISIBLE);
 
             // 로그아웃 버튼 클릭 시 로그아웃 수행
@@ -48,7 +55,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        } else {
+        }
+        else {
             // 로그인하지 않은 경우
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
@@ -145,5 +153,4 @@ public class Mypage_MainActivity extends AppCompatActivity {
         queue.add(loginRequest);
 
     }
-
 }

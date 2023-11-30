@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
                 String userID = et_id.getText().toString();
                 System.out.println(userID);
-                String userPass = et_pass.getText().toString();
-                System.out.println(userPass);
+                String userPassword = et_pass.getText().toString();
+                System.out.println(userPassword);
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -70,14 +70,15 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { // 로그인에 성공한 경우
-                                // 로그인 성공 시 로그인 상태를 저장
-                                // SessionManager를 통해 로그인 여부를 true로 설정
-                                SessionManager sessionManager = new SessionManager(getApplicationContext());
-                                sessionManager.setLogin(true, userID, userPass);
-
                                 String userID = jsonObject.getString("userID");
                                 String userPassword = jsonObject.getString("userPassword");
-                                String userType = jsonObject.getString("userType"); // 사용자 유형 추가
+                                String userName = jsonObject.getString("userName");
+                                String userNickname = jsonObject.getString("userNickname");
+                                String userType = jsonObject.getString("userType");
+
+                                // SessionManager를 통해 로그인 여부를 true로 설정
+                                SessionManager sessionManager = new SessionManager(getApplicationContext());
+                                sessionManager.setUserInfo(true, userID, userPassword, userName, userNickname, userType);
 
                                 Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
 
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
-                LoginRequest loginRequest = new LoginRequest(LoginActivity.this, userID, userPass, responseListener);
+                LoginRequest loginRequest = new LoginRequest(LoginActivity.this, userID, userPassword, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }

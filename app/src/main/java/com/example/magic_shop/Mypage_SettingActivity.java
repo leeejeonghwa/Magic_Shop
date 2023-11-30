@@ -29,7 +29,7 @@ public class Mypage_SettingActivity extends AppCompatActivity {
         String userPassword = sessionManager.getUserPassword();
         String userName = sessionManager.getUserName();
         String userNickname = sessionManager.getUserNickname();
-        String userClassification = sessionManager.getUserClassification();
+        String userType = sessionManager.getUserType();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {

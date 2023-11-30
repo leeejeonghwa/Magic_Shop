@@ -32,7 +32,7 @@ public class Seller_MypageMainActivity extends AppCompatActivity {
         String userPassword = sessionManager.getUserPassword();
         String userName = sessionManager.getUserName();
         String userNickname = sessionManager.getUserNickname();
-        String userClassification = sessionManager.getUserClassification();
+        String userType = sessionManager.getUserType();
 
         if (sessionManager.isLoggedIn()) {
             // 로그인한 경우
