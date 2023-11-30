@@ -35,7 +35,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainObtionSelectActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
                 startActivity(intent);
             }
         });

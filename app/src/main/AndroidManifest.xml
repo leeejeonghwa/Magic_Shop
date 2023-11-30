@@ -45,12 +45,14 @@
         <activity android:name=".Detailpage_MainActivity"/>
         <activity android:name=".Detailpage_MainReviewActivity"/>
         <activity android:name=".LoginActivity"/>
-        <activity android:name=".Detailpage_MainObtionSelectActivity"/>
+        <activity android:name=".Detailpage_MainOptionSelectActivity"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".Detailpage_MainSizeActivity"/>
         <activity android:name=".Detailpage_MainAskActivity"/>
         <activity android:name=".Detailpage_AllReviewActivity"/>
         <activity android:name=".Detailpage_MainOptionSelectCompleteActivity"/>
+        <activity android:name=".Detailpage_OrderInquiryPageActivity"/>
+        <activity android:name=".Detailpage_ProductIquiryPageActivity"/>
         <activity android:name=".Manager_MainActivity" />
         <activity android:name=".Manager_ProductRegisterListActivity" />
         <activity android:name=".Manager_ProductReviseListActivity" />

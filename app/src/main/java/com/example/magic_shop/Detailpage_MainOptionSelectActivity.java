@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Detailpage_MainObtionSelectActivity extends AppCompatActivity {
+public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private Button btnOption;
     private Button btnColor;
     private Button btnColorSelect;
