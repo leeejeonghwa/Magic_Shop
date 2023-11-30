@@ -20,7 +20,7 @@ import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
-    private Button btn_login, btn_register;
+    private Button btn_login, btn_register, btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         et_pass = findViewById(R.id.et_pass);
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
+        btn_back = findViewById(R.id.btn_back);
 
 
         // 회원가입 버튼을 클릭 시 수행
@@ -39,7 +40,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                                 // 로그인 성공 시 로그인 상태를 저장
                                 // SessionManager를 통해 로그인 여부를 true로 설정
                                 SessionManager sessionManager = new SessionManager(getApplicationContext());
-                                sessionManager.setLogin(true);
+                                sessionManager.setLogin(true, userID, userPass);
 
                                 String userID = jsonObject.getString("userID");
                                 String userPassword = jsonObject.getString("userPassword");
