@@ -7,35 +7,43 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Detailpage_MainReviewActivity extends AppCompatActivity {
+public class Detailpage_MainSizeActivity extends AppCompatActivity {
+
     private Button btnBuy;
-    private Button btnProduct;
-    private Button btnSize;
+    private Button btnReview;
     private Button btnAsk;
-    private Button btnAllReview;
+    private Button btnProduct;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detailpage_activity_main_review);
+        setContentView(R.layout.detailpage_activity_main_size);
 
         btnBuy = findViewById(R.id.btn_buy);
+        btnReview = findViewById(R.id.reviewBtn);
         btnProduct = findViewById(R.id.productBtn);
-        btnSize = findViewById(R.id.sizeBtn);
         btnAsk = findViewById(R.id.askBtn);
-        btnAllReview = findViewById(R.id.allReviewBtn);
-
 
         btnBuy.setVisibility(View.VISIBLE);
+        btnReview.setVisibility(View.VISIBLE);
         btnProduct.setVisibility(View.VISIBLE);
-        btnSize.setVisibility(View.VISIBLE);
         btnAsk.setVisibility(View.VISIBLE);
-        btnAllReview.setVisibility(View.VISIBLE);
 
+
+        // btnBuy의 클릭 이벤트 처리
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Detailpage_MainReviewActivity.class);
                 startActivity(intent);
             }
         });
@@ -48,27 +56,15 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
             }
         });
 
-        btnSize.setOnClickListener(new View.OnClickListener() {
+        btnAsk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
                 startActivity(intent);
             }
         });
-
-        btnAllReview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_AllReviewActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
-
-
 
     }
+
 }
+
