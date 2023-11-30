@@ -77,9 +77,22 @@ public class LoginActivity extends AppCompatActivity {
 
                                 String userID = jsonObject.getString("userID");
                                 String userPassword = jsonObject.getString("userPassword");
+                                String userType = jsonObject.getString("userType"); // 사용자 유형 추가
 
                                 Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, Mypage_MainActivity.class);
+
+                                // 사용자 유형에 따라 리다이렉션 설정
+                                Intent intent;
+                                if ("A".equals(userType)) {
+                                    intent = new Intent(LoginActivity.this, Mypage_MainActivity.class);
+                                } else if ("B".equals(userType)) {
+                                    intent = new Intent(LoginActivity.this, Seller_MypageMainActivity.class);
+                                } else {
+                                    // 다른 사용자 유형 처리 또는 오류 표시
+                                    Toast.makeText(getApplicationContext(), "유효하지 않은 사용자 유형", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPassword", userPassword);
                                 startActivity(intent);
@@ -92,7 +105,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
+
+                LoginRequest loginRequest = new LoginRequest(LoginActivity.this, userID, userPass, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }

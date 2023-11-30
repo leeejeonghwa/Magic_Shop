@@ -140,7 +140,7 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         };
 
-        LoginRequest loginRequest = new LoginRequest(userID, userPassword, responseListener);
+        LoginRequest loginRequest = new LoginRequest(Mypage_MainActivity.this, userID, userPassword, responseListener);
         RequestQueue queue = Volley.newRequestQueue(Mypage_MainActivity.this);
         queue.add(loginRequest);
 
