@@ -1,14 +1,19 @@
 package com.example.magic_shop;
 
-public class CategorySelection {
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CategorySelection extends AppCompatActivity {
 
     private static CategorySelection instance = new CategorySelection();
 
     private Category selectedCategory;
 
-
     private int selectedDetailedCategory;
-
 
     public enum Category {
         TOP, OUTER, PANTS, SKIRT_ONE_PIECE, SHOES, BAG
@@ -23,9 +28,8 @@ public class CategorySelection {
     }
 
 
-
     public void changeCategory(int selectedCategory) {
-        for (Category category:Category.values()) {
+        for (Category category : Category.values()) {
             if (selectedCategory == category.ordinal()) {
                 this.selectedCategory = category;
             }
@@ -43,6 +47,5 @@ public class CategorySelection {
     public int getSelectedDetailedCategory() {
         return selectedDetailedCategory;
     }
-
 
 }

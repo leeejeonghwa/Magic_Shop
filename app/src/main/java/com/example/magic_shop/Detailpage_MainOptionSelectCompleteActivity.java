@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivity {
     private Button btnAdd, btnMinus, btnOption;
+    private Button btnBag;
+    private Button btnHome;
+    private Button btnSearch;
     private TextView Count;
     private int count = 1;
 
@@ -42,6 +45,9 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
         btnAdd = findViewById(R.id.btn_add);
         btnMinus = findViewById(R.id.btn_minus);
         btnOption = findViewById(R.id.btn_option);
+        btnHome = findViewById(R.id.home_btn);
+        btnBag = findViewById(R.id.bag_btn);
+        btnSearch = findViewById(R.id.search_btn);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +69,30 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
                 startActivity(intent);
             }
         });

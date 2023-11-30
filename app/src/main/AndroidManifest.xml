@@ -72,6 +72,8 @@
         <activity android:name=".Seller_OrderDeliveryListActivity" />
         <activity android:name=".Seller_RefundExchangeListActivity" />
         <activity android:name=".Seller_ReviewListActivity" />
+        <activity android:name=".ShoppingBasketActivity"/>
+        <activity android:name=".OrderFormActivity"/>
 
 
     </application>
