@@ -23,11 +23,13 @@ public class SessionManager extends AppCompatActivity{
         editor = pref.edit();
     }
 
-    public void setLogin(boolean isLoggedIn, String userID, String userPassword) {
+    public void setUserInfo(boolean isLoggedIn, String userID, String userPassword, String userName, String userNickname, String userType) {
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn);
         editor.putString(KEY_USER_ID, userID);
         editor.putString(KEY_USER_PASSWORD, userPassword);
-        // 다른 사용자 정보 저장
+        editor.putString(KEY_USER_NAME, userName);
+        editor.putString(KEY_USER_NICKNAME, userNickname);
+        editor.putString(KEY_USER_TYPE, userType);
         editor.apply();
     }
 
@@ -51,7 +53,7 @@ public class SessionManager extends AppCompatActivity{
         return pref.getString(KEY_USER_NICKNAME, "");
     }
 
-    public String getUserClassification() {
+    public String getUserType() {
         return pref.getString(KEY_USER_TYPE, "");
     }
 

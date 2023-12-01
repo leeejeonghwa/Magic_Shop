@@ -45,8 +45,7 @@ public class Seller_RefundExchangeListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

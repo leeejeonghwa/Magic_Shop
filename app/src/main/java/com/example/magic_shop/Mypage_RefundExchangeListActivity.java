@@ -50,6 +50,16 @@ public class Mypage_RefundExchangeListActivity extends AppCompatActivity {
             }
         });
 
+        Button btn_home = (Button) findViewById(R.id.btn_home);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         RecyclerView recyclerView = findViewById(R.id.refund_exchange_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

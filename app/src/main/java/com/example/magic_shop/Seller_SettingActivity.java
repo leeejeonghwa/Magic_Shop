@@ -16,11 +16,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Mypage_SettingActivity extends AppCompatActivity {
+public class Seller_SettingActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_setting);
+        setContentView(R.layout.seller_activity_setting);
         getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
@@ -55,7 +55,7 @@ public class Mypage_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_InputPasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_InputPasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,17 +65,7 @@ public class Mypage_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_ChangePasswordActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btn_delivery_address_manage = (Button) findViewById(R.id.btn_delivery_address_manage);
-        btn_delivery_address_manage.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +75,7 @@ public class Mypage_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_RefundAccountManageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_RefundAccountManageActivity.class);
                 startActivity(intent);
             }
         });
@@ -94,7 +84,7 @@ public class Mypage_SettingActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    Log.d("Mypage_SettingActivity", "서버 응답");
+                    Log.d("Seller_SettingActivity", "서버 응답");
                     JSONObject jsonObject = new JSONObject(response);
                     boolean success = jsonObject.getBoolean("success");
                     if (success) {
@@ -114,8 +104,8 @@ public class Mypage_SettingActivity extends AppCompatActivity {
             }
         };
 
-        LoginRequest loginRequest = new LoginRequest(Mypage_SettingActivity.this, userID, userPassword, responseListener);
-        RequestQueue queue = Volley.newRequestQueue(Mypage_SettingActivity.this);
+        LoginRequest loginRequest = new LoginRequest(Seller_SettingActivity.this, userID, userPassword, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(Seller_SettingActivity.this);
         queue.add(loginRequest);
     }
 
