@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
         shoppingcart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
                 startActivity(intent);
             }
         });

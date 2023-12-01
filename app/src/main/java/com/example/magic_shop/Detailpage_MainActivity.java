@@ -17,6 +17,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
     private Button btnHome;
     private Button btnSearch;
     private Button btnBag;
+    private Button btnBack;
 
 
     @Override
@@ -31,6 +32,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         btnHome = findViewById(R.id.home_btn);
         btnSearch = findViewById(R.id.search_btn);
         btnBag = findViewById(R.id.bag_btn);
+        btnBack = findViewById(R.id.back_btn);
 
 
         btnBuy.setVisibility(View.VISIBLE);
@@ -40,6 +42,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         btnHome.setVisibility(View.VISIBLE);
         btnSearch.setVisibility(View.VISIBLE);
         btnBag.setVisibility(View.VISIBLE);
+        btnBack.setVisibility(View.VISIBLE);
 
 
         // btnBuy의 클릭 이벤트 처리
@@ -91,14 +94,20 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             }
         });
 
-        btnBag.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
+        //쇼핑카트 버튼
+        btnBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
 }

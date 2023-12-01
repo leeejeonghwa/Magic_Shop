@@ -23,8 +23,6 @@ public class SearchActivity extends AppCompatActivity{
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 여기에 이전 페이지로 이동하는 코드를 작성합니다.
-                // 예를 들어, 현재는 단순히 현재 액티비티를 종료하는 코드를 사용합니다.
                 finish();
             }
         });

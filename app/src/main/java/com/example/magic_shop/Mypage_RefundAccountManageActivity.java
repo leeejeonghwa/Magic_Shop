@@ -11,7 +11,7 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_refund_account_manage);
+        setContentView(R.layout.activity_refund_account_manage);
         getWindow().setWindowAnimations(0);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -19,8 +19,7 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

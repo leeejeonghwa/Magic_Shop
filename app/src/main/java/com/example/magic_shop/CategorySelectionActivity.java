@@ -12,6 +12,11 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
 
     private ImageView imageView;
+    private Button searchButton;
+    private Button btnShoppingBasket;
+    private Button btnCatSearch;
+    private Button btnHome;
+    private Button btnMypage;
 
     private int selectedCategory = 0;
 
@@ -74,6 +79,52 @@ public class CategorySelectionActivity extends AppCompatActivity {
                 startActivity(intent); // Intent를 사용하여 SecondActivity 시작
             }
         });
+        searchButton = findViewById(R.id.search_window_id);
+        // search_id 버튼에 클릭 리스너 추가
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnShoppingBasket = findViewById(R.id.shopping_basket_id);
+        // search_id 버튼에 클릭 리스너 추가
+        btnShoppingBasket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //카테고리 서치 버튼
+        btnCatSearch = findViewById(R.id.category_search_id);
+        // search_id 버튼에 클릭 리스너 추가
+
+        //홈버튼
+        btnHome = findViewById(R.id.go_home_id);
+        // search_id 버튼에 클릭 리스너 추가
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //마이페이지 버튼
+        btnMypage = findViewById(R.id.mypage_id);
+        // search_id 버튼에 클릭 리스너 추가
+        btnMypage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -133,6 +184,8 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
         }
     }
+
+
 
 
 

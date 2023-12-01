@@ -16,17 +16,25 @@ public class Mypage_InputPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.mypage_activity_input_password);
+        setContentView(R.layout.activity_input_password);
         et_pass = findViewById(R.id.editTextCurrentPassword);
         getWindow().setWindowAnimations(0);
-        sessionManager = new SessionManager(getApplicationContext());
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
+                onBackPressed();
+            }
+        });
+
+        Button btn_home = (Button) findViewById(R.id.btn_home);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -51,8 +59,8 @@ public class Mypage_InputPasswordActivity extends AppCompatActivity {
                     Toast.makeText(Mypage_InputPasswordActivity.this, "기존 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
 
 
-    });
-        }
-            }
+    }
+}

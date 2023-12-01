@@ -15,6 +15,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private Button btnSize_M;
     private Button btnSize_L;
     private Button btnBack;
+    private Button btnBag;
+    private Button btnHome;
+    private Button btnSearch;
 
     private String color; // 현재 선택된 색상
 
@@ -31,6 +34,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnSize_M = findViewById(R.id.btn_size_M);
         btnSize_L = findViewById(R.id.btn_size_L);
         btnBack = findViewById(R.id.back_btn);
+        btnHome = findViewById(R.id.home_btn);
+        btnBag = findViewById(R.id.bag_btn);
+        btnSearch = findViewById(R.id.search_btn);
 
         // 초기 상태에서는 btnBuy를 보이고 btnOption을 숨깁니다.
         btnOption.setVisibility(View.VISIBLE);
@@ -41,6 +47,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnSize_M.setVisibility(View.GONE);
         btnSize_L.setVisibility(View.GONE);
         btnBack.setVisibility(View.VISIBLE);
+        btnBag.setVisibility(View.VISIBLE);
+        btnHome.setVisibility(View.VISIBLE);
+        btnSearch.setVisibility(View.VISIBLE);
 
         // btnBuy의 클릭 이벤트 처리
         btnColorSelect.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +115,29 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
                 startActivity(intent);
             }
         });

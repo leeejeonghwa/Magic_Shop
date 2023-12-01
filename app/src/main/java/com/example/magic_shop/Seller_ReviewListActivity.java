@@ -47,8 +47,7 @@ public class Seller_ReviewListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

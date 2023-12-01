@@ -13,6 +13,7 @@ public class Detailpage_MainSizeActivity extends AppCompatActivity {
     private Button btnReview;
     private Button btnAsk;
     private Button btnProduct;
+    private Button btnBack;
 
 
     @Override
@@ -24,11 +25,13 @@ public class Detailpage_MainSizeActivity extends AppCompatActivity {
         btnReview = findViewById(R.id.reviewBtn);
         btnProduct = findViewById(R.id.productBtn);
         btnAsk = findViewById(R.id.askBtn);
+        btnBack = findViewById(R.id.back_btn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);
         btnProduct.setVisibility(View.VISIBLE);
         btnAsk.setVisibility(View.VISIBLE);
+        btnBack.setVisibility(View.VISIBLE);
 
 
         // btnBuy의 클릭 이벤트 처리
@@ -60,6 +63,13 @@ public class Detailpage_MainSizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Detailpage_MainActivity.class);
                 startActivity(intent);
             }
         });
