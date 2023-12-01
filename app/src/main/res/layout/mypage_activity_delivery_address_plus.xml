@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="26dp"
-        android:text="주소 추가"
+        android:text="배송지 추가"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -48,12 +48,12 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/address_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="80dp"
-        android:text="이름"
+        android:text="배송지명"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/editTextRecipient"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -74,21 +74,21 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/recipient" />
 
     <TextView
-        android:id="@+id/address_name"
+        android:id="@+id/recipient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="66dp"
-        android:text="배송지명(선택)"
+        android:text="받는 분"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/address_name"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -117,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_name"
+        app:layout_constraintTop_toBottomOf="@+id/recipient"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -150,7 +150,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextAddress_1"
+        android:id="@+id/editTextAddress"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -164,40 +164,27 @@
         app:layout_constraintTop_toBottomOf="@+id/address" />
 
     <EditText
-        android:id="@+id/editTextAddress_2"
+        android:id="@+id/editTextAddressDetail"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:background="@drawable/mypage_edit_text_rounded_border_gray"
         android:ems="10"
+        android:hint="104동 303호"
         android:paddingLeft="10dp"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddress_1" />
-
-    <EditText
-        android:id="@+id/editTextAddress_3"
-        android:layout_width="355dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/mypage_edit_text_rounded_border_gray"
-        android:ems="10"
-        android:paddingLeft="10dp"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddress_2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
 
     <TextView
         android:id="@+id/address_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="180dp"
-        android:text="배송 요청사항(선택)"
+        android:layout_marginTop="120dp"
+        android:text="배송 요청사항"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +194,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextAddressRequest"
+        android:id="@+id/editTextDeliveryAddressRequest"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -221,15 +208,15 @@
         app:layout_constraintTop_toBottomOf="@+id/address_request" />
 
     <CheckBox
-        android:id="@+id/btn_address_default_check"
+        android:id="@+id/btn_delivery_address_default_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="68dp"
+        android:button="@drawable/mypage_bg_round_checkbox_button"
         android:text=" 기본배송지로 등록하기"
         android:textSize="14sp"
-        android:button="@drawable/mypage_bg_round_checkbox_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address_request"
         tools:ignore="HardcodedText" />

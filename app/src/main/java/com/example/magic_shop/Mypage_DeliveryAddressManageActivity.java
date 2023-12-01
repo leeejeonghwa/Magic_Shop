@@ -22,13 +22,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
     public List<AddressItem> getAddressList() {
         List<AddressItem> addressList = new ArrayList<>();
 
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        addressList.add(new AddressItem("집", "010-1234-5678", "서울시 강남구"));
-        addressList.add(new AddressItem("회사", "010-9876-5432", "경기도 수원시"));
-        addressList.add(new AddressItem("친구집", "010-9876-5432", "경기도 수원시"));
-        addressList.add(new AddressItem("회사2", "010-9876-5432", "경기도 수원시"));
-        addressList.add(new AddressItem("회사3", "010-9876-5432", "경기도 수원시"));
-        // ... 추가적인 데이터
+
 
         return addressList;
     }

@@ -65,7 +65,7 @@ public class Seller_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });
