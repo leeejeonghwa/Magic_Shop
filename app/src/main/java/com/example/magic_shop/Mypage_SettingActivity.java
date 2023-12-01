@@ -99,13 +99,14 @@ public class Mypage_SettingActivity extends AppCompatActivity {
                     boolean success = jsonObject.getBoolean("success");
                     if (success) {
                         String userName = jsonObject.getString("userName");
-                        String userID = jsonObject.getString("userID");
-                        String userPassword = jsonObject.getString("userPassword");
                         String userNickname = jsonObject.getString("userNickname");
-                        String userType = jsonObject.getString("userType");
+
 
                         TextView userNameTextView = findViewById(R.id.user_name_view);
+                        TextView userNicknameTextView = findViewById(R.id.nickname_view);
+
                         userNameTextView.setText(userName);
+                        userNicknameTextView.setText(userNickname);
                     } else {
                     }
                 } catch (JSONException e) {
@@ -117,6 +118,36 @@ public class Mypage_SettingActivity extends AppCompatActivity {
         LoginRequest loginRequest = new LoginRequest(Mypage_SettingActivity.this, userID, userPassword, responseListener);
         RequestQueue queue = Volley.newRequestQueue(Mypage_SettingActivity.this);
         queue.add(loginRequest);
+
+
+        Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.d("refund", "서버 응답1");
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean success = jsonObject.getBoolean("success");
+                    if (success) {
+                        String bank = jsonObject.getString("bank");
+                        String account = jsonObject.getString("account_number");
+
+
+                        TextView accountview = findViewById(R.id.account_view);
+                        TextView bankview = findViewById(R.id.bankname_view);
+
+                        bankview.setText(bank);
+                        accountview.setText(account);
+                    } else {
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        RefunddataRequest refunddataRequest= new RefunddataRequest(userID, responseListener1, null );
+        RequestQueue queue1 = Volley.newRequestQueue(Mypage_SettingActivity.this);
+        queue1.add(refunddataRequest);
     }
 
 }
