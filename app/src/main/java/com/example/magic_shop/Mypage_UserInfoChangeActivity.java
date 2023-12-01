@@ -108,6 +108,9 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
                                 // 이름 변경 성공
                                 Log.d("NameChange", "Name changed successfully");
                                 // 이후 필요한 UI 업데이트나 다른 작업 수행
+                                // 변경 성공 후 다음 화면으로 이동하는 코드 추가
+                                Intent intent = new Intent(Mypage_UserInfoChangeActivity.this, Mypage_SettingActivity.class);
+                                startActivity(intent);
                             } else {
                                 // 이름 변경 실패
                                 Log.d("NameChange", "Failed to change name");
@@ -145,8 +148,10 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
 
                             if (success) {
                                 // 이름 변경 성공
-                                Log.d("NameChange", "Name changed successfully");
+                                Log.d("nickNameChange", "nickName changed successfully");
                                 // 이후 필요한 UI 업데이트나 다른 작업 수행
+                                Intent intent = new Intent(Mypage_UserInfoChangeActivity.this, Mypage_SettingActivity.class);
+                                startActivity(intent);
                             } else {
                                 // 이름 변경 실패
                                 Log.d("NameChange", "Failed to change name");
