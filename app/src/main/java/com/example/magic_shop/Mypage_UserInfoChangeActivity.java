@@ -56,25 +56,6 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_name_change = (Button) findViewById(R.id.btn_name_change);
-        btn_name_change.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btn_user_nick_name_change = (Button) findViewById(R.id.btn_user_nickname_change);
-        btn_user_nick_name_change.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
-                startActivity(intent);
-            }
-        });
 
         bt_name_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,50 +78,11 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
                             if (success) {
                                 // 이름 변경 성공
                                 Log.d("NameChange", "Name changed successfully");
-                                // 이후 필요한 UI 업데이트나 다른 작업 수행
-                            } else {
-                                // 이름 변경 실패
-                                Log.d("NameChange", "Failed to change name");
-                                // 이후 필요한 UI 업데이트나 다른 작업 수행
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-                // RequestQueue에 요청을 추가
-                RequestQueue requestQueue = Volley.newRequestQueue(Mypage_UserInfoChangeActivity.this);
-                requestQueue.add(changenameRequest);
-            }
-        });
-
-        bt_nickname_change.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 사용자가 입력한 이름 가져오기
-                String nickname = et_nickname.getText().toString();
-
-                // 세션 매니저를 사용하여 사용자 ID 및 비밀번호 가져오기
-                String userID = sessionManager.getUserId();
-                String userPassword = sessionManager.getUserPassword();
-
-                // 서버에 이름 변경 요청 보내기
-                ChangenameRequest changenameRequest = new ChangenameRequest(userID,nickname, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-
-                            if (success) {
-                                // 이름 변경 성공
-                                Log.d("NameChange", "Name changed successfully");
-                                // 이후 필요한 UI 업데이트나 다른 작업 수행
-                                // 변경 성공 후 다음 화면으로 이동하는 코드 추가
                                 Intent intent = new Intent(Mypage_UserInfoChangeActivity.this, Mypage_SettingActivity.class);
                                 startActivity(intent);
-                            } else {
+                                finish();                            }
+
+                            else {
                                 // 이름 변경 실패
                                 Log.d("NameChange", "Failed to change name");
                                 // 이후 필요한 UI 업데이트나 다른 작업 수행
@@ -165,7 +107,6 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
 
                 // 세션 매니저를 사용하여 사용자 ID 및 비밀번호 가져오기
                 String userID = sessionManager.getUserId();
-                String userPassword = sessionManager.getUserPassword();
 
                 // 서버에 이름 변경 요청 보내기
                 ChangenicknameRequest changenicknameRequest = new ChangenicknameRequest(userID,nickname, new Response.Listener<String>() {
@@ -177,13 +118,15 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
 
                             if (success) {
                                 // 이름 변경 성공
-                                Log.d("nickNameChange", "nickName changed successfully");
+                                Log.d("nicknameChange", "nickName changed successfully");
                                 // 이후 필요한 UI 업데이트나 다른 작업 수행
+                                // 변경 성공 후 다음 화면으로 이동하는 코드 추가
                                 Intent intent = new Intent(Mypage_UserInfoChangeActivity.this, Mypage_SettingActivity.class);
                                 startActivity(intent);
+                                finish();
                             } else {
                                 // 이름 변경 실패
-                                Log.d("NameChange", "Failed to change name");
+                                Log.d("nicknameChange", "Failed to change name");
                                 // 이후 필요한 UI 업데이트나 다른 작업 수행
                             }
                         } catch (JSONException e) {
@@ -197,8 +140,6 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
                 requestQueue.add(changenicknameRequest);
             }
         });
-
-
 
 
 
