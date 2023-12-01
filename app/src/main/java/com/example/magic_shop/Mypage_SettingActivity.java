@@ -129,7 +129,7 @@ public class Mypage_SettingActivity extends AppCompatActivity {
                     boolean success = jsonObject.getBoolean("success");
                     if (success) {
                         String bank = jsonObject.getString("bank");
-                        String account = jsonObject.getString("account_holder");
+                        String account = jsonObject.getString("account_number");
 
 
                         TextView accountview = findViewById(R.id.account_view);
