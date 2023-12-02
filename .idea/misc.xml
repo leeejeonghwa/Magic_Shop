@@ -101,7 +101,7 @@
         <entry key="app/src/main/res/layout/mypage_activity_change_password.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_edit.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_check.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_input_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_main.xml" value="0.25" />
@@ -114,7 +114,7 @@
         <entry key="app/src/main/res/layout/mypage_activity_setting.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_item_reviewed.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_item_unreviewed.xml" value="0.1" />
@@ -154,7 +154,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

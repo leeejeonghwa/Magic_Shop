@@ -1,8 +1,10 @@
 package com.example.magic_shop;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +16,45 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
-    public List<AddressItem> getAddressList() {
+    public List<AddressItem> getAddressList(String jsonResponse) throws JSONException {
         List<AddressItem> addressList = new ArrayList<>();
 
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        addressList.add(new AddressItem("집", "010-1234-5678", "서울시 강남구"));
-        addressList.add(new AddressItem("회사", "010-9876-5432", "경기도 수원시"));
-        addressList.add(new AddressItem("친구집", "010-9876-5432", "경기도 수원시"));
-        addressList.add(new AddressItem("회사2", "010-9876-5432", "경기도 수원시"));
-        addressList.add(new AddressItem("회사3", "010-9876-5432", "경기도 수원시"));
-        // ... 추가적인 데이터
+        // 전체 응답을 JSONObject로 변환
+        JSONObject responseJson = new JSONObject(jsonResponse);
+
+        // "deliveryAddresses" 필드의 값을 JSONArray로 가져오기
+        JSONArray jsonArray = responseJson.getJSONArray("deliveryAddresses");
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+            String addressID = jsonObject.getString(("addressID"));
+            String deliveryAddressName = jsonObject.getString("deliveryAddressName");
+            String recipient = jsonObject.getString("recipient");
+            String phoneNumber = jsonObject.getString("phoneNumber");
+            String address = jsonObject.getString("address");
+            String addressDetail = jsonObject.getString("addressDetail");
+            String deliveryRequest = jsonObject.getString("deliveryRequest");
+            String defaultDeliveryAddress = jsonObject.getString("defaultDeliveryAddress");
+
+            AddressItem addressItem = new AddressItem(addressID, deliveryAddressName, recipient, phoneNumber, address,
+                    addressDetail, deliveryRequest, defaultDeliveryAddress);
+
+            addressList.add(addressItem);
+        }
 
         return addressList;
     }
@@ -39,6 +65,9 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage_activity_delivery_address_manage);
         getWindow().setWindowAnimations(0);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        String userID = sessionManager.getUserId();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -70,24 +99,53 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         });
 
         RecyclerView recyclerView = findViewById(R.id.address_recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(Mypage_DeliveryAddressManageActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<AddressItem> addressList = getAddressList(); // 여러 배송지 정보를 가져오는 메서드
-        AddressAdapter adapter = new AddressAdapter(addressList, this);
-        recyclerView.setAdapter(adapter);
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.d("Mypage_DeliveryAddressManageActivity", "서버 응답: " + response);
+
+                    List<AddressItem> addressList = getAddressList(response);
+                    AddressAdapter addressAdapter = new AddressAdapter(addressList, Mypage_DeliveryAddressManageActivity.this);
+                    recyclerView.setAdapter(addressAdapter);  // 어댑터 설정
+                    addressAdapter.notifyDataSetChanged(); // 어댑터 갱신
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        DeliveryAddressGetRequest deliveryAddressGetRequest = new DeliveryAddressGetRequest(Mypage_DeliveryAddressManageActivity.this, userID, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressManageActivity.this);
+        queue.add(deliveryAddressGetRequest);
     }
 
     // AddressItem 클래스는 각 배송지 정보를 나타냅니다.
     public class AddressItem {
-        String name;
+        String addressID;
+        String deliveryAddressName;
+        String recipient;
         String phoneNumber;
         String address;
+        String addressDetail;
+        String deliveryRequest;
+        String defaultDeliveryAddress;
 
-        public AddressItem(String name, String phoneNumber, String address) {
-            this.name = name;
+        public AddressItem(String addressID, String deliveryAddressName, String recipient,String phoneNumber, String address,
+                           String addressDetail, String deliveryRequest, String defaultDeliveryAddress) {
+            this.addressID = addressID;
+            this.deliveryAddressName = deliveryAddressName;
+            this.recipient = recipient;
             this.phoneNumber = phoneNumber;
             this.address = address;
+            this.addressDetail = addressDetail;
+            this.deliveryRequest = deliveryRequest;
+            this.defaultDeliveryAddress = defaultDeliveryAddress;
         }
     }
 
@@ -120,20 +178,27 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
             return addressList.size();
         }
 
-        // AddressViewHolder 클래스는 각 아이템의 뷰를 관리합니다.
         public class AddressViewHolder extends RecyclerView.ViewHolder {
-            private final TextView nameTextView;
+            private final TextView deliveryAddressNameTextView;
+            private final TextView recipientTextView;
             private final TextView phoneNumberTextView;
             private final TextView addressTextView;
+            private final TextView addressDetailTextView;
+            private final TextView deliveryRequestTextView;
+            private final TextView defaultDeliveryAddressTextView;
             public final Button addressEditButton;
             private final Context context;
 
             public AddressViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
-                nameTextView = itemView.findViewById(R.id.address_name);
-                phoneNumberTextView = itemView.findViewById(R.id.address_phone_number);
+                deliveryAddressNameTextView = itemView.findViewById(R.id.deliveryAddressName);
+                recipientTextView = itemView.findViewById(R.id.recipient);
+                phoneNumberTextView = itemView.findViewById(R.id.phoneNumber);
                 addressTextView = itemView.findViewById(R.id.address);
+                addressDetailTextView = itemView.findViewById(R.id.addressDetail);
+                deliveryRequestTextView = itemView.findViewById(R.id.deliveryRequest);
+                defaultDeliveryAddressTextView = itemView.findViewById(R.id.defaultDeliveryAddress);
                 addressEditButton = itemView.findViewById(R.id.btn_address_edit);
 
                 addressEditButton.setOnClickListener(new View.OnClickListener() {
@@ -145,18 +210,34 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                             // 다음 화면으로 이동하는 코드
                             AddressItem addressItem = addressList.get(position);
                             Intent intent = new Intent(context, Mypage_DeliveryAddressEditActivity.class);
-                            intent.putExtra("name", addressItem.name);
+                            intent.putExtra("addressID", addressItem.addressID);
+                            intent.putExtra("deliveryAddressName", addressItem.deliveryAddressName);
+                            intent.putExtra("recipient", addressItem.recipient);
                             intent.putExtra("phoneNumber", addressItem.phoneNumber);
                             intent.putExtra("address", addressItem.address);
+                            intent.putExtra("addressDetail", addressItem.addressDetail);
+                            intent.putExtra("deliveryRequest", addressItem.deliveryRequest);
+                            intent.putExtra("defaultDeliveryAddress", addressItem.defaultDeliveryAddress);
                             context.startActivity(intent);
                         }
                     }
                 });
             }
+
             void bind(AddressItem addressItem) {
-                nameTextView.setText(addressItem.name);
+                // 각 TextView에 해당하는 데이터를 설정
+                deliveryAddressNameTextView.setText(addressItem.deliveryAddressName);
+                recipientTextView.setText(addressItem.recipient);
                 phoneNumberTextView.setText(addressItem.phoneNumber);
                 addressTextView.setText(addressItem.address);
+                addressDetailTextView.setText(addressItem.addressDetail);
+                deliveryRequestTextView.setText(addressItem.deliveryRequest);
+
+                if ("1".equals(addressItem.defaultDeliveryAddress)) {
+                    defaultDeliveryAddressTextView.setText("기본배송지");
+                } else {
+                    defaultDeliveryAddressTextView.setText(null);
+                }
             }
         }
     }
