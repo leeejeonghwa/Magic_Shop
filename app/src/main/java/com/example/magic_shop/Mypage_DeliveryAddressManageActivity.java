@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -47,6 +48,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
+            String userID = jsonObject.getString(("userID"));
             String addressID = jsonObject.getString(("addressID"));
             String deliveryAddressName = jsonObject.getString("deliveryAddressName");
             String recipient = jsonObject.getString("recipient");
@@ -56,31 +58,13 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
             String deliveryRequest = jsonObject.getString("deliveryRequest");
             String defaultDeliveryAddress = jsonObject.getString("defaultDeliveryAddress");
 
-            AddressItem addressItem = new AddressItem(addressID, deliveryAddressName, recipient, phoneNumber, address,
+            AddressItem addressItem = new AddressItem(userID, addressID, deliveryAddressName, recipient, phoneNumber, address,
                     addressDetail, deliveryRequest, defaultDeliveryAddress);
 
             addressList.add(addressItem);
         }
 
         return addressList;
-    }
-
-    void showDialog() {
-        AlertDialog.Builder msgBuilder = new AlertDialog.Builder(Mypage_DeliveryAddressManageActivity.this)
-//                .setTitle("배송지 삭제")
-                .setMessage("배송지를 삭제 하시겠습니까?")
-                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                })
-                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-        AlertDialog msgDlg = msgBuilder.create();
-        msgDlg.show();
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,6 +139,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
     // AddressItem 클래스는 각 배송지 정보를 나타냅니다.
     public class AddressItem {
+        String userID;
         String addressID;
         String deliveryAddressName;
         String recipient;
@@ -164,8 +149,9 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         String deliveryRequest;
         String defaultDeliveryAddress;
 
-        public AddressItem(String addressID, String deliveryAddressName, String recipient,String phoneNumber, String address,
+        public AddressItem(String userID, String addressID, String deliveryAddressName, String recipient,String phoneNumber, String address,
                            String addressDetail, String deliveryRequest, String defaultDeliveryAddress) {
+            this.userID = userID;
             this.addressID = addressID;
             this.deliveryAddressName = deliveryAddressName;
             this.recipient = recipient;
@@ -258,12 +244,73 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                 addressDeleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showDialog();
-                        // 클릭 이벤트 처리
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            AddressItem addressItem = addressList.get(position);
-                        }
+                        AlertDialog.Builder msgBuilder = new AlertDialog.Builder(Mypage_DeliveryAddressManageActivity.this)
+                                .setMessage("배송지를 삭제 하시겠습니까?")
+                                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        int position = getAdapterPosition();
+                                        if (position != RecyclerView.NO_POSITION) {
+                                            AddressItem addressItem = addressList.get(position);
+
+                                            // 응답 리스너 정의
+                                            Response.Listener<String> responseListener = new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+                                                    try {
+                                                        JSONObject jsonResponse = new JSONObject(response);
+
+                                                        boolean success = jsonResponse.getBoolean("success");
+
+                                                        if (success) {
+                                                            // 성공적으로 삭제된 경우
+                                                            Toast.makeText(context, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                                            // 리스트에서 삭제된 항목 제거
+                                                            addressList.remove(position);
+                                                            notifyItemRemoved(position);
+                                                            notifyItemRangeChanged(position, addressList.size());
+                                                        } else {
+                                                            // 삭제 실패한 경우
+                                                            Toast.makeText(context, "실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                                        }
+
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            };
+
+                                            // 에러 리스너 정의
+                                            Response.ErrorListener errorListener = new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                    // 에러 처리
+                                                    Log.e("Volley Error", error.toString());
+                                                }
+                                            };
+
+                                            // DeliveryAddressDeleteRequest 객체 생성
+                                            DeliveryAddressDeleteRequest deleteRequest = new DeliveryAddressDeleteRequest(
+                                                    addressItem.userID,
+                                                    addressItem.addressID,
+                                                    responseListener,
+                                                    errorListener
+                                            );
+
+                                            // 요청을 큐에 추가
+                                            RequestQueue requestQueue = Volley.newRequestQueue(context);
+                                            requestQueue.add(deleteRequest);
+                                        }
+                                    }
+                                })
+                                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                });
+                        AlertDialog msgDlg = msgBuilder.create();
+                        msgDlg.show();
                     }
                 });
             }
