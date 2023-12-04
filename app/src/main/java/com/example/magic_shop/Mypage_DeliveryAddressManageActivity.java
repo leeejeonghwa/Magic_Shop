@@ -2,6 +2,7 @@ package com.example.magic_shop;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,6 +65,24 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         return addressList;
     }
 
+    void showDialog() {
+        AlertDialog.Builder msgBuilder = new AlertDialog.Builder(Mypage_DeliveryAddressManageActivity.this)
+//                .setTitle("배송지 삭제")
+                .setMessage("배송지를 삭제 하시겠습니까?")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+        AlertDialog msgDlg = msgBuilder.create();
+        msgDlg.show();
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage_activity_delivery_address_manage);
@@ -100,7 +120,6 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int itemCount = recyclerView.getAdapter().getItemCount();
-                Log.d("아이템 개수 : ", String.valueOf(itemCount));
                 if(itemCount>=5){
                     Toast.makeText(getApplicationContext(), "배송지는 5개가 최대입니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -196,6 +215,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
             private final TextView deliveryRequestTextView;
             private final TextView defaultDeliveryAddressTextView;
             public final Button addressEditButton;
+            public final Button addressDeleteButton;
             private final Context context;
 
             public AddressViewHolder(View itemView, Context context) {
@@ -209,7 +229,9 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                 deliveryRequestTextView = itemView.findViewById(R.id.deliveryRequest);
                 defaultDeliveryAddressTextView = itemView.findViewById(R.id.defaultDeliveryAddress);
                 addressEditButton = itemView.findViewById(R.id.btn_address_edit);
+                addressDeleteButton = itemView.findViewById(R.id.btn_address_delete);
 
+                // 배송지 수정
                 addressEditButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -228,6 +250,19 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                             intent.putExtra("deliveryRequest", addressItem.deliveryRequest);
                             intent.putExtra("defaultDeliveryAddress", addressItem.defaultDeliveryAddress);
                             context.startActivity(intent);
+                        }
+                    }
+                });
+
+                // 배송지 삭제
+                addressDeleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDialog();
+                        // 클릭 이벤트 처리
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            AddressItem addressItem = addressList.get(position);
                         }
                     }
                 });
