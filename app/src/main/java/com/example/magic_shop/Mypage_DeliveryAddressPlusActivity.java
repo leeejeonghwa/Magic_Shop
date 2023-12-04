@@ -87,21 +87,32 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
 
                     boolean isDefault = defaultDeliveryAddress.equals("1");
 
-                    // 기존 기본 배송지 0으로 업데이트
+                    // 기존 기본 배송지 0으로 업데이트하고 추가
                     if (isDefault) {
-                        resetDefaultDeliveryAddresses(userID);
+                        resetDefaultDeliveryAddressesAndAddNew(
+                                userID,
+                                deliveryAddressName,
+                                recipient,
+                                phoneNumber,
+                                address,
+                                addressDetail,
+                                deliveryAddressRequest,
+                                defaultDeliveryAddress
+                        );
                     }
 
-                    plusDeliveryAddress(
-                            userID,
-                            deliveryAddressName,
-                            recipient,
-                            phoneNumber,
-                            address,
-                            addressDetail,
-                            deliveryAddressRequest,
-                            defaultDeliveryAddress
-                    );
+                    else {
+                        plusDeliveryAddress(
+                                userID,
+                                deliveryAddressName,
+                                recipient,
+                                phoneNumber,
+                                address,
+                                addressDetail,
+                                deliveryAddressRequest,
+                                defaultDeliveryAddress
+                        );
+                    }
 
                     Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
                     startActivity(intent);
@@ -136,6 +147,68 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "서버 응답 형식 오류로 회원 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void resetDefaultDeliveryAddressesAndAddNew(
+            String userID, String deliveryAddressName, String recipient, String phoneNumber,
+            String address, String addressDetail, String detailRequest, String defaultDeliveryAddress) {
+
+        // 기존 기본 배송지를 모두 0으로 설정
+        resetDefaultDeliveryAddresses(userID, new OnResetComplete() {
+            @Override
+            public void onResetComplete() {
+                // 모두 0으로 설정된 후에 새로운 배송지를 추가
+                plusDeliveryAddress(
+                        userID,
+                        deliveryAddressName,
+                        recipient,
+                        phoneNumber,
+                        address,
+                        addressDetail,
+                        detailRequest,
+                        defaultDeliveryAddress
+                );
+            }
+        });
+    }
+
+    private void resetDefaultDeliveryAddresses(String userID, OnResetComplete onResetComplete) {
+        // 기본 배송지를 모두 0으로 설정하는 서버 요청 코드
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.d("Mypage_DeliveryAddressPlusActivity", " resetDefaultDeliveryAddresses() 서버 응답: " + response);
+
+                    // 서버 응답 처리
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+
+                    if (success) {
+                        Log.d("Mypage_DeliveryAddressPlusActivity", " 기본 배송지를 모두 0으로 설정 성공");
+                        // 콜백을 통해 완료를 알림
+                        onResetComplete.onResetComplete();
+                    } else {
+                        Log.e("Mypage_DeliveryAddressPlusActivity", " 기본 배송지를 모두 0으로 설정 실패");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("Mypage_DeliveryAddressPlusActivity", " JSON 파싱 오류: " + e.getMessage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("Mypage_DeliveryAddressPlusActivity", " 예외 발생: " + e.getMessage());
+                }
+            }
+        };
+
+        // 서버 요청 클래스
+        DefaultDeliveryAddressResetRequest resetRequest = new DefaultDeliveryAddressResetRequest(userID, responseListener, errorListener);
+
+        // Volley 요청 큐에 추가
+        RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressPlusActivity.this);
+        queue.add(resetRequest);
+    }
+
 
     @SuppressLint("LongLogTag")
     private void plusDeliveryAddress(String userID, String deliveryAddressName, String recipient, String phoneNumber,
@@ -189,42 +262,6 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
         }
     }
 
-    private void resetDefaultDeliveryAddresses(String userID) {
-        // 기본 배송지를 모두 0으로 설정하는 서버 요청 코드
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onResponse(String response) {
-                try {
-                    Log.d("Mypage_DeliveryAddressPlusActivity", " resetDefaultDeliveryAddresses() 서버 응답: " + response);
-
-                    // 서버 응답 처리
-                    JSONObject jsonResponse = new JSONObject(response);
-                    boolean success = jsonResponse.getBoolean("success");
-
-                    if (success) {
-                        Log.d("Mypage_DeliveryAddressPlusActivity", " 기본 배송지를 모두 0으로 설정 성공");
-                    } else {
-                        Log.e("Mypage_DeliveryAddressPlusActivity", " 기본 배송지를 모두 0으로 설정 실패");
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("Mypage_DeliveryAddressPlusActivity", " JSON 파싱 오류: " + e.getMessage());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Log.e("Mypage_DeliveryAddressPlusActivity", " 예외 발생: " + e.getMessage());
-                }
-            }
-        };
-
-        // 서버 요청 클래스
-        DefaultDeliveryAddressResetRequest resetRequest = new DefaultDeliveryAddressResetRequest(userID, responseListener, errorListener);
-
-        // Volley 요청 큐에 추가
-        RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressPlusActivity.this);
-        queue.add(resetRequest);
-    }
-
     private void showAlert(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(Mypage_DeliveryAddressPlusActivity.this);
         builder.setMessage(message)
@@ -232,4 +269,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                 .create()
                 .show();
     }
+}
+interface OnResetComplete {
+    void onResetComplete();
 }
