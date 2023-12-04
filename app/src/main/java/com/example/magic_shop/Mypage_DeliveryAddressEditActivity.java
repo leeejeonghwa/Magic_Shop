@@ -145,6 +145,7 @@ public class Mypage_DeliveryAddressEditActivity extends AppCompatActivity {
             String recipient = jsonResponse.getString("recipient");
             String phoneNumber = jsonResponse.getString("phoneNumber");
             String address = jsonResponse.getString("address");
+            String addressDetail = jsonResponse.getString("addressDetail");
             String deliveryRequest = jsonResponse.getString("deliveryRequest");
             String defaultDeliveryAddress = jsonResponse.getString("defaultDeliveryAddress");
 
@@ -153,6 +154,7 @@ public class Mypage_DeliveryAddressEditActivity extends AppCompatActivity {
             editTextRecipient.setText(recipient);
             editTextPhoneNumber.setText(phoneNumber);
             editTextAddress.setText(address);
+            editTextAddressDetail.setText(addressDetail);
             editTextDeliveryRequest.setText(deliveryRequest);
 
         } catch (JSONException e) {

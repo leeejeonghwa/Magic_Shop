@@ -119,6 +119,7 @@
         <entry key="app/src/main/res/layout/mypage_item_refund_exchange.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/mypage_item_reviewed.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_item_unreviewed.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/order_form.xml" value="0.20425724637681159" />
         <entry key="app/src/main/res/layout/order_inquiry_page.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/payment_completed_page.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/product_inquiry_page.xml" value="0.335" />

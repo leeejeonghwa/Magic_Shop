@@ -81,7 +81,8 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                Intent intent = new Intent(getApplicationContext(), Mypage_SettingActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -207,7 +208,6 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
             return sortedAddresses;
         }
-
 
         @NonNull
         @Override

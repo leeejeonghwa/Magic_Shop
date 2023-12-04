@@ -203,8 +203,6 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
 
         // 서버 요청 클래스
         DefaultDeliveryAddressResetRequest resetRequest = new DefaultDeliveryAddressResetRequest(userID, responseListener, errorListener);
-
-        // Volley 요청 큐에 추가
         RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressPlusActivity.this);
         queue.add(resetRequest);
     }
