@@ -124,10 +124,13 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                     Log.d("Mypage_DeliveryAddressManageActivity", "서버 응답: " + response);
 
                     List<AddressItem> addressList = getAddressList(response);
+
                     if (addressAdapter == null) {
+                        Log.d("Mypage_DeliveryAddressManageActivity", "Adapter is null. Creating new adapter.");
                         addressAdapter = new AddressAdapter(addressList, context);
                         recyclerView.setAdapter(addressAdapter);
                     } else {
+                        Log.d("Mypage_DeliveryAddressManageActivity", "Adapter exists. Updating data.");
                         addressAdapter.setAddressList(addressList);
                         addressAdapter.notifyDataSetChanged();
                     }
@@ -137,6 +140,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                 }
             }
         };
+
 
         DeliveryAddressGetRequest deliveryAddressGetRequest = new DeliveryAddressGetRequest(Mypage_DeliveryAddressManageActivity.this, userID, responseListener);
         RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressManageActivity.this);
@@ -175,13 +179,35 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         public Context context;
 
         AddressAdapter(List<AddressItem> addressList, Context context) {
-            this.addressList = addressList;
+            this.addressList = sortAddresses(addressList);
             this.context = context;
         }
 
         public void setAddressList(List<AddressItem> addressList) {
-            this.addressList = addressList;
+            this.addressList = sortAddresses(addressList);
+            notifyDataSetChanged();
         }
+
+        // 기본 배송지를 상단으로 이동시키는 정렬 메서드
+        public List<AddressItem> sortAddresses(List<AddressItem> addresses) {
+            List<AddressItem> sortedAddresses = new ArrayList<>();
+            List<AddressItem> defaultAddresses = new ArrayList<>();
+            List<AddressItem> otherAddresses = new ArrayList<>();
+
+            for (AddressItem address : addresses) {
+                if ("1".equals(address.defaultDeliveryAddress)) {
+                    defaultAddresses.add(address);
+                } else {
+                    otherAddresses.add(address);
+                }
+            }
+
+            sortedAddresses.addAll(defaultAddresses);
+            sortedAddresses.addAll(otherAddresses);
+
+            return sortedAddresses;
+        }
+
 
         @NonNull
         @Override
@@ -203,6 +229,11 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
                 holder.addressDeleteButton.setVisibility(View.VISIBLE);
             }
             holder.bind(addressItem);
+
+            // 아이템의 위치가 변경된 경우 이동을 알림
+            if (position != holder.getAdapterPosition()) {
+                notifyItemMoved(holder.getAdapterPosition(), position);
+            }
         }
 
         @Override
