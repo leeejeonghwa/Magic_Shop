@@ -167,6 +167,8 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
 
         try {
             String defaultDeliveryAddress = isDefaultDeliveryAddress ? "1" : "0";
+
+
             DeliveryAddressPlusRequest deliveryAddressPlusRequest = new DeliveryAddressPlusRequest(userID,
                     deliveryAddressName, recipient, phoneNumber, address, addressDetail, detailRequest,
                     defaultDeliveryAddress, responseListener, errorListener);

@@ -64,14 +64,14 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
         String sellerName;
         String productName;
         String productSize;
-        String productQuantify;
+        String productQuantity;
 
-        public ProductUnregisteredItem(String date, String sellerName, String productName, String productSize, String productQuantify) {
+        public ProductUnregisteredItem(String date, String sellerName, String productName, String productSize, String productQuantity) {
             this.date = date;
             this.sellerName = sellerName;
             this.productName = productName;
             this.productSize = productSize;
-            this.productQuantify = productQuantify;
+            this.productQuantity = productQuantity;
         }
     }
 
@@ -106,7 +106,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
             private final TextView sellerNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productQuantityTextView;
             private final Button productRegisterButton;
             private final Context context;
 
@@ -117,7 +117,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.productName);
                 sellerNameTextView = itemView.findViewById(R.id.sellerName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productQuantityTextView = itemView.findViewById(R.id.productQuantity);
                 productRegisterButton = itemView.findViewById(R.id.btn_product_register);
 
                 productRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                             intent.putExtra("productName", productUnregisteredItem.sellerName);
                             intent.putExtra("productName", productUnregisteredItem.productName);
                             intent.putExtra("trackingNumber", productUnregisteredItem.productSize);
-                            intent.putExtra("trackingNumber", productUnregisteredItem.productQuantify);
+                            intent.putExtra("trackingNumber", productUnregisteredItem.productQuantity);
                             context.startActivity(intent);
                         }
                     }
@@ -145,7 +145,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                 sellerNameTextView.setText(productUnregisteredItem.sellerName);
                 productNameTextView.setText(productUnregisteredItem.productName);
                 productSizeTextView.setText(productUnregisteredItem.productSize);
-                productQuantifyTextView.setText(productUnregisteredItem.productQuantify);
+                productQuantityTextView.setText(productUnregisteredItem.productQuantity);
             }
         }
     }

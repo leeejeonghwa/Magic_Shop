@@ -116,6 +116,7 @@
         <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_refund_exchange.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/mypage_item_reviewed.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_item_unreviewed.xml" value="0.1" />
         <entry key="app/src/main/res/layout/order_inquiry_page.xml" value="0.14895833333333333" />
@@ -150,6 +151,7 @@
         <entry key="app/src/main/res/layout/seller_item_product_register_request.xml" value="0.12807377049180327" />
         <entry key="app/src/main/res/layout/seller_item_product_revise.xml" value="0.13968579234972678" />
         <entry key="app/src/main/res/layout/seller_item_product_revise_request.xml" value="0.11646174863387979" />
+        <entry key="app/src/main/res/layout/seller_item_refund_exchange.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/seller_item_review.xml" value="0.18704710144927536" />
       </map>
     </option>

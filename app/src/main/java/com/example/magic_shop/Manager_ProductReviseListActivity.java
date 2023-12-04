@@ -64,14 +64,14 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
         String sellerName;
         String productName;
         String productSize;
-        String productQuantify;
+        String productQuantity;
 
-        public ProductReviseItem(String date, String sellerName, String productName, String productSize, String productQuantify) {
+        public ProductReviseItem(String date, String sellerName, String productName, String productSize, String productQuantity) {
             this.date = date;
             this.sellerName = sellerName;
             this.productName = productName;
             this.productSize = productSize;
-            this.productQuantify = productQuantify;
+            this.productQuantity = productQuantity;
         }
     }
 
@@ -106,7 +106,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
             private final TextView sellerNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productQuantityTextView;
             private final Button productReviseButton;
             private final Context context;
 
@@ -117,7 +117,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
                 sellerNameTextView = itemView.findViewById(R.id.sellerName);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productQuantityTextView = itemView.findViewById(R.id.productQuantity);
                 productReviseButton = itemView.findViewById(R.id.btn_product_revise);
 
             }
@@ -127,7 +127,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
                 sellerNameTextView.setText(productUnregisteredItem.sellerName);
                 productNameTextView.setText(productUnregisteredItem.productName);
                 productSizeTextView.setText(productUnregisteredItem.productSize);
-                productQuantifyTextView.setText(productUnregisteredItem.productQuantify);
+                productQuantityTextView.setText(productUnregisteredItem.productQuantity);
             }
         }
     }
