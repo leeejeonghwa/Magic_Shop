@@ -178,12 +178,20 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         public AddressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             Context context = parent.getContext(); // Context 설정
             View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_address, parent, false);
+            AddressViewHolder viewHolder = new AddressViewHolder(view, context);
             return new AddressViewHolder(view, context);
         }
 
         @Override
         public void onBindViewHolder(@NonNull AddressViewHolder holder, int position) {
             AddressItem addressItem = addressList.get(position);
+
+            // 기본 배송지인 경우 삭제 버튼을 숨김
+            if ("1".equals(addressItem.defaultDeliveryAddress)) {
+                holder.addressDeleteButton.setVisibility(View.GONE);
+            } else {
+                holder.addressDeleteButton.setVisibility(View.VISIBLE);
+            }
             holder.bind(addressItem);
         }
 

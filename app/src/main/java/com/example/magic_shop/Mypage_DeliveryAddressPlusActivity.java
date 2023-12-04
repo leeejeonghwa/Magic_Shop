@@ -74,7 +74,6 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                 String address = editTextAddress.getText().toString();
                 String addressDetail = editTextAddressDetail.getText().toString();
                 String deliveryAddressRequest = editTextDeliveryAddressRequest.getText().toString();
-                boolean isDefaultDeliveryAddress = delivery_address_default_check.isChecked();
 
                 if (!deliveryAddressName.isEmpty() &&
                         !recipient.isEmpty() &&
@@ -82,6 +81,9 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                         !address.isEmpty() &&
                         !addressDetail.isEmpty() &&
                         !deliveryAddressRequest.isEmpty()) {
+
+                    boolean isDefaultDeliveryAddress = delivery_address_default_check.isChecked();
+                    String defaultDeliveryAddress = isDefaultDeliveryAddress ? "1" : "0";
 
                     deliveryAddressPlus(
                             userID,
@@ -91,7 +93,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                             address,
                             addressDetail,
                             deliveryAddressRequest,
-                            isDefaultDeliveryAddress
+                            defaultDeliveryAddress
                     );
 
                     Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
@@ -130,7 +132,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
 
     @SuppressLint("LongLogTag")
     private void deliveryAddressPlus(String userID, String deliveryAddressName, String recipient, String phoneNumber,
-                                     String address, String addressDetail, String detailRequest, boolean isDefaultDeliveryAddress) {
+                                     String address, String addressDetail, String detailRequest, String defaultDeliveryAddress) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -166,7 +168,6 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
         };
 
         try {
-            String defaultDeliveryAddress = isDefaultDeliveryAddress ? "1" : "0";
             // TODO 기본배송지 설정, 추가하는 행 빼고 나머지 데이터 다 0으로 만들기
 
             DeliveryAddressPlusRequest deliveryAddressPlusRequest = new DeliveryAddressPlusRequest(userID,
@@ -174,7 +175,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                     defaultDeliveryAddress, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressPlusActivity.this);
             queue.add(deliveryAddressPlusRequest);
-            }
+        }
         catch (Exception e) {
             e.printStackTrace();
             Log.e("Mypage_DeliveryAddressPlusActivity", "deliveryAddressPlus 함수 내부에서 예외 발생: " + e.getMessage());
@@ -191,5 +192,3 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
     }
 
 }
-
-
