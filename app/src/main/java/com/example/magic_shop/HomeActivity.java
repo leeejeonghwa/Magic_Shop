@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class HomeActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
