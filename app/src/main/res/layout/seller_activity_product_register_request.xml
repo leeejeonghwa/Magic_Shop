@@ -13,9 +13,9 @@
         android:layout_height="80dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="172dp"
+        android:background="@color/category_background_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/btn_back"
@@ -51,7 +51,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/mypage_clothes"
+        android:background="@color/category_background_color"
         app:layout_constraintEnd_toStartOf="@+id/img_sizeInfo"
         app:layout_constraintHorizontal_bias="0.759"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +110,7 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toStartOf="@+id/img_detail3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes"
+        android:background="@color/category_background_color"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -121,7 +121,7 @@
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes" />
+        android:background="@color/category_background_color" />
 
     <ImageView
         android:id="@+id/image_detail1"
@@ -132,7 +132,7 @@
         app:layout_constraintHorizontal_bias="0.759"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes" />
+        android:background="@color/category_background_color"/>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
