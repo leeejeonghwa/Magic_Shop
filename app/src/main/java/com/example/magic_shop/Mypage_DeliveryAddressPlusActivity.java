@@ -167,7 +167,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
 
         try {
             String defaultDeliveryAddress = isDefaultDeliveryAddress ? "1" : "0";
-
+            // TODO 기본배송지 설정, 추가하는 행 빼고 나머지 데이터 다 0으로 만들기
 
             DeliveryAddressPlusRequest deliveryAddressPlusRequest = new DeliveryAddressPlusRequest(userID,
                     deliveryAddressName, recipient, phoneNumber, address, addressDetail, detailRequest,

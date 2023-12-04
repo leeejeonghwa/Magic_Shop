@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
+
+    public List<AddressItem> addressList;
+    public Context context;
 
     public List<AddressItem> getAddressList(String jsonResponse) throws JSONException {
         List<AddressItem> addressList = new ArrayList<>();
@@ -59,8 +63,6 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         return addressList;
     }
 
-    public Context context;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage_activity_delivery_address_manage);
@@ -88,19 +90,26 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
             }
         });
 
+        RecyclerView recyclerView = findViewById(R.id.address_recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(Mypage_DeliveryAddressManageActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+
         Button btn_delivery_address_plus = (Button) findViewById(R.id.btn_delivery_address_plus);
         btn_delivery_address_plus.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressPlusActivity.class);
-                startActivity(intent);
+                int itemCount = recyclerView.getAdapter().getItemCount();
+                Log.d("아이템 개수 : ", String.valueOf(itemCount));
+                if(itemCount>=5){
+                    Toast.makeText(getApplicationContext(), "배송지는 5개가 최대입니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressPlusActivity.class);
+                    startActivity(intent);
+                }
             }
         });
-
-        RecyclerView recyclerView = findViewById(R.id.address_recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(Mypage_DeliveryAddressManageActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
@@ -151,8 +160,8 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
     // AddressAdapter 클래스는 RecyclerView 데이터를 바인딩합니다.
     public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressViewHolder> {
-        private List<AddressItem> addressList;
-        private Context context;
+        public List<AddressItem> addressList;
+        public Context context;
 
         AddressAdapter(List<AddressItem> addressList, Context context) {
             this.addressList = addressList;
