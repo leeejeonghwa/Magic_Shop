@@ -34,6 +34,7 @@ import java.util.List;
 public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
     public List<AddressItem> addressList;
+    public AddressAdapter addressAdapter;
     public Context context;
 
     public List<AddressItem> getAddressList(String jsonResponse) throws JSONException {
@@ -103,28 +104,33 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                int itemCount = recyclerView.getAdapter().getItemCount();
-                if(itemCount>=5){
-                    Toast.makeText(getApplicationContext(), "배송지는 5개가 최대입니다.", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                // 아이템의 개수가 0~4개인 경우
+                if (recyclerView.getAdapter() == null || recyclerView.getAdapter().getItemCount() < 5) {
                     Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressPlusActivity.class);
                     startActivity(intent);
+                }
+                // 아이템의 개수가 5개인 경우
+                else {
+                    Toast.makeText(getApplicationContext(), "배송지는 5개가 최대입니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @SuppressLint("LongLogTag")
+            @SuppressLint({"LongLogTag", "NotifyDataSetChanged"})
             @Override
             public void onResponse(String response) {
                 try {
                     Log.d("Mypage_DeliveryAddressManageActivity", "서버 응답: " + response);
 
                     List<AddressItem> addressList = getAddressList(response);
-                    AddressAdapter addressAdapter = new AddressAdapter(addressList, Mypage_DeliveryAddressManageActivity.this);
-                    recyclerView.setAdapter(addressAdapter);  // 어댑터 설정
-                    addressAdapter.notifyDataSetChanged(); // 어댑터 갱신
+                    if (addressAdapter == null) {
+                        addressAdapter = new AddressAdapter(addressList, context);
+                        recyclerView.setAdapter(addressAdapter);
+                    } else {
+                        addressAdapter.setAddressList(addressList);
+                        addressAdapter.notifyDataSetChanged();
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -173,6 +179,10 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        public void setAddressList(List<AddressItem> addressList) {
+            this.addressList = addressList;
+        }
+
         @NonNull
         @Override
         public AddressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -197,7 +207,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return addressList.size();
+            return addressList != null ? addressList.size() : 0;
         }
 
         public class AddressViewHolder extends RecyclerView.ViewHolder {
