@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public class Product {
 
-   ;
+
     private String productName;
 
     //1. top, 2. outer, 3. pants, 4. skirt_one_piece, 5. shoes, 6. bag
