@@ -615,13 +615,10 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                 try {
                     Log.d("productRegisterRequest", "서버 응답: " + response); // 디버깅을 위한 이 줄을 추가
                     detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
-                    // Check if the response starts with "<br" indicating an error
                     if (response.startsWith("<br")) {
-                        // Handle non-JSON response
                         productHandleNonJsonResponse(response);
-                        return; // Stop further processing
+                        return;
                     }
-                    // If not an error, try to parse the JSON
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
                     if (success) {
