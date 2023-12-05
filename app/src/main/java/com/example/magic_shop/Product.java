@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public class Product {
 
-    private int id;
+
     private String productName;
 
     //1. top, 2. outer, 3. pants, 4. skirt_one_piece, 5. shoes, 6. bag
@@ -25,10 +25,17 @@ public class Product {
 
     private String sizeImage;
 
+    private String color1;
 
-    public int getId() {
-        return id;
-    }
+    private String color2;
+
+    private String sizeS;
+
+    private String sizeM;
+
+    private String sizeL;
+
+
 
     public String getProductName() {
         return productName;
@@ -115,5 +122,45 @@ public class Product {
 
     public void setSizeImage(String sizeImage) {
         this.sizeImage = sizeImage;
+    }
+
+    public String getColor1() {
+        return color1;
+    }
+
+    public void setColor1(String color1) {
+        this.color1 = color1;
+    }
+
+    public String getColor2() {
+        return color2;
+    }
+
+    public void setColor2(String color2) {
+        this.color2 = color2;
+    }
+
+    public String getSizeS() {
+        return sizeS;
+    }
+
+    public void setSizeS(String sizeS) {
+        this.sizeS = sizeS;
+    }
+
+    public String getSizeM() {
+        return sizeM;
+    }
+
+    public void setSizeM(String sizeM) {
+        this.sizeM = sizeM;
+    }
+
+    public String getSizeL() {
+        return sizeL;
+    }
+
+    public void setSizeL(String sizeL) {
+        this.sizeL = sizeL;
     }
 }

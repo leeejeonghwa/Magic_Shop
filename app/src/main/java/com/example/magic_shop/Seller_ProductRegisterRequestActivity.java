@@ -10,10 +10,11 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,13 +25,11 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -38,40 +37,45 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE = 1;
 
-    Product product;
+    private Product product;
 
-    Button main_image_btn;
+    private Button main_image_btn;
 
-    Button[] detail_image_btn;
+    private Button[] detail_image_btn;
 
-    Button size_image_btn;
+    private Button size_image_btn;
 
-    Button btn_back;
+    private Button btn_back;
 
-    Button selectedImageBtn;
+    private Button selectedImageBtn;
 
-    EditText productNameEditText;
+    private EditText productNameEditText;
 
-    EditText productPriceEditText;
+    private EditText productPriceEditText;
 
-    String userID;
+    private EditText colorOption1EditText;
 
-    Button submitBtn;
+    private EditText colorOption2EditText;
 
-    private Response.ErrorListener errorListener;
+    private CheckBox[] sizeCheckBox;
+
+    private String userID;
+
+    private Button submitBtn;
+
+    private Response.ErrorListener productErrorListener;
 
 
 
 
 
-    int [] superCatRadio = {
+
+    private int [] superCatRadio = {
             R.id.radio_top,
             R.id.radio_outer,
             R.id.radio_pants,
@@ -80,7 +84,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
             R.id.radio_bag
     };
 
-    int [] subCatRadio = {
+    private int [] subCatRadio = {
             R.id.radioButton1,
             R.id.radioButton2,
             R.id.radioButton3,
@@ -115,6 +119,13 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
         productNameEditText = findViewById(R.id.productName);
         productPriceEditText = findViewById(R.id.productPrice);
         submitBtn = findViewById(R.id.btn_submit);
+        colorOption1EditText = findViewById(R.id.color1);
+        colorOption2EditText = findViewById(R.id.color2);
+
+        sizeCheckBox = new CheckBox[3];
+        sizeCheckBox[0] = findViewById(R.id.size_s);
+        sizeCheckBox[1] = findViewById(R.id.size_m);
+        sizeCheckBox[2] = findViewById(R.id.size_l);
 
     }
 
@@ -146,14 +157,6 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
             }
         });
 
-//        Button btn_submit = findViewById(R.id.btn_submit);
-//        btn_submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         for (int i : superCatRadio) {
             findViewById(i).setOnClickListener(new superCatRadioClickListener());
@@ -163,7 +166,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
             findViewById(i).setOnClickListener(new subCatRadioClickListener());
         }
 
-        errorListener = new Response.ErrorListener() {
+        productErrorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // 에러 응답을 처리하는 코드 추가
@@ -186,6 +189,46 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                 showAlert("서버 응답 중 오류가 발생했습니다.");
             }
         };
+
+        sizeCheckBox[0].setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // isChecked: 체크박스의 현재 상태 (체크되었으면 true, 그렇지 않으면 false)
+
+            // 여기에 체크박스 상태가 변경될 때 수행할 작업을 추가
+            if (isChecked) {
+                product.setSizeS("Y");
+                Log.d("sizeS", product.getSizeS());
+            } else {
+                product.setSizeS("N");
+                Log.d("sizeS", product.getSizeS());
+            }
+        });
+
+        sizeCheckBox[1].setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // isChecked: 체크박스의 현재 상태 (체크되었으면 true, 그렇지 않으면 false)
+
+            // 여기에 체크박스 상태가 변경될 때 수행할 작업을 추가
+            if (isChecked) {
+                product.setSizeM("Y");
+                Log.d("sizeM", product.getSizeM());
+            } else {
+                product.setSizeM("N");
+                Log.d("sizeM", product.getSizeM());
+            }
+        });
+
+        sizeCheckBox[2].setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // isChecked: 체크박스의 현재 상태 (체크되었으면 true, 그렇지 않으면 false)
+
+            // 여기에 체크박스 상태가 변경될 때 수행할 작업을 추가
+            if (isChecked) {
+                product.setSizeL("Y");
+                Log.d("sizeL", product.getSizeL());
+            } else {
+                product.setSizeL("N");
+                Log.d("sizeL", product.getSizeL());
+            }
+        });
+
 
     }
 
@@ -389,19 +432,34 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
         public void onClick(View v) {
             String productName = productNameEditText.getText().toString();
             product.setProductName(productName);
+            product.setColor1(colorOption1EditText.getText().toString());
+            Log.d("color1", product.getColor1());
+            product.setColor2(colorOption2EditText.getText().toString());
+            Log.d("color2", product.getColor2());
+            if (product.getColor2().equals("")) {
+                product.setColor2("N");
+                Log.d("color2", product.getColor2());
+            }
+
+
             int productPrice = Integer.parseInt(productPriceEditText.getText().toString());
             product.setProductPrice(productPrice);
             product.setAllowance("N");
 
-            //sendProductDataToServer();
 
-            if (!nullValidate(product)) {
+            if (!nullValidate(product) && nullToString()) {
                 productRegisterRequest(product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getSellerId(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage());
+
+
+                //detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
                 Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
                 startActivity(intent);
+
             }
+
+
             else {
-                showAlert("모든 란을 입력하세요.");
+                showAlert("모든 필수 란을 입력하세요.");
             }
 
 
@@ -423,7 +481,6 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
             Log.d("객체", "null");
             return true; // 객체 자체가 null이면 모든 속성이 null이라고 판단
         }
-
 
 
         if (product.getProductName() == null) {
@@ -470,7 +527,83 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
             Log.d("셀러id", "null");
             return true;
         }
+        else if (product.getColor1() == null) {
+            Log.d("옵션컬러1", "null");
+            return true;
+        }
+        else if (!sizeCheckBox[0].isChecked() && !sizeCheckBox[1].isChecked() && !sizeCheckBox[2].isChecked()) {
+            Log.d("사이즈 선택", "null");
+            return true;
+        }
         return false;
+    }
+
+    private boolean nullToString() {
+        if (product.getColor2() == null || product.getColor2().equals("")) {
+            product.setColor2("N");
+            Log.d("옵션컬러2", product.getColor2());
+        }
+        if (product.getSizeS() == null) {
+            product.setSizeS("N");
+            Log.d("사이즈s", "N");
+        }
+        if (product.getSizeM() == null) {
+            product.setSizeM("N");
+            Log.d("사이즈m", "N");
+        }
+        if (product.getSizeL() == null) {
+            product.setSizeL("N");
+            Log.d("사이즈l", "N");
+        }
+
+        if (product.getSizeS() == null || product.getSizeM() == null || product.getSizeL() == null || product.getColor1().equals("") || product.getColor2().equals("")) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void detailedProductRegisterRequest(String productName, String color1, String color2, String size_s, String size_m, String size_l) {
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.d("detailedProductRR", "서버 응답: " + response); // 디버깅을 위한 이 줄을 추가
+                    if (response.startsWith("<br")) {
+                        // Handle non-JSON response
+                        detailedProductHandleNonJsonResponse(response);
+                        return;
+                    }
+
+                    // If not an error, try to parse the JSON
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+                        // 서버가 성공적인 응답을 보낸 경우
+                        Log.d("Seller_productRR_detail", "서버 연결 성공");
+
+                    } else {
+                        // 서버가 실패 응답을 보낸 경우
+                        String errorMessage = jsonResponse.getString("error");
+                        // 에러 메시지를 적절히 처리
+                        Log.e("Seller_productRR_detail", errorMessage);
+                    }
+                }
+                catch (JSONException e) {
+                    // JSON 파싱에 실패한 경우
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "서버 응답 형식 오류로 상품 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        };
+        Seller_DetailedProductRegisterRequest sellerDetailedProductRegisterRequest = new Seller_DetailedProductRegisterRequest(
+                product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL(), responseListener, productErrorListener);
+
+
+        RequestQueue queue = Volley.newRequestQueue(Seller_ProductRegisterRequestActivity.this);
+        queue.add(sellerDetailedProductRegisterRequest);
     }
 
     private void productRegisterRequest(String productName, int categoryId, int detailedCategory, int productPrice, String allowance, String sellerId, String mainImage, String detailedImage1, String detailedImage2, String detailedImage3, String sizeImage) {
@@ -481,11 +614,11 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
 
                 try {
                     Log.d("productRegisterRequest", "서버 응답: " + response); // 디버깅을 위한 이 줄을 추가
-
+                    detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
                     // Check if the response starts with "<br" indicating an error
                     if (response.startsWith("<br")) {
                         // Handle non-JSON response
-                        handleNonJsonResponse(response);
+                        productHandleNonJsonResponse(response);
                         return; // Stop further processing
                     }
                     // If not an error, try to parse the JSON
@@ -505,19 +638,54 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                 catch (JSONException e) {
                     // JSON 파싱에 실패한 경우
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "서버 응답 형식 오류로 회원 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "서버 응답 형식 오류로 상품 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 }
 
             }
         };
 
         Seller_ProductRegisterRequest sellerProductRegisterRequest = new Seller_ProductRegisterRequest(
-                product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getSellerId(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage(), responseListener, errorListener);
+                product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getSellerId(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage(), responseListener, productErrorListener);
         RequestQueue queue = Volley.newRequestQueue(Seller_ProductRegisterRequestActivity.this);
         queue.add(sellerProductRegisterRequest);
     }
 
-    private void handleNonJsonResponse(String response) {
+    private void detailedProductHandleNonJsonResponse(String response) {
+        String[] data = response.split("\\s+"); // 공백으로 분리
+        for (String item : data) {
+            String[] keyValue = item.split("=>");
+            if (keyValue.length == 2) {
+                String key = keyValue[0].trim();
+                String value = keyValue[1].trim();
+
+                // 키에 기반하여 해당 필드를 업데이트합니다.
+                switch (key) {
+                    case "[product_id]":
+
+                        break;
+                    case "[color_id1]":
+
+                        break;
+                    case "[color_id2]":
+
+                        break;
+                    case "[size_s]":
+
+                        break;
+                    case "[size_m]":
+
+                        break;
+                    case "[size_l]":
+
+                        break;
+
+                }
+
+            }
+        }
+    }
+
+    private void productHandleNonJsonResponse(String response) {
         // 응답에서 데이터를 추출하고 필드를 채웁니다.
         String[] data = response.split("\\s+"); // 공백으로 분리
         for (String item : data) {
