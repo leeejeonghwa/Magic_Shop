@@ -37,6 +37,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
     public AddressAdapter addressAdapter;
     public Context context;
 
+
     public List<AddressItem> getAddressList(String jsonResponse) throws JSONException {
         List<AddressItem> addressList = new ArrayList<>();
 
