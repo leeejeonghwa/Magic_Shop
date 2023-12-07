@@ -79,6 +79,7 @@
         <activity android:name=".Seller_InputPasswordActivity" />
         <activity android:name=".ShoppingBasketActivity"/>
         <activity android:name=".OrderFormActivity"/>
+        <activity android:name=".SearchResultActivity"/>
 
 
 

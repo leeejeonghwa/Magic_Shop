@@ -19,6 +19,16 @@ public class SearchActivity extends AppCompatActivity{
         Button outerCat_btn = (Button) findViewById(R.id.btn_outer_id);
         Button bagCat_btn = (Button) findViewById(R.id.btn_bag_id);
         Button shoesCat_btn = (Button) findViewById(R.id.btn_shoes_id);
+        Button search_btn = (Button) findViewById(R.id.search_btn);
+
+        search_btn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SearchResultActivity.class);
+                startActivity(intent);
+            }
+        });
 
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
