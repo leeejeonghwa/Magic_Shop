@@ -12,10 +12,10 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="172dp"
+        android:layout_marginEnd="248dp"
+        android:background="@color/category_background_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_back"
@@ -51,17 +51,316 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/mypage_clothes"
+        android:background="@color/category_background_color"
         app:layout_constraintEnd_toStartOf="@+id/img_sizeInfo"
-        app:layout_constraintHorizontal_bias="0.759"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="414dp"
+        app:layout_constraintTop_toBottomOf="@+id/productPrice">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/color1"
+                android:layout_width="326dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/mypage_edit_text_rounded_border_gray"
+                android:ems="10"
+                android:hint="옵션 컬러1을 써주세요"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+            <EditText
+                android:id="@+id/color2"
+                android:layout_width="326dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/mypage_edit_text_rounded_border_gray"
+                android:ems="10"
+                android:hint="옵션 컬러2를 써주세요"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+            <LinearLayout
+                android:id="@+id/sizeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사이즈"
+                    android:textSize="18sp" />
+
+                <CheckBox
+                    android:id="@+id/size_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="S"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/size_m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:text="M"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/size_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:text="L"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/sizeLayout">
+
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="카테고리를 선택해주세요." />
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/superradioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp">
+
+                <LinearLayout
+                    android:layout_width="135dp"
+                    android:layout_height="64dp"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="439dp">
+
+                    <RadioButton
+                        android:id="@+id/radio_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="상의" />
+
+                    <RadioButton
+                        android:id="@+id/radio_outer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="아우터" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="136dp"
+                    android:layout_height="64dp"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="137dp"
+                    tools:layout_editor_absoluteY="439dp">
+
+                    <RadioButton
+                        android:id="@+id/radio_pants"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="팬츠" />
+
+                    <RadioButton
+                        android:id="@+id/radio_bag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="가방" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="136dp"
+                    android:layout_height="64dp"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="274dp"
+                    tools:layout_editor_absoluteY="439dp">
+
+                    <RadioButton
+                        android:id="@+id/radio_skirt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="스커트/원피스" />
+
+                    <RadioButton
+                        android:id="@+id/radio_shoes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="신발" />
+                </LinearLayout>
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="409dp"
+                android:layout_height="155dp"
+                android:orientation="vertical"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/superradioGroup">
+
+                <LinearLayout
+
+                    android:layout_width="409dp"
+                    android:layout_height="21dp"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="505dp">
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="세부 카테고리를 선택해주세요." />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/small_category_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="InvalidId"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/radioButton1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/radioButton5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/radioButton8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton9"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RadioButton" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <EditText
         android:id="@+id/productName"
         android:layout_width="326dp"
         android:layout_height="30dp"
-        android:layout_marginTop="40dp"
         android:background="@drawable/mypage_edit_text_rounded_border_gray"
         android:ems="10"
         android:hint="상품 이름을 입력하시오"
@@ -70,7 +369,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_detail2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
     <EditText
         android:id="@+id/productPrice"
@@ -102,141 +401,65 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
+
     <ImageView
         android:id="@+id/img_detail2"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/img_detail3"
+        android:background="@color/category_background_color"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes"
-        tools:ignore="MissingConstraints" />
+         />
 
     <ImageView
         android:id="@+id/img_detail3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="4dp"
+        android:background="@color/category_background_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image_detail1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="216dp"
-        app:layout_constraintEnd_toStartOf="@+id/img_detail2"
-        app:layout_constraintHorizontal_bias="0.759"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_clothes" />
+        android:layout_marginTop="100dp"
+        android:background="@color/category_background_color"
+        app:layout_constraintStart_toEndOf="@+id/img_sizeInfo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="412dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/productPrice"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp">
-
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:text="카테고리를 선택해주세요." />
-
-    </LinearLayout>
-
-    <RadioGroup
-        android:id="@+id/superradioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
-
-        <LinearLayout
-            android:layout_width="135dp"
-            android:layout_height="64dp"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="439dp">
-
-            <RadioButton
-                android:id="@+id/radio_top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="상의" />
-
-            <RadioButton
-                android:id="@+id/radio_outer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아우터" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="136dp"
-            android:layout_height="64dp"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="137dp"
-            tools:layout_editor_absoluteY="439dp">
-
-            <RadioButton
-                android:id="@+id/radio_pants"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="팬츠" />
-
-            <RadioButton
-                android:id="@+id/radio_bag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="가방" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="136dp"
-            android:layout_height="64dp"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="274dp"
-            tools:layout_editor_absoluteY="439dp">
-
-            <RadioButton
-                android:id="@+id/radio_skirt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="스커트/원피스" />
-
-            <RadioButton
-                android:id="@+id/radio_shoes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="신발" />
-        </LinearLayout>
-    </RadioGroup>
-
-    <LinearLayout
-        android:layout_width="310dp"
+        android:id="@+id/linearLayout6"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="180dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_detail2">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_productimg_find"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="대표이미지"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/btn_sizeinfo_find"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="사이즈정보"
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/btn_detail1_find"
@@ -263,156 +486,7 @@
             android:textSize="12dp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="180dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btn_productimg_find"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="대표이미지"
-            android:textSize="12dp" />
-
-        <Button
-            android:id="@+id/btn_sizeinfo_find"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="사이즈정보"
-            android:textSize="12dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="155dp"
-        android:orientation="vertical"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/superradioGroup">
-
-        <LinearLayout
-
-            android:layout_width="409dp"
-            android:layout_height="21dp"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="505dp">
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:text="세부 카테고리를 선택해주세요." />
-        </LinearLayout>
-
-        <RadioGroup
-            android:id="@+id/small_category_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="InvalidId"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <RadioButton
-                        android:id="@+id/radioButton1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <RadioButton
-                        android:id="@+id/radioButton5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <RadioButton
-                        android:id="@+id/radioButton8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="RadioButton" />
-                </LinearLayout>
-            </LinearLayout>
-        </RadioGroup>
-
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
