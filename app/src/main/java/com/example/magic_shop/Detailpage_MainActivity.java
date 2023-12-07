@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class Detailpage_MainActivity extends AppCompatActivity {
@@ -19,12 +20,28 @@ public class Detailpage_MainActivity extends AppCompatActivity {
     private Button btnBag;
     private Button btnBack;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailpage_activity_main);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            String productName = intent.getStringExtra("product_name");
+            String productPrice = intent.getStringExtra("product_price");
+            String sellerId = intent.getStringExtra("seller_id");
+
+
+            // 받아온 상품명을 화면에 표시
+            TextView productTextView = findViewById(R.id.productText);
+            TextView priceTextView = findViewById(R.id.priceText);
+            TextView sellerTextView = findViewById(R.id.brandText);
+
+
+            productTextView.setText(productName);
+            priceTextView.setText(productPrice);
+            sellerTextView.setText(sellerId);
+        }
         btnBuy = findViewById(R.id.btn_buy);
         btnReview = findViewById(R.id.reviewBtn);
         btnSize = findViewById(R.id.sizeBtn);
@@ -43,6 +60,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         btnSearch.setVisibility(View.VISIBLE);
         btnBag.setVisibility(View.VISIBLE);
         btnBack.setVisibility(View.VISIBLE);
+
 
 
         // btnBuy의 클릭 이벤트 처리
