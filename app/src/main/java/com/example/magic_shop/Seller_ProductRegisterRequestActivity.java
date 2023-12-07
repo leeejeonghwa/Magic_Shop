@@ -368,7 +368,6 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                 }
             }
 
-
         }
 
     }
@@ -452,8 +451,8 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
 
 
                 //detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
-                Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
+                //startActivity(intent);
 
             }
 
@@ -575,6 +574,9 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                         detailedProductHandleNonJsonResponse(response);
                         return;
                     }
+
+                    Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
+                    startActivity(intent);
 
                     // If not an error, try to parse the JSON
                     JSONObject jsonResponse = new JSONObject(response);
@@ -762,14 +764,8 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
         image.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         String imageToBase64 = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        String temp = "";
-        try{
-            temp = URLEncoder.encode(imageToBase64, "UTF-8");
-        }
-        catch (Exception e) {
-            Log.d("exception", e.toString());
-        }
-        return temp;
+
+        return imageToBase64;
     }
 
     private Bitmap decodeBase64Image(String encodedImage) {

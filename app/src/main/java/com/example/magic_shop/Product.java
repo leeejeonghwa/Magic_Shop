@@ -37,6 +37,7 @@ public class Product {
 
 
 
+
     public String getProductName() {
         return productName;
     }
@@ -163,4 +164,5 @@ public class Product {
     public void setSizeL(String sizeL) {
         this.sizeL = sizeL;
     }
+
 }

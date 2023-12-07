@@ -2,6 +2,7 @@ package com.example.magic_shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,26 +22,25 @@ import java.util.List;
 
 public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity {
 
-    public List<ProductRegisterRequestItem> getProductRegisterRequestList() {
-        List<ProductRegisterRequestItem> productRegisterRequestList = new ArrayList<>();
 
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        productRegisterRequestList.add(new ProductRegisterRequestItem("2023-11-27", "상품 A", "S", "1"));
-        productRegisterRequestList.add(new ProductRegisterRequestItem("2023-11-27", "상품 B", "M", "2"));
-        productRegisterRequestList.add(new ProductRegisterRequestItem("2023-11-27", "상품 C", "L", "3"));
-        productRegisterRequestList.add(new ProductRegisterRequestItem("2023-11-27", "상품 D", "S", "4"));
-        productRegisterRequestList.add(new ProductRegisterRequestItem("2023-11-27", "상품 E", "M", "5"));
-        // ... 추가적인 데이터
+    private ProductRegisterRequestManager productRegisterRequestManager;
+    private ProductRegisterRequestAdapter adapter;
 
-        return productRegisterRequestList;
-    }
 
-    public Context context;
+    String userID;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seller_activity_product_register_request_list);
         getWindow().setWindowAnimations(0);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        userID = sessionManager.getUserId();
+
+        productRegisterRequestManager = ProductRegisterRequestManager.getInstance(this);
+
+        productRegisterRequestManager.checkUserId(userID);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -64,23 +65,25 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ProductRegisterRequestItem> productRegisterRequestList = getProductRegisterRequestList();
-        ProductRegisterRequestAdapter adapter = new ProductRegisterRequestAdapter(productRegisterRequestList, this);
+        adapter = new ProductRegisterRequestAdapter(productRegisterRequestManager.getProductRegisterRequestList(), this);
+        //List<ProductRegisterRequestItem> productRegisterRequestList = getProductRegisterRequestList();
+        //ProductRegisterRequestAdapter adapter = new ProductRegisterRequestAdapter(productRegisterRequestList, this);
         recyclerView.setAdapter(adapter);
+
+        fetchDataFromServer();
     }
 
-    public class ProductRegisterRequestItem {
-        String date;
-        String productName;
-        String productSize;
-        String productQuantify;
+    private void fetchDataFromServer() {
+        productRegisterRequestManager.fetchDataFromServer(new ProductRegisterRequestManager.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived() {
+                updateUI();
+            }
+        });
+    }
 
-        public ProductRegisterRequestItem(String date, String productName, String productSize, String productQuantify) {
-            this.date = date;
-            this.productName = productName;
-            this.productSize = productSize;
-            this.productQuantify = productQuantify;
-        }
+    private void updateUI() {
+        adapter.notifyDataSetChanged();
     }
 
     public class ProductRegisterRequestAdapter extends RecyclerView.Adapter<ProductRegisterRequestAdapter.ProductRegisterRequestViewHolder> {
@@ -113,7 +116,9 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productColorTextView;
+
+            private final ImageView productMainImageView;
             private final Context context;
 
             public ProductRegisterRequestViewHolder(View itemView, Context context) {
@@ -122,14 +127,23 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productColor);
+                productMainImageView = itemView.findViewById(R.id.productImage);
+
             }
 
             void bind(ProductRegisterRequestItem productRegisterRequestItem) {
                 dateTextView.setText(productRegisterRequestItem.date);
                 productNameTextView.setText(productRegisterRequestItem.productName);
                 productSizeTextView.setText(productRegisterRequestItem.productSize);
-                productQuantifyTextView.setText(productRegisterRequestItem.productQuantify);
+                productColorTextView.setText(productRegisterRequestItem.productColor);
+                if (productRegisterRequestItem.mainImage == null) {
+                    Log.d("이미지", "null");
+                }
+                else {
+                    productMainImageView.setImageBitmap(productRegisterRequestItem.mainImage);
+                }
+
             }
         }
     }
