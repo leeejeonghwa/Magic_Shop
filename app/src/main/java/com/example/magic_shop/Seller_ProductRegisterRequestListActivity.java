@@ -73,13 +73,13 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
         String date;
         String productName;
         String productSize;
-        String productQuantify;
+        String productQuantity;
 
-        public ProductRegisterRequestItem(String date, String productName, String productSize, String productQuantify) {
+        public ProductRegisterRequestItem(String date, String productName, String productSize, String productQuantity) {
             this.date = date;
             this.productName = productName;
             this.productSize = productSize;
-            this.productQuantify = productQuantify;
+            this.productQuantity = productQuantity;
         }
     }
 
@@ -113,7 +113,7 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productQuantityTextView;
             private final Context context;
 
             public ProductRegisterRequestViewHolder(View itemView, Context context) {
@@ -122,14 +122,14 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productQuantityTextView = itemView.findViewById(R.id.productQuantity);
             }
 
             void bind(ProductRegisterRequestItem productRegisterRequestItem) {
                 dateTextView.setText(productRegisterRequestItem.date);
                 productNameTextView.setText(productRegisterRequestItem.productName);
                 productSizeTextView.setText(productRegisterRequestItem.productSize);
-                productQuantifyTextView.setText(productRegisterRequestItem.productQuantify);
+                productQuantityTextView.setText(productRegisterRequestItem.productQuantity);
             }
         }
     }
