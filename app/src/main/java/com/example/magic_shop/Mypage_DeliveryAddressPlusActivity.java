@@ -74,7 +74,6 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                 String address = editTextAddress.getText().toString();
                 String addressDetail = editTextAddressDetail.getText().toString();
                 String deliveryAddressRequest = editTextDeliveryAddressRequest.getText().toString();
-                boolean isDefaultDeliveryAddress = delivery_address_default_check.isChecked();
 
                 if (!deliveryAddressName.isEmpty() &&
                         !recipient.isEmpty() &&
@@ -83,16 +82,37 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                         !addressDetail.isEmpty() &&
                         !deliveryAddressRequest.isEmpty()) {
 
-                    deliveryAddressPlus(
-                            userID,
-                            deliveryAddressName,
-                            recipient,
-                            phoneNumber,
-                            address,
-                            addressDetail,
-                            deliveryAddressRequest,
-                            isDefaultDeliveryAddress
-                    );
+                    boolean isDefaultDeliveryAddress = delivery_address_default_check.isChecked();
+                    String defaultDeliveryAddress = isDefaultDeliveryAddress ? "1" : "0";
+
+                    boolean isDefault = defaultDeliveryAddress.equals("1");
+
+                    // 기존 기본 배송지 0으로 업데이트하고 추가
+                    if (isDefault) {
+                        resetDefaultDeliveryAddressesAndAddNew(
+                                userID,
+                                deliveryAddressName,
+                                recipient,
+                                phoneNumber,
+                                address,
+                                addressDetail,
+                                deliveryAddressRequest,
+                                defaultDeliveryAddress
+                        );
+                    }
+
+                    else {
+                        plusDeliveryAddress(
+                                userID,
+                                deliveryAddressName,
+                                recipient,
+                                phoneNumber,
+                                address,
+                                addressDetail,
+                                deliveryAddressRequest,
+                                defaultDeliveryAddress
+                        );
+                    }
 
                     Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
                     startActivity(intent);
@@ -128,9 +148,69 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
         }
     }
 
+    private void resetDefaultDeliveryAddressesAndAddNew(
+            String userID, String deliveryAddressName, String recipient, String phoneNumber,
+            String address, String addressDetail, String detailRequest, String defaultDeliveryAddress) {
+
+        // 기존 기본 배송지를 모두 0으로 설정
+        resetDefaultDeliveryAddresses(userID, new OnResetComplete() {
+            @Override
+            public void onResetComplete() {
+                // 모두 0으로 설정된 후에 새로운 배송지를 추가
+                plusDeliveryAddress(
+                        userID,
+                        deliveryAddressName,
+                        recipient,
+                        phoneNumber,
+                        address,
+                        addressDetail,
+                        detailRequest,
+                        defaultDeliveryAddress
+                );
+            }
+        });
+    }
+
+    private void resetDefaultDeliveryAddresses(String userID, OnResetComplete onResetComplete) {
+        // 기본 배송지를 모두 0으로 설정하는 서버 요청 코드
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.d("Mypage_DeliveryAddressPlusActivity", " resetDefaultDeliveryAddresses() 서버 응답: " + response);
+
+                    // 서버 응답 처리
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+
+                    if (success) {
+                        Log.d("Mypage_DeliveryAddressPlusActivity", " 기본 배송지를 모두 0으로 설정 성공");
+                        // 콜백을 통해 완료를 알림
+                        onResetComplete.onResetComplete();
+                    } else {
+                        Log.e("Mypage_DeliveryAddressPlusActivity", " 기본 배송지를 모두 0으로 설정 실패");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("Mypage_DeliveryAddressPlusActivity", " JSON 파싱 오류: " + e.getMessage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("Mypage_DeliveryAddressPlusActivity", " 예외 발생: " + e.getMessage());
+                }
+            }
+        };
+
+        // 서버 요청 클래스
+        DefaultDeliveryAddressResetRequest resetRequest = new DefaultDeliveryAddressResetRequest(userID, responseListener, errorListener);
+        RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressPlusActivity.this);
+        queue.add(resetRequest);
+    }
+
+
     @SuppressLint("LongLogTag")
-    private void deliveryAddressPlus(String userID, String deliveryAddressName, String recipient, String phoneNumber,
-                                     String address, String addressDetail, String detailRequest, boolean isDefaultDeliveryAddress) {
+    private void plusDeliveryAddress(String userID, String deliveryAddressName, String recipient, String phoneNumber,
+                                     String address, String addressDetail, String detailRequest, String defaultDeliveryAddress) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -146,11 +226,13 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
                     if (success) {
-                        Toast.makeText(getApplicationContext(), "배송지 정보 등록에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                        String successMessage = "배송지 정보 등록에 성공하였습니다.";
+                        Toast.makeText(getApplicationContext(), successMessage, Toast.LENGTH_SHORT).show();
                         finish();
-                        Intent intent = new Intent(Mypage_DeliveryAddressPlusActivity.this, Mypage_DeliveryAddressManageActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Mypage_DeliveryAddressManageActivity.class);
                         startActivity(intent);
-                    } else {
+                    }
+                    else {
                         Toast.makeText(getApplicationContext(), "배송지 정보 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -166,19 +248,17 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
         };
 
         try {
-            String defaultDeliveryAddress = isDefaultDeliveryAddress ? "1" : "0";
             DeliveryAddressPlusRequest deliveryAddressPlusRequest = new DeliveryAddressPlusRequest(userID,
                     deliveryAddressName, recipient, phoneNumber, address, addressDetail, detailRequest,
                     defaultDeliveryAddress, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Mypage_DeliveryAddressPlusActivity.this);
             queue.add(deliveryAddressPlusRequest);
-            }
+        }
         catch (Exception e) {
             e.printStackTrace();
             Log.e("Mypage_DeliveryAddressPlusActivity", "deliveryAddressPlus 함수 내부에서 예외 발생: " + e.getMessage());
         }
     }
-
 
     private void showAlert(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(Mypage_DeliveryAddressPlusActivity.this);
@@ -187,7 +267,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                 .create()
                 .show();
     }
-
 }
-
-
+interface OnResetComplete {
+    void onResetComplete();
+}
