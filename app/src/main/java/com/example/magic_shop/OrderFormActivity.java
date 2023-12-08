@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,9 @@ public class OrderFormActivity extends AppCompatActivity {
 
     private TextView TextViewAddressName, TextViewRecipient, TextViewCallNumber, TextViewAddress,
             TextViewAddressDetail, TextViewDeliveryRequest;
+
+    private CheckBox checkBoxCreditCard, checkBoxAccount, checkBoxBankDeposit;
+    private String selectedPaymentMethod; // 사용자가 선택한 결제 수단을 저장하는 변수
     private Response.ErrorListener errorListener;
     private TextView totalPriceTextView;
 
@@ -48,6 +52,38 @@ public class OrderFormActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // 2. 체크박스 초기화
+        checkBoxCreditCard = findViewById(R.id.check_card);
+        checkBoxAccount = findViewById(R.id.check_account);
+        checkBoxBankDeposit = findViewById(R.id.check_deposit);
+
+        // 3. 체크박스 상태 변경 시 이벤트 처리
+        checkBoxCreditCard.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedPaymentMethod = "C";
+                // 다른 체크박스 상태 초기화
+                checkBoxAccount.setChecked(false);
+                checkBoxBankDeposit.setChecked(false);
+            }
+        });
+
+        checkBoxAccount.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedPaymentMethod = "A";
+                checkBoxCreditCard.setChecked(false);
+                checkBoxBankDeposit.setChecked(false);
+            }
+        });
+
+        checkBoxBankDeposit.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedPaymentMethod = "B";
+                checkBoxCreditCard.setChecked(false);
+                checkBoxAccount.setChecked(false);
+            }
+        });
+
 
         TextViewAddressName = findViewById(R.id.shipping_address_name);
         TextViewRecipient = findViewById(R.id.shipping_recipient);
@@ -68,10 +104,12 @@ public class OrderFormActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+
         ArrayList<String> selectedBrands = intent.getStringArrayListExtra("SELECTED_BRANDS");
         ArrayList<String> selectedProductNames = intent.getStringArrayListExtra("SELECTED_PRODUCT_NAMES");
         ArrayList<String> selectedOptions = intent.getStringArrayListExtra("SELECTED_OPTIONS");
         ArrayList<String> selectedPrice = intent.getStringArrayListExtra("SELECTED_PRICE");
+        ArrayList<Integer> selectedProductID = intent.getIntegerArrayListExtra("SELECTED_PRODUCT_ID");
 
         if (intent != null) {
             int totalItemCount = intent.getIntExtra("TOTAL_ITEM_COUNT", 0);
@@ -85,7 +123,8 @@ public class OrderFormActivity extends AppCompatActivity {
                         selectedBrands.get(i),
                         selectedProductNames.get(i),
                         selectedOptions.get(i),
-                        selectedPrice.get(i)
+                        selectedPrice.get(i),
+                        selectedProductID.get(i)
                 );
                 adapter.addPurchaseItem(purchaseItem);
 
@@ -165,12 +204,14 @@ public class OrderFormActivity extends AppCompatActivity {
         String productName;
         String option;
         String price;
+        Integer productID;
 
-        public PurchaseItem(String brandName, String productName, String option, String price) {
+        public PurchaseItem(String brandName, String productName, String option, String price,int productID) {
             this.productName = productName;
             this.brandName = brandName;
             this.option = option;
             this.price = price;
+            this.productID = productID;
         }
     }
 

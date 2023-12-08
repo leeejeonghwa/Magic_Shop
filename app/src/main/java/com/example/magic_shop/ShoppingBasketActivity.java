@@ -122,6 +122,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                     ArrayList<String> selectedProductNames = new ArrayList<>();
                     ArrayList<String> selectedOptions = new ArrayList<>();
                     ArrayList<String> selectedPrice = new ArrayList<>();
+                    ArrayList<Integer> selectedProductID = new ArrayList<>();
 
 
                     for (BasketItem selectedItem : selectedItems) {
@@ -129,6 +130,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                         selectedProductNames.add(selectedItem.productName);
                         selectedOptions.add(selectedItem.option);
                         selectedPrice.add(selectedItem.price);
+                        selectedProductID.add(selectedItem.productID);
 
                     }
 
@@ -136,6 +138,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                     intent.putStringArrayListExtra("SELECTED_PRODUCT_NAMES", selectedProductNames);
                     intent.putStringArrayListExtra("SELECTED_OPTIONS", selectedOptions);
                     intent.putStringArrayListExtra("SELECTED_PRICE", selectedPrice);
+                    intent.putIntegerArrayListExtra("SELECTED_PRODUCT_ID", selectedProductID);
 
                     startActivity(intent);
                 }
@@ -158,9 +161,10 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                 String productName = jsonObject.getString("product_name");
                 String option = jsonObject.getString("product_option");
                 String price = jsonObject.getString("product_price");
+                int productID = Integer.parseInt(jsonObject.getString("productID"));
                 boolean isChecked = true;
 
-                BasketItem basketItem = new BasketItem(brandName, productName, option, price, isChecked);
+                BasketItem basketItem = new BasketItem(brandName,productID, productName, option, price, isChecked);
                 basketList.add(basketItem);
             }
         } catch (JSONException e) {
@@ -171,14 +175,16 @@ public class ShoppingBasketActivity extends AppCompatActivity {
     }
 
     public class BasketItem {
+        int productID;
         String brandName;
         String productName;
         String option;
         String price;
         boolean isChecked;
 
-        public BasketItem(String brandName, String productName, String option, String price, boolean isChecked) {
+        public BasketItem(String brandName, int productID, String productName, String option, String price, boolean isChecked) {
             this.productName = productName;
+            this.productID = productID;
             this.brandName = brandName;
             this.option = option;
             this.price = price;
