@@ -2,6 +2,7 @@ package com.example.magic_shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,37 +10,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Seller_ProductReviseActivity extends AppCompatActivity {
 
-    public List<ProductReviseItem> getProductReviseList() {
-        List<ProductReviseItem> productReviseList = new ArrayList<>();
-
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 A", "S", "1"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 B", "M", "2"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 C", "L", "3"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 D", "S", "4"));
-        productReviseList.add(new ProductReviseItem("2023-11-27", "상품 E", "M", "5"));
-        // ... 추가적인 데이터
-
-        return productReviseList;
-    }
+    private RegisteredProductManager registeredProductManager;
 
     public Context context;
+
+    private String userID;
+
+    private ProductReviseAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seller_activity_product_revise);
         getWindow().setWindowAnimations(0);
+
+        registeredProductManager = RegisteredProductManager.getInstance(this);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        userID = sessionManager.getUserId();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -64,30 +62,37 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ProductReviseItem> productReviseList = getProductReviseList();
-        ProductReviseAdapter adapter = new ProductReviseAdapter(productReviseList, this);
+        registeredProductManager.checkUserId(userID);
+
+        adapter = new ProductReviseAdapter(registeredProductManager.getRegisteredProductList(), this);
         recyclerView.setAdapter(adapter);
+
+        fetchDataFromServer();
     }
 
-    public class ProductReviseItem {
-        String date;
-        String productName;
-        String productSize;
-        String productQuantify;
+    private void fetchDataFromServer() {
+        registeredProductManager.fetchDataFromServer(new RegisteredProductManager.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived() {
 
-        public ProductReviseItem(String date, String productName, String productSize, String productQuantify) {
-            this.date = date;
-            this.productName = productName;
-            this.productSize = productSize;
-            this.productQuantify = productQuantify;
-        }
+                String str = Integer.toString(registeredProductManager.getRegisteredProductList().size());
+                Log.d("fetch", str);
+                updateUI();
+            }
+        });
     }
+
+    private void updateUI() {
+        adapter.notifyDataSetChanged();
+    }
+
+
 
     public class ProductReviseAdapter extends RecyclerView.Adapter<ProductReviseAdapter.ProductReviseViewHolder> {
-        private List<ProductReviseItem> productReviseList;
+        private List<ProductItem> productReviseList;
         private Context context;
 
-        ProductReviseAdapter(List<ProductReviseItem> productReviseList, Context context) {
+        ProductReviseAdapter(List<ProductItem> productReviseList, Context context) {
             this.productReviseList = productReviseList;
             this.context = context;
         }
@@ -102,8 +107,8 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ProductReviseViewHolder holder, int position) {
-            ProductReviseItem productReviseItem = productReviseList.get(position);
-            holder.bind(productReviseItem);
+            ProductItem productItem = productReviseList.get(position);
+            holder.bind(productItem);
         }
 
         @Override
@@ -113,7 +118,9 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productColorTextView;
+
+            private final ImageView productMainImageView;
             private final Button productReviseButton;
             private final Context context;
 
@@ -123,8 +130,9 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productQuantify);
                 productReviseButton = itemView.findViewById(R.id.btn_product_revise);
+                productMainImageView = itemView.findViewById(R.id.productImage);
 
                 productReviseButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -133,23 +141,30 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             // 다음 화면으로 이동하는 코드
-                            ProductReviseItem productReviseItem = productReviseList.get(position);
+                            ProductItem productItem = productReviseList.get(position);
                             Intent intent = new Intent(context, Seller_ProductReviseRequestActivity.class);
-                            intent.putExtra("date", productReviseItem.date);
-                            intent.putExtra("productName", productReviseItem.productName);
-                            intent.putExtra("trackingNumber", productReviseItem.productSize);
-                            intent.putExtra("trackingNumber", productReviseItem.productQuantify);
+                            intent.putExtra("date", productItem.date);
+                            intent.putExtra("productName", productItem.productName);
+                            intent.putExtra("productSize", productItem.productSize);
+                            intent.putExtra("productColor", productItem.productColor);
+                            intent.putExtra("productId", productItem.id);
                             context.startActivity(intent);
                         }
                     }
                 });
             }
 
-            void bind(ProductReviseItem productReviseItem) {
-                dateTextView.setText(productReviseItem.date);
-                productNameTextView.setText(productReviseItem.productName);
-                productSizeTextView.setText(productReviseItem.productSize);
-                productQuantifyTextView.setText(productReviseItem.productQuantify);
+            void bind(ProductItem productItem) {
+                dateTextView.setText(productItem.date);
+                productNameTextView.setText(productItem.productName);
+                productSizeTextView.setText(productItem.productSize);
+                productColorTextView.setText(productItem.productColor);
+                if (productItem.mainImage == null) {
+                    Log.d("이미지", "null");
+                }
+                else {
+                    productMainImageView.setImageBitmap(productItem.mainImage);
+                }
             }
         }
     }
