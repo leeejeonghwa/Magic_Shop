@@ -33,6 +33,9 @@ public class ShoppingBasketActivity extends AppCompatActivity {
     private Button btnBack;
     private TextView checkedCountTextView;
 
+    private List<BasketItem> basketList;
+    private BasketAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,28 +50,6 @@ public class ShoppingBasketActivity extends AppCompatActivity {
 
             btnBack = findViewById(R.id.back_id);
 
-            // RecyclerView 초기화
-            RecyclerView recyclerView = findViewById(R.id.basket_item1);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-            recyclerView.setLayoutManager(layoutManager);
-
-            // ... (기타 코드)
-
-            findViewById(R.id.btn_purchase).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    BasketAdapter adapter = (BasketAdapter) recyclerView.getAdapter();
-                    int totalItemCount = adapter.getItemCount();
-                    int totalPrice = adapter.calculateTotalPrice();
-
-                    // OrderFormActivity로 데이터 전송
-                    Intent intent = new Intent(getApplicationContext(), OrderFormActivity.class);
-                    intent.putExtra("TOTAL_ITEM_COUNT", totalItemCount);
-                    intent.putExtra("TOTAL_PRICE", totalPrice);
-                    startActivity(intent);
-                }
-            });
-
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -76,23 +57,27 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                 }
             });
 
-            SessionManager sessionManager = new SessionManager(getApplicationContext());
+            RecyclerView recyclerView = findViewById(R.id.basket_item1);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(layoutManager);
 
             String userID = sessionManager.getUserId();
+
+            basketList = new ArrayList<>();
+            adapter = new BasketAdapter(basketList, this, checkedCountTextView);
+            recyclerView.setAdapter(adapter);
 
             GetBasketItemsRequest getBasketItemsRequest = new GetBasketItemsRequest(
                     userID,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            // 서버로부터의 응답 처리
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
-                                List<BasketItem> basketList = getBasketList(jsonArray);
-                                BasketAdapter adapter = new BasketAdapter(basketList, ShoppingBasketActivity.this, checkedCountTextView);
-                                recyclerView.setAdapter(adapter);
+                                basketList.clear();
+                                basketList.addAll(getBasketList(jsonArray));
+                                adapter.notifyDataSetChanged();
 
-                                // 초기화 시 전체 아이템 갯수, 결제 선택 상품 수, 전체 상품 가격 설정
                                 int totalItemCount = adapter.getItemCount();
                                 int initialTotalPrice = adapter.calculateTotalPrice();
                                 itemCountTextView.setText("전체 상품 수  " + totalItemCount);
@@ -107,13 +92,26 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            // 오류 처리
                             Log.e("Volley", "Get Basket Items Request Error: " + error.getMessage());
                         }
                     });
 
-            // Volley 큐에 장바구니 상품 목록 요청 추가
             Volley.newRequestQueue(ShoppingBasketActivity.this).add(getBasketItemsRequest);
+
+            findViewById(R.id.btn_purchase).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), OrderFormActivity.class);
+
+                    int yourTotalItemCount = adapter.countCheckedItems();
+                    int yourTotalPrice = adapter.calculateTotalPrice();
+
+                    intent.putExtra("TOTAL_ITEM_COUNT", yourTotalItemCount);
+                    intent.putExtra("TOTAL_PRICE", yourTotalPrice);
+
+                    startActivity(intent);
+                }
+            });
         } else {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
@@ -121,7 +119,6 @@ public class ShoppingBasketActivity extends AppCompatActivity {
         }
     }
 
-    // 기존의 getBasketList 메서드를 수정
     public List<BasketItem> getBasketList(JSONArray jsonArray) {
         List<BasketItem> basketList = new ArrayList<>();
 
@@ -129,14 +126,12 @@ public class ShoppingBasketActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                // JSON 객체에서 데이터 추출
                 String brandName = jsonObject.getString("seller_id");
                 String productName = jsonObject.getString("product_name");
                 String option = jsonObject.getString("product_option");
                 String price = jsonObject.getString("product_price");
                 boolean isChecked = true;
 
-                // BasketItem 생성 및 목록에 추가
                 BasketItem basketItem = new BasketItem(brandName, productName, option, price, isChecked);
                 basketList.add(basketItem);
             }
@@ -186,7 +181,6 @@ public class ShoppingBasketActivity extends AppCompatActivity {
             int totalPrice = 0;
             for (BasketItem item : basketList) {
                 if (item.isChecked) {
-                    // price가 double 값이라고 가정합니다. 타입을 필요에 따라 조정하세요.
                     totalPrice += Integer.parseInt(item.price);
                 }
             }
@@ -198,17 +192,13 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                 item.isChecked = isChecked;
             }
             notifyDataSetChanged();
-            Log.d("BasketAdapter", "toggleAllItems - isChecked: " + isChecked);
             updateCheckedCountText();
         }
 
-        // 체크된 항목 수를 업데이트하는 메서드
         private void updateCheckedCountText() {
             int checkedCount = countCheckedItems();
             int totalPrice = calculateTotalPrice();
-            Log.d("BasketAdapter", "updateCheckedCountText - checkedCount: " + checkedCount);
 
-            // 체크된 항목 수와 총 가격을 함께 표시합니다.
             checkedCountTextView.setText("결제할 상품 총 " + checkedCount + " 개" +
                     "\n상품 금액 " + totalPrice + "원");
         }
@@ -218,7 +208,6 @@ public class ShoppingBasketActivity extends AppCompatActivity {
             BasketItem basketItem = basketList.get(position);
             holder.bind(basketItem);
 
-            // 내부 체크박스 클릭 처리
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

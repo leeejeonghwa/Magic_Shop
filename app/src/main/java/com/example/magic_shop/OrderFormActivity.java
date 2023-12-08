@@ -47,9 +47,7 @@ public class OrderFormActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<PurchaseItem> purchaseList = getPurchaseList();  // 임의의 데이터 생성
-
-        PurchaseAdapter adapter = new PurchaseAdapter(purchaseList, this, totalPriceTextView);
+        PurchaseAdapter adapter = new PurchaseAdapter(getPurchaseList(), this, totalPriceTextView);
         recyclerView.setAdapter(adapter);
 
         Intent intent = getIntent();
@@ -58,8 +56,6 @@ public class OrderFormActivity extends AppCompatActivity {
             int totalPrice = intent.getIntExtra("TOTAL_PRICE", 0);
             totalPriceTextView.setText("결제할 상품 총 " + totalItemCount + " 개" +
                     "\n상품 금액 " + totalPrice + "원");}
-
-
 
 
 
@@ -197,7 +193,7 @@ public class OrderFormActivity extends AppCompatActivity {
         @Override
         public PurchaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             Context context = parent.getContext();
-            View view = LayoutInflater.from(context).inflate(R.layout.order_item, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.basket_item, parent, false);
             return new PurchaseViewHolder(view, context);
         }
 
