@@ -20,6 +20,8 @@ import java.util.List;
 
 public class Seller_ProductListActivity extends AppCompatActivity {
 
+    public Context context;
+
     public List<ProductItem> getProductList() {
         List<ProductItem> productList = new ArrayList<>();
 
@@ -33,8 +35,6 @@ public class Seller_ProductListActivity extends AppCompatActivity {
 
         return productList;
     }
-
-    public Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

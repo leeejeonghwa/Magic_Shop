@@ -24,10 +24,12 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
 
 
     private ProductRegisterRequestManager productRegisterRequestManager;
-    private ProductRegisterRequestAdapter adapter;
-
 
     String userID;
+
+    public Context context;
+
+    ProductRegisterRequestAdapter adapter;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,13 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
         setContentView(R.layout.seller_activity_product_register_request_list);
         getWindow().setWindowAnimations(0);
 
+        productRegisterRequestManager = ProductRegisterRequestManager.getInstance(this);
+
+
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         userID = sessionManager.getUserId();
 
-        productRegisterRequestManager = ProductRegisterRequestManager.getInstance(this);
 
-        productRegisterRequestManager.checkUserId(userID);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +68,10 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+
+
+        productRegisterRequestManager.checkUserId(userID);
+
         adapter = new ProductRegisterRequestAdapter(productRegisterRequestManager.getProductRegisterRequestList(), this);
         //List<ProductRegisterRequestItem> productRegisterRequestList = getProductRegisterRequestList();
         //ProductRegisterRequestAdapter adapter = new ProductRegisterRequestAdapter(productRegisterRequestList, this);
@@ -77,6 +84,8 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
         productRegisterRequestManager.fetchDataFromServer(new ProductRegisterRequestManager.OnDataReceivedListener() {
             @Override
             public void onDataReceived() {
+                String str = Integer.toString(productRegisterRequestManager.getProductRegisterRequestList().size());
+                Log.d("fetch", str);
                 updateUI();
             }
         });
@@ -110,7 +119,9 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
         }
 
         @Override
-        public int getItemCount() { return productRegisterRequestList.size(); }
+        public int getItemCount() {
+            return productRegisterRequestList.size();
+        }
 
         public class ProductRegisterRequestViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;

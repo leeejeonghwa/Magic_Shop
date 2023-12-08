@@ -62,7 +62,8 @@ public class ProductRegisterRequestManager {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d("상품등록요청 리스트", "서버 응답");
-                        parseJsonData(response);
+                        parseJsonData(response, listener);
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -71,12 +72,12 @@ public class ProductRegisterRequestManager {
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
                         Log.d("상품등록요청 리스트", "fail" );
+                        //listener.onDataReceived();
 
                     }
                 });
 
         requestQueue.add(jsonArrayRequest);
-        listener.onDataReceived();
     }
 
     public void checkUserId(String userID) {
@@ -89,7 +90,7 @@ public class ProductRegisterRequestManager {
 
 
 
-    private void parseJsonData(JSONArray jsonArray) {
+    private void parseJsonData(JSONArray jsonArray, OnDataReceivedListener listener) {
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject productObject = jsonArray.getJSONObject(i);
@@ -125,15 +126,23 @@ public class ProductRegisterRequestManager {
 
                     // base64 디코딩
                     // base64 디코딩
-                    byte[] imageBytes = Base64.decode(mainImageBase64, Base64.DEFAULT);
-                    Bitmap mainImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                    //byte[] imageBytes = Base64.decode(mainImageBase64, Base64.DEFAULT);
+                    //Bitmap mainImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
 
-                    imageBytes = null;
+                    //imageBytes = null;
 
                     // 여기서 mainImageBytes를 사용하여 이미지 처리를 수행할 수 있음
 
-                    ProductRegisterRequestItem item = new ProductRegisterRequestItem(date, productName, productSize, productColor, mainImage);
+                    Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
+
+                    ProductRegisterRequestItem item = new ProductRegisterRequestItem(date, productName, productSize, productColor, null);
                     productRegisterRequestList.add(item);
+                    String numStr = Integer.toString(productRegisterRequestList.size());
+                    Log.d("삽입된 상품 수", numStr);
+
+
+
+
                 }
 
 
@@ -143,6 +152,10 @@ public class ProductRegisterRequestManager {
                 Log.e("Volley Error", "Server response is not a valid JSON array");
 
             }
+
+            // Move the listener call here, after all products are added to the list
+            listener.onDataReceived();
+
         }
     }
 
