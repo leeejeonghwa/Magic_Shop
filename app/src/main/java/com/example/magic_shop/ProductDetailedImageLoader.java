@@ -8,14 +8,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class ProductDetailedImageLoader {
 
@@ -28,36 +27,34 @@ public class ProductDetailedImageLoader {
     }
 
     public void loadDetailedImages(String productName, final DetailedImageResponseListener listener) {
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-
         try {
-            String encodedProductName = URLEncoder.encode(productName, "UTF-8");
-            encodedProductName = encodedProductName.replace("+", "%20");
-            String url = BASE_URL_DETAILED_IMAGE + "?product_name=" + encodedProductName;
-            Log.d("RequestURL", "Request URL: " + url);
-            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                    Request.Method.GET,
-                    url,
-                    null,
-                    new Response.Listener<JSONArray>() {
-                        @Override
-                        public void onResponse(JSONArray response) {
+            if (productName != null) {
+                String encodedProductName = URLEncoder.encode(productName, StandardCharsets.UTF_8.toString());
+                encodedProductName = encodedProductName.replace("+", "%20");
+                String url = BASE_URL_DETAILED_IMAGE + "?product_name=" + encodedProductName;
+                Log.d("ProductDetailImageLoad", "Request URL: " + url);
+
+                RequestQueue requestQueue = Volley.newRequestQueue(context);
+                requestQueue.add(new JsonArrayRequest(
+                        Request.Method.GET,
+                        url,
+                        null,
+                        response -> {
                             if (listener != null) {
                                 listener.onSuccess(response);
                             }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
+                        },
+                        error -> {
                             if (listener != null) {
                                 listener.onError(error.getMessage());
                             }
                         }
-                    }
-            );
-
-            requestQueue.add(jsonArrayRequest);
+                ));
+            } else {
+                if (listener != null) {
+                    listener.onError("Product name is null");
+                }
+            }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             Log.e("UnsupportedEncoding", "UnsupportedEncodingException: " + e.getMessage());

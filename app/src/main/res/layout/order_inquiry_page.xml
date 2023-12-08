@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.013"
         tools:ignore="MissingConstraints" />
 
-    <View
+    <Button
         android:id="@+id/home_btn"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -76,7 +76,7 @@
         tools:ignore="MissingConstraints" />
 
 
-    <View
+    <Button
         android:id="@+id/search_btn"
         android:layout_width="28dp"
         android:layout_height="23dp"
@@ -92,7 +92,7 @@
         app:layout_constraintStart_toStartOf="@+id/top_toorbar"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
+    <Button
         android:id="@+id/bag_btn"
         android:layout_width="22dp"
         android:layout_height="32dp"

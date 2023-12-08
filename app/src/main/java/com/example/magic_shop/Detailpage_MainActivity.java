@@ -22,6 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+
 public class Detailpage_MainActivity extends AppCompatActivity {
 
     private Button btnBuy;
@@ -36,24 +38,31 @@ public class Detailpage_MainActivity extends AppCompatActivity {
     private ImageView detailedImage1;
     private ImageView detailedImage2;
     private ImageView detailedImage3;
-
     private String productName;
+    private String productPrice;
+    private String sellerId;
     private ProductDetailedImageLoader productDetailedImageLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailpage_activity_main);
+        getWindow().setWindowAnimations(0);
+
 
         Intent intent = getIntent();
         if (intent != null) {
-            productName = intent.getStringExtra("product_name");
-            String productPrice = intent.getStringExtra("product_price");
-            String sellerId = intent.getStringExtra("seller_id");
+            this.productName = intent.getStringExtra("product_name");
+            this.productPrice = intent.getStringExtra("product_price");
+            this.sellerId = intent.getStringExtra("seller_id");
 
             // 받아온 상품명을 화면에 표시
             TextView productTextView = findViewById(R.id.productText);
             TextView priceTextView = findViewById(R.id.priceText);
             TextView sellerTextView = findViewById(R.id.brandText);
+
+            productTextView.setText(this.productName);
+            priceTextView.setText(this.productPrice);
+            sellerTextView.setText(this.sellerId);
 
             mainImage = findViewById(R.id.mainImage);
             detailedImage1 = findViewById(R.id.detailedImage1);
@@ -61,14 +70,11 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             detailedImage3 = findViewById(R.id.detailedImage3);
 
             productDetailedImageLoader = new ProductDetailedImageLoader(this);
+
             // 디테일 페이지에서 상세 이미지를 가져오고 화면에 표시
-            loadDetailedImages(productName);
-
-            productTextView.setText(productName);
-            priceTextView.setText(productPrice);
-            sellerTextView.setText(sellerId);
-
+            loadDetailedImages(this.productName);
         }
+
 
 
         btnBuy = findViewById(R.id.btn_buy);btnReview = findViewById(R.id.reviewBtn);
@@ -103,14 +109,22 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainReviewActivity.class);
+                intent.putExtra("product_name", productName);
+                intent.putExtra("product_price", productPrice);
+                intent.putExtra("seller_id", sellerId);
+
                 startActivity(intent);
             }
         });
+
 
         btnSize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
+                intent.putExtra("product_name", productName);
+                intent.putExtra("product_price", productPrice);
+                intent.putExtra("seller_id", sellerId);
                 startActivity(intent);
             }
         });
@@ -119,6 +133,9 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),Detailpage_MainAskActivity.class);
+                intent.putExtra("product_name", productName);
+                intent.putExtra("product_price", productPrice);
+                intent.putExtra("seller_id", sellerId);
                 startActivity(intent);
             }
         });
@@ -154,8 +171,6 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        loadDetailedImages(productName);
 
     }
     private void loadDetailedImages(String productName) {
@@ -193,7 +208,6 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         imageView.setImageBitmap(decodedByte);
     }
-
 
 
 }
