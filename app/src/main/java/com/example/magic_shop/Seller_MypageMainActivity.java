@@ -134,6 +134,16 @@ public class Seller_MypageMainActivity extends AppCompatActivity {
             }
         });
 
+        Button btn_question_list = (Button) findViewById(R.id.btn_question_list);
+        btn_question_list.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_QuestionListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
