@@ -20,21 +20,21 @@
 <!--            android:background="@color/category_light_gray_color"-->
 <!--            android:contentDescription="My Button Description" />-->
 
-        <!-- 상품 정보 (브랜드명, 상품명, 가격 등) -->
-<!--        <TextView-->
-<!--            android:id="@+id/product_brand_text"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:text="브랜드 명"-->
-<!--            android:textSize="10sp" />-->
+<!--         상품 정보 (브랜드명, 상품명, 가격 등) -->
+        <TextView
+            android:id="@+id/product_brand_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text=""
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/product_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="상품 이름"
+            android:text=""
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="1000000원"
+            android:text=""
             android:textSize="15sp" />
     </LinearLayout>
 
