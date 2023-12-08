@@ -41,13 +41,13 @@
         <activity android:name=".Mypage_RefundAccountManageActivity"/>
         <activity android:name=".Mypage_OrderDeliveryListActivity"/>
         <activity android:name=".Mypage_DeliveryCheckActivity"/>
-        <activity android:name=".Mypage_RefundExchangeListActivity"/>
+        <activity android:name=".Mypage_RefundListActivity"/>
+        <activity android:name=".Mypage_ExchangeListActivity"/>
         <activity android:name=".Mypage_UnreviewedListActivity"/>
         <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".Mypage_QuestionListActivity"/>
         <activity android:name=".Mypage_AnswerListActivity"/>
         <activity android:name=".Mypage_ReviewWriteActivity"/>
-        <activity android:name=".Mypage_QuestionWriteActivity"/>
         <activity android:name=".CategoryProductListActivity" />
         <activity android:name=".CategorySelectionActivity" />
         <activity android:name=".Detailpage_MainActivity"/>

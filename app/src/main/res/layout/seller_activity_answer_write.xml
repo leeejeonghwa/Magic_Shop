@@ -39,13 +39,14 @@
         android:id="@+id/textViewSubject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
         android:text=""
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_title" />
 
@@ -53,15 +54,16 @@
         android:id="@+id/textViewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="36dp"
         android:text=""
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSubject"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewSubject" />
 
     <EditText
         android:id="@+id/editTextAnswerContent"

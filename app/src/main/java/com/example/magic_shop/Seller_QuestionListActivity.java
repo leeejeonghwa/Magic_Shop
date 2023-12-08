@@ -48,11 +48,13 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             String questionID = jsonObject.getString(("questionID"));
+            String sellerID = jsonObject.getString(("sellerID"));
+            String productID = jsonObject.getString(("productID"));
             String subject = jsonObject.getString(("subject"));
             String content = jsonObject.getString(("content"));
             String userID = jsonObject.getString(("userID"));
 
-            QuestionItem questionItem = new QuestionItem(questionID, subject, content, userID);
+            QuestionItem questionItem = new QuestionItem(questionID, sellerID, productID, subject, content, userID);
 
             questionList.add(questionItem);
         }
@@ -66,7 +68,7 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
         getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        String userID = sessionManager.getUserId();
+        String sellerID = sessionManager.getUserId();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +110,7 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
             }
         };
 
-        SellerQuestionGetRequest sellerQuestionGetRequest = new SellerQuestionGetRequest(Seller_QuestionListActivity.this, responseListener);
+        SellerQuestionGetRequest sellerQuestionGetRequest = new SellerQuestionGetRequest(Seller_QuestionListActivity.this, sellerID, responseListener);
         RequestQueue queue = Volley.newRequestQueue(Seller_QuestionListActivity.this);
         queue.add(sellerQuestionGetRequest);
     }
@@ -116,12 +118,16 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
 
     public class QuestionItem {
         String questionID;
+        String sellerID;
+        String productID;
         String subject;
         String content;
         String userID;
 
-        public QuestionItem(String questionID, String subject, String content, String userID) {
+        public QuestionItem(String questionID, String sellerID, String productID, String subject, String content, String userID) {
             this.questionID = questionID;
+            this.sellerID = sellerID;
+            this.productID = productID;
             this.subject = subject;
             this.content = content;
             this.userID = userID;
@@ -163,6 +169,7 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
 
         public class QuestionViewHolder extends RecyclerView.ViewHolder {
             private final TextView userIDTextView;
+            private final TextView productIDTextView;
             private final TextView subjectTextView;
             private final TextView contentTextView;
             public final Button answerWriteButton;
@@ -171,9 +178,10 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
             public QuestionViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
+                userIDTextView = itemView.findViewById(R.id.userID);
+                productIDTextView = itemView.findViewById(R.id.productID);
                 subjectTextView = itemView.findViewById(R.id.subject);
                 contentTextView = itemView.findViewById(R.id.content);
-                userIDTextView = itemView.findViewById(R.id.userID);
                 answerWriteButton = itemView.findViewById(R.id.btn_answer_write);
 
                 // 답변 작성
@@ -187,8 +195,10 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
                             QuestionItem questionItem = questionList.get(position);
                             Intent intent = new Intent(context, Seller_AnswerWriteActivity.class);
                             intent.putExtra("questionID", questionItem.questionID);
+                            intent.putExtra("productID", questionItem.productID);
                             intent.putExtra("subject", questionItem.subject);
                             intent.putExtra("content", questionItem.content);
+                            intent.putExtra("userID", questionItem.userID);
                             context.startActivity(intent);
                         }
                     }
@@ -196,6 +206,7 @@ public class Seller_QuestionListActivity extends AppCompatActivity {
             }
 
             void bind(QuestionItem questionItem) {
+                productIDTextView.setText(questionItem.productID);
                 subjectTextView.setText(questionItem.subject);
                 contentTextView.setText(questionItem.content);
                 userIDTextView.setText(questionItem.userID);

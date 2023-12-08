@@ -12,16 +12,16 @@ public class ReviewPlusRequest extends StringRequest {
     final static private String URL = "http://210.117.175.207:8976/reviewPlus.php";
     private final Map<String, String> map;
 
-    public ReviewPlusRequest(String userID, String writer, String content,
-                                      String score, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+    public ReviewPlusRequest(String sellerID, String productID, String userID, String content,
+                                      String productScore, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(Method.POST, URL, listener, errorListener);
 
         map = new HashMap<>();
-//        map.put("productID", productID);
+        map.put("sellerID", sellerID);
+        map.put("productID", productID);
         map.put("userID", userID);
-        map.put("writer", writer);
         map.put("content", content);
-        map.put("score", score);
+        map.put("productScore", productScore);
     }
 
     @Override

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,13 +49,14 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             String reviewID = jsonObject.getString(("reviewID"));
+            String sellerID = jsonObject.getString(("sellerID"));
             String productID = jsonObject.getString(("productID"));
             String userID = jsonObject.getString(("userID"));
-            String writer = jsonObject.getString(("writer"));
             String content = jsonObject.getString(("content"));
-            String score = jsonObject.getString(("score"));
+            String productScore = jsonObject.getString(("productScore"));
 
-            ReviewedItem reviewedItem = new ReviewedItem(reviewID, productID, userID, writer, content, score);
+            ReviewedItem reviewedItem = new ReviewedItem(reviewID, sellerID, productID, userID,
+                    content, productScore);
 
             reviewedList.add(reviewedItem);
         }
@@ -137,19 +139,20 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
 
     public class ReviewedItem {
         String reviewID;
+        String sellerID;
         String productID;
         String userID;
-        String writer;
         String content;
-        String score;
+        String productScore;
 
-        public ReviewedItem(String reviewID, String productID, String userID, String writer, String content, String score) {
+        public ReviewedItem(String reviewID, String sellerID, String productID, String userID,
+                            String content, String productScore) {
             this.reviewID = reviewID;
+            this.sellerID = sellerID;
             this.productID = productID;
             this.userID = userID;
-            this.writer = writer;
             this.content = content;
-            this.score = score;
+            this.productScore = productScore;
         }
     }
 
@@ -186,26 +189,29 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
         public int getItemCount() { return reviewedList.size(); }
 
         public class ReviewedViewHolder extends RecyclerView.ViewHolder {
+            private final TextView sellerIDTextView;
             private final TextView productIDTextView;
-            private final TextView writerTextView;
             private final TextView contentTextView;
-            private final TextView scoreTextView;
+            private final RatingBar productScoreRatingBar;
             private final Context context;
 
             public ReviewedViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
+                sellerIDTextView = itemView.findViewById(R.id.sellerID);
                 productIDTextView = itemView.findViewById(R.id.productID);
-                writerTextView = itemView.findViewById(R.id.writer);
                 contentTextView = itemView.findViewById(R.id.content);
-                scoreTextView = itemView.findViewById(R.id.score);
+                productScoreRatingBar = itemView.findViewById(R.id.productScore);
             }
 
             void bind(ReviewedItem reviewedItem) {
+                sellerIDTextView.setText(reviewedItem.sellerID);
                 productIDTextView.setText(reviewedItem.productID);
-                writerTextView.setText(reviewedItem.writer);
                 contentTextView.setText(reviewedItem.content);
-                scoreTextView.setText(reviewedItem.score);
+
+                // productScore 값을 float로 변환하여 RatingBar에 설정
+                float rating = Float.parseFloat(reviewedItem.productScore);
+                productScoreRatingBar.setRating(rating);
             }
         }
     }

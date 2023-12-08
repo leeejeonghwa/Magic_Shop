@@ -48,11 +48,13 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             String questionID = jsonObject.getString(("questionID"));
+            String sellerID = jsonObject.getString(("sellerID"));
+            String productID = jsonObject.getString(("productID"));
             String subject = jsonObject.getString(("subject"));
             String content = jsonObject.getString(("content"));
             String userID = jsonObject.getString(("userID"));
 
-            QuestionItem questionItem = new QuestionItem(questionID, subject, content, userID);
+            QuestionItem questionItem = new QuestionItem(questionID, sellerID, productID, subject, content, userID);
 
             questionList.add(questionItem);
         }
@@ -84,16 +86,6 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Mypage_AnswerListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btn_question_plus = (Button) findViewById(R.id.btn_question_plus);
-        btn_question_plus.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), Mypage_QuestionWriteActivity.class);
                 startActivity(intent);
             }
         });
@@ -135,12 +127,16 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
 
     public class QuestionItem {
         String questionID;
+        String sellerID;
+        String productID;
         String subject;
         String content;
         String userID;
 
-        public QuestionItem(String questionID, String subject, String content, String userID) {
+        public QuestionItem(String questionID, String sellerID, String productID, String subject, String content, String userID) {
             this.questionID = questionID;
+            this.sellerID = sellerID;
+            this.productID = productID;
             this.subject = subject;
             this.content = content;
             this.userID = userID;
@@ -181,7 +177,8 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
         public int getItemCount() { return questionList.size(); }
 
         public class QuestionViewHolder extends RecyclerView.ViewHolder {
-            private final TextView userIDTextView;
+            private final TextView sellerIDTextView;
+            private final TextView productIDTextView;
             private final TextView subjectTextView;
             private final TextView contentTextView;
             private final Context context;
@@ -189,15 +186,17 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
             public QuestionViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
+                sellerIDTextView = itemView.findViewById(R.id.sellerID);
+                productIDTextView = itemView.findViewById(R.id.productID);
                 subjectTextView = itemView.findViewById(R.id.subject);
                 contentTextView = itemView.findViewById(R.id.content);
-                userIDTextView = itemView.findViewById(R.id.userID);
             }
 
             void bind(QuestionItem questionItem) {
+                sellerIDTextView.setText(questionItem.sellerID);
+                productIDTextView.setText(questionItem.productID);
                 subjectTextView.setText(questionItem.subject);
                 contentTextView.setText(questionItem.content);
-                userIDTextView.setText(questionItem.userID);
             }
         }
     }

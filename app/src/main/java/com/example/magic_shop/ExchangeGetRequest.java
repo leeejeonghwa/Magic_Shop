@@ -21,14 +21,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class QuestionGetRequest extends StringRequest {
+public class ExchangeGetRequest extends StringRequest {
 
-    final static private String URL = "http://210.117.175.207:8976/get_question.php";
+    final static private String URL = "http://210.117.175.207:8976/get_exchange.php";
     private Map<String, String> map;
     private Context mContext;
 
     // Context 매개변수를 가진 생성자
-    public QuestionGetRequest(Context context, String userID, Response.Listener<String> listener) {
+    public ExchangeGetRequest(Context context, String userID, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         mContext = context;
@@ -47,22 +47,22 @@ public class QuestionGetRequest extends StringRequest {
     protected Response<String> parseNetworkResponse(NetworkResponse response) {
         try {
             String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            Log.d("QuestionResponse", "질문 응답: " + json);
+            Log.d("ReviewResponse", "교환 목록 응답: " + json);
 
             // JSON 응답을 처리하여 리뷰 데이터를 가져옵니다.
             JSONObject responseObject = new JSONObject(json);
 
             // 서버 응답에 따라 키를 조정해야 합니다.
             if (responseObject.getBoolean("success")) {
-                JSONArray questionArray = responseObject.getJSONArray("question");
+                JSONArray exchangeArray = responseObject.getJSONArray("exchange");
 
                 // 필요한 경우 리뷰 데이터를 브로드캐스트합니다.
-                Intent intent = new Intent("questionData");
-                intent.putExtra("questionData", questionArray.toString());
+                Intent intent = new Intent("exchangeData");
+                intent.putExtra("exchangeData", exchangeArray.toString());
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
             } else {
                 // 서버 응답이 실패한 경우 처리
-                Log.e("QuestionGetRequest", "서버 응답 실패: " + responseObject.getString("message"));
+                Log.e("AnswerGetRequest", "서버 응답 실패: " + responseObject.getString("message"));
             }
 
         } catch (UnsupportedEncodingException | JSONException e) {

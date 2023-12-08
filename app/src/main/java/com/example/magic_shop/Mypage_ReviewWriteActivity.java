@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,8 @@ import java.util.List;
 
 public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
-    private EditText editTextContent, editTextScore;
+    private EditText editTextContent;
+    private RatingBar ratingBarProductScore;
     private Response.ErrorListener errorListener;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
         String writer = sessionManager.getUserNickname();
 
         editTextContent = findViewById(R.id.editTextContent);
-        editTextScore = findViewById(R.id.editTextScore);
+        ratingBarProductScore = findViewById(R.id.productScore);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -63,18 +65,24 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String comment = editTextContent.getText().toString();
-                String score = editTextScore.getText().toString();
+                // TODO sellerID, productID intent로 가져온 걸 참조해야 함
+                String sellerID = "dlwjdghk";
+                String productID = "1";
 
-                if (!comment.isEmpty() &&
-                        !score.isEmpty()) {
+                String content = editTextContent.getText().toString();
+                // RatingBar에서 현재 선택된 등급을 가져옴
+                float rating = ratingBarProductScore.getRating();
+                int convertedRating = (int) rating;
+                String productScore = String.valueOf(convertedRating);
+
+                if (!content.isEmpty()) {
 
                     plusReview(
-//                            productID,
+                            sellerID,
+                            productID,
                             userID,
-                            writer,
-                            comment,
-                            score
+                            content,
+                            productScore
                     );
 
                     Intent intent = new Intent(getApplicationContext(), Mypage_ReviewedListActivity.class);
@@ -92,9 +100,9 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
             JSONObject jsonResponse = new JSONObject(response);
 //            String productID = jsonResponse.getString("productID");
             String userID = jsonResponse.getString("userID");
-            String writer = jsonResponse.getString("writer");
+//            String writer = jsonResponse.getString("writer");
             String content = jsonResponse.getString("content");
-            String score = jsonResponse.getString("score");
+//            String score = jsonResponse.getString("score");
 
             // 텍스트 뷰에 값을 설정합니다.
 //            editTextProductID.setText(productID);
@@ -110,13 +118,13 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusReview(String userID, String writer, String content, String score) {
+    private void plusReview(String sellerID, String productID, String userID, String content, String productScore) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
                 try {
-                    Log.d("Mypage_ReviewWriteActivity", " plusDeliveryAddress() 서버 응답: " + response);
+                    Log.d("Mypage_ReviewWriteActivity", " plusReview() 서버 응답: " + response);
 
                     if (response.startsWith("<br")) {
                         handleNonJsonResponse(response);
@@ -148,8 +156,8 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
         };
 
         try {
-            ReviewPlusRequest ReviewPlusRequest = new ReviewPlusRequest(userID,
-                    writer, content, score, responseListener, errorListener);
+            ReviewPlusRequest ReviewPlusRequest = new ReviewPlusRequest(sellerID, productID, userID,
+                    content, productScore, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Mypage_ReviewWriteActivity.this);
             queue.add(ReviewPlusRequest);
         }
