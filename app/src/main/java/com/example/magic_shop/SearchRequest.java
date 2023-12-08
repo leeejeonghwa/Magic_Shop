@@ -1,5 +1,3 @@
-// SearchRequest.java
-
 package com.example.magic_shop;
 
 import android.content.Context;
@@ -65,5 +63,13 @@ public class SearchRequest extends StringRequest {
         }
 
         return super.parseNetworkResponse(response);
+    }
+
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
+        // Content-Type을 설정합니다. (필요에 따라 변경)
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/x-www-form-urlencoded");
+        return headers;
     }
 }
