@@ -39,9 +39,9 @@ public class SearchActivity extends AppCompatActivity{
             public void onClick(View view) {
                 String searchTerm = query.getText().toString().trim();
 
-                if (!searchTerm.isEmpty()) {
-                    // 검색어가 비어있지 않은 경우 서버로 요청 보냄
-                    searchProducts(searchTerm);
+                if(!searchTerm.isEmpty()){
+                    Intent intent = new Intent(getApplicationContext(),SearchResultActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(SearchActivity.this, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
                 }
@@ -116,37 +116,7 @@ public class SearchActivity extends AppCompatActivity{
         });
 
     }
-    private void searchProducts(String searchTerm) {
-        String url = "http://your_server_url/search.php";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // 서버 응답을 SearchResultActivity로 전달
-                        Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
-                        intent.putExtra("searchTerm", searchTerm);
-                        intent.putExtra("searchResult", response);
-                        startActivity(intent);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(SearchActivity.this, "서버와의 통신 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("searchTerm", searchTerm);
-                return params;
-            }
-        };
-
-        // Volley 요청 큐에 추가
-        Volley.newRequestQueue(this).add(stringRequest);
-    }
 
 
 }

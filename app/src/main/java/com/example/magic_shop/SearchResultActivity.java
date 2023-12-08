@@ -39,18 +39,37 @@ public class SearchResultActivity extends AppCompatActivity {
         // 제품을 위한 JSON 배열 파싱
         JSONArray jsonArray = new JSONArray(jsonResponse);
 
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
+        if (jsonArray.length() == 1) {
+            // If no search results, add a dummy item to display in the RecyclerView
+            SearchItem dummyItem = new SearchItem("No Results", "", "", "");
+            searchList.add(dummyItem);
+        } else {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-            String productName = jsonObject.getString("productName");
-            String productPrice = jsonObject.getString("productPrice");
-            String productImage = jsonObject.getString("productImage");
-            String brandName = jsonObject.getString("brandName");
+                String productName = jsonObject.getString("productName");
+                String productPrice = jsonObject.getString("productPrice");
+                String productImage = jsonObject.getString("productImage");
+                String brandName = jsonObject.getString("brandName");
 
-            SearchItem searchItem = new SearchItem(productName, productPrice, productImage, brandName);
+                SearchItem searchItem = new SearchItem(productName, productPrice, productImage, brandName);
 
-            searchList.add(searchItem);
+                searchList.add(searchItem);
+            }
         }
+
+//        for (int i = 0; i < jsonArray.length(); i++) {
+//            JSONObject jsonObject = jsonArray.getJSONObject(i);
+//
+//            String productName = jsonObject.getString("productName");
+//            String productPrice = jsonObject.getString("productPrice");
+//            String productImage = jsonObject.getString("productImage");
+//            String brandName = jsonObject.getString("brandName");
+//
+//            SearchItem searchItem = new SearchItem(productName, productPrice, productImage, brandName);
+//
+//            searchList.add(searchItem);
+//        }
 
         return searchList;
     }
@@ -176,11 +195,12 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.search_list_re);
+        RecyclerView recyclerView = findViewById(R.id.search_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(SearchResultActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @SuppressLint({"LongLogTag", "NotifyDataSetChanged"})
             @Override
             public void onResponse(String response) {
                 try {
@@ -204,52 +224,9 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         };
 
-        Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("searchTerm")) {
-            String searchTerm = intent.getStringExtra("searchTerm");
-
-            // 서버에서 검색어에 해당하는 상품 가져오는 코드
-            searchProducts(searchTerm, responseListener);
-        }
 
 
-
-//        Response.Listener<String> responseListener = new Response.Listener<String>() {
-//            @SuppressLint({"LongLogTag", "NotifyDataSetChanged"})
-//            @Override
-//            public void onResponse(String response) {
-//                try {
-//                    Log.d("SearchResultActivity", "서버 응답: " + response);
-//
-//                    List<SearchItem> searchList = getSearchList(response);
-//
-//                    if (searchAdapter == null) {
-//                        Log.d("Mypage_DeliveryAddressManageActivity", "Adapter is null. Creating new adapter.");
-//                        searchAdapter = new SearchAdapter(searchList, context);
-//                        recyclerView.setAdapter(searchAdapter);
-//                    } else {
-//                        Log.d("Mypage_DeliveryAddressManageActivity", "Adapter exists. Updating data.");
-//                        searchAdapter.setSearchList(searchList);
-//                        searchAdapter.notifyDataSetChanged();
-//                    }
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//        SearchRequest searchRequest = new SearchRequest(SearchResultActivity.this, searchTerm, responseListener);
-//        RequestQueue queue = Volley.newRequestQueue(SearchResultActivity.this);
-//        queue.add(searchRequest);
     }
-    private void searchProducts(String searchTerm, Response.Listener<String> responseListener) {
-        String url = "http://210.117.175.207:8976/search.php";
-
-        SearchRequest searchRequest = new SearchRequest(SearchResultActivity.this, searchTerm, responseListener);
-        RequestQueue queue = Volley.newRequestQueue(SearchResultActivity.this);
-        queue.add(searchRequest);
-    }
-
     public class SearchItem {
         String productName;
         String productPrice;
@@ -294,19 +271,10 @@ public class SearchResultActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
             SearchItem searchItem = searchList.get(position);
-
-            // 기본 배송지인 경우 삭제 버튼을 숨김
-//            if ("1".equals(addressItem.defaultDeliveryAddress)) {
-//                holder.addressDeleteButton.setVisibility(View.GONE);
-//            } else {
-//                holder.addressDeleteButton.setVisibility(View.VISIBLE);
-//            }
-//            holder.bind(addressItem);
-//
-//            // 아이템의 위치가 변경된 경우 이동을 알림
-//            if (position != holder.getAdapterPosition()) {
-//                notifyItemMoved(holder.getAdapterPosition(), position);
-//            }
+            // 데이터를 뷰에 바인딩
+//            holder.productName.setText(searchItem.productName);
+//            holder.productPrice.setText(searchItem.productPrice);
+//            holder.productBrand.setText(searchItem.productBrand);
         }
 
         public int getItemCount() {

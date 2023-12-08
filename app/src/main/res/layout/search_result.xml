@@ -153,12 +153,10 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_list_re"
+                android:id="@+id/search_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-
-
+                android:layout_height="552dp"
+                tools:listitem="@layout/search_list_re"/>
 
             <TextView
                 android:layout_width="match_parent"
