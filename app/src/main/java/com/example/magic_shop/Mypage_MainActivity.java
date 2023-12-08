@@ -62,8 +62,18 @@ public class Mypage_MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        Button imageButton = (Button) findViewById(R.id.btn_setting);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        Button btn_shopping_basket = (Button) findViewById(R.id.btn_shopping_basket);
+        btn_shopping_basket.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_setting = (Button) findViewById(R.id.btn_setting);
+        btn_setting.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
