@@ -122,6 +122,16 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btn_qna = (Button) findViewById(R.id.btn_qna);
+        btn_qna.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_QuestionListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

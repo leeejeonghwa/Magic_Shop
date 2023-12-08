@@ -48,12 +48,13 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             String questionID = jsonObject.getString(("questionID"));
+            String sellerID = jsonObject.getString(("sellerID"));
+            String productID = jsonObject.getString(("productID"));
             String subject = jsonObject.getString(("subject"));
             String content = jsonObject.getString(("content"));
-            String userID = jsonObject.getString(("userID"));
             String answerContent = jsonObject.getString(("answerContent"));
 
-            AnswerItem answerItem = new AnswerItem(questionID, subject, content, userID, answerContent);
+            AnswerItem answerItem = new AnswerItem(questionID, sellerID, productID, subject, content, answerContent);
 
             answerList.add(answerItem);
         }
@@ -126,16 +127,18 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
 
     public class AnswerItem {
         String questionID;
+        String sellerID;
+        String productID;
         String subject;
         String content;
-        String userID;
         String answerContent;
 
-        public AnswerItem(String questionID, String subject, String content, String userID, String answerContent) {
+        public AnswerItem(String questionID, String sellerID, String productID, String subject, String content, String answerContent) {
             this.questionID = questionID;
+            this.sellerID = sellerID;
+            this.productID = productID;
             this.subject = subject;
             this.content = content;
-            this.userID = userID;
             this.answerContent = answerContent;
 
         }
@@ -174,7 +177,8 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
         public int getItemCount() { return answerList.size(); }
 
         public class AnswerViewHolder extends RecyclerView.ViewHolder {
-            private final TextView userIDTextView;
+            private final TextView sellerIDTextView;
+            private final TextView productIDTextView;
             private final TextView subjectTextView;
             private final TextView contentTextView;
             private final TextView answerContentTextView;
@@ -183,16 +187,18 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
             public AnswerViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
+                sellerIDTextView = itemView.findViewById(R.id.sellerID);
+                productIDTextView = itemView.findViewById(R.id.productID);
                 subjectTextView = itemView.findViewById(R.id.subject);
                 contentTextView = itemView.findViewById(R.id.content);
-                userIDTextView = itemView.findViewById(R.id.userID);
                 answerContentTextView = itemView.findViewById(R.id.answerContent);
             }
 
             void bind(AnswerItem questionItem) {
+                sellerIDTextView.setText(questionItem.sellerID);
+                productIDTextView.setText(questionItem.productID);
                 subjectTextView.setText(questionItem.subject);
                 contentTextView.setText(questionItem.content);
-                userIDTextView.setText(questionItem.userID);
                 answerContentTextView.setText(questionItem.answerContent);
             }
         }

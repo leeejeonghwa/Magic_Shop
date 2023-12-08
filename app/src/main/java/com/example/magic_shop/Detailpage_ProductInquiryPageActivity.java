@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -23,6 +25,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
 
     private Button btnBack, btnEnroll, btnCancellation, btnBag, btnHome, btnSearch;
     private EditText editTextSubject, editTextContent;
+    private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
 
     @Override
@@ -49,6 +52,8 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
+
+
 
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -92,26 +97,54 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
             }
         });
 
-        btnEnroll.setOnClickListener(new View.OnClickListener() {
 
+        radioGroup = findViewById(R.id.radioGroup);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                for (int i = 0; i < group.getChildCount(); i++) {
+                    View childView = group.getChildAt(i);
+
+                    if (childView instanceof RadioButton) {
+                        RadioButton radioButton = (RadioButton) childView;
+
+                        // 선택된 RadioButton 이외의 나머지 버튼을 해제합니다.
+                        if (radioButton.getId() != checkedId) {
+                            radioButton.setChecked(false);
+                        }
+                    }
+                }
+            }
+        });
+
+
+        btnEnroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO sellerID, productID 참조해야 함
+                String sellerID = "dlwjdghk";
+                String productID = "1";
+
                 String content = editTextContent.getText().toString();
                 String subject = editTextSubject.getText().toString();
 
-                if (!content.isEmpty()){
+                int checkedId = radioGroup.getCheckedRadioButtonId();
+                RadioButton checkedRadioButton = findViewById(checkedId);
 
-                    plusQuestion(
-                            userID,
-                            subject,
-                            content
-                    );
+                if (checkedRadioButton != null) {
+                    String type = checkedRadioButton.getText().toString();
 
-                    Intent intent = new Intent(getApplicationContext(), Mypage_QuestionListActivity.class);
-                    startActivity(intent);
+                    if (!type.isEmpty() && !subject.isEmpty() && !content.isEmpty()) {
+                        plusQuestion(sellerID, productID, userID, type, subject, content);
 
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                    } else {
+                        showAlert("모든 필드를 채워주세요.");
+                    }
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert("라디오 버튼을 선택해주세요.");
                 }
             }
         });
@@ -120,7 +153,10 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     private void handleNonJsonResponse(String response) {
         try {
             JSONObject jsonResponse = new JSONObject(response);
+            String sellerID = jsonResponse.getString("sellerID");
+            String productID = jsonResponse.getString("productID");
             String userID = jsonResponse.getString("userID");
+            String type = jsonResponse.getString("type");
             String subject = jsonResponse.getString("subject");
             String content = jsonResponse.getString("content");
 
@@ -131,7 +167,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusQuestion(String userID, String subject, String content) {
+    private void plusQuestion(String sellerID, String productID, String userID, String type, String subject, String content) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -169,7 +205,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         };
 
         try {
-            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(userID, subject,
+            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(sellerID, productID, userID, type, subject,
                     content, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Detailpage_ProductInquiryPageActivity.this);
             queue.add(QuestionPlusRequest);

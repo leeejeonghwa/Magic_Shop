@@ -46,7 +46,6 @@
         <activity android:name=".Mypage_QuestionListActivity"/>
         <activity android:name=".Mypage_AnswerListActivity"/>
         <activity android:name=".Mypage_ReviewWriteActivity"/>
-        <activity android:name=".Mypage_QuestionWriteActivity"/>
         <activity android:name=".CategoryProductListActivity" />
         <activity android:name=".CategorySelectionActivity" />
         <activity android:name=".Detailpage_MainActivity"/>

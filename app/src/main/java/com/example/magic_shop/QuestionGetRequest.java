@@ -47,18 +47,18 @@ public class QuestionGetRequest extends StringRequest {
     protected Response<String> parseNetworkResponse(NetworkResponse response) {
         try {
             String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            Log.d("ReviewResponse", "리뷰 응답: " + json);
+            Log.d("QuestionResponse", "질문 응답: " + json);
 
             // JSON 응답을 처리하여 리뷰 데이터를 가져옵니다.
             JSONObject responseObject = new JSONObject(json);
 
             // 서버 응답에 따라 키를 조정해야 합니다.
             if (responseObject.getBoolean("success")) {
-                JSONArray reviewArray = responseObject.getJSONArray("question");
+                JSONArray questionArray = responseObject.getJSONArray("question");
 
                 // 필요한 경우 리뷰 데이터를 브로드캐스트합니다.
                 Intent intent = new Intent("questionData");
-                intent.putExtra("questionData", reviewArray.toString());
+                intent.putExtra("questionData", questionArray.toString());
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
             } else {
                 // 서버 응답이 실패한 경우 처리
