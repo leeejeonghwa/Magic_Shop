@@ -64,4 +64,5 @@ public class SessionManager extends AppCompatActivity{
         editor.clear();
         editor.apply();
     }
+
 }

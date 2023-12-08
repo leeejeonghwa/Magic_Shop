@@ -48,22 +48,22 @@ public class SearchRequest extends StringRequest{
     protected Response<String> parseNetworkResponse(NetworkResponse response) {
         try {
             String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            Log.d("DeliveryAddressResponse", "배송지 주소 응답: " + json);
+            Log.d("SearchRequestResponse", "서버 응답: " + json);
 
-            // JSON 응답을 처리하여 배송지 주소 데이터를 가져옵니다.
+            // JSON 응답을 처리하여 검색 결과를 가져옵니다.
             JSONObject responseObject = new JSONObject(json);
 
             // 서버 응답에 따라 키를 조정해야 합니다.
             if (responseObject.getBoolean("success")) {
-                JSONArray searchResultArray = responseObject.getJSONArray("products");
+                JSONArray searchResultArray = responseObject.getJSONArray("searchResult");
 
-                // 필요한 경우 배송지 주소 데이터를 브로드캐스트합니다.
-                Intent intent = new Intent("productsData");
-                intent.putExtra("productsData", searchResultArray.toString());
+                // 필요한 경우 검색 결과를 브로드캐스트합니다.
+                Intent intent = new Intent("searchResultData");
+                intent.putExtra("searchResultData", searchResultArray.toString());
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
             } else {
                 // 서버 응답이 실패한 경우 처리
-                Log.e("DeliveryAddressGetRequest", "서버 응답 실패: " + responseObject.getString("message"));
+                Log.e("SearchRequest", "서버 응답 실패: " + responseObject.getString("message"));
             }
 
         } catch (UnsupportedEncodingException | JSONException e) {

@@ -161,7 +161,7 @@ public class Mypage_DeliveryAddressManageActivity extends AppCompatActivity {
         String deliveryRequest;
         String defaultDeliveryAddress;
 
-        public AddressItem(String userID, String addressID, String deliveryAddressName, String recipient,String phoneNumber, String address,
+        public AddressItem(String userID, String addressID, String deliveryAddressName, String recipient, String phoneNumber, String address,
                            String addressDetail, String deliveryRequest, String defaultDeliveryAddress) {
             this.userID = userID;
             this.addressID = addressID;

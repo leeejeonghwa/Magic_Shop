@@ -34,14 +34,17 @@ public class SearchActivity extends AppCompatActivity{
         Button search_btn = (Button) findViewById(R.id.search_btn);
         EditText query = (EditText) findViewById(R.id.edit_query);
 
-        search_btn.setOnClickListener(new View.OnClickListener(){
-
+        search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String searchTerm = query.getText().toString().trim();
-                searchProducts(searchTerm);
-                Intent intent = new Intent(getApplicationContext(),SearchResultActivity.class);
-                startActivity(intent);
+
+                if (!searchTerm.isEmpty()) {
+                    // 검색어가 비어있지 않은 경우 서버로 요청 보냄
+                    searchProducts(searchTerm);
+                } else {
+                    Toast.makeText(SearchActivity.this, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -120,7 +123,9 @@ public class SearchActivity extends AppCompatActivity{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                        // 서버 응답을 SearchResultActivity로 전달
+                        Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
+                        intent.putExtra("searchTerm", searchTerm);
                         intent.putExtra("searchResult", response);
                         startActivity(intent);
                     }
@@ -139,6 +144,7 @@ public class SearchActivity extends AppCompatActivity{
             }
         };
 
+        // Volley 요청 큐에 추가
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
