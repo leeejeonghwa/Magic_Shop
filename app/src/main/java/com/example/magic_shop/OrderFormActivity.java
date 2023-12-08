@@ -25,7 +25,7 @@ import java.util.List;
 public class OrderFormActivity extends AppCompatActivity {
 
     private TextView TextViewAddressName, TextViewRecipient, TextViewCallNumber, TextViewAddress,
-            TextViewAddressDetail, TextViewDeliveryRequest;
+            TextViewAddressDetail, TextViewDeliveryRequest,totalPriceTextView;
     private Response.ErrorListener errorListener;
 
 
@@ -33,9 +33,21 @@ public class OrderFormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_form);
+        totalPriceTextView = findViewById(R.id.purchase_all_cnt);
 
-        SessionManager sessionManager = new SessionManager(getApplicationContext());
-        String userID = sessionManager.getUserId();
+        Intent intent = getIntent();
+        if (intent != null) {
+            int totalItemCount = intent.getIntExtra("TOTAL_ITEM_COUNT", 0);
+            int totalPrice = intent.getIntExtra("TOTAL_PRICE", 0);
+            totalPriceTextView.setText("결제할 상품 총 " + totalItemCount + " 개" +
+                    "\n상품 금액 " + totalPrice + "원");}
+
+
+
+            SessionManager sessionManager = new SessionManager(getApplicationContext());
+            String userID = sessionManager.getUserId();
+
+
 
         findViewById(R.id.back_id).setOnClickListener(new View.OnClickListener() {
             @Override

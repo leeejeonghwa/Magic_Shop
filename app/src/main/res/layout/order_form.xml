@@ -171,65 +171,50 @@
                     android:textSize="22sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <android.widget.Button
-                        android:id="@+id/btn_product_id1"
-                        android:layout_width="123dp"
-                        android:layout_height="166dp"
-                        android:layout_margin="30dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@color/category_light_gray_color"
-                        android:contentDescription="My Button Description" />
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/purchase_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
                         <TextView
-                            android:id="@+id/brand_name_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="브랜드명"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:text="결제 금액"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/product_name_textview"
+                            android:id="@+id/purchase_price_order"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-
-                            android:text="상품 명"
-
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="0000"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/product_option_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="옵션"
-                            android:layout_marginTop="10dp"
-
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="원"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/product_price_textview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="가격"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-
-                            android:textSize="20sp" />
                     </LinearLayout>
-
 
                 </LinearLayout>
 
@@ -253,21 +238,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="결제 수단"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="결제 수단"
                     android:textColor="@color/black"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <CheckBox
+                    android:id="@+id/check_card"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="결제 수단"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:text="신용카드" />
+
+                <CheckBox
+                    android:id="@+id/check_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="계좌이체" />
+
+                <CheckBox
+                    android:id="@+id/check_deposit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="무통장입금" />
 
 
             </LinearLayout>
@@ -288,69 +282,19 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/purchase_all_cnt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
-                        android:text="결제할 상품 총"
+                        android:text="결제 할 상품 총  0개 "
                         android:textColor="@color/black"
                         android:textSize="22sp" />
 
-                    <TextView
-                        android:id="@+id/purchase_cnt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="22sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:text="개"
-                        android:textColor="@color/black"
-                        android:textSize="22sp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:text="결제 금액"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/purchase_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:text="0000"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:text="원"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
 
 
             </LinearLayout>
