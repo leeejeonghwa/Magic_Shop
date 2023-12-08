@@ -24,11 +24,11 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
 
     private ProductRegisterRequestManager productRegisterRequestManager;
 
-    String userID;
+    private String userID;
 
     public Context context;
 
-    ProductRegisterRequestAdapter adapter;
+    private ProductRegisterRequestAdapter adapter;
 
 
     protected void onCreate(Bundle savedInstanceState) {

@@ -131,7 +131,7 @@ public class RegisteredProductManager {
 
                     Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(date, productName, productSize, productColor, null);
+                    ProductItem item = new ProductItem(id, date, productName, productSize, productColor, null);
                     registeredProductList.add(item);
                     String numStr = Integer.toString(registeredProductList.size());
                     Log.d("삽입된 상품 수", numStr);

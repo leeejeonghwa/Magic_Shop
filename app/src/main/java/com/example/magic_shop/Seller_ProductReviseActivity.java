@@ -143,6 +143,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                             // 다음 화면으로 이동하는 코드
                             ProductItem productItem = productReviseList.get(position);
                             Intent intent = new Intent(context, Seller_ProductReviseRequestActivity.class);
+                            intent.putExtra("id", productItem.id);
                             intent.putExtra("date", productItem.date);
                             intent.putExtra("productName", productItem.productName);
                             intent.putExtra("productSize", productItem.productSize);
