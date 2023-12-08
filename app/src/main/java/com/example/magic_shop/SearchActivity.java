@@ -37,10 +37,13 @@ public class SearchActivity extends AppCompatActivity{
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String searchTerm = query.getText().toString().trim();
+                String searchTerm = query.getText().toString();
 
                 if(!searchTerm.isEmpty()){
                     Intent intent = new Intent(getApplicationContext(),SearchResultActivity.class);
+                    // Intent에 searchTerm을 추가합니다.
+                    intent.putExtra("searchTerm", searchTerm);
+
                     startActivity(intent);
                 } else {
                     Toast.makeText(SearchActivity.this, "검색어를 입력하세요", Toast.LENGTH_SHORT).show();

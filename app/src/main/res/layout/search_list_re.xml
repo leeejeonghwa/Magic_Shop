@@ -13,21 +13,21 @@
         tools:ignore="MissingConstraints">
 
         <!-- 상품 이미지 또는 버튼 -->
-        <Button
-            android:id="@+id/btn_product"
-            android:layout_width="205dp"
-            android:layout_height="200dp"
-            android:background="@color/category_light_gray_color"
-            android:contentDescription="My Button Description" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_product"-->
+<!--            android:layout_width="205dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:background="@color/category_light_gray_color"-->
+<!--            android:contentDescription="My Button Description" />-->
 
         <!-- 상품 정보 (브랜드명, 상품명, 가격 등) -->
-        <TextView
-            android:id="@+id/product_brand_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="브랜드 명"
-            android:textSize="10sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/product_brand_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:text="브랜드 명"-->
+<!--            android:textSize="10sp" />-->
 
         <TextView
             android:id="@+id/product_name_text"
