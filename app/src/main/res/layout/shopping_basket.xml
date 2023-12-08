@@ -155,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="결제 선택 상품 수  0개 "
+                android:text="결제 할 상품 총  0개 "
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -173,7 +173,7 @@
         android:layout_marginTop="24dp"
         android:background="@color/category_main_color"
         android:contentDescription="My Button Description"
-        android:text="구매하기"
+        android:text="결제하기"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
