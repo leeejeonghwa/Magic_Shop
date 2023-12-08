@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity {
@@ -96,10 +95,10 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
     }
 
     public class ProductRegisterRequestAdapter extends RecyclerView.Adapter<ProductRegisterRequestAdapter.ProductRegisterRequestViewHolder> {
-        private List<ProductRegisterRequestItem> productRegisterRequestList;
+        private List<ProductItem> productRegisterRequestList;
         private Context context;
 
-        ProductRegisterRequestAdapter(List<ProductRegisterRequestItem> productRegisterRequestList, Context context) {
+        ProductRegisterRequestAdapter(List<ProductItem> productRegisterRequestList, Context context) {
             this.productRegisterRequestList = productRegisterRequestList;
             this.context = context;
         }
@@ -114,8 +113,8 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
 
         @Override
         public void onBindViewHolder(@NonNull ProductRegisterRequestViewHolder holder, int position) {
-            ProductRegisterRequestItem productRegisterRequestItem = productRegisterRequestList.get(position);
-            holder.bind(productRegisterRequestItem);
+            ProductItem productItem = productRegisterRequestList.get(position);
+            holder.bind(productItem);
         }
 
         @Override
@@ -143,16 +142,16 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
 
             }
 
-            void bind(ProductRegisterRequestItem productRegisterRequestItem) {
-                dateTextView.setText(productRegisterRequestItem.date);
-                productNameTextView.setText(productRegisterRequestItem.productName);
-                productSizeTextView.setText(productRegisterRequestItem.productSize);
-                productColorTextView.setText(productRegisterRequestItem.productColor);
-                if (productRegisterRequestItem.mainImage == null) {
+            void bind(ProductItem productItem) {
+                dateTextView.setText(productItem.date);
+                productNameTextView.setText(productItem.productName);
+                productSizeTextView.setText(productItem.productSize);
+                productColorTextView.setText(productItem.productColor);
+                if (productItem.mainImage == null) {
                     Log.d("이미지", "null");
                 }
                 else {
-                    productMainImageView.setImageBitmap(productRegisterRequestItem.mainImage);
+                    productMainImageView.setImageBitmap(productItem.mainImage);
                 }
 
             }

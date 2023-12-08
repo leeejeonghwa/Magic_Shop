@@ -1,7 +1,7 @@
 package com.example.magic_shop;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,37 +9,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Seller_ProductListActivity extends AppCompatActivity {
 
+    private RegisteredProductManager registeredProductManager;
+
+    private String userID;
+
     public Context context;
 
-    public List<ProductItem> getProductList() {
-        List<ProductItem> productList = new ArrayList<>();
+    private ProductAdapter adapter;
 
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        productList.add(new ProductItem("2023-11-27", "상품 A", "S", "1"));
-        productList.add(new ProductItem("2023-11-27", "상품 B", "M", "2"));
-        productList.add(new ProductItem("2023-11-27", "상품 C", "L", "3"));
-        productList.add(new ProductItem("2023-11-27", "상품 D", "S", "4"));
-        productList.add(new ProductItem("2023-11-27", "상품 E", "M", "5"));
-        // ... 추가적인 데이터
 
-        return productList;
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seller_activity_product_list);
         getWindow().setWindowAnimations(0);
+
+        registeredProductManager = RegisteredProductManager.getInstance(this);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        userID = sessionManager.getUserId();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -54,24 +53,31 @@ public class Seller_ProductListActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ProductItem> productList = getProductList();
-        ProductAdapter adapter = new ProductAdapter(productList, this);
+        registeredProductManager.checkUserId(userID);
+
+        adapter = new ProductAdapter(registeredProductManager.getRegisteredProductList(), this);
         recyclerView.setAdapter(adapter);
+
+        fetchDataFromServer();
     }
 
-    public class ProductItem {
-        String date;
-        String productName;
-        String productSize;
-        String productQuantify;
+    private void fetchDataFromServer() {
+        registeredProductManager.fetchDataFromServer(new RegisteredProductManager.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived() {
 
-        public ProductItem(String date, String productName, String productSize, String productQuantify) {
-            this.date = date;
-            this.productName = productName;
-            this.productSize = productSize;
-            this.productQuantify = productQuantify;
-        }
+                String str = Integer.toString(registeredProductManager.getRegisteredProductList().size());
+                Log.d("fetch", str);
+                updateUI();
+            }
+        });
     }
+
+    private void updateUI() {
+        adapter.notifyDataSetChanged();
+    }
+
+
 
     public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         private List<ProductItem> productList;
@@ -103,7 +109,9 @@ public class Seller_ProductListActivity extends AppCompatActivity {
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productColorTextView;
+
+            private final ImageView productMainImageView;
             private final Context context;
 
             public ProductViewHolder(View itemView, Context context) {
@@ -112,14 +120,21 @@ public class Seller_ProductListActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productQuantify);
+                productMainImageView = itemView.findViewById(R.id.productImage);
             }
 
             void bind(ProductItem productRegisterItem) {
                 dateTextView.setText(productRegisterItem.date);
                 productNameTextView.setText(productRegisterItem.productName);
                 productSizeTextView.setText(productRegisterItem.productSize);
-                productQuantifyTextView.setText(productRegisterItem.productQuantify);
+                productColorTextView.setText(productRegisterItem.productColor);
+                if (productRegisterItem.mainImage == null) {
+                    Log.d("이미지", "null");
+                }
+                else {
+                    productMainImageView.setImageBitmap(productRegisterItem.mainImage);
+                }
             }
         }
     }

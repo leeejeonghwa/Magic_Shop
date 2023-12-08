@@ -5,9 +5,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
 import android.content.Context;
 import android.util.Log;
-import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,30 +17,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRegisterRequestManager {
+public class RegisteredProductManager {
 
-    private static ProductRegisterRequestManager instance;
+    private static RegisteredProductManager instance;
+
     private RequestQueue requestQueue;
-    private List<ProductItem> productRegisterRequestList;
+    private List<ProductItem> registeredProductList;
     private Context context;
     private String userId;
 
-
-    private ProductRegisterRequestManager(Context context) {
+    private RegisteredProductManager(Context context) {
         this.context = context;
         this.requestQueue = getRequestQueue();
-        this.productRegisterRequestList = new ArrayList<>();
+        this.registeredProductList = new ArrayList<>();
     }
 
-    public static synchronized ProductRegisterRequestManager getInstance(Context context) {
+    public static synchronized RegisteredProductManager getInstance(Context context) {
         if (instance == null) {
-            instance = new ProductRegisterRequestManager(context);
+            instance = new RegisteredProductManager(context);
         }
+
         return instance;
     }
 
-    public List<ProductItem> getProductRegisterRequestList() {
-        return productRegisterRequestList;
+    public List<ProductItem> getRegisteredProductList() {
+        return registeredProductList;
     }
 
     private RequestQueue getRequestQueue() {
@@ -49,14 +52,14 @@ public class ProductRegisterRequestManager {
     }
 
     public void fetchDataFromServer(OnDataReceivedListener listener) {
-        String url = "http://210.117.175.207:8976/product_resigter_request_accept.php";
+        String url = "http://210.117.175.207:8976/registered_product_list.php";
 
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("상품등록요청 리스트", "서버 응답");
+                        Log.d("승인된 상품 리스트", "서버 응답");
                         parseJsonData(response, listener);
 
                     }
@@ -66,7 +69,7 @@ public class ProductRegisterRequestManager {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        Log.d("상품등록요청 리스트", "fail" );
+                        Log.d("승인된 상품 리스트 리스트", "fail" );
                         //listener.onDataReceived();
 
                     }
@@ -82,8 +85,6 @@ public class ProductRegisterRequestManager {
     public interface OnDataReceivedListener {
         void onDataReceived();
     }
-
-
 
     private void parseJsonData(JSONArray jsonArray, OnDataReceivedListener listener) {
         for (int i = 0; i < jsonArray.length(); i++) {
@@ -131,8 +132,8 @@ public class ProductRegisterRequestManager {
                     Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
                     ProductItem item = new ProductItem(date, productName, productSize, productColor, null);
-                    productRegisterRequestList.add(item);
-                    String numStr = Integer.toString(productRegisterRequestList.size());
+                    registeredProductList.add(item);
+                    String numStr = Integer.toString(registeredProductList.size());
                     Log.d("삽입된 상품 수", numStr);
 
 
@@ -153,7 +154,6 @@ public class ProductRegisterRequestManager {
 
         }
     }
-
 
 
 }
