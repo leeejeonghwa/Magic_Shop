@@ -47,12 +47,12 @@ public class Mypage_RefundListActivity extends AppCompatActivity {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-            String refundID = jsonObject.getString(("refundID"));
+            String orderID = jsonObject.getString(("orderID"));
             String sellerID = jsonObject.getString(("sellerID"));
             String productID = jsonObject.getString(("productID"));
             String productPrice = jsonObject.getString(("productPrice"));
 
-            RefundItem refundItem = new RefundItem(refundID, sellerID, productID, productPrice);
+            RefundItem refundItem = new RefundItem(orderID, sellerID, productID, productPrice);
 
             refundList.add(refundItem);
         }

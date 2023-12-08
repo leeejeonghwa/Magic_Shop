@@ -36,14 +36,14 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
     public Context context;
 
 
-    public List<UnreviewedItem> getReviewedList(String jsonResponse) throws JSONException {
+    public List<UnreviewedItem> getUnreviewedList(String jsonResponse) throws JSONException {
         List<UnreviewedItem> unreviewedList = new ArrayList<>();
 
         // 전체 응답을 JSONObject로 변환
         JSONObject responseJson = new JSONObject(jsonResponse);
 
         // "review" 필드의 값을 JSONArray로 가져오기
-        JSONArray jsonArray = responseJson.getJSONArray("review");
+        JSONArray jsonArray = responseJson.getJSONArray("unreview");
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -53,9 +53,9 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
             String productID = jsonObject.getString(("productID"));
             String userID = jsonObject.getString(("userID"));
 
-            UnreviewedItem reviewedItem = new UnreviewedItem(reviewID, sellerID, productID, userID);
+            UnreviewedItem unreviewedItem = new UnreviewedItem(reviewID, sellerID, productID, userID);
 
-            unreviewedList.add(reviewedItem);
+            unreviewedList.add(unreviewedItem);
         }
 
         return unreviewedList;
@@ -110,7 +110,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
                 try {
                     Log.d("Mypage_UnreviewedListActivity", "서버 응답: " + response);
 
-                    List<UnreviewedItem> unreviewedList = getReviewedList(response);
+                    List<UnreviewedItem> unreviewedList = getUnreviewedList(response);
 
                     if (unreviewedAdapter == null) {
                         Log.d("Mypage_UnreviewedListActivity", "Adapter is null. Creating new adapter.");
