@@ -64,6 +64,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
 
             // 초기화 시 전체 아이템 갯수 설정
             itemCountTextView.setText("전체 상품 수  " + adapter.getItemCount());
+            checkedCountTextView.setText("결제 선택 상품 수  " + adapter.getItemCount()+ " 개");
 
             recyclerView.setAdapter(adapter);
         } else {
