@@ -30,6 +30,7 @@
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".Mypage_MainActivity"/>
+        <activity android:name=".PaymentCompleteActivity"/>
         <activity android:name=".Mypage_SettingActivity"/>
         <activity android:name=".Mypage_InputPasswordActivity"/>
         <activity android:name=".Mypage_UserInfoChangeActivity"/>
