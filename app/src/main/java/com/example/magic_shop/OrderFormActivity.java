@@ -149,6 +149,7 @@ public class OrderFormActivity extends AppCompatActivity {
 
     // 선택된 결제 수단을 반환하는 메소드
     private String getSelectedPaymentMethod() {
+
         return selectedPaymentMethod;
     }
 
