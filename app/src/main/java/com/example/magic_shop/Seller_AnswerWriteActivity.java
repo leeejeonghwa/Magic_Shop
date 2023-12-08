@@ -31,53 +31,58 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mypage_ReviewWriteActivity extends AppCompatActivity {
+public class Seller_AnswerWriteActivity extends AppCompatActivity {
 
-    private EditText editTextContent, editTextScore;
+    private TextView textViewSubject, textViewContent;
+    private EditText editTextAnswerContent;
     private Response.ErrorListener errorListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_review_write);
+        setContentView(R.layout.seller_activity_answer_write);
         getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
         String writer = sessionManager.getUserNickname();
 
-        editTextContent = findViewById(R.id.editTextContent);
-        editTextScore = findViewById(R.id.editTextScore);
+        editTextAnswerContent = findViewById(R.id.editTextAnswerContent);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_UnreviewedListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_QuestionListActivity.class);
                 startActivity(intent);
             }
         });
 
-        Button btn_review_submit = (Button) findViewById(R.id.btn_review_submit);
-        btn_review_submit.setOnClickListener(new View.OnClickListener() {
+        Intent intent = getIntent();
+
+        textViewSubject = findViewById(R.id.textViewSubject);
+        textViewContent = findViewById(R.id.textViewContent);
+
+        String questionID = intent.getStringExtra("questionID");
+        textViewSubject.setText(intent.getStringExtra("subject"));
+        textViewContent.setText(intent.getStringExtra("content"));
+
+
+        Button btn_answer_submit = (Button) findViewById(R.id.btn_answer_submit);
+        btn_answer_submit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String comment = editTextContent.getText().toString();
-                String score = editTextScore.getText().toString();
+                String answerContent = editTextAnswerContent.getText().toString();
 
-                if (!comment.isEmpty() &&
-                        !score.isEmpty()) {
+                if (!answerContent.isEmpty()) {
 
-                    plusReview(
-//                            productID,
-                            userID,
-                            writer,
-                            comment,
-                            score
+                    plusAnswerContent(
+                            questionID,
+                            answerContent
                     );
 
-                    Intent intent = new Intent(getApplicationContext(), Mypage_ReviewedListActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), Seller_QuestionListActivity.class);
                     startActivity(intent);
 
                 } else {
@@ -90,18 +95,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
     private void handleNonJsonResponse(String response) {
         try {
             JSONObject jsonResponse = new JSONObject(response);
-//            String productID = jsonResponse.getString("productID");
-            String userID = jsonResponse.getString("userID");
-            String writer = jsonResponse.getString("writer");
-            String content = jsonResponse.getString("content");
-            String score = jsonResponse.getString("score");
-
-            // 텍스트 뷰에 값을 설정합니다.
-//            editTextProductID.setText(productID);
-//            editTextRecipient.setText(recipient);
-//            editTextPhoneNumber.setText(phoneNumber);
-//            editTextAddress.setText(address);
-//            editTextDeliveryAddressRequest.setText(deliveryRequest);
+            String answerContent = jsonResponse.getString("answerContent");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -110,13 +104,13 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusReview(String userID, String writer, String content, String score) {
+    private void plusAnswerContent(String questionID, String answerContent) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
                 try {
-                    Log.d("Mypage_ReviewWriteActivity", " plusDeliveryAddress() 서버 응답: " + response);
+                    Log.d("Seller_AnswerWriteActivity", " plusAnswerContent() 서버 응답: " + response);
 
                     if (response.startsWith("<br")) {
                         handleNonJsonResponse(response);
@@ -126,41 +120,40 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
                     if (success) {
-                        String successMessage = "리뷰 등록에 성공하였습니다.";
+                        String successMessage = "답변 등록에 성공하였습니다.";
                         Toast.makeText(getApplicationContext(), successMessage, Toast.LENGTH_SHORT).show();
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), Mypage_ReviewedListActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Seller_QuestionListActivity.class);
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "리뷰 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "답변 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.e("Mypage_ReviewWriteActivity", "JSON 파싱 오류: " + e.getMessage());
-                    Toast.makeText(getApplicationContext(), "서버 응답 형식 오류로 리뷰 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    Log.e("Seller_AnswerWriteActivity", "JSON 파싱 오류: " + e.getMessage());
+                    Toast.makeText(getApplicationContext(), "서버 응답 형식 오류로 답변 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.e("Mypage_ReviewWriteActivity", "예외 발생: " + e.getMessage());
-                    Toast.makeText(getApplicationContext(), "알 수 없는 오류로 리뷰 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    Log.e("Seller_AnswerWriteActivity", "예외 발생: " + e.getMessage());
+                    Toast.makeText(getApplicationContext(), "알 수 없는 오류로 답변 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         };
 
         try {
-            ReviewPlusRequest ReviewPlusRequest = new ReviewPlusRequest(userID,
-                    writer, content, score, responseListener, errorListener);
-            RequestQueue queue = Volley.newRequestQueue(Mypage_ReviewWriteActivity.this);
-            queue.add(ReviewPlusRequest);
+            AnswerPlusRequest answerPlusRequest = new AnswerPlusRequest(questionID, answerContent, responseListener, errorListener);
+            RequestQueue queue = Volley.newRequestQueue(Seller_AnswerWriteActivity.this);
+            queue.add(answerPlusRequest);
         }
         catch (Exception e) {
             e.printStackTrace();
-            Log.e("Mypage_ReviewWriteActivity", "plusReviewWrite 함수 내부에서 예외 발생: " + e.getMessage());
+            Log.e("Seller_AnswerWriteActivity", "plusAnswerWrite 함수 내부에서 예외 발생: " + e.getMessage());
         }
     }
 
     private void showAlert(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Mypage_ReviewWriteActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Seller_AnswerWriteActivity.this);
         builder.setMessage(message)
                 .setNegativeButton("다시 시도", null)
                 .create()
