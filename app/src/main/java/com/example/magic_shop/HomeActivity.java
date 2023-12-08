@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,16 +46,12 @@ public class HomeActivity extends AppCompatActivity {
     private Button outerCat_btn;
     private Button bagCat_btn;
     private Button shoesCat_btn;
-    private Button productImage1;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().setWindowAnimations(0);
-
 
         search_btn = findViewById(R.id.search_btn);
         shoppingcart_btn = findViewById(R.id.shoppingcart_btn);
@@ -72,15 +69,15 @@ public class HomeActivity extends AppCompatActivity {
         productBtn4 = findViewById(R.id.btn_product_id4);
         productName1 = findViewById(R.id.product_name_text_id1);
         productName2 = findViewById(R.id.product_name_text_id2);
-        productName3= findViewById(R.id.product_name_text_id3);
+        productName3 = findViewById(R.id.product_name_text_id3);
         productName4 = findViewById(R.id.product_name_text_id4);
         productBrand1 = findViewById(R.id.product_brand_text_id1);
         productBrand2 = findViewById(R.id.product_brand_text_id2);
-        productBrand3= findViewById(R.id.product_brand_text_id3);
+        productBrand3 = findViewById(R.id.product_brand_text_id3);
         productBrand4 = findViewById(R.id.product_brand_text_id4);
         productPrice1 = findViewById(R.id.product_price_text_id1);
         productPrice2 = findViewById(R.id.product_price_text_id2);
-        productPrice3= findViewById(R.id.product_price_text_id3);
+        productPrice3 = findViewById(R.id.product_price_text_id3);
         productPrice4 = findViewById(R.id.product_price_text_id4);
 
         // ProductsLoader를 이용해 데이터를 불러오고, 버튼에 적용
@@ -147,10 +144,12 @@ public class HomeActivity extends AppCompatActivity {
         productBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 상품 정보를 이용하여 세부 이미지를 불러오는 메서드 호출
                 startActivityForProduct(
                         productName1.getText().toString(),
                         productBrand1.getText().toString(),
                         productPrice1.getText().toString()
+
                 );
             }
         });
@@ -289,12 +288,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private void startActivityForProduct(String productName, String productBrand, String productPrice) {
         Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
-        // 상품 정보를 Intent에 추가하여 Detail 페이지로 전달
+        // 상품 정보 및 이미지를 Intent에 추가하여 Detail 페이지로 전달
         intent.putExtra("product_name", productName);
         intent.putExtra("seller_id", productBrand);
         intent.putExtra("product_price", productPrice);
         startActivity(intent);
     }
+
 
     private void setBase64Image(Button button, String base64Image) {
         // Base64로 인코딩된 이미지를 디코딩하여 버튼의 배경에 설정
@@ -302,4 +302,6 @@ public class HomeActivity extends AppCompatActivity {
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         button.setBackground(new BitmapDrawable(getResources(), decodedByte));
     }
+
+
 }

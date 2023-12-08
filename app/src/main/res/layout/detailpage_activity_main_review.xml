@@ -145,7 +145,7 @@
                 android:background="@color/white" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/mainImage"
                 android:layout_width="273dp"
                 android:layout_height="203dp"
                 android:layout_marginStart="65dp"
