@@ -271,7 +271,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
     // AddressAdapter 클래스는 RecyclerView 데이터를 바인딩합니다.
     public class AddressAdapter extends RecyclerView.Adapter<.AddressAdapter.AddressViewHolder> {
-        public List<.AddressItem> addressList;
+        public List<AddressItem> addressList;
         public Context context;
 
         AddressAdapter(List<.AddressItem> addressList, Context context) {
