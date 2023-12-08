@@ -6,93 +6,59 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Button btnBack, btnEnroll, btnCancellation, btnBag, btnHome, btnSearch;
+public class Mypage_QuestionWriteActivity extends AppCompatActivity {
+
     private EditText editTextSubject, editTextContent;
     private Response.ErrorListener errorListener;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.product_inquiry_page);
-
-        btnBack = findViewById(R.id.back_btn);
-        btnEnroll = findViewById(R.id.btn_enroll);
-        btnCancellation = findViewById(R.id.btn_cancellation);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
-
-        btnBack.setVisibility(View.VISIBLE);
-        btnEnroll.setVisibility(View.VISIBLE);
-        btnCancellation.setVisibility(View.VISIBLE);
-        btnBag.setVisibility(View.VISIBLE);
-        btnHome.setVisibility(View.VISIBLE);
-        btnSearch.setVisibility(View.VISIBLE);
-
-        editTextSubject = findViewById(R.id.editTextSubject);
-        editTextContent = findViewById(R.id.editTextContent);
+        setContentView(R.layout.mypage_activity_question_write);
+        getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
 
+        editTextSubject = findViewById(R.id.editTextSubject);
+        editTextContent = findViewById(R.id.editTextContent);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        Button btn_back = (Button) findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
-        btnCancellation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        btnBag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnEnroll.setOnClickListener(new View.OnClickListener() {
+        Button btn_question_submit = (Button) findViewById(R.id.btn_question_submit);
+        btn_question_submit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -137,7 +103,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    Log.d("Detailpage_ProductInquiryPageActivity", " plusQuestion() 서버 응답: " + response);
+                    Log.d("Mypage_QuestionWriteActivity", " plusQuestion() 서버 응답: " + response);
 
                     if (response.startsWith("<br")) {
                         handleNonJsonResponse(response);
@@ -150,7 +116,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
                         String successMessage = "문의 등록에 성공하였습니다.";
                         Toast.makeText(getApplicationContext(), successMessage, Toast.LENGTH_SHORT).show();
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Mypage_QuestionListActivity.class);
                         startActivity(intent);
                     }
                     else {
@@ -158,11 +124,11 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.e("Detailpage_ProductInquiryPageActivity", "JSON 파싱 오류: " + e.getMessage());
+                    Log.e("Mypage_QuestionWriteActivity", "JSON 파싱 오류: " + e.getMessage());
                     Toast.makeText(getApplicationContext(), "서버 응답 형식 오류로 문의 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.e("Detailpage_ProductInquiryPageActivity", "예외 발생: " + e.getMessage());
+                    Log.e("Mypage_QuestionWriteActivity", "예외 발생: " + e.getMessage());
                     Toast.makeText(getApplicationContext(), "알 수 없는 오류로 문의 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -171,21 +137,21 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         try {
             QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(userID, subject,
                     content, responseListener, errorListener);
-            RequestQueue queue = Volley.newRequestQueue(Detailpage_ProductInquiryPageActivity.this);
+            RequestQueue queue = Volley.newRequestQueue(Mypage_QuestionWriteActivity.this);
             queue.add(QuestionPlusRequest);
         }
         catch (Exception e) {
             e.printStackTrace();
-            Log.e("Detailpage_ProductInquiryPageActivity", "plusQuestionWrite 함수 내부에서 예외 발생: " + e.getMessage());
+            Log.e("Mypage_QuestionWriteActivity", "plusQuestionWrite 함수 내부에서 예외 발생: " + e.getMessage());
         }
     }
 
     private void showAlert(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Detailpage_ProductInquiryPageActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Mypage_QuestionWriteActivity.this);
         builder.setMessage(message)
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();
     }
-
 }
+
