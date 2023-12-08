@@ -34,17 +34,18 @@ import java.util.List;
 
 public class Mypage_QuestionWriteActivity extends AppCompatActivity {
 
-    private EditText editTextContent;
+    private EditText editTextSubject, editTextContent;
     private Response.ErrorListener errorListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_review_write);
+        setContentView(R.layout.mypage_activity_question_write);
         getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
 
+        editTextSubject = findViewById(R.id.editTextSubject);
         editTextContent = findViewById(R.id.editTextContent);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -62,12 +63,13 @@ public class Mypage_QuestionWriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String content = editTextContent.getText().toString();
+                String subject = editTextSubject.getText().toString();
 
                 if (!content.isEmpty()){
 
                     plusQuestion(
-//                            productID,
                             userID,
+                            subject,
                             content
                     );
 
@@ -84,16 +86,9 @@ public class Mypage_QuestionWriteActivity extends AppCompatActivity {
     private void handleNonJsonResponse(String response) {
         try {
             JSONObject jsonResponse = new JSONObject(response);
-//            String productID = jsonResponse.getString("productID");
             String userID = jsonResponse.getString("userID");
+            String subject = jsonResponse.getString("subject");
             String content = jsonResponse.getString("content");
-
-            // 텍스트 뷰에 값을 설정합니다.
-//            editTextProductID.setText(productID);
-//            editTextRecipient.setText(recipient);
-//            editTextPhoneNumber.setText(phoneNumber);
-//            editTextAddress.setText(address);
-//            editTextDeliveryAddressRequest.setText(deliveryRequest);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -102,13 +97,13 @@ public class Mypage_QuestionWriteActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusQuestion(String userID, String content) {
+    private void plusQuestion(String userID, String subject, String content) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
                 try {
-                    Log.d("Mypage_QuestionWriteActivity", " plusDeliveryAddress() 서버 응답: " + response);
+                    Log.d("Mypage_QuestionWriteActivity", " plusQuestion() 서버 응답: " + response);
 
                     if (response.startsWith("<br")) {
                         handleNonJsonResponse(response);
@@ -140,7 +135,7 @@ public class Mypage_QuestionWriteActivity extends AppCompatActivity {
         };
 
         try {
-            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(userID,
+            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(userID, subject,
                     content, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Mypage_QuestionWriteActivity.this);
             queue.add(QuestionPlusRequest);

@@ -47,12 +47,12 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-            String reviewID = jsonObject.getString(("reviewID"));
-            String productID = jsonObject.getString(("productID"));
-            String userID = jsonObject.getString(("userID"));
+            String ID = jsonObject.getString(("ID"));
+            String subject = jsonObject.getString(("subject"));
             String content = jsonObject.getString(("content"));
+            String userID = jsonObject.getString(("userID"));
 
-            QuestionItem questionItem = new QuestionItem(reviewID, productID, userID, content);
+            QuestionItem questionItem = new QuestionItem(ID, subject, content, userID);
 
             questionList.add(questionItem);
         }
@@ -78,12 +78,22 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btn_answer_list = (Button) findViewById(R.id.btn_answer_list);
+        btn_answer_list.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_AnswerListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_question_plus = (Button) findViewById(R.id.btn_question_plus);
+        btn_question_plus.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(), Mypage_QuestionWriteActivity.class);
                 startActivity(intent);
             }
         });
@@ -124,16 +134,17 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
 
 
     public class QuestionItem {
-        String questionID;
-        String productID;
-        String userID;
+        String ID;
+        String subject;
         String content;
+        String userID;
 
-        public QuestionItem(String questionID, String productID, String userID, String content) {
-            this.questionID = questionID;
-            this.productID = productID;
-            this.userID = userID;
+        public QuestionItem(String ID, String subject, String content, String userID) {
+            this.ID = ID;
+            this.subject = subject;
             this.content = content;
+            this.userID = userID;
+
         }
     }
 
@@ -170,22 +181,23 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
         public int getItemCount() { return questionList.size(); }
 
         public class QuestionViewHolder extends RecyclerView.ViewHolder {
-            private final TextView productIDTextView;
             private final TextView userIDTextView;
+            private final TextView subjectTextView;
             private final TextView contentTextView;
             private final Context context;
 
             public QuestionViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
-                productIDTextView = itemView.findViewById(R.id.productID);
-                userIDTextView = itemView.findViewById(R.id.userID);
+                subjectTextView = itemView.findViewById(R.id.subject);
                 contentTextView = itemView.findViewById(R.id.content);
+                userIDTextView = itemView.findViewById(R.id.userID);
             }
 
             void bind(QuestionItem questionItem) {
-                productIDTextView.setText(questionItem.productID);
+                subjectTextView.setText(questionItem.subject);
                 contentTextView.setText(questionItem.content);
+                userIDTextView.setText(questionItem.userID);
             }
         }
     }
