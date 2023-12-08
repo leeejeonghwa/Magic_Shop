@@ -101,13 +101,41 @@ public class ShoppingBasketActivity extends AppCompatActivity {
             findViewById(R.id.btn_purchase).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    List<BasketItem> selectedItems = new ArrayList<>();
+
+                    // 선택된 항목들을 수집
+                    for (BasketItem item : basketList) {
+                        if (item.isChecked) {
+                            selectedItems.add(item);
+                        }
+                    }
+
                     Intent intent = new Intent(getApplicationContext(), OrderFormActivity.class);
 
-                    int yourTotalItemCount = adapter.countCheckedItems();
-                    int yourTotalPrice = adapter.calculateTotalPrice();
+                    int TotalItemCount = adapter.countCheckedItems();
+                    int TotalPrice = adapter.calculateTotalPrice();
 
-                    intent.putExtra("TOTAL_ITEM_COUNT", yourTotalItemCount);
-                    intent.putExtra("TOTAL_PRICE", yourTotalPrice);
+                    intent.putExtra("TOTAL_ITEM_COUNT", TotalItemCount);
+                    intent.putExtra("TOTAL_PRICE", TotalPrice);
+
+                    ArrayList<String> selectedBrands = new ArrayList<>();
+                    ArrayList<String> selectedProductNames = new ArrayList<>();
+                    ArrayList<String> selectedOptions = new ArrayList<>();
+                    ArrayList<String> selectedPrice = new ArrayList<>();
+
+
+                    for (BasketItem selectedItem : selectedItems) {
+                        selectedBrands.add(selectedItem.brandName);
+                        selectedProductNames.add(selectedItem.productName);
+                        selectedOptions.add(selectedItem.option);
+                        selectedPrice.add(selectedItem.price);
+
+                    }
+
+                    intent.putStringArrayListExtra("SELECTED_BRANDS", selectedBrands);
+                    intent.putStringArrayListExtra("SELECTED_PRODUCT_NAMES", selectedProductNames);
+                    intent.putStringArrayListExtra("SELECTED_OPTIONS", selectedOptions);
+                    intent.putStringArrayListExtra("SELECTED_PRICE", selectedPrice);
 
                     startActivity(intent);
                 }
