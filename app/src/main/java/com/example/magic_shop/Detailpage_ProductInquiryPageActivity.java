@@ -122,7 +122,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         btnEnroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO sellerID, productID 참조해야 함
+                // TODO sellerID, productID intent로 가져온 걸 참조해야 함
                 String sellerID = "dlwjdghk";
                 String productID = "1";
 
