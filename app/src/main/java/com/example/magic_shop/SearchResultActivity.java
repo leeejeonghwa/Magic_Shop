@@ -30,49 +30,6 @@ import java.util.List;
 
 public class SearchResultActivity extends AppCompatActivity {
 
-    public SearchAdapter searchAdapter;
-    public Context context;
-
-    public List<SearchItem> getSearchList(String jsonResponse) throws JSONException {
-        List<SearchItem> searchList = new ArrayList<>();
-
-        // 제품을 위한 JSON 배열 파싱
-        JSONArray jsonArray = new JSONArray(jsonResponse);
-
-        if (jsonArray.length() == 1) {
-            // If no search results, add a dummy item to display in the RecyclerView
-            SearchItem dummyItem = new SearchItem("No Results", "", "", "");
-            searchList.add(dummyItem);
-        } else {
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                String productName = jsonObject.getString("productName");
-                String productPrice = jsonObject.getString("productPrice");
-                String productImage = jsonObject.getString("productImage");
-                String brandName = jsonObject.getString("brandName");
-
-                SearchItem searchItem = new SearchItem(productName, productPrice, productImage, brandName);
-
-                searchList.add(searchItem);
-            }
-        }
-
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            JSONObject jsonObject = jsonArray.getJSONObject(i);
-//
-//            String productName = jsonObject.getString("productName");
-//            String productPrice = jsonObject.getString("productPrice");
-//            String productImage = jsonObject.getString("productImage");
-//            String brandName = jsonObject.getString("brandName");
-//
-//            SearchItem searchItem = new SearchItem(productName, productPrice, productImage, brandName);
-//
-//            searchList.add(searchItem);
-//        }
-
-        return searchList;
-    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,15 +49,12 @@ public class SearchResultActivity extends AppCompatActivity {
         Button shoesCat_btn = (Button) findViewById(R.id.btn_shoes_id);
 
 
-
-
-
         //검색 버튼
         search_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -120,7 +74,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Mypage_MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -130,7 +84,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),CategorySelectionActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategorySelectionActivity.class);
                 startActivity(intent);
             }
         });
@@ -140,7 +94,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),CategoryProductListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
                 startActivity(intent);
             }
         });
@@ -150,7 +104,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),CategoryProductListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
                 startActivity(intent);
             }
         });
@@ -160,7 +114,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),CategoryProductListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
                 startActivity(intent);
             }
         });
@@ -170,7 +124,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),CategoryProductListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
                 startActivity(intent);
             }
         });
@@ -180,7 +134,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),CategoryProductListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
                 startActivity(intent);
             }
         });
@@ -190,150 +144,18 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),CategoryProductListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
                 startActivity(intent);
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.search_list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(SearchResultActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
 
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @SuppressLint({"LongLogTag", "NotifyDataSetChanged"})
-            @Override
-            public void onResponse(String response) {
-                try {
-                    Log.d("SearchResultActivity", "서버 응답: " + response);
 
-                    List<SearchItem> searchList = getSearchList(response);
-
-                    if (searchAdapter == null) {
-                        Log.d("SearchResultActivity", "Adapter is null. Creating new adapter.");
-                        searchAdapter = new SearchAdapter(searchList, SearchResultActivity.this);
-                        recyclerView.setAdapter(searchAdapter);
-                    } else {
-                        Log.d("SearchResultActivity", "Adapter exists. Updating data.");
-                        searchAdapter.setSearchList(searchList);
-                        searchAdapter.notifyDataSetChanged();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
 
 
 
     }
-    public class SearchItem {
-        String productName;
-        String productPrice;
-        String productImage;
-        String productBrand;
-//        String defaultSearchResult;
-
-        public SearchItem(String productName, String productPrice, String productImage, String productBrand) {
-            this.productName = productName;
-            this.productPrice = productPrice;
-            this.productImage = productImage;
-            this.productBrand = productBrand;
-        }
-    }
-
-    // AddressAdapter 클래스는 RecyclerView 데이터를 바인딩합니다.
-    public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
-        public List<SearchItem> searchList;
-        public Context context;
 
 
-        SearchAdapter(List<SearchItem> searchList, Context context) {
-            this.searchList = searchList;  // 수정된 부분
-            this.context = context;
-        }
-
-        public void setSearchList(List<SearchItem> searchList) {
-//            this.searchList = sortSearchProducts(searchList);
-            notifyDataSetChanged();
-        }
-
-
-        @NonNull
-        @Override
-        public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Context context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(context).inflate(R.layout.search_list_re, parent, false);
-            SearchViewHolder viewHolder = new SearchViewHolder(view, context);
-            return new SearchViewHolder(view, context);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
-            SearchItem searchItem = searchList.get(position);
-            // 데이터를 뷰에 바인딩
-//            holder.productName.setText(searchItem.productName);
-//            holder.productPrice.setText(searchItem.productPrice);
-//            holder.productBrand.setText(searchItem.productBrand);
-        }
-
-        public int getItemCount() {
-            return searchList != null ? searchList.size() : 0;
-        }
-
-        public class SearchViewHolder extends RecyclerView.ViewHolder {
-            private final TextView productName;
-            private final TextView productPrice;
-            private final TextView productBrand;
-            public final Button productImage;
-            private final Context context;
-
-            public SearchViewHolder(View itemView, Context context) {
-                super(itemView);
-                this.context = context;
-                productName = itemView.findViewById(R.id.product_name_text);
-                productPrice = itemView.findViewById(R.id.product_price_text);
-                productBrand = itemView.findViewById(R.id.product_brand_text);
-                productImage = itemView.findViewById(R.id.btn_product);
-
-                // 상품 사진 클릭
-                productImage.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 클릭 이벤트 처리
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            // 다음 화면으로 이동하는 코드
-                            SearchItem searchItem = searchList.get(position);
-                            Intent intent = new Intent(context, Detailpage_MainActivity.class);
-                            intent.putExtra("productName", searchItem.productName);
-                            intent.putExtra("productPrice", searchItem.productPrice);
-                            intent.putExtra("productBrand", searchItem.productBrand);
-                            intent.putExtra("productImage", searchItem.productImage);
-                            context.startActivity(intent);
-                        }
-                    }
-                });
-            }
-
-
-
-//            void bind(SearchItem searchItem) {
-//                // 각 TextView에 해당하는 데이터를 설정
-//                productName.setText(searchItem.productName);
-//                productPrice.setText(searchItem.productPrice);
-//                productBrand.setText(searchItem.productBrand);
-//                productImage.setText(searchItem.productImage);
-//
-//                if ("1".equals(searchItem.defaultSearchResult)) {
-//                    default.setText("기본배송지");
-//                } else {
-//                    defaultDeliveryAddressTextView.setText(null);
-//                }
-//            }
-        }
-
-
-    }
 
 }
