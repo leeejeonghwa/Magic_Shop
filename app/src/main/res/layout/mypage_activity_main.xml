@@ -128,6 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_refund_exchange_list"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
+
     <View
         android:id="@+id/bar_rectangle_id"
         android:layout_width="match_parent"

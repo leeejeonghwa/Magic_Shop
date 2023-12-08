@@ -1,32 +1,39 @@
 package com.example.magic_shop;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Detailpage_MainAskActivity extends AppCompatActivity {
 
-    private Button btnBuy;
-    private Button btnReview;
-    private Button btnSize;
-    private Button btnProduct;
-    private Button btnProductAsk;
-    private Button btnOrderAsk;
-    private Button btnBack;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
-
-
+    private Button btnBuy, btnReview, btnSize, btnProduct, btnProductAsk, btnOrderAsk, btnBack, btnBag, btnHome, btnSearch;
+    private EditText editTextSubject, editTextContent;
+    private Response.ErrorListener errorListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailpage_activity_main_ask);
+        getWindow().setWindowAnimations(0);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        String userID = sessionManager.getUserId();
 
         btnBuy = findViewById(R.id.btn_buy);
         btnReview = findViewById(R.id.reviewBtn);
@@ -78,7 +85,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnSize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_MainSizeActivity.class);
                 startActivity(intent);
             }
         });
@@ -94,7 +101,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnOrderAsk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Detailpage_OrderInquiryPageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Detailpage_OrderInquiryPageActivity.class);
                 startActivity(intent);
             }
         });
@@ -109,7 +116,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -117,7 +124,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -131,7 +138,8 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             }
         });
 
+        editTextSubject = findViewById(R.id.editTextSubject);
+        editTextContent = findViewById(R.id.editTextContent);
 
     }
-
 }

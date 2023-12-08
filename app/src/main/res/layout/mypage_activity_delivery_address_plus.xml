@@ -63,6 +63,20 @@
         tools:ignore="HardcodedText" />
 
     <EditText
+        android:id="@+id/editTextAddressName"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mypage_edit_text_rounded_border_gray"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_name" />
+
+    <EditText
         android:id="@+id/editTextRecipient"
         android:layout_width="355dp"
         android:layout_height="40dp"
@@ -91,19 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/address_name"
         tools:ignore="HardcodedText" />
 
-    <EditText
-        android:id="@+id/editTextAddressName"
-        android:layout_width="355dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/mypage_edit_text_rounded_border_gray"
-        android:ems="10"
-        android:paddingLeft="10dp"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_name" />
+
 
     <TextView
         android:id="@+id/address_phone_number"
