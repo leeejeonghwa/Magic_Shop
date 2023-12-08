@@ -47,13 +47,13 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-            String ID = jsonObject.getString(("ID"));
+            String questionID = jsonObject.getString(("questionID"));
             String subject = jsonObject.getString(("subject"));
             String content = jsonObject.getString(("content"));
             String userID = jsonObject.getString(("userID"));
             String answerContent = jsonObject.getString(("answerContent"));
 
-            AnswerItem answerItem = new AnswerItem(ID, subject, content, userID, answerContent);
+            AnswerItem answerItem = new AnswerItem(questionID, subject, content, userID, answerContent);
 
             answerList.add(answerItem);
         }
@@ -125,14 +125,14 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
 
 
     public class AnswerItem {
-        String ID;
+        String questionID;
         String subject;
         String content;
         String userID;
         String answerContent;
 
-        public AnswerItem(String ID, String subject, String content, String userID, String answerContent) {
-            this.ID = ID;
+        public AnswerItem(String questionID, String subject, String content, String userID, String answerContent) {
+            this.questionID = questionID;
             this.subject = subject;
             this.content = content;
             this.userID = userID;

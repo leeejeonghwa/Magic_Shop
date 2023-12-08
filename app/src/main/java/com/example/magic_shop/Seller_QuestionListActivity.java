@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mypage_QuestionListActivity extends AppCompatActivity {
+public class Seller_QuestionListActivity extends AppCompatActivity {
 
     public List<QuestionItem> questionList;
     public QuestionAdapter questionAdapter;
@@ -62,7 +62,7 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mypage_activity_question_list);
+        setContentView(R.layout.seller_activity_question_list);
         getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
@@ -73,30 +73,11 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_MypageMainActivity.class);
                 startActivity(intent);
             }
         });
 
-        Button btn_answer_list = (Button) findViewById(R.id.btn_answer_list);
-        btn_answer_list.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_AnswerListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btn_question_plus = (Button) findViewById(R.id.btn_question_plus);
-        btn_question_plus.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), Mypage_QuestionWriteActivity.class);
-                startActivity(intent);
-            }
-        });
 
         RecyclerView recyclerView = findViewById(R.id.question_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -107,16 +88,16 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    Log.d("Mypage_QuestionListActivity", "서버 응답: " + response);
+                    Log.d("Seller_QuestionListActivity", "서버 응답: " + response);
 
                     List<QuestionItem> questionList = getQuestionList(response);
 
                     if (questionAdapter == null) {
-                        Log.d("Mypage_QuestionListActivity", "Adapter is null. Creating new adapter.");
+                        Log.d("Seller_QuestionListActivity", "Adapter is null. Creating new adapter.");
                         questionAdapter = new QuestionAdapter(questionList, context);
                         recyclerView.setAdapter(questionAdapter);
                     } else {
-                        Log.d("Mypage_QuestionListActivity", "Adapter exists. Updating data.");
+                        Log.d("Seller_QuestionListActivity", "Adapter exists. Updating data.");
                         questionAdapter.setQuestionList(questionList);
                         questionAdapter.notifyDataSetChanged();
                     }
@@ -127,9 +108,9 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
             }
         };
 
-        QuestionGetRequest questionGetRequest = new QuestionGetRequest(Mypage_QuestionListActivity.this, userID, responseListener);
-        RequestQueue queue = Volley.newRequestQueue(Mypage_QuestionListActivity.this);
-        queue.add(questionGetRequest);
+        SellerQuestionGetRequest sellerQuestionGetRequest = new SellerQuestionGetRequest(Seller_QuestionListActivity.this, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(Seller_QuestionListActivity.this);
+        queue.add(sellerQuestionGetRequest);
     }
 
 
@@ -167,7 +148,7 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
         @Override
         public QuestionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             Context context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_question, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.seller_item_question, parent, false);
             return new QuestionViewHolder(view, context);
         }
 
@@ -184,6 +165,7 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
             private final TextView userIDTextView;
             private final TextView subjectTextView;
             private final TextView contentTextView;
+            public final Button answerWriteButton;
             private final Context context;
 
             public QuestionViewHolder(View itemView, Context context) {
@@ -192,6 +174,25 @@ public class Mypage_QuestionListActivity extends AppCompatActivity {
                 subjectTextView = itemView.findViewById(R.id.subject);
                 contentTextView = itemView.findViewById(R.id.content);
                 userIDTextView = itemView.findViewById(R.id.userID);
+                answerWriteButton = itemView.findViewById(R.id.btn_answer_write);
+
+                // 답변 작성
+                answerWriteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 클릭 이벤트 처리
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // 다음 화면으로 이동하는 코드
+                            QuestionItem questionItem = questionList.get(position);
+                            Intent intent = new Intent(context, Seller_AnswerWriteActivity.class);
+                            intent.putExtra("questionID", questionItem.questionID);
+                            intent.putExtra("subject", questionItem.subject);
+                            intent.putExtra("content", questionItem.content);
+                            context.startActivity(intent);
+                        }
+                    }
+                });
             }
 
             void bind(QuestionItem questionItem) {

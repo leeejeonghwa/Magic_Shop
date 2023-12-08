@@ -80,6 +80,8 @@
         <activity android:name=".Seller_ReviewListActivity" />
         <activity android:name=".Seller_UserInfoChangeActivity" />
         <activity android:name=".Seller_InputPasswordActivity" />
+        <activity android:name=".Seller_QuestionListActivity" />
+        <activity android:name=".Seller_AnswerWriteActivity" />
         <activity android:name=".ShoppingBasketActivity"/>
         <activity android:name=".OrderFormActivity"/>
 

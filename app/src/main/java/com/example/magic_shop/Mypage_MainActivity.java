@@ -102,16 +102,6 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_qna = (Button) findViewById(R.id.btn_qna);
-        btn_qna.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_QuestionListActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Button category_search_id = (Button) findViewById(R.id.category_search_id);
         category_search_id.setOnClickListener(new View.OnClickListener() {
 

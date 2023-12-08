@@ -139,7 +139,7 @@ public class Seller_MypageMainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_QuestionListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_QuestionListActivity.class);
                 startActivity(intent);
             }
         });
