@@ -322,6 +322,8 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 imageView.setImageBitmap(decodedByte);
 
+
+
             }
         }
     }

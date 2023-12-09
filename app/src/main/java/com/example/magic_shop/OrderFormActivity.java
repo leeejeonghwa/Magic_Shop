@@ -3,12 +3,16 @@
     import android.annotation.SuppressLint;
     import android.content.Context;
     import android.content.Intent;
+    import android.graphics.Bitmap;
+    import android.graphics.BitmapFactory;
     import android.os.Bundle;
+    import android.util.Base64;
     import android.util.Log;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
     import android.widget.CheckBox;
+    import android.widget.ImageView;
     import android.widget.TextView;
     import android.widget.Toast;
 
@@ -92,6 +96,7 @@
             ArrayList<String> selectedPrice = intent.getStringArrayListExtra("SELECTED_PRICE");
             ArrayList<Integer> selectedProductID = intent.getIntegerArrayListExtra("SELECTED_PRODUCT_ID");
             ArrayList<Integer> selectedShoppingBasketID = intent.getIntegerArrayListExtra("SELECTED_BASKET_ID");
+            ArrayList<String> selectedProductImage = intent.getStringArrayListExtra("SELECTED_PRODUCT_IMAGE");
 
 
 
@@ -110,7 +115,8 @@
                             selectedProductNames.get(i),
                             selectedOptions.get(i),
                             selectedPrice.get(i),
-                            selectedProductID.get(i)
+                            selectedProductID.get(i),
+                            selectedProductImage.get(i)
 
                     );
                     adapter.addPurchaseItem(purchaseItem);
@@ -315,13 +321,16 @@
             String price;
             Integer productID;
 
+            String productImage;
 
 
-            public PurchaseItem(String brandName, String productName, String option, String price, int productID) {
+
+            public PurchaseItem(String brandName, String productName, String option, String price, int productID, String productImage) {
                 this.productName = productName;
                 this.brandName = brandName;
                 this.option = option;
                 this.price = price;
+                this.productImage = productImage;
                 this.productID = productID;
 
             }
@@ -372,6 +381,7 @@
 
             public class PurchaseViewHolder extends RecyclerView.ViewHolder {
                 private final TextView productPrice, productOption, productBrand;
+                private final ImageView productImage;
                 private final TextView productNameTextView;
 
                 public PurchaseViewHolder(View itemView, Context context) {
@@ -380,6 +390,8 @@
                     productPrice = itemView.findViewById(R.id.product_price_textview);
                     productOption = itemView.findViewById(R.id.product_option_textview);
                     productBrand = itemView.findViewById(R.id.brand_name_textview);
+                    productImage = itemView.findViewById(R.id.btn_product_id1);
+
                 }
 
                 void bind(PurchaseItem purchaseItem) {
@@ -387,6 +399,10 @@
                     productPrice.setText(purchaseItem.price);
                     productBrand.setText(purchaseItem.brandName);
                     productOption.setText(purchaseItem.option);
+
+                    byte[] decodedString = Base64.decode(purchaseItem.productImage, Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    productImage.setImageBitmap(decodedByte);
                 }
             }
         }
