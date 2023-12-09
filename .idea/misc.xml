@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -123,7 +124,9 @@
         <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_answer.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_item_order_reviewed.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/mypage_item_order_unreviewed.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/mypage_item_question.xml" value="0.335" />
         <entry key="app/src/main/res/layout/mypage_item_refund.xml" value="0.17980072463768115" />
         <entry key="app/src/main/res/layout/mypage_item_refund_exchange.xml" value="0.13728470111448834" />

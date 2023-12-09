@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -31,38 +32,8 @@ import java.util.List;
 
 public class Mypage_ReviewedListActivity extends AppCompatActivity {
 
-    public List<ReviewedItem> reviewedList;
-    public ReviewedAdapter reviewedAdapter;
-    public Context context;
-
-
-    public List<ReviewedItem> getReviewedList(String jsonResponse) throws JSONException {
-        List<ReviewedItem> reviewedList = new ArrayList<>();
-
-        // 전체 응답을 JSONObject로 변환
-        JSONObject responseJson = new JSONObject(jsonResponse);
-
-        // "review" 필드의 값을 JSONArray로 가져오기
-        JSONArray jsonArray = responseJson.getJSONArray("review");
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-            String reviewID = jsonObject.getString(("reviewID"));
-            String sellerID = jsonObject.getString(("sellerID"));
-            String productID = jsonObject.getString(("productID"));
-            String userID = jsonObject.getString(("userID"));
-            String content = jsonObject.getString(("content"));
-            String productScore = jsonObject.getString(("productScore"));
-
-            ReviewedItem reviewedItem = new ReviewedItem(reviewID, sellerID, productID, userID,
-                    content, productScore);
-
-            reviewedList.add(reviewedItem);
-        }
-
-        return reviewedList;
-    }
+    private List<ReviewedItem> reviewedList;
+    private ReviewedAdapter reviewedAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +41,6 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
         getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        String userID = sessionManager.getUserId();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -106,56 +76,105 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @SuppressLint({"LongLogTag", "NotifyDataSetChanged"})
-            @Override
-            public void onResponse(String response) {
-                try {
-                    Log.d("Mypage_ReviewedListActivity", "서버 응답: " + response);
+        reviewedList = new ArrayList<>();
+        reviewedAdapter = new ReviewedAdapter(reviewedList, this);
+        recyclerView.setAdapter(reviewedAdapter);
 
-                    List<ReviewedItem> reviewedList = getReviewedList(response);
+        // 사용자 아이디 (실제 사용자 아이디로 변경)
+        String userID = sessionManager.getUserId();
 
-                    if (reviewedAdapter == null) {
-                        Log.d("Mypage_ReviewedListActivity", "Adapter is null. Creating new adapter.");
-                        reviewedAdapter = new ReviewedAdapter(reviewedList, context);
-                        recyclerView.setAdapter(reviewedAdapter);
-                    } else {
-                        Log.d("Mypage_ReviewedListActivity", "Adapter exists. Updating data.");
-                        reviewedAdapter.setReviewedList(reviewedList);
-                        reviewedAdapter.notifyDataSetChanged();
+        // 주문 데이터 가져오기
+        getReviewedData(userID, this);
+    }
+
+    public void getReviewedData(String userID, Context context) {
+        // Volley 요청 큐 생성
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        // 주문 데이터 요청
+        GetOrderReviewedDataRequest request = new GetOrderReviewedDataRequest(userID,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답을 처리하는 코드
+                        Log.d("ReviewedDetails", "Volley Response: " + response);
+
+                        try {
+                            // JSON 응답 파싱
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+
+                            if (success) {
+                                // 리뷰 데이터가 있는 경우
+                                JSONArray reviewsArray = jsonObject.getJSONArray("reviews");
+                                List<ReviewedItem> reviewedList = getReviewedList(reviewsArray);
+
+                                // 어댑터 갱신
+                                reviewedAdapter.setReviewedList(reviewedList);
+                                reviewedAdapter.notifyDataSetChanged();
+                            } else {
+                                // 리뷰 데이터가 없는 경우
+                                String message = jsonObject.getString("message");
+                                Log.e("ReviewedDetails", "Error: " + message);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.e("ReviewedDetails", "JSON Parsing Error: " + e.getMessage());
+                        }
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("ReviewedDetails", "Volley Error: " + error.getMessage());
+                    }
+                });
 
-        ReviewGetRequest reviewGetRequest = new ReviewGetRequest(Mypage_ReviewedListActivity.this, userID, responseListener);
-        RequestQueue queue = Volley.newRequestQueue(Mypage_ReviewedListActivity.this);
-        queue.add(reviewGetRequest);
+        // 요청을 Volley 큐에 추가
+        queue.add(request);
+    }
+
+    public List<ReviewedItem> getReviewedList(JSONArray jsonArray) {
+        List<ReviewedItem> reviewedList = new ArrayList<>();
+
+        try {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject reviewedObject = jsonArray.getJSONObject(i);
+
+                String createdTime = reviewedObject.getString("createdTime");
+                String sellerID = reviewedObject.getString("sellerID");
+                String productName = reviewedObject.getString("product_name");
+                String productScore = reviewedObject.getString("productScore");
+                String content = reviewedObject.getString("content");
+
+                ReviewedItem reviewedItem = new ReviewedItem(createdTime, sellerID, productName, productScore, content);
+                reviewedList.add(reviewedItem);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return reviewedList;
     }
 
 
     public class ReviewedItem {
-        String reviewID;
+        String createdTime;
         String sellerID;
-        String productID;
-        String userID;
-        String content;
+        String productName;
         String productScore;
+        String content;
 
-        public ReviewedItem(String reviewID, String sellerID, String productID, String userID,
-                            String content, String productScore) {
-            this.reviewID = reviewID;
+        public ReviewedItem(String createdTime, String sellerID, String productName,
+                          String productScore, String content) {
+            this.createdTime = createdTime;
             this.sellerID = sellerID;
-            this.productID = productID;
-            this.userID = userID;
-            this.content = content;
+            this.productName = productName;
             this.productScore = productScore;
+            this.content = content;
         }
     }
-
 
     public class ReviewedAdapter extends RecyclerView.Adapter<ReviewedAdapter.ReviewedViewHolder> {
         private List<ReviewedItem> reviewedList;
@@ -166,16 +185,11 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
             this.context = context;
         }
 
-        public void setReviewedList(List<ReviewedItem> reviewedList) {
-            this.reviewedList = reviewedList;
-            notifyDataSetChanged();
-        }
-
         @NonNull
         @Override
         public ReviewedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Context context = parent.getContext(); // Context 설정
-            View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_reviewed, parent, false);
+            Context context = parent.getContext();
+            View view = LayoutInflater.from(context).inflate(R.layout.mypage_item_order_reviewed, parent, false);
             return new ReviewedViewHolder(view, context);
         }
 
@@ -186,11 +200,18 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
         }
 
         @Override
-        public int getItemCount() { return reviewedList.size(); }
+        public int getItemCount() {
+            return reviewedList.size();
+        }
+
+        public void setReviewedList(List<ReviewedItem> reviewedList) {
+            this.reviewedList = reviewedList;
+        }
 
         public class ReviewedViewHolder extends RecyclerView.ViewHolder {
+            private final TextView createdTimeTextView;
             private final TextView sellerIDTextView;
-            private final TextView productIDTextView;
+            private final TextView productNameTextView;
             private final TextView contentTextView;
             private final RatingBar productScoreRatingBar;
             private final Context context;
@@ -198,20 +219,20 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
             public ReviewedViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
+                createdTimeTextView = itemView.findViewById(R.id.createdTime);
                 sellerIDTextView = itemView.findViewById(R.id.sellerID);
-                productIDTextView = itemView.findViewById(R.id.productID);
+                productNameTextView = itemView.findViewById(R.id.productName);
                 contentTextView = itemView.findViewById(R.id.content);
                 productScoreRatingBar = itemView.findViewById(R.id.productScore);
+
             }
 
             void bind(ReviewedItem reviewedItem) {
+                createdTimeTextView.setText(reviewedItem.createdTime);
                 sellerIDTextView.setText(reviewedItem.sellerID);
-                productIDTextView.setText(reviewedItem.productID);
+                productNameTextView.setText(reviewedItem.productName);
+                productScoreRatingBar.setRating(Integer.valueOf(reviewedItem.productScore));
                 contentTextView.setText(reviewedItem.content);
-
-                // productScore 값을 float로 변환하여 RatingBar에 설정
-                float rating = Float.parseFloat(reviewedItem.productScore);
-                productScoreRatingBar.setRating(rating);
             }
         }
     }

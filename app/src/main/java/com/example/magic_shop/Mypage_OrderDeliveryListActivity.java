@@ -38,6 +38,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypage_activity_order_delivery_list);
+        getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
 
@@ -212,14 +213,14 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 this.context = context;
                 dateTextView = itemView.findViewById(R.id.order_date);
                 productNameTextView = itemView.findViewById(R.id.order_productName);
-                productPriceTextView = itemView.findViewById(R.id.order_productprice);
+                productPriceTextView = itemView.findViewById(R.id.order_productPrice);
                 productBrandTextView = itemView.findViewById(R.id.order_brandName);
             }
 
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText(String.valueOf(orderItem.productPrice));
+                productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
                 productBrandTextView.setText(orderItem.sellerId);
             }
         }
