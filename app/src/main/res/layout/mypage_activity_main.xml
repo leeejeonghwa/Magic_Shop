@@ -112,6 +112,23 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <Button
+        android:id="@+id/btn_qna"
+        android:layout_width="411dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="5dp"
+        android:background="#00FF0000"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:text="문의/답변 내역"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_refund_exchange_list"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <Button
         android:id="@+id/btn_review_write"
         android:layout_width="411dp"
         android:layout_height="70dp"
@@ -125,8 +142,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_refund_exchange_list"
+        app:layout_constraintTop_toBottomOf="@+id/btn_qna"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
 
     <View
         android:id="@+id/bar_rectangle_id"
@@ -153,8 +171,9 @@
     <Button
         android:id="@+id/category_search_id"
         android:layout_width="33.75dp"
-        android:layout_height="33.75dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        app:layout_constraintDimensionRatio="1:1"
         android:background="@drawable/category_search"
         app:layout_constraintBottom_toBottomOf="@+id/bar_rectangle_id"
         app:layout_constraintEnd_toEndOf="parent"

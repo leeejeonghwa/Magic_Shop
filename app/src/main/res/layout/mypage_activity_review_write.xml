@@ -48,11 +48,11 @@
         app:layout_constraintTop_toBottomOf="@+id/header_title" />
 
     <TextView
-        android:id="@+id/productName"
+        android:id="@+id/sellerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
         android:text=""
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -62,11 +62,26 @@
         app:layout_constraintStart_toEndOf="@+id/productImage"
         app:layout_constraintTop_toBottomOf="@+id/header_title" />
 
+    <TextView
+        android:id="@+id/productName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@+id/sellerID" />
+
     <EditText
-        android:id="@+id/comment"
+        android:id="@+id/editTextContent"
         android:layout_width="360dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="340dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/mypage_edit_text_rounded_border_gray"
         android:ems="10"
         android:paddingLeft="10dp"
@@ -74,8 +89,21 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_review_submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@+id/productScore"
         app:layout_constraintVertical_bias="0.0" />
+
+    <RatingBar
+        android:id="@+id/productScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="0.0"
+        android:stepSize="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/editTextContent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
 
     <Button
         android:id="@+id/btn_review_submit"

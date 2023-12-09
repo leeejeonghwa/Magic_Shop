@@ -73,13 +73,13 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
         String date;
         String productName;
         String productSize;
-        String productQuantify;
+        String productQuantity;
 
-        public ProductReviseItem(String date, String productName, String productSize, String productQuantify) {
+        public ProductReviseItem(String date, String productName, String productSize, String productQuantity) {
             this.date = date;
             this.productName = productName;
             this.productSize = productSize;
-            this.productQuantify = productQuantify;
+            this.productQuantity = productQuantity;
         }
     }
 
@@ -113,7 +113,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productQuantityTextView;
             private final Button productReviseButton;
             private final Context context;
 
@@ -123,7 +123,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productQuantityTextView = itemView.findViewById(R.id.productQuantity);
                 productReviseButton = itemView.findViewById(R.id.btn_product_revise);
 
                 productReviseButton.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +138,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                             intent.putExtra("date", productReviseItem.date);
                             intent.putExtra("productName", productReviseItem.productName);
                             intent.putExtra("trackingNumber", productReviseItem.productSize);
-                            intent.putExtra("trackingNumber", productReviseItem.productQuantify);
+                            intent.putExtra("trackingNumber", productReviseItem.productQuantity);
                             context.startActivity(intent);
                         }
                     }
@@ -149,7 +149,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                 dateTextView.setText(productReviseItem.date);
                 productNameTextView.setText(productReviseItem.productName);
                 productSizeTextView.setText(productReviseItem.productSize);
-                productQuantifyTextView.setText(productReviseItem.productQuantify);
+                productQuantityTextView.setText(productReviseItem.productQuantity);
             }
         }
     }

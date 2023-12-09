@@ -36,7 +36,8 @@ public class Mypage_SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
         });
 
