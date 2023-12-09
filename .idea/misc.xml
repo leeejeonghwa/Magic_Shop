@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -76,11 +77,13 @@
         <entry key="app/src/main/res/layout/activity_review_write.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/activity_user_info_change.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/detailpage_activity_main.xml" value="0.17481884057971014" />
         <entry key="app/src/main/res/layout/detailpage_activity_main_ask.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/detailpage_activity_main_review.xml" value="0.17255434782608695" />
         <entry key="app/src/main/res/layout/item_address.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/item_order.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_order_list.xml" value="0.15778688524590165" />
+        <entry key="app/src/main/res/layout/item_product.xml" value="0.17481884057971014" />
         <entry key="app/src/main/res/layout/item_refund_exchange.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_review.xml" value="0.1799863387978142" />
         <entry key="app/src/main/res/layout/item_reviewed.xml" value="0.14173497267759563" />
@@ -119,13 +122,13 @@
         <entry key="app/src/main/res/layout/mypage_activity_review_write.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_reviewed_list.xml" value="0.14173497267759563" />
         <entry key="app/src/main/res/layout/mypage_activity_setting.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.14173497267759563" />
+        <entry key="app/src/main/res/layout/mypage_activity_unreviewed_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_answer.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_order_reviewed.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/mypage_item_order_unreviewed.xml" value="0.1046875" />
+        <entry key="app/src/main/res/layout/mypage_item_order_unreviewed.xml" value="0.335" />
         <entry key="app/src/main/res/layout/mypage_item_question.xml" value="0.335" />
         <entry key="app/src/main/res/layout/mypage_item_refund.xml" value="0.17980072463768115" />
         <entry key="app/src/main/res/layout/mypage_item_refund_exchange.xml" value="0.13728470111448834" />
@@ -172,7 +175,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
