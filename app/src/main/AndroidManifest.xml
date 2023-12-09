@@ -41,8 +41,12 @@
         <activity android:name=".Mypage_RefundAccountManageActivity"/>
         <activity android:name=".Mypage_OrderDeliveryListActivity"/>
         <activity android:name=".Mypage_DeliveryCheckActivity"/>
-        <activity android:name=".Mypage_RefundListActivity"/>
-        <activity android:name=".Mypage_ExchangeListActivity"/>
+        <activity android:name=".Mypage_ExchangeWaitingListActivity"/>
+        <activity android:name=".Mypage_RefundRequestActivity"/>
+        <activity android:name=".Mypage_ExchangeRequestActivity"/>
+        <activity android:name=".Mypage_ExchangeFinishedListActivity"/>
+        <activity android:name=".Mypage_RefundWaitingListActivity"/>
+        <activity android:name=".Mypage_RefundFinishedListActivity"/>
         <activity android:name=".Mypage_UnreviewedListActivity"/>
         <activity android:name=".Mypage_ReviewedListActivity"/>
         <activity android:name=".Mypage_QuestionListActivity"/>

@@ -96,6 +96,7 @@
         <entry key="app/src/main/res/layout/manager_activity_product_registered.xml" value="0.14002732240437157" />
         <entry key="app/src/main/res/layout/manager_activity_product_revise.xml" value="0.14002732240437157" />
         <entry key="app/src/main/res/layout/manager_activity_product_unregistered.xml" value="0.1362704918032787" />
+        <entry key="app/src/main/res/layout/manager_activity_seller_list.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/manager_item_product_delete.xml" value="0.11885245901639344" />
         <entry key="app/src/main/res/layout/manager_item_product_regist_wait.xml" value="0.13422131147540983" />
         <entry key="app/src/main/res/layout/manager_item_product_register.xml" value="0.1253415300546448" />
@@ -108,7 +109,10 @@
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_manage.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_address_plus.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_delivery_check.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_activity_exchange_finished_list.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/mypage_activity_exchange_list.xml" value="0.17980072463768115" />
+        <entry key="app/src/main/res/layout/mypage_activity_exchange_request.xml" value="0.15625" />
+        <entry key="app/src/main/res/layout/mypage_activity_exchange_waiting_list.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/mypage_activity_input_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_order_delivery_list.xml" value="0.165" />
@@ -117,7 +121,10 @@
         <entry key="app/src/main/res/layout/mypage_activity_question_write.xml" value="0.20923913043478262" />
         <entry key="app/src/main/res/layout/mypage_activity_refund_account_manage.xml" value="0.15437158469945356" />
         <entry key="app/src/main/res/layout/mypage_activity_refund_exchange_list.xml" value="0.15437158469945356" />
+        <entry key="app/src/main/res/layout/mypage_activity_refund_finished_list.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/mypage_activity_refund_list.xml" value="0.17980072463768115" />
+        <entry key="app/src/main/res/layout/mypage_activity_refund_request.xml" value="0.15625" />
+        <entry key="app/src/main/res/layout/mypage_activity_refund_waiting_list.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/mypage_activity_review_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_activity_review_write.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mypage_activity_reviewed_list.xml" value="0.14173497267759563" />
@@ -126,6 +133,7 @@
         <entry key="app/src/main/res/layout/mypage_activity_user_info_change.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_address.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_answer.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mypage_item_exchange.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/mypage_item_order.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mypage_item_order_reviewed.xml" value="0.335" />
         <entry key="app/src/main/res/layout/mypage_item_order_unreviewed.xml" value="0.335" />
@@ -175,7 +183,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

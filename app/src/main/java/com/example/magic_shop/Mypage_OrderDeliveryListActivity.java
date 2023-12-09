@@ -134,7 +134,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 JSONObject orderObject = jsonArray.getJSONObject(i);
 
                 // 주문 세부 정보 추출
-                int orderId = orderObject.getInt("id");
+                int orderID = orderObject.getInt("id");
                 String paymentDate = orderObject.getString("paymentDate");
                 int totalAmount = orderObject.getInt("totalAmount");
 
@@ -142,13 +142,14 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 JSONObject productsObject = orderObject.getJSONObject("products");
                 //제품 상세 정보 추출
                 String productImage = productsObject.getString("main_image");
+                String productID = productsObject.getString("productID");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
-                String sellerId = productsObject.getString("seller_id");
+                String sellerID = productsObject.getString("seller_id");
 
 
                 // OrderItem 생성 및 목록에 추가
-                OrderItem orderItem = new OrderItem(orderId, paymentDate, totalAmount, productName, productPrice, sellerId ,productImage);
+                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productPrice, sellerID ,productImage);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -159,23 +160,24 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
     }
 
     public class OrderItem {
-        int orderId;
+        int orderID;
         String paymentDate;
         int totalAmount;
+        String productID;
         String productName;
         int productPrice;
-        String sellerId;
-
+        String sellerID;
         String productImage;
 
-        public OrderItem(int orderId, String paymentDate, int totalAmount, String productName, int productPrice, String sellerId ,String productImage) {
-            this.orderId = orderId;
+        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String sellerID, String productImage) {
+            this.orderID = orderID;
+            this.productID = productID;
             this.productImage = productImage;
             this.paymentDate = paymentDate;
             this.totalAmount = totalAmount;
             this.productName = productName;
             this.productPrice = productPrice;
-            this.sellerId = sellerId;
+            this.sellerID = sellerID;
         }
     }
 
@@ -215,6 +217,8 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
             private final TextView dateTextView;
             private final TextView productNameTextView, productPriceTextView, productBrandTextView;
             private final ImageView productImageView;
+            private final Button exchangeButton;
+            private final Button refundButton;
             private final Context context;
 
             public OrderViewHolder(View itemView, Context context) {
@@ -225,6 +229,46 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 productPriceTextView = itemView.findViewById(R.id.order_productPrice);
                 productBrandTextView = itemView.findViewById(R.id.order_brandName);
                 productImageView= itemView.findViewById(R.id.productImage);
+                exchangeButton = itemView.findViewById(R.id.btn_exchange);
+                refundButton = itemView.findViewById(R.id.btn_refund);
+
+                exchangeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 클릭 이벤트 처리
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // 다음 화면으로 이동하는 코드
+                            OrderItem orderItem = orderList.get(position);
+                            Intent intent = new Intent(context, Mypage_ExchangeRequestActivity.class);
+                            intent.putExtra("orderID", String.valueOf(orderItem.orderID));
+                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("productID", orderItem.productID);
+                            intent.putExtra("productName", orderItem.productName);
+                            intent.putExtra("productImage", orderItem.productImage);
+                            context.startActivity(intent);
+                        }
+                    }
+                });
+
+                refundButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 클릭 이벤트 처리
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // 다음 화면으로 이동하는 코드
+                            OrderItem orderItem = orderList.get(position);
+                            Intent intent = new Intent(context, Mypage_RefundRequestActivity.class);
+                            intent.putExtra("orderID", String.valueOf(orderItem.orderID));
+                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("productID", orderItem.productID);
+                            intent.putExtra("productName", orderItem.productName);
+                            intent.putExtra("productImage", orderItem.productImage);
+                            context.startActivity(intent);
+                        }
+                    }
+                });
 
             }
 
@@ -232,7 +276,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
                 productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
-                productBrandTextView.setText(orderItem.sellerId);
+                productBrandTextView.setText(orderItem.sellerID);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);

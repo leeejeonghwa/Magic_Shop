@@ -54,16 +54,6 @@ public class Seller_MypageMainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        Button imageButton = (Button) findViewById(R.id.btn_setting);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_SettingActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Button btn_product_list = (Button) findViewById(R.id.btn_product_list);
         btn_product_list.setOnClickListener(new View.OnClickListener() {
 
