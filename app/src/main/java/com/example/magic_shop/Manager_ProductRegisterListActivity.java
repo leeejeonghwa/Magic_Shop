@@ -174,7 +174,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.productName);
                 sellerNameTextView = itemView.findViewById(R.id.sellerName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productColorTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productQuantity);
                 productRegisterButton = itemView.findViewById(R.id.btn_product_register);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
