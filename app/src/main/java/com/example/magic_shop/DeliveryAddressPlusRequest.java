@@ -14,7 +14,7 @@ public class DeliveryAddressPlusRequest extends StringRequest {
 
     public DeliveryAddressPlusRequest(String userID, String deliveryAddressName, String recipient,
                                       String phoneNumber, String address, String addressDetail, String deliveryRequest,
-                                      String isDefaultDeliveryAddress, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+                                      String defaultDeliveryAddress, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(Method.POST, URL, listener, errorListener);
 
         map = new HashMap<>();
@@ -25,7 +25,7 @@ public class DeliveryAddressPlusRequest extends StringRequest {
         map.put("address", address);
         map.put("addressDetail", addressDetail);
         map.put("deliveryRequest", deliveryRequest);
-        map.put("defaultDeliveryAddress", isDefaultDeliveryAddress);
+        map.put("defaultDeliveryAddress", defaultDeliveryAddress);
     }
 
     @Override

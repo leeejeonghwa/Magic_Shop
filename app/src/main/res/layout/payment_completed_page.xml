@@ -6,6 +6,19 @@
     android:layout_height="match_parent">
 
 
+    <Button
+        android:id="@+id/btn_home5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/mypage_btn_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
     <TextView
         android:id="@+id/magic_shop_grand"
         android:layout_width="267dp"
@@ -38,7 +51,7 @@
         tools:ignore="MissingConstraints" />
 
     <android.widget.Button
-        android:id="@+id/btn_Cancellation"
+        android:id="@+id/btn_order_detail"
         android:layout_width="411dp"
         android:layout_height="62dp"
         android:layout_alignParentLeft="true"
@@ -54,20 +67,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/back_btn"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/detailpage_back_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

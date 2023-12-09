@@ -47,53 +47,196 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-
-    <TextView
+<TextView
         android:id="@+id/address_name"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:text="배송지명"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_title" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/address_phone_number"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <EditText
+        android:id="@+id/editTextAddressName"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mypage_edit_text_rounded_border_gray"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address_name" />
 
+    <EditText
+        android:id="@+id/editTextRecipient"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mypage_edit_text_rounded_border_gray"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipient" />
+
     <TextView
-        android:id="@+id/address"
-        android:layout_width="200dp"
+        android:id="@+id/recipient"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="66dp"
+        android:text="받는 분"
+        android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_name"
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/address_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="66dp"
+        android:text="휴대전화"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipient"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mypage_edit_text_rounded_border_gray"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address_phone_number" />
 
-    <Button
-        android:id="@+id/btn_address_edit"
+    <TextView
+        android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/mypage_rounded_border_gray"
-        android:minWidth="50dp"
-        android:minHeight="0dp"
-        android:padding="4dp"
-        android:text="수정"
-        android:textSize="14sp"
-        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="66dp"
+        android:text="주소"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_phone_number"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextAddress"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mypage_edit_text_rounded_border_gray"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address" />
+
+    <EditText
+        android:id="@+id/editTextAddressDetail"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mypage_edit_text_rounded_border_gray"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
+
+    <TextView
+        android:id="@+id/address_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="120dp"
+        android:text="배송 요청사항"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/editTextDeliveryRequest"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mypage_edit_text_rounded_border_gray"
+        android:ems="10"
+        android:paddingLeft="10dp"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_request" />
+
+    <CheckBox
+        android:id="@+id/delivery_address_default_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:button="@drawable/mypage_bg_round_checkbox_button"
+        android:text=" 기본배송지로 등록하기"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_request"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btn_delivery_address_edit_check"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@color/main"
+        android:text="완료"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
