@@ -179,7 +179,7 @@ public class Seller_ProductDeleteActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productColorTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productQuantity);
                 productDeleteButton = itemView.findViewById(R.id.btn_product_delete);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
