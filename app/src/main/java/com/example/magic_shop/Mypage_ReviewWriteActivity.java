@@ -35,6 +35,7 @@ import java.util.List;
 public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
     private EditText editTextContent;
+    private TextView textViewSellerID, textViewProductName;
     private RatingBar ratingBarProductScore;
     private Response.ErrorListener errorListener;
 
@@ -45,10 +46,18 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
-        String writer = sessionManager.getUserNickname();
 
+        Intent intent = getIntent();
+
+        textViewSellerID = findViewById(R.id.sellerID);
+        textViewProductName = findViewById(R.id.productName);
         editTextContent = findViewById(R.id.editTextContent);
         ratingBarProductScore = findViewById(R.id.productScore);
+
+        String orderID = intent.getStringExtra("orderID");
+        String productID = intent.getStringExtra("productID");
+        textViewSellerID.setText(intent.getStringExtra("sellerID"));
+        textViewProductName.setText(intent.getStringExtra("productName"));
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -65,12 +74,8 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                // TODO sellerID, productID intent로 가져온 걸 참조해야 함
-                String sellerID = "dlwjdghk";
-                String productID = "1";
-
+                String sellerID = textViewSellerID.getText().toString();
                 String content = editTextContent.getText().toString();
-                // RatingBar에서 현재 선택된 등급을 가져옴
                 float rating = ratingBarProductScore.getRating();
                 int convertedRating = (int) rating;
                 String productScore = String.valueOf(convertedRating);
@@ -78,6 +83,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
                 if (!content.isEmpty()) {
 
                     plusReview(
+                            orderID,
                             sellerID,
                             productID,
                             userID,
@@ -98,11 +104,10 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
     private void handleNonJsonResponse(String response) {
         try {
             JSONObject jsonResponse = new JSONObject(response);
-//            String productID = jsonResponse.getString("productID");
+            String productID = jsonResponse.getString("productID");
             String userID = jsonResponse.getString("userID");
-//            String writer = jsonResponse.getString("writer");
             String content = jsonResponse.getString("content");
-//            String score = jsonResponse.getString("score");
+            String score = jsonResponse.getString("score");
 
             // 텍스트 뷰에 값을 설정합니다.
 //            editTextProductID.setText(productID);
@@ -118,7 +123,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusReview(String sellerID, String productID, String userID, String content, String productScore) {
+    private void plusReview(String orderID, String sellerID, String productID, String userID, String content, String productScore) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -156,10 +161,10 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
         };
 
         try {
-            ReviewPlusRequest ReviewPlusRequest = new ReviewPlusRequest(sellerID, productID, userID,
+            ReviewPlusRequest reviewPlusRequest = new ReviewPlusRequest(orderID, sellerID, productID, userID,
                     content, productScore, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Mypage_ReviewWriteActivity.this);
-            queue.add(ReviewPlusRequest);
+            queue.add(reviewPlusRequest);
         }
         catch (Exception e) {
             e.printStackTrace();
