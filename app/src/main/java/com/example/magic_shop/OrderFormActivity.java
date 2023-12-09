@@ -132,33 +132,35 @@
                     if (selectedPaymentMethod != null && !selectedPaymentMethod.isEmpty()) {
                         // 주문하기 버튼이 클릭되었을 때 실행되는 코드
                         sendOrder(userID, totalPrice, selectedPaymentMethod);
+                        // 주문 방법에 따라 구분
+                        if (selectedShoppingBasketID != null) {
+                            List<Integer> selectedBasketIDs = new ArrayList<>(selectedShoppingBasketID); // 새 목록 생성
 
-                        List<Integer> selectedBasketIDs = new ArrayList<>(selectedShoppingBasketID); // 새 목록 생성
+                            BasketUpdateRequest basketUpdateRequest = new BasketUpdateRequest(
+                                    selectedBasketIDs,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.d("OrderFormActivity", "Response: " + response);
 
-                        BasketUpdateRequest basketUpdateRequest = new BasketUpdateRequest(
-                                selectedBasketIDs,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        Log.d("OrderFormActivity", "Response: " + response);
+                                            // 바스켓 업데이트 후 응답 처리
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            // 바스켓 업데이트 중 에러 처리
+                                            Log.e("OrderFormActivity", "바스켓 업데이트 에러: " + error.getMessage());
 
-                                        // 바스켓 업데이트 후 응답 처리
+                                            // 바스켓 업데이트 에러가 발생해도 sendOrder는 여전히 수행될 수 있도록 여기에서도 sendOrder를 호출
+                                        }
                                     }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        // 바스켓 업데이트 중 에러 처리
-                                        Log.e("OrderFormActivity", "바스켓 업데이트 에러: " + error.getMessage());
-                                    }
-                                }
-                        );
+                            );
 
-
-
-                        // Volley RequestQueue에 요청 추가
-                        RequestQueue queue = Volley.newRequestQueue(OrderFormActivity.this);
-                        queue.add(basketUpdateRequest);
+                            // Volley RequestQueue에 요청 추가
+                            RequestQueue queue = Volley.newRequestQueue(OrderFormActivity.this);
+                            queue.add(basketUpdateRequest);
+                        }
 
                         // 주문 처리 후 페이지 이동 (예: 다음 화면으로 이동)
                         Intent intent = new Intent(OrderFormActivity.this, PaymentCompleteActivity.class);
