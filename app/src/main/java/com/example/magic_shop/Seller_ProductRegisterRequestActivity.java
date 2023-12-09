@@ -368,7 +368,6 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                 }
             }
 
-
         }
 
     }
@@ -452,8 +451,8 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
 
 
                 //detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
-                Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
+                //startActivity(intent);
 
             }
 
@@ -576,6 +575,9 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                         return;
                     }
 
+                    Intent intent = new Intent(getApplicationContext(), Seller_ProductRegisterActivity.class);
+                    startActivity(intent);
+
                     // If not an error, try to parse the JSON
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
@@ -615,13 +617,10 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
                 try {
                     Log.d("productRegisterRequest", "서버 응답: " + response); // 디버깅을 위한 이 줄을 추가
                     detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
-                    // Check if the response starts with "<br" indicating an error
                     if (response.startsWith("<br")) {
-                        // Handle non-JSON response
                         productHandleNonJsonResponse(response);
-                        return; // Stop further processing
+                        return;
                     }
-                    // If not an error, try to parse the JSON
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
                     if (success) {
@@ -762,17 +761,11 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
     // 이미지를 Base64로 인코딩하는 메서드
     private String encodeImageToBase64(Bitmap image) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         String imageToBase64 = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        String temp = "";
-        try{
-            temp = URLEncoder.encode(imageToBase64, "UTF-8");
-        }
-        catch (Exception e) {
-            Log.d("exception", e.toString());
-        }
-        return temp;
+
+        return imageToBase64;
     }
 
     private Bitmap decodeBase64Image(String encodedImage) {

@@ -23,15 +23,6 @@ public class Manager_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_seller_register_request_list = (Button) findViewById(R.id.btn_seller_register_request_list);
-        btn_seller_register_request_list.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Manager_SellerRegisterRequestListActivity.class);
-                startActivity(intent);
-            }
-        });
 
         Button btn_product_register_list = (Button) findViewById(R.id.btn_product_register_list);
         btn_product_register_list.setOnClickListener(new View.OnClickListener() {

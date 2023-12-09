@@ -2,6 +2,7 @@ package com.example.magic_shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,37 +10,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Manager_ProductRegisterListActivity extends AppCompatActivity {
 
-    public List<ProductUnregisteredItem> getProductUnregisteredList() {
-        List<ProductUnregisteredItem> productUnregisteredList = new ArrayList<>();
+    private ProductRegisterRequestManager registeredProductManager;
 
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 A", "S", "1"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 B", "M", "2"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 C", "L", "3"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 D", "S", "4"));
-        productUnregisteredList.add(new ProductUnregisteredItem("2023-11-27", "브랜드 A", "상품 E", "M", "5"));
-        // ... 추가적인 데이터
+    private ProductUnregisteredAdapter adapter;
 
-        return productUnregisteredList;
-    }
 
     public Context context;
+
+    public String productId;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manager_activity_product_register);
         getWindow().setWindowAnimations(0);
+        //registeredProductManager.setManager(true);
+
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -54,32 +61,80 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ProductUnregisteredItem> productUnregisteredList = getProductUnregisteredList();
-        ProductUnregisteredAdapter adapter = new ProductUnregisteredAdapter(productUnregisteredList, this);
+        registeredProductManager = ProductRegisterRequestManager.getInstance(this);
+
+        registeredProductManager.setManager(true);
+
+        adapter = new ProductUnregisteredAdapter(registeredProductManager.getProductRegisterRequestList(), this);
         recyclerView.setAdapter(adapter);
+        fetchDataFromServer();
+
     }
 
-    public class ProductUnregisteredItem {
-        String date;
-        String sellerName;
-        String productName;
-        String productSize;
-        String productQuantity;
-
-        public ProductUnregisteredItem(String date, String sellerName, String productName, String productSize, String productQuantity) {
-            this.date = date;
-            this.sellerName = sellerName;
-            this.productName = productName;
-            this.productSize = productSize;
-            this.productQuantity = productQuantity;
-        }
+    private void fetchDataFromServer() {
+        registeredProductManager.fetchDataFromServer(new ProductRegisterRequestManager.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived() {
+                String str = Integer.toString(registeredProductManager.getProductRegisterRequestList().size());
+                Log.d("fetch", str);
+                updateUI();
+            }
+        });
     }
+
+    private void updateUI() {
+        adapter.notifyDataSetChanged();
+    }
+
+    private void registerProduct(String productId) {
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        // Specify the URL of your PHP script
+        String url = "http://210.117.175.207:8976/allowance_product_register.php";
+
+        // Create a HashMap to hold the parameters
+        Map<String, String> params = new HashMap<>();
+        params.put("productId", String.valueOf(productId));
+
+        // Create a new StringRequest using POST method
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Handle the response from the server (if needed)
+                        Log.d("관리자 수정 승인", "서버 연결 성공");
+                        Toast.makeText(Manager_ProductRegisterListActivity.this, response, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, Manager_MainActivity.class);
+                        // 필요한 경우에 데이터를 전달할 수 있습니다.
+                        context.startActivity(intent);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle errors that occur during the request
+                        Log.d("관리자 수정 승인", "fail");
+
+                        Toast.makeText(Manager_ProductRegisterListActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+        };
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
 
     public class ProductUnregisteredAdapter extends RecyclerView.Adapter<ProductUnregisteredAdapter.ProductUnregisteredViewHolder> {
-        private List<ProductUnregisteredItem> productUnregisteredList;
+        private List<ProductItem> productUnregisteredList;
         private Context context;
 
-        ProductUnregisteredAdapter(List<ProductUnregisteredItem> productUnregisteredList, Context context) {
+        ProductUnregisteredAdapter(List<ProductItem> productUnregisteredList, Context context) {
             this.productUnregisteredList = productUnregisteredList;
             this.context = context;
         }
@@ -94,8 +149,8 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ProductUnregisteredViewHolder holder, int position) {
-            ProductUnregisteredItem productUnregisteredItem = productUnregisteredList.get(position);
-            holder.bind(productUnregisteredItem);
+            ProductItem productItem = productUnregisteredList.get(position);
+            holder.bind(productItem);
         }
 
         @Override
@@ -106,8 +161,10 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
             private final TextView sellerNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantityTextView;
+            private final TextView productColorTextView;
             private final Button productRegisterButton;
+
+            private final ImageView productMainImageView;
             private final Context context;
 
             public ProductUnregisteredViewHolder(View itemView, Context context) {
@@ -117,8 +174,9 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.productName);
                 sellerNameTextView = itemView.findViewById(R.id.sellerName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantityTextView = itemView.findViewById(R.id.productQuantity);
+                productColorTextView = itemView.findViewById(R.id.productQuantify);
                 productRegisterButton = itemView.findViewById(R.id.btn_product_register);
+                productMainImageView = itemView.findViewById(R.id.productImage);
 
                 productRegisterButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -127,25 +185,29 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             // 다음 화면으로 이동하는 코드
-                            ProductUnregisteredItem productUnregisteredItem = productUnregisteredList.get(position);
-                            Intent intent = new Intent(context, Manager_ProductRegisterListActivity.class);
-                            intent.putExtra("date", productUnregisteredItem.date);
-                            intent.putExtra("productName", productUnregisteredItem.sellerName);
-                            intent.putExtra("productName", productUnregisteredItem.productName);
-                            intent.putExtra("trackingNumber", productUnregisteredItem.productSize);
-                            intent.putExtra("trackingNumber", productUnregisteredItem.productQuantity);
-                            context.startActivity(intent);
+                            ProductItem productItem = productUnregisteredList.get(position);
+
+                            productId = productItem.id;
+                            Log.d("클릭된 상품id", productId);
                         }
+
+                        registerProduct(productId);
                     }
                 });
             }
 
-            void bind(ProductUnregisteredItem productUnregisteredItem) {
-                dateTextView.setText(productUnregisteredItem.date);
-                sellerNameTextView.setText(productUnregisteredItem.sellerName);
-                productNameTextView.setText(productUnregisteredItem.productName);
-                productSizeTextView.setText(productUnregisteredItem.productSize);
-                productQuantityTextView.setText(productUnregisteredItem.productQuantity);
+            void bind(ProductItem productItem) {
+                dateTextView.setText(productItem.date);
+                sellerNameTextView.setText(productItem.sellerId);
+                productNameTextView.setText(productItem.productName);
+                productSizeTextView.setText(productItem.productSize);
+                productColorTextView.setText(productItem.productColor);
+                if (productItem.mainImage == null) {
+                    Log.d("이미지", "null");
+                }
+                else {
+                    productMainImageView.setImageBitmap(productItem.mainImage);
+                }
             }
         }
     }

@@ -39,62 +39,49 @@
         android:id="@+id/productImage"
         android:layout_width="80dp"
         android:layout_height="100dp"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="80dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/mypage_clothes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.332"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_title" />
 
     <EditText
         android:id="@+id/productName"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/mypage_edit_text_rounded_border_gray"
         android:ems="10"
+        android:hint="수정할 상품 이름"
         android:paddingLeft="10dp"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toBottomOf="@+id/header_title"/>
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
 
     <EditText
-        android:id="@+id/productSize"
-        android:layout_width="100dp"
+        android:id="@+id/productPrice"
+        android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/mypage_edit_text_rounded_border_gray"
         android:ems="10"
+        android:hint="수정할 상품 가격"
         android:paddingLeft="10dp"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toBottomOf="@+id/productName"/>
-
-    <EditText
-        android:id="@+id/productQuantity"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/mypage_edit_text_rounded_border_gray"
-        android:ems="10"
-        android:paddingLeft="10dp"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toBottomOf="@+id/productSize"/>
-
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productName" />
 
     <Button
-        android:id="@+id/btn_submit"
+        android:id="@+id/btn_revise_request_submit"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center"

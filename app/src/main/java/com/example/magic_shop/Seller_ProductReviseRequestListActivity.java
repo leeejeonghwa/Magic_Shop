@@ -2,6 +2,7 @@ package com.example.magic_shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,30 +10,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
 
-    public List<ProductReviseRequestItem> getProductReviseRequestList() {
-        List<ProductReviseRequestItem> productReviseRequestList = new ArrayList<>();
+    private ReviseRequestManager reviseRequestManager;
 
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        productReviseRequestList.add(new ProductReviseRequestItem("2023-11-27", "상품 A", "S", "1"));
-        productReviseRequestList.add(new ProductReviseRequestItem("2023-11-27", "상품 B", "M", "2"));
-        productReviseRequestList.add(new ProductReviseRequestItem("2023-11-27", "상품 C", "L", "3"));
-        productReviseRequestList.add(new ProductReviseRequestItem("2023-11-27", "상품 D", "S", "4"));
-        productReviseRequestList.add(new ProductReviseRequestItem("2023-11-27", "상품 E", "M", "5"));
-        // ... 추가적인 데이터
+    private ProductReviseRequestAdapter adapter;
 
-        return productReviseRequestList;
-    }
+    private String userID;
+
 
     public Context context;
 
@@ -40,6 +34,14 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seller_activity_product_revise_request_list);
         getWindow().setWindowAnimations(0);
+
+
+        reviseRequestManager = ReviseRequestManager.getInstance(this);
+        reviseRequestManager.setManager(false);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        userID = sessionManager.getUserId();
+        reviseRequestManager.checkUserId(userID);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -64,30 +66,33 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ProductReviseRequestItem> productReviseRequestList = getProductReviseRequestList();
-        ProductReviseRequestAdapter adapter = new ProductReviseRequestAdapter(productReviseRequestList, this);
+        adapter = new ProductReviseRequestAdapter(reviseRequestManager.getReviseProductRequestList(), this);
         recyclerView.setAdapter(adapter);
+        fetchDataFromServer();
     }
 
-    public class ProductReviseRequestItem {
-        String date;
-        String productName;
-        String productSize;
-        String productQuantity;
+    private void fetchDataFromServer() {
+        reviseRequestManager.fetchDataFromServer(new ReviseRequestManager.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived() {
 
-        public ProductReviseRequestItem(String date, String productName, String productSize, String productQuantity) {
-            this.date = date;
-            this.productName = productName;
-            this.productSize = productSize;
-            this.productQuantity = productQuantity;
-        }
+                String str = Integer.toString(reviseRequestManager.getReviseProductRequestList().size());
+                Log.d("fetch", str);
+                updateUI();
+            }
+        });
     }
+
+    private void updateUI() {
+        adapter.notifyDataSetChanged();
+    }
+
 
     public class ProductReviseRequestAdapter extends RecyclerView.Adapter<ProductReviseRequestAdapter.ProductReviseRequestViewHolder> {
-        private List<ProductReviseRequestItem> productReviseRequestList;
+        private List<ProductItem> productReviseRequestList;
         private Context context;
 
-        ProductReviseRequestAdapter(List<ProductReviseRequestItem> productReviseRequestList, Context context) {
+        ProductReviseRequestAdapter(List<ProductItem> productReviseRequestList, Context context) {
             this.productReviseRequestList = productReviseRequestList;
             this.context = context;
         }
@@ -102,8 +107,8 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ProductReviseRequestViewHolder holder, int position) {
-            ProductReviseRequestItem productReviseRequestItem = productReviseRequestList.get(position);
-            holder.bind(productReviseRequestItem);
+            ProductItem productItem = productReviseRequestList.get(position);
+            holder.bind(productItem);
         }
 
         @Override
@@ -113,7 +118,9 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantityTextView;
+            private final TextView productColorTextView;
+
+            private final ImageView productMainImageView;
             private final Context context;
 
             public ProductReviseRequestViewHolder(View itemView, Context context) {
@@ -122,14 +129,21 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantityTextView = itemView.findViewById(R.id.productQuantity);
+                productColorTextView = itemView.findViewById(R.id.productQuantify);
+                productMainImageView = itemView.findViewById(R.id.productImage);
             }
 
-            void bind(ProductReviseRequestItem productReviseRequestItem) {
-                dateTextView.setText(productReviseRequestItem.date);
-                productNameTextView.setText(productReviseRequestItem.productName);
-                productSizeTextView.setText(productReviseRequestItem.productSize);
-                productQuantityTextView.setText(productReviseRequestItem.productQuantity);
+            void bind(ProductItem productItem) {
+                dateTextView.setText(productItem.date);
+                productNameTextView.setText(productItem.productName);
+                productSizeTextView.setText(productItem.productSize);
+                productColorTextView.setText(productItem.productColor);
+                if (productItem.mainImage == null) {
+                    Log.d("이미지", "null");
+                }
+                else {
+                    productMainImageView.setImageBitmap(productItem.mainImage);
+                }
             }
         }
     }

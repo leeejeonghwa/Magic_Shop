@@ -1,7 +1,7 @@
 package com.example.magic_shop;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,23 +15,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Manager_SellerListActivity extends AppCompatActivity {
 
-    public List<SellerItem> getSellerList() {
-        List<SellerItem> sellerList = new ArrayList<>();
-
-        // 예시 데이터를 추가합니다. 실제 데이터는 여기서 가져와야 합니다.
-        sellerList.add(new SellerItem("2023-11-27", "브랜드 A"));
-
-        // ... 추가적인 데이터
-
-        return sellerList;
-    }
+    private UserManager userManager;
 
     public Context context;
+
+    private SellerAdapter adapter;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,30 +40,43 @@ public class Manager_SellerListActivity extends AppCompatActivity {
             }
         });
 
+        userManager = UserManager.getInstance(this);
+
         RecyclerView recyclerView = findViewById(R.id.seller_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<SellerItem> sellerList = getSellerList();
-        SellerAdapter adapter = new SellerAdapter(sellerList, this);
+        adapter = new SellerAdapter(userManager.getproductList(), this);
+
         recyclerView.setAdapter(adapter);
+
+        fetchDataFromServer();
     }
 
-    public class SellerItem {
-        String date;
-        String sellerName;
-
-        public SellerItem(String date, String sellerName) {
-            this.date = date;
-            this.sellerName = sellerName;
-        }
+    private void fetchDataFromServer() {
+        userManager.fetchSellerDataFromServer(new UserManager.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived() {
+                String str = Integer.toString(userManager.getproductList().size());
+                Log.d("fetch", str);
+                updateUI();
+            }
+        });
     }
+
+    private void updateUI() {
+        adapter.notifyDataSetChanged();
+    }
+
+
+
+
 
     public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.SellerViewHolder> {
-        private List<SellerItem> sellerList;
+        private List<User> sellerList;
         private Context context;
 
-        SellerAdapter(List<SellerItem> sellerList, Context context) {
+        SellerAdapter(List<User> sellerList, Context context) {
             this.sellerList = sellerList;
             this.context = context;
         }
@@ -85,8 +91,8 @@ public class Manager_SellerListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull SellerViewHolder holder, int position) {
-            SellerItem sellerItem = sellerList.get(position);
-            holder.bind(sellerItem);
+            User user = sellerList.get(position);
+            holder.bind(user);
         }
 
         @Override
@@ -104,9 +110,9 @@ public class Manager_SellerListActivity extends AppCompatActivity {
                 sellerNameTextView = itemView.findViewById(R.id.sellerName);
             }
 
-            void bind(SellerItem sellerItem) {
-                dateTextView.setText(sellerItem.date);
-                sellerNameTextView.setText(sellerItem.sellerName);
+            void bind(User user) {
+                dateTextView.setText("seller");
+                sellerNameTextView.setText(user.getUserID());
             }
         }
     }

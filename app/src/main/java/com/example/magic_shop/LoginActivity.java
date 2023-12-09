@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
     private Button btn_login, btn_register, btn_back;
 
+    private Button btn_manage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); 
@@ -33,6 +35,15 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
         btn_back = findViewById(R.id.btn_back);
+        btn_manage = findViewById(R.id.manage_btn);
+
+        btn_manage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         // 회원가입 버튼을 클릭 시 수행
