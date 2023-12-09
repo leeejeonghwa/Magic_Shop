@@ -35,7 +35,9 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
         setContentView(R.layout.seller_activity_product_revise_request_list);
         getWindow().setWindowAnimations(0);
 
+
         reviseRequestManager = ReviseRequestManager.getInstance(this);
+        reviseRequestManager.setManager(false);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         userID = sessionManager.getUserId();
@@ -116,7 +118,7 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
             private final TextView dateTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
-            private final TextView productQuantifyTextView;
+            private final TextView productColorTextView;
 
             private final ImageView productMainImageView;
             private final Context context;
@@ -127,7 +129,7 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productQuantifyTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productQuantify);
                 productMainImageView = itemView.findViewById(R.id.productImage);
             }
 
@@ -135,7 +137,7 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
                 dateTextView.setText(productItem.date);
                 productNameTextView.setText(productItem.productName);
                 productSizeTextView.setText(productItem.productSize);
-                productQuantifyTextView.setText(productItem.productColor);
+                productColorTextView.setText(productItem.productColor);
                 if (productItem.mainImage == null) {
                     Log.d("이미지", "null");
                 }

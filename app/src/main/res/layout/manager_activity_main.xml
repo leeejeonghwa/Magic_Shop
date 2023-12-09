@@ -54,23 +54,6 @@
 
 
     <Button
-        android:id="@+id/btn_seller_register_request_list"
-        android:layout_width="411dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="5dp"
-        android:background="#00FF0000"
-        android:gravity="left"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:text="판매자 등록 요청 확인"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_seller_list"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <Button
         android:id="@+id/btn_product_register_list"
         android:layout_width="411dp"
         android:layout_height="70dp"
@@ -84,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_seller_register_request_list"
+        app:layout_constraintTop_toBottomOf="@+id/btn_seller_list"
         tools:ignore="HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Button

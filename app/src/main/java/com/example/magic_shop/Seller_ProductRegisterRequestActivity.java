@@ -761,7 +761,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
     // 이미지를 Base64로 인코딩하는 메서드
     private String encodeImageToBase64(Bitmap image) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         String imageToBase64 = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 

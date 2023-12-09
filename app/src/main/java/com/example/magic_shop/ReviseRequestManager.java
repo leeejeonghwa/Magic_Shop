@@ -1,16 +1,18 @@
 package com.example.magic_shop;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,32 +20,33 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRegisterRequestManager {
+public class ReviseRequestManager {
 
-    private static ProductRegisterRequestManager instance;
+    private static ReviseRequestManager instance;
+
     private RequestQueue requestQueue;
-    private List<ProductItem> productRegisterRequestList;
+    private List<ProductItem> reviseProductRequestList;
     private Context context;
     private String userId;
 
     private boolean isManager;
 
-
-    private ProductRegisterRequestManager(Context context) {
+    private ReviseRequestManager(Context context) {
         this.context = context;
         this.requestQueue = getRequestQueue();
-        this.productRegisterRequestList = new ArrayList<>();
+        this.reviseProductRequestList = new ArrayList<>();
     }
 
-    public static synchronized ProductRegisterRequestManager getInstance(Context context) {
+    public static synchronized ReviseRequestManager getInstance(Context context) {
         if (instance == null) {
-            instance = new ProductRegisterRequestManager(context);
+            instance = new ReviseRequestManager(context);
         }
+
         return instance;
     }
 
-    public List<ProductItem> getProductRegisterRequestList() {
-        return productRegisterRequestList;
+    public List<ProductItem> getReviseProductRequestList() {
+        return reviseProductRequestList;
     }
 
     private RequestQueue getRequestQueue() {
@@ -54,14 +57,14 @@ public class ProductRegisterRequestManager {
     }
 
     public void fetchDataFromServer(OnDataReceivedListener listener) {
-        String url = "http://210.117.175.207:8976/product_resigter_request_accept.php";
+        String url = "http://210.117.175.207:8976/product_revise_request_list.php";
 
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("상품등록요청 리스트", "서버 응답");
+                        Log.d("수정 요청 상품 리스트", "서버 응답");
                         parseJsonData(response, listener);
 
                     }
@@ -71,9 +74,8 @@ public class ProductRegisterRequestManager {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        Log.d("상품등록요청 리스트", "fail" );
+                        Log.d("수정 요청 상품 리스트", "fail" );
                         //listener.onDataReceived();
-
                     }
                 });
 
@@ -96,20 +98,19 @@ public class ProductRegisterRequestManager {
         void onDataReceived();
     }
 
+    private void parseJsonData(JSONArray jsonArray, ReviseRequestManager.OnDataReceivedListener listener) {
+        reviseProductRequestList.clear();
 
-
-    private void parseJsonData(JSONArray jsonArray, OnDataReceivedListener listener) {
-        productRegisterRequestList.clear();
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject productObject = jsonArray.getJSONObject(i);
 
                 String id = productObject.getString("seller_id");
-
-                String product_id = productObject.getString("id");
+                String productId = productObject.getString("id");
 
                 if (!isManager && id.equals(userId) ) {
-                    Log.d("로그인한 유저의 상품", id);
+                    Log.d("수정_로그인한 유저의 상품", id);
+
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
@@ -146,15 +147,16 @@ public class ProductRegisterRequestManager {
 
                     Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(date, productName, productSize, productColor, mainImage);
-                    productRegisterRequestList.add(item);
-                    String numStr = Integer.toString(productRegisterRequestList.size());
-                    Log.d("삽입된 상품 수", numStr);
+                    ProductItem item = new ProductItem(productId, date, productName, productSize, productColor, mainImage, id);
+                    reviseProductRequestList.add(item);
+                    String numStr = Integer.toString(reviseProductRequestList.size());
+                    Log.d("삽입된 수정요청상품 수", numStr);
+
+
 
 
                 }
                 else if (isManager) {
-                    Log.d("관리자의 상품리스트", id);
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
@@ -189,12 +191,12 @@ public class ProductRegisterRequestManager {
 
                     // 여기서 mainImageBytes를 사용하여 이미지 처리를 수행할 수 있음
 
-                    Log.d("관리자 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
+                    Log.d("관리자 수정요청받은상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(product_id,date, productName, productSize, productColor, mainImage, id);
-                    productRegisterRequestList.add(item);
-                    String numStr = Integer.toString(productRegisterRequestList.size());
-                    Log.d("삽입된 상품 수", numStr);
+                    ProductItem item = new ProductItem(productId, date, productName, productSize, productColor, mainImage, id);
+                    reviseProductRequestList.add(item);
+                    String numStr = Integer.toString(reviseProductRequestList.size());
+                    Log.d("관리자 수정요청상품 수", numStr);
                 }
 
 
@@ -210,7 +212,4 @@ public class ProductRegisterRequestManager {
 
         }
     }
-
-
-
 }

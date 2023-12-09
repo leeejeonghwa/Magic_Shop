@@ -31,13 +31,15 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
     private ProductRegisterRequestAdapter adapter;
 
 
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seller_activity_product_register_request_list);
         getWindow().setWindowAnimations(0);
 
         productRegisterRequestManager = ProductRegisterRequestManager.getInstance(this);
-
+        productRegisterRequestManager.setManager(false);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         userID = sessionManager.getUserId();
