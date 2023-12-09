@@ -15,6 +15,8 @@ public class CategoryProductListActivity extends AppCompatActivity {
 
     CategorySelection categorySelection = CategorySelection.getInstance();
 
+    private Button productBtn;
+
     private int categoryTexts[] = {
             R.string.category_top,
             R.string.category_outer,
@@ -48,6 +50,8 @@ public class CategoryProductListActivity extends AppCompatActivity {
             R.id.button12
     };
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,16 @@ public class CategoryProductListActivity extends AppCompatActivity {
 
         categoryTextChange();
         detailedCategoryTextChange();
+
+        init();
+
+        productBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CategoryProductListActivity.this, Detailpage_MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button backButton = findViewById(R.id.category_back_id);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +85,10 @@ public class CategoryProductListActivity extends AppCompatActivity {
                 startActivity(intent); // Intent를 사용하여 SecondActivity 시작
             }
         });
+    }
+
+    public void init() {
+        productBtn = findViewById(R.id.btn_product_id1);
     }
 
 
