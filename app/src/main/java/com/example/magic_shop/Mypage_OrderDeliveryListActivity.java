@@ -2,12 +2,16 @@ package com.example.magic_shop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -136,14 +140,15 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
 
                 // 제품 객체 추출
                 JSONObject productsObject = orderObject.getJSONObject("products");
-
-                // 제품 세부 정보 추출
+                //제품 상세 정보 추출
+                String productImage = productsObject.getString("main_image");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
                 String sellerId = productsObject.getString("seller_id");
 
+
                 // OrderItem 생성 및 목록에 추가
-                OrderItem orderItem = new OrderItem(orderId, paymentDate, totalAmount, productName, productPrice, sellerId);
+                OrderItem orderItem = new OrderItem(orderId, paymentDate, totalAmount, productName, productPrice, sellerId ,productImage);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -161,8 +166,11 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
         int productPrice;
         String sellerId;
 
-        public OrderItem(int orderId, String paymentDate, int totalAmount, String productName, int productPrice, String sellerId) {
+        String productImage;
+
+        public OrderItem(int orderId, String paymentDate, int totalAmount, String productName, int productPrice, String sellerId ,String productImage) {
             this.orderId = orderId;
+            this.productImage = productImage;
             this.paymentDate = paymentDate;
             this.totalAmount = totalAmount;
             this.productName = productName;
@@ -206,6 +214,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
         public class OrderViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
             private final TextView productNameTextView, productPriceTextView, productBrandTextView;
+            private final ImageView productImageView;
             private final Context context;
 
             public OrderViewHolder(View itemView, Context context) {
@@ -215,6 +224,8 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.order_productName);
                 productPriceTextView = itemView.findViewById(R.id.order_productPrice);
                 productBrandTextView = itemView.findViewById(R.id.order_brandName);
+                productImageView= itemView.findViewById(R.id.productImage);
+
             }
 
             void bind(OrderItem orderItem) {
@@ -222,6 +233,10 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 productNameTextView.setText(orderItem.productName);
                 productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
                 productBrandTextView.setText(orderItem.sellerId);
+
+                byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                productImageView.setImageBitmap(decodedByte);
             }
         }
     }

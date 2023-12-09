@@ -53,14 +53,16 @@
 
     <ImageView
         android:id="@+id/productImage"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/mypage_clothes"
+        android:layout_width="123dp"
+        android:layout_height="149dp"
+        android:layout_margin="20dp"
+        android:background="@color/category_light_gray_color"
+        android:contentDescription="My Button Description"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_date" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/order_brandName"
