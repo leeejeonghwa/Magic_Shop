@@ -105,9 +105,9 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                         // Handle the response from the server (if needed)
                         Log.d("관리자 수정 승인", "서버 연결 성공");
                         Toast.makeText(Manager_ProductRegisterListActivity.this, response, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(context, Manager_MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
                         // 필요한 경우에 데이터를 전달할 수 있습니다.
-                        context.startActivity(intent);
+                        startActivity(intent);
                     }
                 },
                 new Response.ErrorListener() {

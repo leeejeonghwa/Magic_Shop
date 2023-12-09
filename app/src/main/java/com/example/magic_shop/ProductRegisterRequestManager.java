@@ -10,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ImageView;
+
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -146,7 +148,7 @@ public class ProductRegisterRequestManager {
 
                     Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(date, productName, productSize, productColor, mainImage);
+                    ProductItem item = new ProductItem(product_id, date, productName, productSize, productColor, mainImage, id);
                     productRegisterRequestList.add(item);
                     String numStr = Integer.toString(productRegisterRequestList.size());
                     Log.d("삽입된 상품 수", numStr);
@@ -154,7 +156,7 @@ public class ProductRegisterRequestManager {
 
                 }
                 else if (isManager) {
-                    Log.d("관리자의 상품리스트", id);
+                    Log.d("관리자의 상품리스트", product_id);
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
@@ -209,6 +211,13 @@ public class ProductRegisterRequestManager {
             listener.onDataReceived();
 
         }
+    }
+
+    private Bitmap setBase64Image(String base64Image) {
+        // Base64로 인코딩된 이미지를 디코딩하여 ImageView에 설정
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
     }
 
 
