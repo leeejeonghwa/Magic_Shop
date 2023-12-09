@@ -2,13 +2,17 @@ package com.example.magic_shop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -124,6 +128,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                     ArrayList<String> selectedPrice = new ArrayList<>();
                     ArrayList<Integer> selectedProductID = new ArrayList<>();
                     ArrayList<Integer> selectedShoppingBasketID = new ArrayList<>();
+                    ArrayList<String> selectedProductImage = new ArrayList<>();
 
 
                     for (BasketItem selectedItem : selectedItems) {
@@ -133,6 +138,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                         selectedPrice.add(selectedItem.price);
                         selectedProductID.add(selectedItem.productID);
                         selectedShoppingBasketID.add(selectedItem.shoppingBasketID);
+                        selectedProductImage.add(selectedItem.productImage);
 
                     }
 
@@ -142,6 +148,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                     intent.putStringArrayListExtra("SELECTED_PRICE", selectedPrice);
                     intent.putIntegerArrayListExtra("SELECTED_PRODUCT_ID", selectedProductID);
                     intent.putIntegerArrayListExtra("SELECTED_BASKET_ID", selectedShoppingBasketID);
+                    intent.putStringArrayListExtra("SELECTED_PRODUCT_IMAGE", selectedProductImage);
 
                     startActivity(intent);
                 }
@@ -164,11 +171,12 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                 String productName = jsonObject.getString("product_name");
                 String option = jsonObject.getString("product_option");
                 String price = jsonObject.getString("product_price");
+                String productImage = jsonObject.getString("main_image");
                 int productID = Integer.parseInt(jsonObject.getString("productID"));
                 int shoppingBasketID  = Integer.parseInt(jsonObject.getString("id"));
                 boolean isChecked = true;
 
-                BasketItem basketItem = new BasketItem(brandName,productID, productName, option, price, shoppingBasketID, isChecked);
+                BasketItem basketItem = new BasketItem(brandName,productID, productName, option, price, shoppingBasketID, productImage, isChecked);
                 basketList.add(basketItem);
             }
         } catch (JSONException e) {
@@ -183,17 +191,20 @@ public class ShoppingBasketActivity extends AppCompatActivity {
 
         int shoppingBasketID;
         String brandName;
+
+        String productImage;
         String productName;
         String option;
         String price;
         boolean isChecked;
 
-        public BasketItem(String brandName, int productID, String productName, String option, String price, int shoppingBasketID, boolean isChecked) {
+        public BasketItem(String brandName, int productID, String productName, String option, String price, int shoppingBasketID, String productImage, boolean isChecked) {
             this.productName = productName;
             this.productID = productID;
             this.brandName = brandName;
             this.option = option;
             this.price = price;
+            this.productImage = productImage;
             this.shoppingBasketID = shoppingBasketID;
             this.isChecked = isChecked;
         }
@@ -276,6 +287,8 @@ public class ShoppingBasketActivity extends AppCompatActivity {
         public class BasketViewHolder extends RecyclerView.ViewHolder {
             private final TextView productPrice, productOption, productBrand;
             private final TextView productNameTextView;
+
+            private final ImageView imageView;
             private final CheckBox checkBox;
 
             public BasketViewHolder(View itemView, Context context) {
@@ -285,6 +298,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                 productOption = itemView.findViewById(R.id.product_option_textview);
                 productBrand = itemView.findViewById(R.id.brand_name_textview);
                 checkBox = itemView.findViewById(R.id.basket_check);
+                imageView= itemView.findViewById(R.id.btn_product_id1);
 
                 checkBox.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -303,6 +317,11 @@ public class ShoppingBasketActivity extends AppCompatActivity {
                 productBrand.setText(basketItem.brandName);
                 productOption.setText(basketItem.option);
                 checkBox.setChecked(basketItem.isChecked);
+
+                byte[] decodedString = Base64.decode(basketItem.productImage, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                imageView.setImageBitmap(decodedByte);
+
             }
         }
     }
