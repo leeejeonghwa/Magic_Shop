@@ -1,7 +1,9 @@
 package com.example.magic_shop;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,14 +71,6 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
                 // 결과를 설정하고 현재 활동을 종료합니다.
                 setResult(RESULT_OK, resultIntent);
                 finish();
-            }
-        });
-
-        btnEnroll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
-                startActivity(intent);
             }
         });
 

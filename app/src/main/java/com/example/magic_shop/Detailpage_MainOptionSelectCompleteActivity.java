@@ -14,6 +14,7 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
     private Button btnSearch;
     private TextView Count;
     private int count = 1;
+    private String sizeS, sizeM, sizeL, color1, color2;
 
 
     @Override
@@ -23,21 +24,24 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
 
         Intent intent = getIntent();
         if (intent != null) {
-            String sizeValue = intent.getStringExtra("size");
-            String colorValue = intent.getStringExtra("color"); // 추가: color 값을 가져옴
+            this.sizeS = intent.getStringExtra("size_s");
+            this.sizeM = intent.getStringExtra("size_m");
+            this.sizeL = intent.getStringExtra("size_l");
+            this.color1 = intent.getStringExtra("color_id1");
+            this.color2 = intent.getStringExtra("color_id2"); // 추가: color 값을 가져옴
 
-            // sizeValue를 이용하여 필요한 작업 수행
-            if (sizeValue != null) {
-                // 예시: size 텍스트뷰에 값을 설정
-                TextView sizeTextView = findViewById(R.id.size);
-                sizeTextView.setText(sizeValue);
-            }
+            Button sSize = findViewById(R.id.btn_size_S);
+            Button mSize = findViewById(R.id.btn_size_M);
+            Button lSize = findViewById(R.id.btn_size_L);
+            Button colorID1 = findViewById(R.id.btn_color1);
+            Button colorID2 = findViewById(R.id.btn_color2);
 
-            if (colorValue != null) {
-                // 예시: size 텍스트뷰에 값을 설정
-                TextView sizeTextView = findViewById(R.id.color);
-                sizeTextView.setText(colorValue);
-            }
+            sSize.setText(this.sizeS);
+            mSize.setText(this.sizeM);
+            lSize.setText(this.sizeL);
+            colorID1.setText(this.color1);
+            colorID2.setText(this.color2);
+
         }
 
         Count = findViewById(R.id.count);

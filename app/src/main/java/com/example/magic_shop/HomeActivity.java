@@ -139,7 +139,6 @@ public class HomeActivity extends AppCompatActivity {
         setButtonListeners();
     }
 
-
     private void setButtonListeners() {
         // 각 버튼에 대한 클릭 리스너 설정
         productBtn1.setOnClickListener(new View.OnClickListener() {
@@ -295,7 +294,6 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("product_price", productPrice);
         startActivity(intent);
     }
-
 
     private void setBase64Image(Button button, String base64Image) {
         // Base64로 인코딩된 이미지를 디코딩하여 버튼의 배경에 설정

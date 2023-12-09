@@ -41,12 +41,20 @@ public class Detailpage_MainActivity extends AppCompatActivity {
     private String productName;
     private String productPrice;
     private String sellerId;
+    private String color1; // 현재 선택된 첫 번째 색상
+    private String color2; // 현재 선택된 두 번째 색상
+    private String size_s; // 현재 선택된 사이즈 S
+    private String size_m; // 현재 선택된 사이즈 M
+    private String size_l; // 현재 선택된 사이즈 L
     private ProductDetailedImageLoader productDetailedImageLoader;
+    private ProductGetOptionRequest optionRequest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailpage_activity_main);
         getWindow().setWindowAnimations(0);
+
+        optionRequest = new ProductGetOptionRequest(this);
 
 
         Intent intent = getIntent();
@@ -76,7 +84,6 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         }
 
 
-
         btnBuy = findViewById(R.id.btn_buy);btnReview = findViewById(R.id.reviewBtn);
         btnSize = findViewById(R.id.sizeBtn);
         btnAsk = findViewById(R.id.askBtn);
@@ -100,8 +107,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
-                startActivity(intent);
+                loadOptionsAndNavigate(productName);
             }
         });
 
@@ -200,13 +206,53 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         });
     }
 
-
-
     private void setBase64Image(ImageView imageView, String base64Image) {
         // Base64로 인코딩된 이미지를 디코딩하여 ImageView에 설정
         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         imageView.setImageBitmap(decodedByte);
+    }
+
+    private void loadOptionsAndNavigate(String productName) {
+        optionRequest.optionload(productName, new ProductGetOptionRequest.OptionResponseListener() {
+            @Override
+            public void onSuccess(JSONArray response) {
+                // 받아온 옵션을 처리
+                try {
+                    JSONObject options = response.getJSONObject(0);
+                    color1 = options.getString("color_id1");
+                    color2 = options.getString("color_id2");
+                    size_s = options.getString("size_s");
+                    size_m = options.getString("size_m");
+                    size_l = options.getString("size_l");
+
+                    navigateToOptionSelectPage();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    // JSON 파싱 오류 처리
+                    Toast.makeText(getApplicationContext(), "옵션 데이터 파싱 실패", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                // 옵션을 로드할 수 없는 경우의 오류 처리
+                Toast.makeText(getApplicationContext(), "에러: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // 페이지 전환 메서드
+    private void navigateToOptionSelectPage() {
+        Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
+        // 옵션 정보를 Intent에 추가
+        intent.putExtra("color_id1", color1);
+        intent.putExtra("color_id2", color2);
+        intent.putExtra("size_s", size_s);
+        intent.putExtra("size_m", size_m);
+        intent.putExtra("size_l", size_l);
+
+        startActivity(intent);
     }
 
 
