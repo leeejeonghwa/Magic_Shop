@@ -141,7 +141,7 @@ public class Seller_ProductRegisterActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productColorTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productQuantity);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
             }
