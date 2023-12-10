@@ -87,7 +87,7 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
         // 사용자 아이디 (실제 사용자 아이디로 변경)
         String userID = sessionManager.getUserId();
 
-        // 주문 데이터 가져오기
+        // 리뷰 데이터 가져오기
         getReviewedData(userID, this);
     }
 

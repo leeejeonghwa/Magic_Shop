@@ -137,6 +137,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_AllReviewActivity.class);
+                intent.putExtra("product_id", productID);
                 intent.putExtra("product_name", productName);
                 intent.putExtra("seller_id", sellerId);
                 intent.putExtra("product_price", productPrice);

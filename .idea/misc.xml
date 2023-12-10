@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -79,6 +80,7 @@
         <entry key="app/src/main/res/layout/activity_review_write.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/activity_user_info_change.xml" value="0.19021739130434784" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1852355072463768" />
+        <entry key="app/src/main/res/layout/detailpage_activity_all_review.xml" value="0.165" />
         <entry key="app/src/main/res/layout/detailpage_activity_main.xml" value="0.17481884057971014" />
         <entry key="app/src/main/res/layout/detailpage_activity_main_ask.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/detailpage_activity_main_review.xml" value="0.17255434782608695" />
@@ -189,7 +191,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
