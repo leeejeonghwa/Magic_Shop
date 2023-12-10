@@ -3,12 +3,16 @@
     import android.annotation.SuppressLint;
     import android.content.Context;
     import android.content.Intent;
+    import android.graphics.Bitmap;
+    import android.graphics.BitmapFactory;
     import android.os.Bundle;
+    import android.util.Base64;
     import android.util.Log;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
     import android.widget.CheckBox;
+    import android.widget.ImageView;
     import android.widget.TextView;
     import android.widget.Toast;
 
@@ -92,6 +96,7 @@
             ArrayList<String> selectedPrice = intent.getStringArrayListExtra("SELECTED_PRICE");
             ArrayList<Integer> selectedProductID = intent.getIntegerArrayListExtra("SELECTED_PRODUCT_ID");
             ArrayList<Integer> selectedShoppingBasketID = intent.getIntegerArrayListExtra("SELECTED_BASKET_ID");
+            ArrayList<String> selectedProductImage = intent.getStringArrayListExtra("SELECTED_PRODUCT_IMAGE");
 
 
 
@@ -110,7 +115,8 @@
                             selectedProductNames.get(i),
                             selectedOptions.get(i),
                             selectedPrice.get(i),
-                            selectedProductID.get(i)
+                            selectedProductID.get(i),
+                            selectedProductImage.get(i)
 
                     );
                     adapter.addPurchaseItem(purchaseItem);
@@ -126,33 +132,35 @@
                     if (selectedPaymentMethod != null && !selectedPaymentMethod.isEmpty()) {
                         // 주문하기 버튼이 클릭되었을 때 실행되는 코드
                         sendOrder(userID, totalPrice, selectedPaymentMethod);
+                        // 주문 방법에 따라 구분
+                        if (selectedShoppingBasketID != null) {
+                            List<Integer> selectedBasketIDs = new ArrayList<>(selectedShoppingBasketID); // 새 목록 생성
 
-                        List<Integer> selectedBasketIDs = new ArrayList<>(selectedShoppingBasketID); // 새 목록 생성
+                            BasketUpdateRequest basketUpdateRequest = new BasketUpdateRequest(
+                                    selectedBasketIDs,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.d("OrderFormActivity", "Response: " + response);
 
-                        BasketUpdateRequest basketUpdateRequest = new BasketUpdateRequest(
-                                selectedBasketIDs,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        Log.d("OrderFormActivity", "Response: " + response);
+                                            // 바스켓 업데이트 후 응답 처리
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            // 바스켓 업데이트 중 에러 처리
+                                            Log.e("OrderFormActivity", "바스켓 업데이트 에러: " + error.getMessage());
 
-                                        // 바스켓 업데이트 후 응답 처리
+                                            // 바스켓 업데이트 에러가 발생해도 sendOrder는 여전히 수행될 수 있도록 여기에서도 sendOrder를 호출
+                                        }
                                     }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        // 바스켓 업데이트 중 에러 처리
-                                        Log.e("OrderFormActivity", "바스켓 업데이트 에러: " + error.getMessage());
-                                    }
-                                }
-                        );
+                            );
 
-
-
-                        // Volley RequestQueue에 요청 추가
-                        RequestQueue queue = Volley.newRequestQueue(OrderFormActivity.this);
-                        queue.add(basketUpdateRequest);
+                            // Volley RequestQueue에 요청 추가
+                            RequestQueue queue = Volley.newRequestQueue(OrderFormActivity.this);
+                            queue.add(basketUpdateRequest);
+                        }
 
                         // 주문 처리 후 페이지 이동 (예: 다음 화면으로 이동)
                         Intent intent = new Intent(OrderFormActivity.this, PaymentCompleteActivity.class);
@@ -315,13 +323,16 @@
             String price;
             Integer productID;
 
+            String productImage;
 
 
-            public PurchaseItem(String brandName, String productName, String option, String price, int productID) {
+
+            public PurchaseItem(String brandName, String productName, String option, String price, int productID, String productImage) {
                 this.productName = productName;
                 this.brandName = brandName;
                 this.option = option;
                 this.price = price;
+                this.productImage = productImage;
                 this.productID = productID;
 
             }
@@ -372,6 +383,7 @@
 
             public class PurchaseViewHolder extends RecyclerView.ViewHolder {
                 private final TextView productPrice, productOption, productBrand;
+                private final ImageView productImage;
                 private final TextView productNameTextView;
 
                 public PurchaseViewHolder(View itemView, Context context) {
@@ -380,6 +392,8 @@
                     productPrice = itemView.findViewById(R.id.product_price_textview);
                     productOption = itemView.findViewById(R.id.product_option_textview);
                     productBrand = itemView.findViewById(R.id.brand_name_textview);
+                    productImage = itemView.findViewById(R.id.btn_product_id1);
+
                 }
 
                 void bind(PurchaseItem purchaseItem) {
@@ -387,6 +401,10 @@
                     productPrice.setText(purchaseItem.price);
                     productBrand.setText(purchaseItem.brandName);
                     productOption.setText(purchaseItem.option);
+
+                    byte[] decodedString = Base64.decode(purchaseItem.productImage, Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    productImage.setImageBitmap(decodedByte);
                 }
             }
         }

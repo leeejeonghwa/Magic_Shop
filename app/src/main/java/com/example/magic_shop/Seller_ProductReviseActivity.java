@@ -130,7 +130,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productColorTextView = itemView.findViewById(R.id.productQuantify);
+                productColorTextView = itemView.findViewById(R.id.productQuantity);
                 productReviseButton = itemView.findViewById(R.id.btn_product_revise);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 

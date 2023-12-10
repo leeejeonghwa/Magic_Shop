@@ -1,21 +1,33 @@
 package com.example.magic_shop;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class CategoryProductListActivity extends AppCompatActivity {
 
-    CategorySelection categorySelection = CategorySelection.getInstance();
+    CategorySelectionManager categorySelectionManager;
 
+    public Context context;
     private Button productBtn;
+
+    private ProductAdapter adapter;
 
     private int categoryTexts[] = {
             R.string.category_top,
@@ -56,19 +68,17 @@ public class CategoryProductListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_product_list);
+        getWindow().setWindowAnimations(0);
+
+        context = this; // context 변수를 초기화
+        init();
+
+
+        categorySelectionManager = CategorySelectionManager.getInstance(context);
+        adapter = new ProductAdapter(categorySelectionManager.getProductList(), this);
 
         categoryTextChange();
         detailedCategoryTextChange();
-
-        init();
-
-        productBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CategoryProductListActivity.this, Detailpage_MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         Button backButton = findViewById(R.id.category_back_id);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +88,13 @@ public class CategoryProductListActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.category_search_id).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CategoryProductListActivity.this, CategorySelectionActivity.class);
-                startActivity(intent); // Intent를 사용하여 SecondActivity 시작
-            }
-        });
+
+        RecyclerView recyclerView = findViewById(R.id.product_category_recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+        fetchDataFromServer();
     }
 
     public void init() {
@@ -99,7 +109,7 @@ public class CategoryProductListActivity extends AppCompatActivity {
         TextView categoryTextView = findViewById(R.id.category_text_id);
 
         for (int i=0; i<6; i++) {
-            if (categorySelection.getSelectedCategory().ordinal() == i) {
+            if (categorySelectionManager.getSelectedCategory().ordinal() == i) {
                 categoryTextView.setText(categoryTexts[i]);
 
                 for (int j=0; j<12; j++) {
@@ -117,11 +127,88 @@ public class CategoryProductListActivity extends AppCompatActivity {
     public void detailedCategoryTextChange() {
 
         for (int i=0; i<12; i++) {
-            if (categorySelection.getSelectedDetailedCategory() == i) {
+            if (categorySelectionManager.getSelectedDetailedCategory() == i) {
                 Button btn = findViewById(detailedCategoryBtns[i]);
                 btn.setTextColor(getResources().getColor(R.color.category_main_color));
 
                 break;
+            }
+        }
+    }
+
+    private void fetchDataFromServer() {
+        categorySelectionManager.fetchDataFromServer(categorySelectionManager.getIntegerCategory(), categorySelectionManager.getSelectedDetailedCategory(), new CategorySelectionManager.OnDataReceivedListener(){
+            @Override
+            public void onDataReceived() {
+                String str = Integer.toString(categorySelectionManager.getProductList().size());
+                Log.d("fetch", str);
+                updateUI();
+            }
+        });
+    }
+
+    private void updateUI() {
+        adapter.notifyDataSetChanged();
+    }
+
+    public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+        private List<ProductItem> productList;
+        private Context context;
+
+        ProductAdapter(List<ProductItem> productList, Context context) {
+            this.productList = productList;
+            this.context = context;
+        }
+
+        @NonNull
+        @Override
+        public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            Context context = parent.getContext(); // Context 설정
+            View view = LayoutInflater.from(context).inflate(R.layout.category_item_product_list, parent, false);
+            return new ProductViewHolder(view, context);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+            ProductItem productItem = productList.get(position);
+            holder.bind(productItem);
+        }
+
+        @Override
+        public int getItemCount() {
+            return productList.size();
+        }
+
+        public class ProductViewHolder extends RecyclerView.ViewHolder {
+            private final TextView productNameTextView;
+            private final TextView productPriceView;
+
+            private final TextView sellerIdView;
+
+            private final ImageButton productMainImageButton;
+            private final Context context;
+
+            public ProductViewHolder(View itemView, Context context) {
+                super(itemView);
+                this.context = context;
+                productNameTextView = itemView.findViewById(R.id.product_name_text_id1);
+                productPriceView = itemView.findViewById(R.id.product_price_text_id1);
+                productMainImageButton = itemView.findViewById(R.id.btn_product_id1);
+                sellerIdView = itemView.findViewById(R.id.product_brand_text_id1);
+
+            }
+
+            void bind(ProductItem productItem) {
+                productNameTextView.setText(productItem.productName);
+                productPriceView.setText(productItem.productPrice);
+                sellerIdView.setText(productItem.sellerId);
+                if (productItem.mainImage == null) {
+                    Log.d("이미지", "null");
+                }
+                else {
+                    productMainImageButton.setImageBitmap(productItem.mainImage);
+                }
+
             }
         }
     }

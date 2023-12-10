@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
+    <ImageView
         android:id="@+id/btn_product_id1"
         android:layout_width="123dp"
         android:layout_height="149dp"
