@@ -41,17 +41,13 @@ public class HomeActivity extends AppCompatActivity {
     private Button shoppingcart_btn;
     private Button mypage_btn;
     private Button categorySearch;
-    private Button topCat_btn;
-    private Button pantsCat_btn;
-    private Button skirtCat_btn;
-    private Button outerCat_btn;
-    private Button bagCat_btn;
-    private Button shoesCat_btn;
+
     private String productID;
     private String productID1;
     private String productID2;
     private String productID3;
     private String productID4;
+
 
 
     @Override
@@ -64,12 +60,6 @@ public class HomeActivity extends AppCompatActivity {
         shoppingcart_btn = findViewById(R.id.shoppingcart_btn);
         mypage_btn = findViewById(R.id.mypage_id);
         categorySearch = findViewById(R.id.category_search_id);
-        topCat_btn = findViewById(R.id.btn_top_id);
-        pantsCat_btn = findViewById(R.id.btn_pants_id);
-        skirtCat_btn = findViewById(R.id.btn_skirt_one_piece_id);
-        outerCat_btn = findViewById(R.id.btn_outer_id);
-        bagCat_btn = findViewById(R.id.btn_bag_id);
-        shoesCat_btn = findViewById(R.id.btn_shoes_id);
         productBtn1 = findViewById(R.id.btn_product_id1);
         productBtn2 = findViewById(R.id.btn_product_id2);
         productBtn3 = findViewById(R.id.btn_product_id3);
@@ -172,10 +162,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivityForProduct(
-                        productName2.getText().toString(),
-                        productBrand2.getText().toString(),
-                        productPrice2.getText().toString(),
-                        productID2
+                    productName2.getText().toString(),
+                    productBrand2.getText().toString(),
+                    productPrice2.getText().toString(),
+                    productID2
                 );
             }
         });
@@ -248,59 +238,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        //상의 카테고리 선택 버튼
-        topCat_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //하의 카테고리 선택 버튼
-        pantsCat_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //스커트 카테고리 선택 버튼
-        skirtCat_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //아우터 카테고리 선택 버튼
-        outerCat_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //가방 카테고리 선택 버튼
-        bagCat_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //신발 카테고리 선택 버튼
-        shoesCat_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CategoryProductListActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void startActivityForProduct(String productName, String productBrand, String productPrice,String productID) {

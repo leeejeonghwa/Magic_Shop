@@ -2,7 +2,10 @@ package com.example.magic_shop;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -145,10 +149,11 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
                 String createdTime = reviewedObject.getString("createdTime");
                 String sellerID = reviewedObject.getString("sellerID");
                 String productName = reviewedObject.getString("product_name");
+                String productImage = reviewedObject.getString("main_image");
                 String productScore = reviewedObject.getString("productScore");
                 String content = reviewedObject.getString("content");
 
-                ReviewedItem reviewedItem = new ReviewedItem(createdTime, sellerID, productName, productScore, content);
+                ReviewedItem reviewedItem = new ReviewedItem(createdTime, sellerID, productName, productImage, productScore, content);
                 reviewedList.add(reviewedItem);
             }
         } catch (JSONException e) {
@@ -163,14 +168,16 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
         String createdTime;
         String sellerID;
         String productName;
+        String productImage;
         String productScore;
         String content;
 
-        public ReviewedItem(String createdTime, String sellerID, String productName,
+        public ReviewedItem(String createdTime, String sellerID, String productName, String productImage,
                           String productScore, String content) {
             this.createdTime = createdTime;
             this.sellerID = sellerID;
             this.productName = productName;
+            this.productImage = productImage;
             this.productScore = productScore;
             this.content = content;
         }
@@ -212,6 +219,7 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
             private final TextView createdTimeTextView;
             private final TextView sellerIDTextView;
             private final TextView productNameTextView;
+            private final ImageView productImageView;
             private final TextView contentTextView;
             private final RatingBar productScoreRatingBar;
             private final Context context;
@@ -222,6 +230,7 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
                 createdTimeTextView = itemView.findViewById(R.id.createdTime);
                 sellerIDTextView = itemView.findViewById(R.id.sellerID);
                 productNameTextView = itemView.findViewById(R.id.productName);
+                productImageView = itemView.findViewById(R.id.productImage);
                 contentTextView = itemView.findViewById(R.id.content);
                 productScoreRatingBar = itemView.findViewById(R.id.productScore);
 
@@ -233,6 +242,10 @@ public class Mypage_ReviewedListActivity extends AppCompatActivity {
                 productNameTextView.setText(reviewedItem.productName);
                 productScoreRatingBar.setRating(Integer.valueOf(reviewedItem.productScore));
                 contentTextView.setText(reviewedItem.content);
+
+                byte[] decodedString = Base64.decode(reviewedItem.productImage, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                productImageView.setImageBitmap(decodedByte);
             }
         }
     }

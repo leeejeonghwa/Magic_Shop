@@ -67,23 +67,6 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
 
-    <android.widget.Button
-        android:id="@+id/back_btn"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="371dp"
-        android:layout_marginBottom="13dp"
-        android:background="@drawable/detailpage_back_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
-        app:layout_constraintEnd_toEndOf="@+id/top_toorbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="80dp"

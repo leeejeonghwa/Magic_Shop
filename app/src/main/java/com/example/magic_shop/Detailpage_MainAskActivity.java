@@ -37,6 +37,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
     private ProductDetailedImageLoader productDetailedImageLoader;
     private static final int REQUEST_CODE_PRODUCT_INQUIRY = 1001;
     private static final int REQUEST_CODE_ORDER_INQUIRY = 1002;
+    private String productID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             productName = intent.getStringExtra("product_name");
             sellerId = intent.getStringExtra("seller_id");
             productPrice = intent.getStringExtra("product_price");
+            productID = intent.getStringExtra("id");
 
             // 받아온 상품명을 화면에 표시
             TextView productTextView = findViewById(R.id.productText);
@@ -93,6 +95,8 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
+                intent.putExtra("id", productID);
+
                 startActivity(intent);
             }
         });
@@ -138,7 +142,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
                 intent.putExtra("seller_id", sellerId);
                 intent.putExtra("product_price", productPrice);
 
-                startActivityForResult(intent, REQUEST_CODE_PRODUCT_INQUIRY);
+               startActivity(intent);
 
             }
         });
@@ -151,7 +155,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
                 intent.putExtra("seller_id", sellerId);
                 intent.putExtra("product_price", productPrice);
 
-                startActivityForResult(intent, REQUEST_CODE_ORDER_INQUIRY);
+                startActivity(intent);
 
             }
         });
@@ -205,33 +209,6 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         });
 
 
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_CODE_PRODUCT_INQUIRY) {
-                // 상품 문의의 결과 처리
-                productName = data.getStringExtra("product_name");
-                sellerId = data.getStringExtra("seller_id");
-                productPrice = data.getStringExtra("product_price");
-            } else if (requestCode == REQUEST_CODE_ORDER_INQUIRY) {
-                // 주문 문의의 결과 처리
-                productName = data.getStringExtra("product_name");
-                sellerId = data.getStringExtra("seller_id");
-                productPrice = data.getStringExtra("product_price");
-            }
-
-            // 받은 값으로 UI를 업데이트합니다.
-            TextView productTextView = findViewById(R.id.productText);
-            TextView priceTextView = findViewById(R.id.priceText);
-            TextView sellerTextView = findViewById(R.id.brandText);
-
-            productTextView.setText(productName);
-            priceTextView.setText(productPrice);
-            sellerTextView.setText(sellerId);
-        }
     }
 
     private void loadDetailedImages(String productName) {

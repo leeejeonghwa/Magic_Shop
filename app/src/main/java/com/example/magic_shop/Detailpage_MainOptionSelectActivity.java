@@ -43,9 +43,7 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
 
     private String brandName;
     private String productPrice;
-    private String image;
-
-
+    private String image, sellerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,14 +138,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
+                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("product_name",productName);
+                intent.putExtra("product_price",productPrice);
                 startActivity(intent);
             }
         });
@@ -245,6 +238,7 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         intent.putExtra("brandName", brandName);
         intent.putExtra("product_price", productPrice);
         intent.putExtra("main_image", image);
+
         Log.d("price", productPrice);
 
         startActivity(intent);
