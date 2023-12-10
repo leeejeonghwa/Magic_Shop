@@ -11,6 +11,8 @@ public class ProductItem {
     String productColor;
     Bitmap mainImage;
 
+    String productPrice;
+
     String sellerId;
 
     public ProductItem(String date, String productName, String productSize, String productColor , Bitmap mainImage) {
@@ -38,5 +40,16 @@ public class ProductItem {
         this.productColor = productColor;
         this.mainImage = mainImage;
         this.sellerId = sellerId;
+    }
+
+    public ProductItem(String id,String date, String productName, String productSize, String productColor , Bitmap mainImage, String sellerId, String productPrice) {
+        this.id = id;
+        this.date = date;
+        this.productName = productName;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.mainImage = mainImage;
+        this.sellerId = sellerId;
+        this.productPrice = productPrice;
     }
 }

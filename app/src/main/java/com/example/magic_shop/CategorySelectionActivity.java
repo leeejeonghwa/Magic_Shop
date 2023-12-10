@@ -1,7 +1,9 @@
 package com.example.magic_shop;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,7 +22,9 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
     private int selectedCategory = 0;
 
-    CategorySelection categorySelection = CategorySelection.getInstance();
+    public Context context;
+
+    CategorySelectionManager categorySelectionManager;
 
     private final int[] categoryButtonIds = {
             R.id.btn_top_id,
@@ -62,6 +66,9 @@ public class CategorySelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_selection);
         getWindow().setWindowAnimations(0);
+
+        context = this;
+        categorySelectionManager = CategorySelectionManager.getInstance(context);
 
 
         for (int buttonId : detailedButtonIds) {
@@ -144,7 +151,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
                 if (view.getId() == categoryButtonIds[i]) {
                     imageView = findViewById(R.id.category_top_id);
                     imageView.setImageResource(categoryImageSources[i]);
-                    categorySelection.changeCategory(i);
+                    categorySelectionManager.changeCategory(i);
                     break;
                 }
             }
@@ -160,7 +167,8 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
             for(int i=0; i<12; i++) {
                 if (clickedId == detailedButtonIds[i]) {
-                    categorySelection.setSelectedDetailedCategory(i);
+                    categorySelectionManager.setSelectedDetailedCategory(i);
+                    Log.d("category", Integer.toString(categorySelectionManager.getSelectedDetailedCategory()));
                 }
             }
 
