@@ -23,7 +23,6 @@ public class Seller_ProductRegisterRequestListActivity extends AppCompatActivity
 
 
     private ProductRegisterRequestManager productRegisterRequestManager;
-
     private String userID;
 
     public Context context;

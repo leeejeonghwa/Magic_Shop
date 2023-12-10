@@ -10,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ImageView;
+
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,7 +110,7 @@ public class ProductRegisterRequestManager {
 
                 String product_id = productObject.getString("id");
 
-                if (!isManager && id.equals(userId) ) {
+                if (!isManager && id.equals(userId)) {
                     Log.d("로그인한 유저의 상품", id);
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
@@ -120,15 +122,14 @@ public class ProductRegisterRequestManager {
                             + (!productSizeM.equals("N") ? productSizeM + " / " : "")
                             + (!productSizeL.equals("N") ? productSizeL : "");
 
-                    String productColor1= productObject.getString("color_id1");
+                    String productColor1 = productObject.getString("color_id1");
                     String productColor2 = productObject.getString("color_id2");
 
                     String productColor;
 
                     if (productColor2.equals("N")) {
                         productColor = productColor1;
-                    }
-                    else {
+                    } else {
                         productColor = productColor1 + " / " + productColor2;
                     }
 
@@ -146,15 +147,14 @@ public class ProductRegisterRequestManager {
 
                     Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(date, productName, productSize, productColor, mainImage);
+                    ProductItem item = new ProductItem(product_id, date, productName, productSize, productColor, mainImage, id);
                     productRegisterRequestList.add(item);
                     String numStr = Integer.toString(productRegisterRequestList.size());
                     Log.d("삽입된 상품 수", numStr);
 
 
-                }
-                else if (isManager) {
-                    Log.d("관리자의 상품리스트", id);
+                } else if (isManager) {
+                    Log.d("관리자의 상품리스트", product_id);
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
@@ -165,15 +165,14 @@ public class ProductRegisterRequestManager {
                             + (!productSizeM.equals("N") ? productSizeM + " / " : "")
                             + (!productSizeL.equals("N") ? productSizeL : "");
 
-                    String productColor1= productObject.getString("color_id1");
+                    String productColor1 = productObject.getString("color_id1");
                     String productColor2 = productObject.getString("color_id2");
 
                     String productColor;
 
                     if (productColor2.equals("N")) {
                         productColor = productColor1;
-                    }
-                    else {
+                    } else {
                         productColor = productColor1 + " / " + productColor2;
                     }
 
@@ -191,7 +190,7 @@ public class ProductRegisterRequestManager {
 
                     Log.d("관리자 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(product_id,date, productName, productSize, productColor, mainImage, id);
+                    ProductItem item = new ProductItem(product_id, date, productName, productSize, productColor, mainImage, id);
                     productRegisterRequestList.add(item);
                     String numStr = Integer.toString(productRegisterRequestList.size());
                     Log.d("삽입된 상품 수", numStr);

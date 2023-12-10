@@ -129,7 +129,7 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.date);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
-                productColorTextView= itemView.findViewById(R.id.productQuantity);
+                productColorTextView = itemView.findViewById(R.id.productQuantity);
                 productMainImageView = itemView.findViewById(R.id.productImage);
             }
 

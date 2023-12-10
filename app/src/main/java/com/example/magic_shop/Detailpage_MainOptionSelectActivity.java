@@ -1,16 +1,32 @@
 package com.example.magic_shop;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.Button;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private Button btnOption;
-    private Button btnColor;
-    private Button btnColorSelect;
-    private Button btnSizeSelect;
+    private Button btnColor1;
+    private Button btnColor2;
     private Button btnSize_S;
     private Button btnSize_M;
     private Button btnSize_L;
@@ -18,18 +34,39 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private Button btnBag;
     private Button btnHome;
     private Button btnSearch;
+    private String productID;
+    private String color;
 
-    private String color; // 현재 선택된 색상
+    private TextView textProductName;
+    private TextView textProductPrice;
+    private String productName;
+    private String productPrice;
+    private String image;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailpage_activity_main_obtion_select);
 
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            this.productID = intent.getStringExtra("id");
+
+
+            Log.d("option productID", productID);
+
+
+        }
+
+        loadOptions(productID);
+
+
         btnOption = findViewById(R.id.btn_option);
-        btnColor = findViewById(R.id.btn_color);
-        btnColorSelect = findViewById(R.id.btn_color_select);
-        btnSizeSelect = findViewById(R.id.btn_size_select);
+        btnColor1 = findViewById(R.id.btn_color1);
+        btnColor2 = findViewById(R.id.btn_color2);
         btnSize_S = findViewById(R.id.btn_size_S);
         btnSize_M = findViewById(R.id.btn_size_M);
         btnSize_L = findViewById(R.id.btn_size_L);
@@ -37,69 +74,62 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnHome = findViewById(R.id.home_btn);
         btnBag = findViewById(R.id.bag_btn);
         btnSearch = findViewById(R.id.search_btn);
+        textProductName =findViewById(R.id.text_productName);
+        textProductPrice =findViewById(R.id.text_productPrice);
 
-        // 초기 상태에서는 btnBuy를 보이고 btnOption을 숨깁니다.
-        btnOption.setVisibility(View.VISIBLE);
-        btnColorSelect.setVisibility(View.VISIBLE);
-        btnSizeSelect.setVisibility(View.VISIBLE);
-        btnColor.setVisibility(View.GONE);
-        btnSize_S.setVisibility(View.GONE);
-        btnSize_M.setVisibility(View.GONE);
-        btnSize_L.setVisibility(View.GONE);
-        btnBack.setVisibility(View.VISIBLE);
-        btnBag.setVisibility(View.VISIBLE);
-        btnHome.setVisibility(View.VISIBLE);
-        btnSearch.setVisibility(View.VISIBLE);
 
-        // btnBuy의 클릭 이벤트 처리
-        btnColorSelect.setOnClickListener(new View.OnClickListener() {
+
+
+        btnColor2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // btnBuy를 숨기고 btnOption을 보이도록 변경
-                btnColor.setVisibility(View.VISIBLE);
-                btnSizeSelect.setVisibility(View.GONE);
+                color = btnColor2.getText().toString();
+                Log.d("ColorClick", "Color selected: " + color);
+
+
+
             }
         });
 
-        btnColor.setOnClickListener(new View.OnClickListener() {
+        btnColor1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // btnBuy를 숨기고 btnOption을 보이도록 변경
-                btnColor.setVisibility(View.GONE);
-                btnColorSelect.setVisibility(View.VISIBLE);
-                btnSizeSelect.setVisibility(View.VISIBLE);
-                color = "검정";
+                color = btnColor1.getText().toString();
+                Log.d("ColorClick", "Color selected: " + color);
+
+
+
             }
         });
 
-        btnSizeSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // btnBuy를 숨기고 btnOption을 보이도록 변경
-                btnSize_S.setVisibility(View.VISIBLE);
-                btnSize_M.setVisibility(View.VISIBLE);
-                btnSize_L.setVisibility(View.VISIBLE);
-            }
-        });
 
         btnSize_S.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                moveToNextActivity("S");
+                moveToNextActivity(btnSize_S.getText().toString());
+
+
+
             }
         });
 
         btnSize_M.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                moveToNextActivity("M");
+
+                moveToNextActivity(btnSize_M.getText().toString());
+
+
             }
         });
 
         btnSize_L.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                moveToNextActivity("L");
+                moveToNextActivity(btnSize_L.getText().toString());
+
+
+
             }
         });
 
@@ -142,11 +172,79 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
             }
         });
     }
+    private void loadOptions(String productID) {
+        Log.d("OptionsRequest", "Sending request for product ID: " + productID);
+
+        ProductGetOptionRequest optionRequest = new ProductGetOptionRequest(
+                productID,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("OptionsResponse", response);
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            if (jsonArray.length() > 0) {
+                                JSONObject options = jsonArray.getJSONObject(0);
+                                // 여기에서 옵션 정보를 가져와서 버튼에 설정하는 작업을 수행하세요.
+                                String color1 = options.getString("color_id1");
+                                String color2 = options.getString("color_id2");
+                                String sizeS = options.getString("size_s");
+                                String sizeM = options.getString("size_m");
+                                String sizeL = options.getString("size_l");
+                                productName = options.getString("product_name");
+                                productPrice = options.getString("product_price");
+                                image = options.getString("main_image");
+                                Log.d("option", color1);
+
+                                // 가져온 정보를 버튼에 설정
+                                setOptionsOnButtons(color1, color2, sizeS, sizeM, sizeL);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            // JSON 파싱 오류 처리
+                            Toast.makeText(getApplicationContext(), "Failed to parse options data", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // 에러 처리
+                        Toast.makeText(getApplicationContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // 요청을 큐에 추가
+        Volley.newRequestQueue(getApplicationContext()).add(optionRequest);
+    }
+
+    // 버튼에 옵션 정보 설정
+    private void setOptionsOnButtons(String color1, String color2, String sizeS, String sizeM, String sizeL) {
+        btnColor1.setText(color1);
+        btnColor2.setText(color2);
+        btnSize_S.setText(sizeS);
+        btnSize_M.setText(sizeM);
+        btnSize_L.setText(sizeL);
+
+    }
 
     private void moveToNextActivity(String size) {
         Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectCompleteActivity.class);
+        String option = color + " / " + size;
+        intent.putExtra("productID", productID);
         intent.putExtra("color", color);
         intent.putExtra("size", size);
+        intent.putExtra("option", option);
+        intent.putExtra("product_name", productName);
+        intent.putExtra("product_price", productPrice);
+        intent.putExtra("main_image", image);
+        Log.d("price", productPrice);
+
         startActivity(intent);
     }
+
+
+
+
 }

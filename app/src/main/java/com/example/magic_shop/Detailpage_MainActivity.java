@@ -41,7 +41,9 @@ public class Detailpage_MainActivity extends AppCompatActivity {
     private String productName;
     private String productPrice;
     private String sellerId;
+    private String productID;
     private ProductDetailedImageLoader productDetailedImageLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,8 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             this.productName = intent.getStringExtra("product_name");
             this.productPrice = intent.getStringExtra("product_price");
             this.sellerId = intent.getStringExtra("seller_id");
+            this.productID=intent.getStringExtra("id");
+
 
             // 받아온 상품명을 화면에 표시
             TextView productTextView = findViewById(R.id.productText);
@@ -74,7 +78,6 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             // 디테일 페이지에서 상세 이미지를 가져오고 화면에 표시
             loadDetailedImages(this.productName);
         }
-
 
 
         btnBuy = findViewById(R.id.btn_buy);btnReview = findViewById(R.id.reviewBtn);
@@ -101,6 +104,8 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
+                intent.putExtra("id", productID);
+
                 startActivity(intent);
             }
         });
@@ -199,8 +204,6 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     private void setBase64Image(ImageView imageView, String base64Image) {
         // Base64로 인코딩된 이미지를 디코딩하여 ImageView에 설정
