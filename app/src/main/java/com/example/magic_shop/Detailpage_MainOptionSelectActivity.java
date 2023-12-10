@@ -70,7 +70,7 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnSize_S = findViewById(R.id.btn_size_S);
         btnSize_M = findViewById(R.id.btn_size_M);
         btnSize_L = findViewById(R.id.btn_size_L);
-        btnBack = findViewById(R.id.back_btn);
+        btnBack=findViewById(R.id.back_btn);
         btnHome = findViewById(R.id.home_btn);
         btnBag = findViewById(R.id.bag_btn);
         btnSearch = findViewById(R.id.search_btn);
