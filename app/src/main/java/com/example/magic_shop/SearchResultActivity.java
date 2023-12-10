@@ -60,9 +60,9 @@ public class SearchResultActivity extends AppCompatActivity {
             String product_name = jsonObject.getString(("product_name"));
             String product_price = jsonObject.getString(("product_price"));
             String seller_id = jsonObject.getString("seller_id");
-//            String main_image = jsonObject.getString("main_image");
+            String base64MainImage = jsonObject.getString("main_image");
 
-            SearchItem searchItem = new SearchItem(product_name, product_price, seller_id);
+            SearchItem searchItem = new SearchItem(product_name, product_price, seller_id, base64MainImage);
 
             searchList.add(searchItem);
         }
@@ -252,7 +252,7 @@ public class SearchResultActivity extends AppCompatActivity {
         String productBrand;
         String productImage;
 
-        public SearchItem(String productName, String productPrice, String productBrand) {
+        public SearchItem(String productName, String productPrice, String productBrand, String productImage) {
             this.productName = productName;
             this.productPrice = productPrice;
             this.productBrand = productBrand;
@@ -293,15 +293,16 @@ public class SearchResultActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     // 여기에서 아이템 클릭 처리, 예를 들어 새로운 활동 시작
-                    startActivityForProduct(searchItem.productName, searchItem.productBrand, searchItem.productPrice, searchItem.productImage);
+                    startActivityForProduct(searchItem.productName, searchItem.productBrand, searchItem.productPrice);
                 }
-                private void startActivityForProduct(String productName, String productBrand, String productPrice, String productImage) {
+                private void startActivityForProduct(String productName, String productBrand, String productPrice) {
                     Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
                     // 상품 정보 및 이미지를 Intent에 추가하여 Detail 페이지로 전달
                     intent.putExtra("product_name", productName);
                     intent.putExtra("seller_id", productBrand);
                     intent.putExtra("product_price", productPrice);
-                    intent.putExtra("main_image", productImage);
+
+                    startActivity(intent);
                 }
 
 
@@ -320,7 +321,6 @@ public class SearchResultActivity extends AppCompatActivity {
             private final TextView productBrandTextView;
             private final TextView productPriceTextView;
             private final ImageView productImageView;
-//            public final Button btn_product;
 
             private final Context context;
 
@@ -330,24 +330,20 @@ public class SearchResultActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.product_name_text);
                 productBrandTextView = itemView.findViewById(R.id.product_brand_text);
                 productPriceTextView = itemView.findViewById(R.id.product_price_text);
-//                productImageView = itemView.findViewById(R.id.product_image);
                 productImageView = itemView.findViewById(R.id.product_image);
-
             }
             void bind(SearchItem searchItem) {
                 // 각 TextView에 해당하는 데이터를 설정
                 productNameTextView.setText(searchItem.productName);
                 productBrandTextView.setText(searchItem.productBrand);
                 productPriceTextView.setText(searchItem.productPrice);
-//                setBase64Image(productImageView, searchItem.productImage);
-
+                setBase64Image(productImageView, searchItem.productImage);
             }
         }
-
     }
 
     private void setBase64Image(ImageView imageView, String base64Image) {
-        // Base64로 인코딩된 이미지를 디코딩하여 버튼의 배경에 설정
+        // Base64로 인코딩된 이미지를 디코딩하여 버튼의 이미지뷰에 설정
         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         imageView.setBackground(new BitmapDrawable(getResources(), decodedByte));
