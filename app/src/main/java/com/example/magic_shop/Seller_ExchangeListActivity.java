@@ -80,10 +80,10 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
         String userID = sessionManager.getUserId();
 
         // 데이터 가져오기
-        getExchangeWaitingData(userID, this);
+        getSellerExchangeData(userID, this);
     }
 
-    public void getExchangeWaitingData(String userID, Context context) {
+    public void getSellerExchangeData(String userID, Context context) {
         // Volley 요청 큐 생성
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -302,7 +302,9 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
                     if (success) {
                         String successMessage = "교환을 승인하였습니다.";
                         Toast.makeText(getApplicationContext(), successMessage, Toast.LENGTH_SHORT).show();
-                        finish();
+
+                        // 리사이클러뷰 어댑터 갱신
+                        getSellerExchangeData(userID, Seller_ExchangeListActivity.this);
                     }
                     else {
                         Toast.makeText(getApplicationContext(), "교환 승인에 실패하였습니다.", Toast.LENGTH_SHORT).show();

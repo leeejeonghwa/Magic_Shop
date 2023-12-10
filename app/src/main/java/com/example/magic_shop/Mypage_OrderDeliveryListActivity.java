@@ -138,6 +138,10 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 String paymentDate = orderObject.getString("paymentDate");
                 int totalAmount = orderObject.getInt("totalAmount");
 
+                // 현재 상태 추출
+                String exchangeStatus = orderObject.getString("exchangeStatus");
+                String refundStatus = orderObject.getString("refundStatus");
+
                 // 제품 객체 추출
                 JSONObject productsObject = orderObject.getJSONObject("products");
                 //제품 상세 정보 추출
@@ -149,7 +153,8 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
 
 
                 // OrderItem 생성 및 목록에 추가
-                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productPrice, sellerID ,productImage);
+                OrderItem orderItem = new OrderItem(exchangeStatus, refundStatus,orderID, paymentDate,
+                        totalAmount, productID, productName, productPrice, sellerID ,productImage);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -160,6 +165,8 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
     }
 
     public class OrderItem {
+        String exchangeStatus;
+        String refundStatus;
         int orderID;
         String paymentDate;
         int totalAmount;
@@ -169,7 +176,9 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
         String sellerID;
         String productImage;
 
-        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String sellerID, String productImage) {
+        public OrderItem(String exchangeStatus, String refundStatus, int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String sellerID, String productImage) {
+            this.exchangeStatus = exchangeStatus;
+            this.refundStatus = refundStatus;
             this.orderID = orderID;
             this.productID = productID;
             this.productImage = productImage;
@@ -214,6 +223,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
         }
 
         public class OrderViewHolder extends RecyclerView.ViewHolder {
+            private final TextView orderStatusTextView;
             private final TextView dateTextView;
             private final TextView productNameTextView, productPriceTextView, productBrandTextView;
             private final ImageView productImageView;
@@ -224,6 +234,7 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
             public OrderViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
+                orderStatusTextView = itemView.findViewById(R.id.order_status);
                 dateTextView = itemView.findViewById(R.id.order_date);
                 productNameTextView = itemView.findViewById(R.id.order_productName);
                 productPriceTextView = itemView.findViewById(R.id.order_productPrice);
@@ -281,6 +292,27 @@ public class Mypage_OrderDeliveryListActivity extends AppCompatActivity {
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 productImageView.setImageBitmap(decodedByte);
+
+                // 교환 및 환불 상태에 따라 orderStatusTextView 설정
+                if (orderItem.exchangeStatus.equals("N") && orderItem.refundStatus.equals("N")) {
+                    orderStatusTextView.setVisibility(View.GONE); // 교환 및 환불 상태가 모두 N이면 TextView를 숨김
+                    exchangeButton.setVisibility(View.VISIBLE); // 교환 버튼을 보이게 설정
+                    refundButton.setVisibility(View.VISIBLE); // 환불 버튼을 보이게 설정
+                } else {
+                    orderStatusTextView.setVisibility(View.VISIBLE); // TextView를 다시 보이게 설정
+                    exchangeButton.setVisibility(View.GONE); // 교환 버튼을 숨김
+                    refundButton.setVisibility(View.GONE); // 환불 버튼을 숨김
+
+                    if (orderItem.exchangeStatus.equals("W")) {
+                        orderStatusTextView.setText("교환 승인 대기");
+                    } else if (orderItem.exchangeStatus.equals("Y")) {
+                        orderStatusTextView.setText("교환 승인");
+                    } else if (orderItem.refundStatus.equals("W")) {
+                        orderStatusTextView.setText("환불 승인 대기");
+                    } else if (orderItem.refundStatus.equals("Y")) {
+                        orderStatusTextView.setText("환불 승인");
+                    }
+                }
             }
         }
     }

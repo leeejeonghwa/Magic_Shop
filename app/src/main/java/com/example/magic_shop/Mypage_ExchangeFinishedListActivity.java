@@ -92,7 +92,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // 응답을 처리하는 코드
-                        Log.d("RefundFinishedDetails", "Volley Response: " + response);
+                        Log.d("ExchangeFinishedDetails", "Volley Response: " + response);
 
                         try {
                             // JSON 응답 파싱
@@ -137,12 +137,14 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject exchangeObject = jsonArray.getJSONObject(i);
 
+                String exchangeTime = exchangeObject.getString("createdTime");
                 String sellerID = exchangeObject.getString("sellerID");
                 String productName = exchangeObject.getString("product_name");
+                String productPrice = exchangeObject.getString("product_price");
                 String productImage = exchangeObject.getString("main_image");
                 String content = exchangeObject.getString("content");
 
-                ExchangeItem exchangeItem = new ExchangeItem(sellerID, productName, productImage, content);
+                ExchangeItem exchangeItem = new ExchangeItem(exchangeTime, sellerID, productName, productPrice, productImage, content);
                 exchangeList.add(exchangeItem);
             }
         } catch (JSONException e) {
@@ -154,14 +156,18 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
 
     public class ExchangeItem {
+        String exchangeTime;
         String sellerID;
         String productName;
+        String productPrice;
         String productImage;
         String content;
 
-        public ExchangeItem(String sellerID, String productName, String productImage, String content) {
+        public ExchangeItem(String exchangeTime, String sellerID, String productName, String productPrice, String productImage, String content) {
+            this.exchangeTime = exchangeTime;
             this.sellerID = sellerID;
             this.productName = productName;
+            this.productPrice = productPrice;
             this.productImage = productImage;
             this.content = content;
 
@@ -201,8 +207,10 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
         public int getItemCount() { return exchangeList.size(); }
 
         public class ExchangeViewHolder extends RecyclerView.ViewHolder {
+            private final TextView exchangeTimeTextView;
             private final TextView sellerIDTextView;
             private final TextView productNameTextView;
+            private final TextView productPriceTextView;
             private final ImageView productImageView;
             private final TextView contentTextView;
             private final Context context;
@@ -210,16 +218,20 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
             public ExchangeViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
-                sellerIDTextView = itemView.findViewById(R.id.brand_name_textview);
+                exchangeTimeTextView = itemView.findViewById(R.id.exchangeTime);
+                sellerIDTextView = itemView.findViewById(R.id.sellerID);
                 productNameTextView = itemView.findViewById(R.id.productName);
+                productPriceTextView = itemView.findViewById(R.id.productPrice);
                 productImageView = itemView.findViewById(R.id.productImage);
                 contentTextView = itemView.findViewById(R.id.content);
 
             }
 
             void bind(ExchangeItem exchangeItem) {
+                exchangeTimeTextView.setText(exchangeItem.exchangeTime);
                 sellerIDTextView.setText(exchangeItem.sellerID);
                 productNameTextView.setText(exchangeItem.productName);
+                productPriceTextView.setText((String.valueOf(exchangeItem.productPrice))+"원");
                 contentTextView.setText(exchangeItem.content);
 
                 byte[] decodedString = Base64.decode(exchangeItem.productImage, Base64.DEFAULT);

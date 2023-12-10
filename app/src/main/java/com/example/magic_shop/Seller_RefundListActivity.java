@@ -302,8 +302,10 @@ public class Seller_RefundListActivity extends AppCompatActivity {
                     if (success) {
                         String successMessage = "환불을 승인하였습니다.";
                         Toast.makeText(getApplicationContext(), successMessage, Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+
+                        // 리사이클러뷰 어댑터 갱신
+                        getSellerRefundData(userID, Seller_RefundListActivity.this);
+                    } else {
                         Toast.makeText(getApplicationContext(), "환불 승인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {

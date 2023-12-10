@@ -136,12 +136,14 @@ public class Mypage_RefundFinishedListActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject refundObject = jsonArray.getJSONObject(i);
 
+                String refundTime = refundObject.getString("createdTime");
                 String sellerID = refundObject.getString("sellerID");
                 String productName = refundObject.getString("product_name");
+                String productPrice = refundObject.getString("product_price");
                 String productImage = refundObject.getString("main_image");
                 String content = refundObject.getString("content");
 
-                RefundItem refundItem = new RefundItem(sellerID, productName, productImage, content);
+                RefundItem refundItem = new RefundItem(refundTime, sellerID, productName, productPrice, productImage, content);
                 refundList.add(refundItem);
             }
         } catch (JSONException e) {
@@ -153,14 +155,18 @@ public class Mypage_RefundFinishedListActivity extends AppCompatActivity {
 
 
     public class RefundItem {
+        String refundTime;
         String sellerID;
         String productName;
+        String productPrice;
         String productImage;
         String content;
 
-        public RefundItem(String sellerID, String productName, String productImage, String content) {
+        public RefundItem(String refundTime, String sellerID, String productName, String productPrice, String productImage, String content) {
+            this.refundTime = refundTime;
             this.sellerID = sellerID;
             this.productName = productName;
+            this.productPrice = productPrice;
             this.productImage = productImage;
             this.content = content;
 
@@ -200,25 +206,31 @@ public class Mypage_RefundFinishedListActivity extends AppCompatActivity {
         public int getItemCount() { return refundList.size(); }
 
         public class RefundViewHolder extends RecyclerView.ViewHolder {
+            private final TextView refundTimeTextView;
             private final TextView sellerIDTextView;
             private final TextView productNameTextView;
             private final ImageView productImageView;
             private final TextView contentTextView;
+            private final TextView productPriceTextView;
             private final Context context;
 
             public RefundViewHolder(View itemView, Context context) {
                 super(itemView);
                 this.context = context;
+                refundTimeTextView = itemView.findViewById(R.id.refundTime);
                 sellerIDTextView = itemView.findViewById(R.id.sellerID);
                 productNameTextView = itemView.findViewById(R.id.productName);
+                productPriceTextView = itemView.findViewById(R.id.productPrice);
                 productImageView = itemView.findViewById(R.id.productImage);
                 contentTextView = itemView.findViewById(R.id.content);
 
             }
 
             void bind(RefundItem refundItem) {
+                refundTimeTextView.setText(refundItem.refundTime);
                 sellerIDTextView.setText(refundItem.sellerID);
                 productNameTextView.setText(refundItem.productName);
+                productPriceTextView.setText((String.valueOf(refundItem.productPrice))+"원");
                 contentTextView.setText(refundItem.content);
 
                 byte[] decodedString = Base64.decode(refundItem.productImage, Base64.DEFAULT);
