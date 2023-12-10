@@ -100,34 +100,35 @@ public class HomeActivity extends AppCompatActivity {
                         String productBrand = product.getString("seller_id");
                         String productPrice = product.getString("product_price");
                         String base64MainImage = product.getString("main_image");
-                        String productId = product.getString("id");
-                        Log.d("ID", productId);
+                        Integer productId = product.getInt("id");
+                        String productIdString = String.valueOf(productId);
+                        Log.d("ID", productIdString);
 
                         // 버튼에 상품명 설정
                         switch (i) {
                             case 0:
-                                productID1 = productId;
+                                productID1 = productIdString;
                                 productName1.setText(productName);
                                 productBrand1.setText(productBrand);
                                 productPrice1.setText(productPrice);
                                 setBase64Image(productBtn1, base64MainImage);
                                 break;
                             case 1:
-                                productID2 = productId;
+                                productID2 = productIdString;
                                 productName2.setText(productName);
                                 productBrand2.setText(productBrand);
                                 productPrice2.setText(productPrice);
                                 setBase64Image(productBtn2, base64MainImage);
                                 break;
                             case 2:
-                                productID3 = productId;
+                                productID3 = productIdString;
                                 productName3.setText(productName);
                                 productBrand3.setText(productBrand);
                                 productPrice3.setText(productPrice);
                                 setBase64Image(productBtn3, base64MainImage);
                                 break;
                             case 3:
-                                productID4 = productId;
+                                productID4 = productIdString;
                                 productName4.setText(productName);
                                 productBrand4.setText(productBrand);
                                 productPrice4.setText(productPrice);

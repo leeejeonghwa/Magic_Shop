@@ -52,11 +52,13 @@ public class ShoppingBasketActivity extends AppCompatActivity {
             checkedCountTextView = findViewById(R.id.purchase_cnt);
             TextView itemCountTextView = findViewById(R.id.all_cnt);
 
-            btnBack = findViewById(R.id.back_id);
+            btnBack = findViewById(R.id.home_id);
 
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
                     finish();
                 }
             });

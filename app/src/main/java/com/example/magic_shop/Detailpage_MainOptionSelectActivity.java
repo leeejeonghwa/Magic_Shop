@@ -40,6 +40,8 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private TextView textProductName;
     private TextView textProductPrice;
     private String productName;
+
+    private String brandName;
     private String productPrice;
     private String image;
 
@@ -75,7 +77,8 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnBag = findViewById(R.id.bag_btn);
         btnSearch = findViewById(R.id.search_btn);
         textProductName =findViewById(R.id.text_productName);
-        textProductPrice =findViewById(R.id.text_productPrice);
+        textProductPrice=findViewById(R.id.text_productPrice);
+
 
 
 
@@ -193,6 +196,7 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
                                 String sizeM = options.getString("size_m");
                                 String sizeL = options.getString("size_l");
                                 productName = options.getString("product_name");
+                                brandName = options.getString("seller_id");
                                 productPrice = options.getString("product_price");
                                 image = options.getString("main_image");
                                 Log.d("option", color1);
@@ -232,11 +236,13 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private void moveToNextActivity(String size) {
         Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectCompleteActivity.class);
         String option = color + " / " + size;
-        intent.putExtra("productID", productID);
+        int productAsIntID = Integer.parseInt(productID);
+        intent.putExtra("productID",productAsIntID);
         intent.putExtra("color", color);
         intent.putExtra("size", size);
         intent.putExtra("option", option);
         intent.putExtra("product_name", productName);
+        intent.putExtra("brandName", brandName);
         intent.putExtra("product_price", productPrice);
         intent.putExtra("main_image", image);
         Log.d("price", productPrice);
