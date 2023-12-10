@@ -105,6 +105,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
                 intent.putExtra("id", productID);
+                intent.putExtra("seller_id",sellerId);
 
                 startActivity(intent);
             }
@@ -117,6 +118,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 intent.putExtra("product_name", productName);
                 intent.putExtra("product_price", productPrice);
                 intent.putExtra("seller_id", sellerId);
+                intent.putExtra("id",productID);
 
                 startActivity(intent);
             }
@@ -130,6 +132,8 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 intent.putExtra("product_name", productName);
                 intent.putExtra("product_price", productPrice);
                 intent.putExtra("seller_id", sellerId);
+                intent.putExtra("id",productID);
+
                 startActivity(intent);
             }
         });
@@ -141,6 +145,8 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 intent.putExtra("product_name", productName);
                 intent.putExtra("product_price", productPrice);
                 intent.putExtra("seller_id", sellerId);
+                intent.putExtra("id",productID);
+
                 startActivity(intent);
             }
         });

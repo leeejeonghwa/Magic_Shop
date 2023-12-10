@@ -26,7 +26,7 @@ public class Detailpage_MainSizeActivity extends AppCompatActivity {
     private Button btnProduct;
     private Button btnBack;
     private String productName;
-    private String productPrice;
+    private String productPrice, productID;
     private String sellerId;
     private ImageView mainImage;
     private ImageView sizeImage;
@@ -44,6 +44,7 @@ public class Detailpage_MainSizeActivity extends AppCompatActivity {
             productName = intent.getStringExtra("product_name");
             sellerId = intent.getStringExtra("seller_id");
             productPrice = intent.getStringExtra("product_price");
+            productID = intent.getStringExtra("id");
 
             // 받아온 상품명을 화면에 표시
             TextView productTextView = findViewById(R.id.productText);
@@ -81,6 +82,7 @@ public class Detailpage_MainSizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
+                intent.putExtra("id", productID);
                 startActivity(intent);
             }
         });
