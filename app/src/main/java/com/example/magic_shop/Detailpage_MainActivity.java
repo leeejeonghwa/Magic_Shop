@@ -105,6 +105,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
                 intent.putExtra("id", productID);
+
                 startActivity(intent);
             }
         });

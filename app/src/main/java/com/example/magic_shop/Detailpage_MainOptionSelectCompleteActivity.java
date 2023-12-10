@@ -3,9 +3,14 @@ package com.example.magic_shop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivity {
     private Button btnBasket;
@@ -13,6 +18,11 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
     private Button btnHome;
     private Button btnSearch;
     private Button btnBuy;
+    private String productPrice, productName;
+    private String mainImage;
+    private TextView textProductName, textProductPrice;
+    private ImageView main;
+
 
 
     @Override
@@ -25,7 +35,17 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
 
             String sizeValue = intent.getStringExtra("size");
             String colorValue = intent.getStringExtra("color"); // 추가: color 값을 가져옴
-            String option = intent.getStringExtra("option");
+            productPrice = intent.getStringExtra("product_price");
+            productName = intent.getStringExtra("product_name");
+            mainImage =intent.getStringExtra ("main_image");
+
+            textProductName = findViewById(R.id.text_productName);
+            textProductPrice = findViewById(R.id.text_productPrice);
+            main = findViewById(R.id.mainImage);
+
+            textProductName.setText(productName);
+            textProductPrice.setText(productPrice);
+            setBase64Image(main, mainImage);
 
 
             // sizeValue를 이용하여 필요한 작업 수행
@@ -40,6 +60,7 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
                 TextView sizeTextView = findViewById(R.id.color);
                 sizeTextView.setText(colorValue);
             }
+
         }
 
         btnBasket = findViewById(R.id.btn_basket);
@@ -89,5 +110,13 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
             }
         });
     }
+
+    private void setBase64Image(ImageView imageView, String base64Image) {
+        // Base64로 인코딩된 이미지를 디코딩하여 ImageView에 설정
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        imageView.setImageBitmap(decodedByte);
+    }
+
 
 }
