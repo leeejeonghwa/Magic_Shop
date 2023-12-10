@@ -74,14 +74,6 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
             }
         });
 
-        btnEnroll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
-                startActivity(intent);
-            }
-        });
-
         btnCancellation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

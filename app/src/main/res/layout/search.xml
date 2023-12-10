@@ -5,6 +5,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="Description of your first scroll view"
+        android:scrollbars="none"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="50pt"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Magic Shop의 새로운 소식!"
+                android:textSize="20dp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="5dp"></TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/home_adv"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="118dp"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="5dp"></TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/concept_photo_ad"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="5dp"></TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/winter_coat_ad"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="5dp"></TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/magic_card_ad"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:textSize="5dp"></TextView>
+        </LinearLayout>
+
+    </ScrollView>
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="304dp"
@@ -17,150 +90,11 @@
         app:layout_constraintVertical_bias="0.002"
         app:srcCompat="@drawable/search_window" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="스커트"
-        app:layout_constraintEnd_toEndOf="@+id/btn_skirt_one_piece_id"
-        app:layout_constraintStart_toStartOf="@+id/btn_skirt_one_piece_id"
-        app:layout_constraintTop_toTopOf="@+id/btn_skirt_one_piece_id" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="가방"
-        app:layout_constraintEnd_toEndOf="@+id/btn_bag_id"
-        app:layout_constraintStart_toStartOf="@+id/btn_bag_id"
-        app:layout_constraintTop_toTopOf="@+id/btn_bag_id" />
-
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="신발"
-        app:layout_constraintEnd_toEndOf="@+id/btn_shoes_id"
-        app:layout_constraintStart_toStartOf="@+id/btn_shoes_id"
-        app:layout_constraintTop_toTopOf="@+id/btn_shoes_id" />
-
-
-    <TextView
-        android:id="@+id/cancel_text5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
-        android:text="카테고리"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btn_shoes_id"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="16dp"
-        android:text="신발"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_bag_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/btn_top_id"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="192dp"
-        android:layout_marginEnd="8dp"
-        android:text="상의"
-        app:layout_constraintEnd_toStartOf="@+id/btn_pants_id"
-        app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_pants_id"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:text="하의"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_top_id"
-        app:layout_constraintEnd_toStartOf="@+id/btn_skirt_one_piece_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/btn_outer_id"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:text="아우터"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_skirt_one_piece_id"
-        app:layout_constraintEnd_toStartOf="@+id/btn_bag_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/btn_bag_id"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:text="가방"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_outer_id"
-        app:layout_constraintEnd_toStartOf="@+id/btn_shoes_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/btn_skirt_one_piece_id"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:text="스커트"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_pants_id"
-        app:layout_constraintEnd_toStartOf="@+id/btn_outer_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="상의"
-        app:layout_constraintEnd_toEndOf="@+id/btn_top_id"
-        app:layout_constraintStart_toStartOf="@+id/btn_top_id"
-        app:layout_constraintTop_toTopOf="@+id/btn_top_id" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="하의"
-        app:layout_constraintEnd_toEndOf="@+id/btn_pants_id"
-        app:layout_constraintStart_toStartOf="@+id/btn_pants_id"
-        app:layout_constraintTop_toTopOf="@+id/btn_pants_id" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:text="아우터"
-        app:layout_constraintEnd_toEndOf="@+id/btn_outer_id"
-        app:layout_constraintStart_toStartOf="@+id/btn_outer_id"
-        app:layout_constraintTop_toBottomOf="@+id/btn_outer_id" />
 
     <EditText
         android:id="@+id/edit_query"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@android:color/transparent"
@@ -195,5 +129,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

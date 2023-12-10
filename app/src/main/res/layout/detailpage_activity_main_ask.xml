@@ -348,8 +348,6 @@
                 android:layout_height="82dp"
                 android:layout_above="@id/view8"
                 android:layout_marginBottom="-213dp"
-
-
                 android:drawableRight="@drawable/detailpage_q_icon_xml"
                 android:text="주문에 관련된 궁금한 점을 물어주세요!"
                 android:textColor="#FF000000"
