@@ -78,14 +78,15 @@
         <activity android:name=".Seller_ProductReviseRequestActivity" />
         <activity android:name=".Seller_ProductReviseRequestListActivity" />
         <activity android:name=".Seller_ProductDeleteActivity" />
-        <activity android:name=".Seller_OrderDeliveryListActivity" />
-        <activity android:name=".Seller_RefundExchangeListActivity" />
+        <activity android:name=".Seller_OrderListActivity" />
         <activity android:name=".Seller_RefundAccountManageActivity" />
         <activity android:name=".Seller_ReviewListActivity" />
         <activity android:name=".Seller_UserInfoChangeActivity" />
         <activity android:name=".Seller_InputPasswordActivity" />
         <activity android:name=".Seller_QuestionListActivity" />
         <activity android:name=".Seller_AnswerWriteActivity" />
+        <activity android:name=".Seller_ExchangeListActivity" />
+        <activity android:name=".Seller_RefundListActivity" />
         <activity android:name=".ShoppingBasketActivity"/>
         <activity android:name=".OrderFormActivity"/>
         <activity android:name=".SearchResultActivity"/>
