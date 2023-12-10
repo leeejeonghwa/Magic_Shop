@@ -1,10 +1,15 @@
 package com.example.magic_shop;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Button;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +34,14 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private Button btnBag;
     private Button btnHome;
     private Button btnSearch;
-    private TextView textsizeS; // 현재 선택된 사이즈 S
-    private TextView textsizeM; // 현재 선택된 사이즈 M
-    private TextView textsizeL; // 현재 선택된 사이즈 L
-    private TextView textColor1;
-    private TextView textColor2;
     private String productID;
     private String color;
+
+    private TextView textProductName;
+    private TextView textProductPrice;
+    private String productName;
+    private String productPrice;
+    private String image;
 
 
 
@@ -48,6 +54,8 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             this.productID = intent.getStringExtra("id");
+
+
             Log.d("option productID", productID);
 
 
@@ -66,6 +74,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnHome = findViewById(R.id.home_btn);
         btnBag = findViewById(R.id.bag_btn);
         btnSearch = findViewById(R.id.search_btn);
+        textProductName =findViewById(R.id.text_productName);
+        textProductPrice =findViewById(R.id.text_productPrice);
+
 
 
 
@@ -181,6 +192,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
                                 String sizeS = options.getString("size_s");
                                 String sizeM = options.getString("size_m");
                                 String sizeL = options.getString("size_l");
+                                productName = options.getString("product_name");
+                                productPrice = options.getString("product_price");
+                                image = options.getString("main_image");
                                 Log.d("option", color1);
 
                                 // 가져온 정보를 버튼에 설정
@@ -212,6 +226,7 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnSize_S.setText(sizeS);
         btnSize_M.setText(sizeM);
         btnSize_L.setText(sizeL);
+
     }
 
     private void moveToNextActivity(String size) {
@@ -221,7 +236,15 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         intent.putExtra("color", color);
         intent.putExtra("size", size);
         intent.putExtra("option", option);
+        intent.putExtra("product_name", productName);
+        intent.putExtra("product_price", productPrice);
+        intent.putExtra("main_image", image);
+        Log.d("price", productPrice);
+
         startActivity(intent);
     }
+
+
+
 
 }
