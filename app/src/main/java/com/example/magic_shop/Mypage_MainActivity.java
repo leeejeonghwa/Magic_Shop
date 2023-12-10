@@ -87,7 +87,7 @@ public class Mypage_MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_OrderDeliveryListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_OrderListActivity.class);
                 startActivity(intent);
             }
         });
