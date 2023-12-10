@@ -30,12 +30,18 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private Button btnSize_S;
     private Button btnSize_M;
     private Button btnSize_L;
+    private Button btnBack;
     private Button btnBag;
     private Button btnHome;
     private Button btnSearch;
     private String productID;
     private String color;
+
+    private TextView textProductName;
+    private TextView textProductPrice;
     private String productName;
+
+    private String brandName;
     private String productPrice;
     private String image, sellerId;
 
@@ -48,6 +54,8 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             this.productID = intent.getStringExtra("id");
+
+
             Log.d("option productID", productID);
 
 
@@ -62,24 +70,36 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         btnSize_S = findViewById(R.id.btn_size_S);
         btnSize_M = findViewById(R.id.btn_size_M);
         btnSize_L = findViewById(R.id.btn_size_L);
+        btnBack=findViewById(R.id.back_btn);
         btnHome = findViewById(R.id.home_btn);
         btnBag = findViewById(R.id.bag_btn);
         btnSearch = findViewById(R.id.search_btn);
+        textProductName =findViewById(R.id.text_productName);
+        textProductPrice=findViewById(R.id.text_productPrice);
 
-        btnColor1.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        btnColor2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                color = btnColor1.getText().toString();
+                color = btnColor2.getText().toString();
                 Log.d("ColorClick", "Color selected: " + color);
+
+
+
             }
         });
 
-
         btnColor1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 color = btnColor1.getText().toString();
                 Log.d("ColorClick", "Color selected: " + color);
+
+
+
             }
         });
 
@@ -88,6 +108,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 moveToNextActivity(btnSize_S.getText().toString());
+
+
+
             }
         });
 
@@ -106,6 +129,8 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 moveToNextActivity(btnSize_L.getText().toString());
 
+
+
             }
         });
 
@@ -117,10 +142,8 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
                 intent.putExtra("product_name",productName);
                 intent.putExtra("product_price",productPrice);
                 startActivity(intent);
-
             }
         });
-
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,9 +189,9 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
                                 String sizeM = options.getString("size_m");
                                 String sizeL = options.getString("size_l");
                                 productName = options.getString("product_name");
+                                brandName = options.getString("seller_id");
                                 productPrice = options.getString("product_price");
                                 image = options.getString("main_image");
-                                sellerId = options.getString("seller_id");
                                 Log.d("option", color1);
 
                                 // 가져온 정보를 버튼에 설정
@@ -206,16 +229,22 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
     private void moveToNextActivity(String size) {
         Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectCompleteActivity.class);
         String option = color + " / " + size;
-        intent.putExtra("productID", productID);
+        int productAsIntID = Integer.parseInt(productID);
+        intent.putExtra("productID",productAsIntID);
         intent.putExtra("color", color);
         intent.putExtra("size", size);
         intent.putExtra("option", option);
         intent.putExtra("product_name", productName);
+        intent.putExtra("brandName", brandName);
         intent.putExtra("product_price", productPrice);
         intent.putExtra("main_image", image);
-        intent.putExtra("seller_id",sellerId);
+
         Log.d("price", productPrice);
 
         startActivity(intent);
     }
+
+
+
+
 }
