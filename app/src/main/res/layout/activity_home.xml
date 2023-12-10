@@ -320,6 +320,7 @@
         tools:ignore="MissingConstraints" />
     <!-- Auto layout, variables, and unit scale are not yet supported -->
 
+
     <View
         android:id="@+id/bar_rectangle_id"
         android:layout_width="match_parent"
