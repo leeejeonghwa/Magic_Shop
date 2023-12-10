@@ -768,6 +768,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
         return imageToBase64;
     }
 
+
     private Bitmap decodeBase64Image(String encodedImage) {
         byte[] decodedByteArray = Base64.decode(encodedImage, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);

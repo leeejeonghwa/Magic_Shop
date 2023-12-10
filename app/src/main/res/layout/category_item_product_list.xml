@@ -11,7 +11,7 @@
         android:layout_width="205dp"
         android:layout_height="200dp"
         android:layout_margin="0dp"
-        android:background="@color/category_light_gray_color"
+        android:background="@drawable/mypage_clothes"
         android:contentDescription="My Button Description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
