@@ -1,69 +1,27 @@
 package com.example.magic_shop;
 
-import android.content.Context;
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
 
-import org.json.JSONArray;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
-public class ProductGetOptionRequest {
+public class ProductGetOptionRequest extends StringRequest {
 
-    private static final String BASE_URL_DETAILED_IMAGE = "http://210.117.175.207:8976/productOption.php";
+        private static final String URL = "http://210.117.175.207:8976/productOption.php"; // 실제 서버 URL로 변경
+        private Map<String, String> params;
 
-    private final Context context;
-
-    public ProductGetOptionRequest(Context context) {
-        this.context = context;
-    }
-
-    public void optionload(String productName, final OptionResponseListener listener) {
-        try {
-            if (productName != null) {
-                String encodedProductName = URLEncoder.encode(productName, StandardCharsets.UTF_8.toString());
-                encodedProductName = encodedProductName.replace("+", "%20");
-                String url = BASE_URL_DETAILED_IMAGE + "?product_name=" + encodedProductName;
-                Log.d("ProductDetailImageLoad", "Request URL: " + url);
-
-                RequestQueue requestQueue = Volley.newRequestQueue(context);
-                requestQueue.add(new JsonArrayRequest(
-                        Request.Method.GET,
-                        url,
-                        null,
-                        response -> {
-                            if (listener != null) {
-                                listener.onSuccess(response);
-                            }
-                        },
-                        error -> {
-                            if (listener != null) {
-                                listener.onError(error.getMessage());
-                            }
-                        }
-                ));
-            } else {
-                if (listener != null) {
-                    listener.onError("Product name is null");
-                }
-            }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            Log.e("UnsupportedEncoding", "UnsupportedEncodingException: " + e.getMessage());
-            if (listener != null) {
-                listener.onError("UnsupportedEncodingException: " + e.getMessage());
-            }
+        public ProductGetOptionRequest (String productID, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+            super(Method.GET, URL + "?id=" + productID, listener, errorListener);
+            Log.d("ProductDetailImageLoad", "Request URL: " + productID);
+            params = new HashMap<>();
         }
-    }
 
-    public interface OptionResponseListener {
-        void onSuccess(JSONArray response);
-        void onError(String errorMessage);
-    }
+        @Override
+        protected Map<String, String> getParams() {return params;}
+
+
 }
