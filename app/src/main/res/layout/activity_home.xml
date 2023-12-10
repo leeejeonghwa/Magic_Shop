@@ -38,128 +38,13 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center_horizontal">
 
-
                 <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:text="카테고리" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_gravity="start|top"
-                android:layout_marginTop="0dp"
-                android:gravity="center_horizontal">
-
-                <Button
-                    android:id="@+id/btn_top_id"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/black"></Button>
-
-                <Button
-                    android:id="@+id/btn_pants_id"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/black"></Button>
-
-                <Button
-                    android:id="@+id/btn_skirt_one_piece_id"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/black"></Button>
-
-                <Button
-                    android:id="@+id/btn_outer_id"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/black"></Button>
-
-                <Button
-                    android:id="@+id/btn_bag_id"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/black"></Button>
-
-                <Button
-                    android:id="@+id/btn_shoes_id"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/black"></Button>
+                    android:text="   상품 보기"></TextView>
 
 
-            </LinearLayout>
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_gravity="start|top"
-                android:layout_marginTop="0dp"
-                android:gravity="center_horizontal">
-
-
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="14dp"
-                    android:layout_weight="1"
-                    android:text="상의" />
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="1"
-                    android:text="하의" />
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-15dp"
-                    android:layout_weight="1"
-                    android:text="스커트/원피스" />
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-8dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_weight="1"
-                    android:text="아우터" />
-
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginEnd="15dp"
-                    android:layout_weight="1"
-                    android:text="가방" />
-
-                <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="-10dp"
-                    android:layout_weight="1"
-                    android:text="신발" />
             </LinearLayout>
 
 
@@ -434,6 +319,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
     <!-- Auto layout, variables, and unit scale are not yet supported -->
+
 
     <View
         android:id="@+id/bar_rectangle_id"
