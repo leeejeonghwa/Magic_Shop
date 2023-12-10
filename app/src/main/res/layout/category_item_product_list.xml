@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+
+    <ImageButton
+        android:id="@+id/btn_product_id1"
+        android:layout_width="205dp"
+        android:layout_height="200dp"
+        android:layout_margin="0dp"
+        android:background="@color/category_light_gray_color"
+        android:contentDescription="My Button Description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/product_brand_text_id1"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginStart="25dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        android:text="브랜드 명"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/btn_product_id1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/product_name_text_id1"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_marginStart="25dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:text="상품 이름"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/btn_product_id1"
+        app:layout_constraintTop_toBottomOf="@+id/product_brand_text_id1" />
+
+    <TextView
+        android:id="@+id/product_price_text_id1"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="80dp"
+        android:gravity="center_vertical"
+        android:text="1000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/btn_product_id1"
+        app:layout_constraintTop_toBottomOf="@+id/product_name_text_id1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:text="원"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/product_price_text_id1"
+        app:layout_constraintTop_toBottomOf="@+id/product_name_text_id1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
