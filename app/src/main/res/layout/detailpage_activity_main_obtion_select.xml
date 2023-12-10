@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
     android:orientation="vertical">
 
     <View
         android:id="@+id/view"
-        android:layout_width="411dp"
-        android:layout_height="368dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="63dp"
+        android:layout_width="412dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="68dp"
         android:background="#8E8BD8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,36 +36,48 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="0.0" />
 
     <android.widget.Button
-        android:id="@+id/btn_color"
-        android:layout_width="386dp"
+        android:id="@+id/btn_color1"
+        android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="364dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="315dp"
-        android:background="#FFFFFFFF"
-        android:gravity="center"
-        android:text="검정"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="540dp"
+        android:background="#00000000"
+        android:text="버튼버튼"
         android:textAlignment="center"
         android:textSize="19sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_color_select"
+         />
+
+    <android.widget.Button
+        android:id="@+id/btn_color2"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="416dp"
+        android:background="#00000000"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btn_color1"
+        />
 
     <android.widget.Button
         android:id="@+id/btn_size_select"
         android:layout_width="386dp"
         android:layout_height="52dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="324dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="315dp"
         android:background="#FFFFFFFF"
@@ -82,91 +94,63 @@
 
     <android.widget.Button
         android:id="@+id/btn_size_S"
-        android:layout_width="386dp"
+        android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="419dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="260dp"
-        android:background="#FFFFFFFF"
+        android:background="#00FF0000"
         android:gravity="center"
-        android:text="S"
         android:textAlignment="center"
-        android:textSize="19sp"
+        android:textSize="21sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_size_select" />
 
     <android.widget.Button
         android:id="@+id/btn_size_M"
-        android:layout_width="386dp"
+        android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="474dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="205dp"
-        android:background="#FFFFFFFF"
+        android:background="#00000000"
         android:gravity="center"
-        android:text="M"
         android:textAlignment="center"
-        android:textSize="19sp"
+        android:textSize="21sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_size_S"/>
 
     <android.widget.Button
         android:id="@+id/btn_size_L"
-        android:layout_width="386dp"
+        android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="529dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="150dp"
-        android:background="#FFFFFFFF"
+        android:background="#00000000"
         android:gravity="center"
-        android:text="L"
-        android:textSize="19sp"
+        android:textSize="21sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_size_M"/>
 
 
     <android.widget.Button
         android:id="@+id/btn_option"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#8E8BD8"
+        android:layout_width="412dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="673dp"
         android:text="옵션 선택 닫기"
-        android:textColor="#FFFFFFFF"
+        android:background="#FFFFFFFF"
+        android:textColor="@color/black"
         android:textSize="21sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_toorbar" />
-
-    <View
-        android:id="@+id/top_toorbar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="614dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/btn_option"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.widget.Button
         android:id="@+id/back_btn"
@@ -176,14 +160,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="371dp"
-        android:layout_marginBottom="13dp"
         android:background="@drawable/detailpage_back_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
-        app:layout_constraintEnd_toEndOf="@+id/top_toorbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -191,16 +170,11 @@
         android:layout_height="26dp"
         android:layout_marginStart="164dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="167dp"
-        android:layout_marginBottom="15dp"
         android:text="상품 정보"
         android:textColor="#FF000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
-        app:layout_constraintEnd_toEndOf="@+id/top_toorbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.widget.Button
         android:id="@+id/home_btn"
@@ -208,16 +182,11 @@
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="289dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="92dp"
-        android:layout_marginBottom="11dp"
         android:background="@drawable/detailpage_home_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
     <android.widget.Button
@@ -226,16 +195,11 @@
         android:layout_height="23dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="327dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="56dp"
-        android:layout_marginBottom="14dp"
         android:background="@drawable/detailpage_search_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.widget.Button
         android:id="@+id/bag_btn"
@@ -243,16 +207,16 @@
         android:layout_height="32dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="365dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="9dp"
         android:background="@drawable/detailpage_bag_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/top_toorbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/top_toorbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
