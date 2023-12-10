@@ -92,12 +92,22 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_refund_exchange_list = (Button) findViewById(R.id.btn_refund_exchange_list);
-        btn_refund_exchange_list.setOnClickListener(new View.OnClickListener() {
+        Button btn_exchange_list = (Button) findViewById(R.id.btn_exchange_list);
+        btn_exchange_list.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_RefundListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Mypage_ExchangeWaitingListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_refund_list = (Button) findViewById(R.id.btn_refund_list);
+        btn_refund_list.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mypage_RefundWaitingListActivity.class);
                 startActivity(intent);
             }
         });
