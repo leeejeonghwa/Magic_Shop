@@ -1,7 +1,5 @@
 package com.example.magic_shop;
 
-import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;

@@ -167,7 +167,6 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productColorTextView;
-            private final Button productReviseButton;
 
             private final ImageView productMainImageView;
             private final Context context;
@@ -180,7 +179,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productColorTextView = itemView.findViewById(R.id.productQuantity);
-                productReviseButton = itemView.findViewById(R.id.btn_product_revise_manager);
+                Button productReviseButton = itemView.findViewById(R.id.btn_product_revise_manager);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
                 productReviseButton.setOnClickListener(new View.OnClickListener() {

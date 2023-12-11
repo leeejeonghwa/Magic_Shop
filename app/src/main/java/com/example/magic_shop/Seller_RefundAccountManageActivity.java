@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.magic_shop.Mypage_SettingActivity;
 import com.example.magic_shop.R;
 
 public class Seller_RefundAccountManageActivity extends AppCompatActivity {

@@ -1,6 +1,5 @@
 package com.example.magic_shop;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,7 +14,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -266,7 +264,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText((String.valueOf(orderItem.productPrice)) + "원");
+                productPriceTextView.setText((orderItem.productPrice) + "원");
                 productBrandTextView.setText(orderItem.sellerID);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);

@@ -171,10 +171,10 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
         String productID;
         String productName;
         int productPrice;
-        String brandName;
+        String sellerID;
         String productImage;
 
-        public OrderItem(String exchangeStatus, String refundStatus, int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String brandName, String productImage) {
+        public OrderItem(String exchangeStatus, String refundStatus, int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String sellerID, String productImage) {
             this.exchangeStatus = exchangeStatus;
             this.refundStatus = refundStatus;
             this.orderID = orderID;
@@ -184,7 +184,7 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
             this.totalAmount = totalAmount;
             this.productName = productName;
             this.productPrice = productPrice;
-            this.brandName = brandName;
+            this.sellerID = sellerID;
         }
     }
 
@@ -285,7 +285,7 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
                 productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
-                productBrandTextView.setText(orderItem.brandName);
+                productBrandTextView.setText(orderItem.sellerID);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);

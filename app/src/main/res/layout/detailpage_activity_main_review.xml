@@ -173,7 +173,7 @@
                 android:layout_marginBottom="-36dp"
                 android:text="브랜드 이름"
                 android:textColor="#FF000000"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
             <View
                 android:id="@+id/view3"

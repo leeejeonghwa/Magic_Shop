@@ -1,7 +1,5 @@
 package com.example.magic_shop;
 
-import android.graphics.Bitmap;
-
 public class Product {
 
 

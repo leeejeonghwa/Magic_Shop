@@ -229,7 +229,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
                 exchangeTimeTextView.setText(exchangeItem.exchangeTime);
                 brandNameTextView.setText(exchangeItem.brandName);
                 productNameTextView.setText(exchangeItem.productName);
-                productPriceTextView.setText((String.valueOf(exchangeItem.productPrice))+"원");
+                productPriceTextView.setText((exchangeItem.productPrice)+"원");
                 contentTextView.setText(exchangeItem.content);
 
                 byte[] decodedString = Base64.decode(exchangeItem.productImage, Base64.DEFAULT);

@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
-import android.widget.ImageView;
 
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
@@ -84,10 +83,6 @@ public class ProductRegisterRequestManager {
 
     public void checkUserId(String userID) {
         this.userId = userID;
-    }
-
-    public boolean isManager() {
-        return isManager;
     }
 
     public void setManager(boolean manager) {

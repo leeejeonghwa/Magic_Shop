@@ -20,16 +20,6 @@ import org.json.JSONObject;
 
 public class Detailpage_MainAskActivity extends AppCompatActivity {
 
-    private Button btnBuy;
-    private Button btnReview;
-    private Button btnSize;
-    private Button btnProduct;
-    private Button btnProductAsk;
-    private Button btnOrderAsk;
-    private Button btnBack;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
     private String productName;
     private String productPrice;
     private String brandName;
@@ -66,16 +56,16 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             loadDetailedImages(this.productName);
         }
 
-        btnBuy = findViewById(R.id.btn_buy);
-        btnReview = findViewById(R.id.reviewBtn);
-        btnProduct = findViewById(R.id.productBtn);
-        btnSize = findViewById(R.id.sizeBtn);
-        btnProductAsk = findViewById(R.id.askProductBtn);
-        btnOrderAsk = findViewById(R.id.askOrdertBtn);
-        btnBack = findViewById(R.id.back_btn);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnReview = findViewById(R.id.reviewBtn);
+        Button btnProduct = findViewById(R.id.productBtn);
+        Button btnSize = findViewById(R.id.sizeBtn);
+        Button btnProductAsk = findViewById(R.id.askProductBtn);
+        Button btnOrderAsk = findViewById(R.id.askOrdertBtn);
+        Button btnBack = findViewById(R.id.back_btn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);

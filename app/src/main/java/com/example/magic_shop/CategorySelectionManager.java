@@ -10,7 +10,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -207,11 +206,6 @@ public class CategorySelectionManager {
 
     public int getSelectedDetailedCategory() {
         return selectedDetailedCategory;
-    }
-
-    private String removeBrTags(String jsonString) {
-        // Remove <br> tags from the JSON string
-        return jsonString.replaceAll("<br>", "");
     }
 
 }
