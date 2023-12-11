@@ -23,12 +23,12 @@ import org.json.JSONObject;
 
 public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
 
-    private EditText editTextSubject, editTextContent;
+    private EditText subjectEditText, contentEditText;
     private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
     private String productName;
     private String productPrice;
-    private String sellerId;
+    private String brandName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         btnHome.setVisibility(View.VISIBLE);
         btnSearch.setVisibility(View.VISIBLE);
 
-        editTextSubject = findViewById(R.id.editTextSubject);
-        editTextContent = findViewById(R.id.editTextContent);
+        subjectEditText = findViewById(R.id.editTextSubject);
+        contentEditText = findViewById(R.id.editTextContent);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
@@ -64,7 +64,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("product_name", productName);
-                resultIntent.putExtra("seller_id", sellerId);
+                resultIntent.putExtra("seller_id", brandName);
                 resultIntent.putExtra("product_price", productPrice);
 
                 // 결과를 설정하고 현재 활동을 종료합니다.
@@ -132,11 +132,11 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO sellerID, productID intent로 가져온 걸 참조해야 함
-                String sellerID = "dlwjdghk";
+                String brandName = "dlwjdghk";
                 String productID = "1";
 
-                String content = editTextContent.getText().toString();
-                String subject = editTextSubject.getText().toString();
+                String content = contentEditText.getText().toString();
+                String subject = subjectEditText.getText().toString();
 
                 int checkedId = radioGroup.getCheckedRadioButtonId();
                 RadioButton checkedRadioButton = findViewById(checkedId);
@@ -145,7 +145,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
                     String type = checkedRadioButton.getText().toString();
 
                     if (!type.isEmpty() && !subject.isEmpty() && !content.isEmpty()) {
-                        plusQuestion(sellerID, productID, userID, type, subject, content);
+                        plusQuestion(brandName, productID, userID, type, subject, content);
 
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
@@ -162,7 +162,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     private void handleNonJsonResponse(String response) {
         try {
             JSONObject jsonResponse = new JSONObject(response);
-            String sellerID = jsonResponse.getString("sellerID");
+            String brandName = jsonResponse.getString("sellerID");
             String productID = jsonResponse.getString("productID");
             String userID = jsonResponse.getString("userID");
             String type = jsonResponse.getString("type");

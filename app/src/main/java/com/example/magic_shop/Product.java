@@ -8,7 +8,7 @@ public class Product {
     //1. top, 2. outer, 3. pants, 4. skirt_one_piece, 5. shoes, 6. bag
     private int categoryId;
     private int detailedCategoryId;
-    private String sellerId;
+    private String brandName;
     private int productPrice;
 
     private String allowance;
@@ -59,12 +59,12 @@ public class Product {
     public void setDetailedCategoryId(int detailedCategoryId) {
         this.detailedCategoryId = detailedCategoryId;
     }
-    public String getSellerId() {
-        return sellerId;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
     public int getProductPrice() {

@@ -63,18 +63,18 @@ public class Seller_ReviewListActivity extends AppCompatActivity {
         recyclerView.setAdapter(reviewedAdapter);
 
         // 사용자 아이디 (실제 사용자 아이디로 변경)
-        String sellerID = sessionManager.getUserId();
+        String brandName = sessionManager.getUserId();
 
         // 리뷰 데이터 가져오기
-        getReviewedData(sellerID, this);
+        getReviewedData(brandName, this);
     }
 
-    public void getReviewedData(String sellerID, Context context) {
+    public void getReviewedData(String brandName, Context context) {
         // Volley 요청 큐 생성
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // 주문 데이터 요청
-        GetSellerAllReviewRequest request = new GetSellerAllReviewRequest(sellerID,
+        GetSellerAllReviewRequest request = new GetSellerAllReviewRequest(brandName,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -53,12 +53,12 @@ public class SearchResultActivity extends AppCompatActivity {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-            String product_name = jsonObject.getString(("product_name"));
-            String product_price = jsonObject.getString(("product_price"));
-            String seller_id = jsonObject.getString("seller_id");
+            String productName = jsonObject.getString(("product_name"));
+            String productPrice = jsonObject.getString(("product_price"));
+            String brandName = jsonObject.getString("seller_id");
             String base64MainImage = jsonObject.getString("main_image");
 
-            SearchItem searchItem = new SearchItem(product_name, product_price, seller_id, base64MainImage);
+            SearchItem searchItem = new SearchItem(productName, productPrice, brandName, base64MainImage);
 
             searchList.add(searchItem);
         }

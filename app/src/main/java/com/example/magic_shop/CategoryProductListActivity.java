@@ -199,7 +199,7 @@ public class CategoryProductListActivity extends AppCompatActivity {
             void bind(ProductItem productItem) {
                 productNameTextView.setText(productItem.productName);
                 productPriceView.setText(productItem.productPrice);
-                sellerIdView.setText(productItem.sellerId);
+                sellerIdView.setText(productItem.brandName);
                 if (productItem.mainImage == null) {
                     Log.d("이미지", "null");
                 }

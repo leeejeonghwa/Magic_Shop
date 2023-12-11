@@ -18,7 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
-    private EditText et_name, et_accountnumber, et_bank;
+    private EditText nameEditText, accountnumberEditText, bankEditText;
     private SessionManager sessionManager;
 
     @Override
@@ -27,27 +27,27 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_refund_account_manage);
         getWindow().setWindowAnimations(0);
 
-        et_name = findViewById(R.id.editTextName);
-        et_accountnumber = findViewById(R.id.editTextAccountNumber);
-        et_bank = findViewById(R.id.editTextBank);
+        nameEditText = findViewById(R.id.editTextName);
+        accountnumberEditText = findViewById(R.id.editTextAccountNumber);
+        bankEditText = findViewById(R.id.editTextBank);
 
         sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
 
-        Button btn_refund_account_change = findViewById(R.id.btn_refund_account_change_confirm);
-        btn_refund_account_change.setOnClickListener(new View.OnClickListener() {
+        Button btnRefundAccountChange = findViewById(R.id.btn_refund_account_change_confirm);
+        btnRefundAccountChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = et_name.getText().toString();
-                String accountNumber = et_accountnumber.getText().toString();
-                String bankName = et_bank.getText().toString();
+                String name = nameEditText.getText().toString();
+                String accountNumber = accountnumberEditText.getText().toString();
+                String bankName = bankEditText.getText().toString();
                 String userID = sessionManager.getUserId();
 
                 if (name.isEmpty() || accountNumber.isEmpty() || bankName.isEmpty()) {

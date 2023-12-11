@@ -139,14 +139,14 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
 
                 String exchangeID = exchangeObject.getString("exchangeID");
                 String orderID = exchangeObject.getString("orderID");
-                String sellerID = exchangeObject.getString("seller_id");
+                String brandName = exchangeObject.getString("seller_id");
                 String productID = exchangeObject.getString("productID");
                 String userID = exchangeObject.getString("userID");
                 String productName = exchangeObject.getString("product_name");
                 String productImage = exchangeObject.getString("main_image");
                 String content = exchangeObject.getString("content");
 
-                ExchangeItem exchangeItem = new ExchangeItem(exchangeID, orderID, sellerID, productID, userID, productName, productImage, content);
+                ExchangeItem exchangeItem = new ExchangeItem(exchangeID, orderID, brandName, productID, userID, productName, productImage, content);
                 exchangeList.add(exchangeItem);
             }
         } catch (JSONException e) {
@@ -160,17 +160,17 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
     public class ExchangeItem {
         String exchangeID;
         String orderID;
-        String sellerID;
+        String brandName;
         String productID;
         String userID;
         String productName;
         String productImage;
         String content;
 
-        public ExchangeItem(String exchangeID, String orderID, String sellerID, String productID, String userID, String productName, String productImage, String content) {
+        public ExchangeItem(String exchangeID, String orderID, String brandName, String productID, String userID, String productName, String productImage, String content) {
             this.exchangeID = exchangeID;
             this.orderID = orderID;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productID = productID;
             this.userID = userID;
             this.productName = productName;
@@ -243,7 +243,7 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
                 String exchangeID = exchangeItem.exchangeID;
                 String orderID = exchangeItem.orderID;
                 String productID = exchangeItem.productID;
-                String sellerID = exchangeItem.sellerID;
+                String brandName = exchangeItem.brandName;
                 String userID = exchangeItem.userID;
 
                 exchangeButton.setOnClickListener(new View.OnClickListener() {
@@ -252,7 +252,7 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
                         approveExchange(
                                 exchangeID,
                                 orderID,
-                                sellerID,
+                                brandName,
                                 productID,
                                 userID
                         );
@@ -283,7 +283,7 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void approveExchange(String exchangeID, String orderID, String sellerID, String productID, String userID) {
+    private void approveExchange(String exchangeID, String orderID, String brandName, String productID, String userID) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -321,7 +321,7 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
         };
 
         try {
-            ApproveExchangeRequest approveExchangeRequest = new ApproveExchangeRequest(exchangeID, orderID, sellerID, productID, userID
+            ApproveExchangeRequest approveExchangeRequest = new ApproveExchangeRequest(exchangeID, orderID, brandName, productID, userID
                     , responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Seller_ExchangeListActivity.this);
             queue.add(approveExchangeRequest);

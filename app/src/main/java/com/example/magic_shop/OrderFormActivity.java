@@ -35,14 +35,14 @@
 
     public class OrderFormActivity extends AppCompatActivity {
 
-        private TextView TextViewAddressName, TextViewRecipient, TextViewCallNumber, TextViewAddress,
-                TextViewAddressDetail, TextViewDeliveryRequest;
+        private TextView addressNameTextView, recipientTextView, callNumberTextView, addressTextView,
+                addressDetailTextView, deliveryRequestTextView;
 
-        private CheckBox checkBoxAccount;
-        private CheckBox checkBoxBankDeposit;
+        private CheckBox accountCheckBox;
+        private CheckBox bankDepositCheckBox;
         private String selectedPaymentMethod; // 사용자가 선택한 결제 수단을 저장하는 변수
         private Response.ErrorListener errorListener;
-        private int totalAmount; // totalAmount 변수를 선언
+        //private int totalAmount; // totalAmount 변수를 선언
 
         private PurchaseAdapter adapter; // 어댑터 변수를 여기에 선언
 
@@ -64,20 +64,20 @@
 
             // 2. 체크박스 초기화
             CheckBox checkBoxCreditCard = findViewById(R.id.check_card);
-            checkBoxAccount = findViewById(R.id.check_account);
-            checkBoxBankDeposit = findViewById(R.id.check_deposit);
+            accountCheckBox = findViewById(R.id.check_account);
+            bankDepositCheckBox = findViewById(R.id.check_deposit);
 
             // 3. 체크박스 상태 변경 시 이벤트 처리
             checkBoxCreditCard.setOnCheckedChangeListener((buttonView, isChecked) -> handleCheckboxChecked(isChecked, "C"));
-            checkBoxAccount.setOnCheckedChangeListener((buttonView, isChecked) -> handleCheckboxChecked(isChecked, "A"));
-            checkBoxBankDeposit.setOnCheckedChangeListener((buttonView, isChecked) -> handleCheckboxChecked(isChecked, "B"));
+            accountCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> handleCheckboxChecked(isChecked, "A"));
+            bankDepositCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> handleCheckboxChecked(isChecked, "B"));
 
-            TextViewAddressName = findViewById(R.id.shipping_address_name);
-            TextViewRecipient = findViewById(R.id.shipping_recipient);
-            TextViewCallNumber = findViewById(R.id.call_number);
-            TextViewAddress = findViewById(R.id.shipping_address);
-            TextViewAddressDetail = findViewById(R.id.shipping_address_detail);
-            TextViewDeliveryRequest = findViewById(R.id.delivery_request);
+            addressNameTextView = findViewById(R.id.shipping_address_name);
+            recipientTextView = findViewById(R.id.shipping_recipient);
+            callNumberTextView = findViewById(R.id.call_number);
+            addressTextView = findViewById(R.id.shipping_address);
+            addressDetailTextView = findViewById(R.id.shipping_address_detail);
+            deliveryRequestTextView = findViewById(R.id.delivery_request);
 
             getDefaultDeliveryAddress(userID);
 
@@ -179,8 +179,8 @@
             if (isChecked) {
                 selectedPaymentMethod = paymentMethod;
                 // 다른 체크박스 상태 초기화
-                checkBoxAccount.setChecked(false);
-                checkBoxBankDeposit.setChecked(false);
+                accountCheckBox.setChecked(false);
+                bankDepositCheckBox.setChecked(false);
             }
         }
 
@@ -223,12 +223,12 @@
                                             String deliveryRequest = defaultDeliveryAddress.getString("deliveryRequest");
 
                                             // 각 TextView에 값 설정
-                                            TextViewAddressName.setText(deliveryAddressName);
-                                            TextViewRecipient.setText(recipient);
-                                            TextViewCallNumber.setText(phoneNumber);
-                                            TextViewAddress.setText(address);
-                                            TextViewAddressDetail.setText(addressDetail);
-                                            TextViewDeliveryRequest.setText(deliveryRequest);
+                                            addressNameTextView.setText(deliveryAddressName);
+                                            recipientTextView.setText(recipient);
+                                            callNumberTextView.setText(phoneNumber);
+                                            addressTextView.setText(address);
+                                            addressDetailTextView.setText(addressDetail);
+                                            deliveryRequestTextView.setText(deliveryRequest);
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }

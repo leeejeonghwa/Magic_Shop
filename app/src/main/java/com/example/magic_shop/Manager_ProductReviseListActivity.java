@@ -38,7 +38,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
 
     public Context context;
 
-    private String id;
+    private String productID;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +46,8 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
         getWindow().setWindowAnimations(0);
 
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -163,7 +163,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
 
         public class ProductReviseViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
-            private final TextView sellerNameTextView;
+            private final TextView brandNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productColorTextView;
@@ -175,7 +175,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 dateTextView = itemView.findViewById(R.id.date);
-                sellerNameTextView = itemView.findViewById(R.id.sellerName);
+                brandNameTextView = itemView.findViewById(R.id.sellerName);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productColorTextView = itemView.findViewById(R.id.productQuantity);
@@ -191,12 +191,12 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
                             // 다음 화면으로 이동하는 코드
                             ProductItem productItem = productReviseList.get(position);
 
-                            id = productItem.id;
-                            Log.d("클릭된 상품id", id);
+                            productID = productItem.id;
+                            Log.d("클릭된 상품id", productID);
 
                         }
 
-                        registerProduct(id);
+                        registerProduct(productID);
 
                     }
                 });
@@ -206,7 +206,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
 
             void bind(ProductItem productUnregisteredItem) {
                 dateTextView.setText(productUnregisteredItem.date);
-                sellerNameTextView.setText(productUnregisteredItem.sellerId);
+                brandNameTextView.setText(productUnregisteredItem.brandName);
                 productNameTextView.setText(productUnregisteredItem.productName);
                 productSizeTextView.setText(productUnregisteredItem.productSize);
                 productColorTextView.setText(productUnregisteredItem.productColor);

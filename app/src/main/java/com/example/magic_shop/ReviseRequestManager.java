@@ -101,11 +101,11 @@ public class ReviseRequestManager {
             try {
                 JSONObject productObject = jsonArray.getJSONObject(i);
 
-                String id = productObject.getString("seller_id");
+                String brandName = productObject.getString("seller_id");
                 String productId = productObject.getString("id");
 
-                if (!isManager && id.equals(userId) ) {
-                    Log.d("수정_로그인한 유저의 상품", id);
+                if (!isManager && brandName.equals(userId) ) {
+                    Log.d("수정_로그인한 유저의 상품", brandName);
 
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
@@ -159,9 +159,9 @@ public class ReviseRequestManager {
 
                     // 여기서 mainImageBytes를 사용하여 이미지 처리를 수행할 수 있음
 
-                    Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
+                    Log.d("로그인한 유저의 상품", "id: " + brandName + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(productId, date, productName, productSize, productColor, mainImage, id);
+                    ProductItem item = new ProductItem(productId, date, productName, productSize, productColor, mainImage, brandName);
                     reviseProductRequestList.add(item);
                     String numStr = Integer.toString(reviseProductRequestList.size());
                     Log.d("삽입된 수정요청상품 수", numStr);
@@ -223,9 +223,9 @@ public class ReviseRequestManager {
 
                     // 여기서 mainImageBytes를 사용하여 이미지 처리를 수행할 수 있음
 
-                    Log.d("관리자 수정요청받은상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
+                    Log.d("관리자 수정요청받은상품", "id: " + brandName + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(productId, date, productName, productSize, productColor, mainImage, id);
+                    ProductItem item = new ProductItem(productId, date, productName, productSize, productColor, mainImage, brandName);
                     reviseProductRequestList.add(item);
                     String numStr = Integer.toString(reviseProductRequestList.size());
                     Log.d("관리자 수정요청상품 수", numStr);

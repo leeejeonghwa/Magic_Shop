@@ -22,9 +22,9 @@ import org.json.JSONObject;
 
 public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
 
-    private EditText editTextAddressName, editTextRecipient, editTextPhoneNumber, editTextAddress,
-            editTextAddressDetail, editTextDeliveryAddressRequest;
-    private CheckBox delivery_address_default_check;
+    private EditText addressNameEditText, recipientEditText, phoneNumberEditText, addressEditText,
+            addressDetailEditText, deliveryAddressRequestDetailText;
+    private CheckBox deliveryAddressDefaultCheckBox;
     private Response.ErrorListener errorListener;
 
     @SuppressLint("CutPasteId")
@@ -36,16 +36,16 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
 
-        editTextAddressName = findViewById(R.id.editTextAddressName);
-        editTextRecipient = findViewById(R.id.editTextRecipient);
-        editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
-        editTextAddress = findViewById(R.id.editTextAddress);
-        editTextAddressDetail = findViewById(R.id.editTextAddressDetail);
-        editTextDeliveryAddressRequest = findViewById(R.id.editTextDeliveryAddressRequest);
-        delivery_address_default_check = findViewById(R.id.delivery_address_default_check);
+        addressNameEditText = findViewById(R.id.editTextAddressName);
+        recipientEditText = findViewById(R.id.editTextRecipient);
+        phoneNumberEditText = findViewById(R.id.editTextPhoneNumber);
+        addressEditText = findViewById(R.id.editTextAddress);
+        addressDetailEditText = findViewById(R.id.editTextAddressDetail);
+        deliveryAddressRequestDetailText = findViewById(R.id.editTextDeliveryAddressRequest);
+        deliveryAddressDefaultCheckBox = findViewById(R.id.delivery_address_default_check);
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -53,8 +53,8 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -63,17 +63,17 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_delivery_address_plus_check = (Button) findViewById(R.id.btn_delivery_address_plus_check);
-        btn_delivery_address_plus_check.setOnClickListener(new View.OnClickListener() {
+        Button btnDeliveryAddressPlusCheck = (Button) findViewById(R.id.btn_delivery_address_plus_check);
+        btnDeliveryAddressPlusCheck.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String deliveryAddressName = editTextAddressName.getText().toString();
-                String recipient = editTextRecipient.getText().toString();
-                String phoneNumber = editTextPhoneNumber.getText().toString();
-                String address = editTextAddress.getText().toString();
-                String addressDetail = editTextAddressDetail.getText().toString();
-                String deliveryAddressRequest = editTextDeliveryAddressRequest.getText().toString();
+                String deliveryAddressName = addressNameEditText.getText().toString();
+                String recipient = recipientEditText.getText().toString();
+                String phoneNumber = phoneNumberEditText.getText().toString();
+                String address = addressEditText.getText().toString();
+                String addressDetail = addressDetailEditText.getText().toString();
+                String deliveryAddressRequest = deliveryAddressRequestDetailText.getText().toString();
 
                 if (!deliveryAddressName.isEmpty() &&
                         !recipient.isEmpty() &&
@@ -82,7 +82,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                         !addressDetail.isEmpty() &&
                         !deliveryAddressRequest.isEmpty()) {
 
-                    boolean isDefaultDeliveryAddress = delivery_address_default_check.isChecked();
+                    boolean isDefaultDeliveryAddress = deliveryAddressDefaultCheckBox.isChecked();
                     String defaultDeliveryAddress = isDefaultDeliveryAddress ? "1" : "0";
 
                     boolean isDefault = defaultDeliveryAddress.equals("1");
@@ -136,11 +136,11 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
             String defaultDeliveryAddress = jsonResponse.getString("defaultDeliveryAddress");
 
             // 텍스트 뷰에 값을 설정합니다.
-            editTextAddressName.setText(deliveryAddressName);
-            editTextRecipient.setText(recipient);
-            editTextPhoneNumber.setText(phoneNumber);
-            editTextAddress.setText(address);
-            editTextDeliveryAddressRequest.setText(deliveryRequest);
+            addressNameEditText.setText(deliveryAddressName);
+            recipientEditText.setText(recipient);
+            phoneNumberEditText.setText(phoneNumber);
+            addressEditText.setText(address);
+            deliveryAddressRequestDetailText.setText(deliveryRequest);
 
         } catch (JSONException e) {
             e.printStackTrace();

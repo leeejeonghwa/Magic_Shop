@@ -23,7 +23,7 @@ public class Mypage_MainActivity extends AppCompatActivity {
         setContentView(R.layout.mypage_activity_main);
         getWindow().setWindowAnimations(0);
 
-        Button btn_logout = (Button) findViewById(R.id.btn_logout);
+        Button btnLogout = (Button) findViewById(R.id.btn_logout);
 
         // SessionManager를 통해 로그인 상태 확인
         SessionManager sessionManager = new SessionManager(getApplicationContext());
@@ -43,10 +43,10 @@ public class Mypage_MainActivity extends AppCompatActivity {
                 return;
             }
 
-            btn_logout.setVisibility(View.VISIBLE);
+            btnLogout.setVisibility(View.VISIBLE);
 
             // 로그아웃 버튼 클릭 시 로그아웃 수행
-            btn_logout.setOnClickListener(new View.OnClickListener() {
+            btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // 로그아웃 처리
@@ -62,8 +62,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        Button btn_shopping_basket = (Button) findViewById(R.id.btn_shopping_basket);
-        btn_shopping_basket.setOnClickListener(new View.OnClickListener() {
+        Button btnShoppingBasket = (Button) findViewById(R.id.btn_shopping_basket);
+        btnShoppingBasket.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -72,8 +72,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_setting = (Button) findViewById(R.id.btn_setting);
-        btn_setting.setOnClickListener(new View.OnClickListener() {
+        Button btnSetting = (Button) findViewById(R.id.btn_setting);
+        btnSetting.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -82,8 +82,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_order_delivery_list = (Button) findViewById(R.id.btn_order_delivery_list);
-        btn_order_delivery_list.setOnClickListener(new View.OnClickListener() {
+        Button btnOrderDeliveryList = (Button) findViewById(R.id.btn_order_delivery_list);
+        btnOrderDeliveryList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -92,8 +92,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_exchange_list = (Button) findViewById(R.id.btn_exchange_list);
-        btn_exchange_list.setOnClickListener(new View.OnClickListener() {
+        Button btnExchangeList = (Button) findViewById(R.id.btn_exchange_list);
+        btnExchangeList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -102,8 +102,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_refund_list = (Button) findViewById(R.id.btn_refund_list);
-        btn_refund_list.setOnClickListener(new View.OnClickListener() {
+        Button btnRefundList = (Button) findViewById(R.id.btn_refund_list);
+        btnRefundList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -112,8 +112,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_review_write = (Button) findViewById(R.id.btn_review_write);
-        btn_review_write.setOnClickListener(new View.OnClickListener() {
+        Button btnReviewWrite = (Button) findViewById(R.id.btn_review_write);
+        btnReviewWrite.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -122,8 +122,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button category_search_id = (Button) findViewById(R.id.category_search_id);
-        category_search_id.setOnClickListener(new View.OnClickListener() {
+        Button categorySearchID = (Button) findViewById(R.id.category_search_id);
+        categorySearchID.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -132,8 +132,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button go_home_id = (Button) findViewById(R.id.go_home_id);
-        go_home_id.setOnClickListener(new View.OnClickListener() {
+        Button btnGoHomeID = (Button) findViewById(R.id.go_home_id);
+        btnGoHomeID.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -142,8 +142,8 @@ public class Mypage_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_qna = (Button) findViewById(R.id.btn_qna);
-        btn_qna.setOnClickListener(new View.OnClickListener() {
+        Button btnQnA = (Button) findViewById(R.id.btn_qna);
+        btnQnA.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

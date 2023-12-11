@@ -44,8 +44,8 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -54,8 +54,8 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_exchange_waiting_list = (Button) findViewById(R.id.btn_exchange_waiting_list);
-        btn_exchange_waiting_list.setOnClickListener(new View.OnClickListener() {
+        Button btnExchangeWaitingList = (Button) findViewById(R.id.btn_exchange_waiting_list);
+        btnExchangeWaitingList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -136,13 +136,13 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
                 JSONObject exchangeObject = jsonArray.getJSONObject(i);
 
                 String exchangeTime = exchangeObject.getString("createdTime");
-                String sellerID = exchangeObject.getString("sellerID");
+                String brandName = exchangeObject.getString("sellerID");
                 String productName = exchangeObject.getString("product_name");
                 String productPrice = exchangeObject.getString("product_price");
                 String productImage = exchangeObject.getString("main_image");
                 String content = exchangeObject.getString("content");
 
-                ExchangeItem exchangeItem = new ExchangeItem(exchangeTime, sellerID, productName, productPrice, productImage, content);
+                ExchangeItem exchangeItem = new ExchangeItem(exchangeTime, brandName, productName, productPrice, productImage, content);
                 exchangeList.add(exchangeItem);
             }
         } catch (JSONException e) {
@@ -155,15 +155,15 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
     public class ExchangeItem {
         String exchangeTime;
-        String sellerID;
+        String brandName;
         String productName;
         String productPrice;
         String productImage;
         String content;
 
-        public ExchangeItem(String exchangeTime, String sellerID, String productName, String productPrice, String productImage, String content) {
+        public ExchangeItem(String exchangeTime, String brandName, String productName, String productPrice, String productImage, String content) {
             this.exchangeTime = exchangeTime;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productName = productName;
             this.productPrice = productPrice;
             this.productImage = productImage;
@@ -206,7 +206,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
         public class ExchangeViewHolder extends RecyclerView.ViewHolder {
             private final TextView exchangeTimeTextView;
-            private final TextView sellerIDTextView;
+            private final TextView brandNameTextView;
             private final TextView productNameTextView;
             private final TextView productPriceTextView;
             private final ImageView productImageView;
@@ -217,7 +217,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 exchangeTimeTextView = itemView.findViewById(R.id.exchangeTime);
-                sellerIDTextView = itemView.findViewById(R.id.sellerID);
+                brandNameTextView = itemView.findViewById(R.id.sellerID);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productPriceTextView = itemView.findViewById(R.id.productPrice);
                 productImageView = itemView.findViewById(R.id.productImage);
@@ -227,7 +227,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
             void bind(ExchangeItem exchangeItem) {
                 exchangeTimeTextView.setText(exchangeItem.exchangeTime);
-                sellerIDTextView.setText(exchangeItem.sellerID);
+                brandNameTextView.setText(exchangeItem.brandName);
                 productNameTextView.setText(exchangeItem.productName);
                 productPriceTextView.setText((exchangeItem.productPrice)+"원");
                 contentTextView.setText(exchangeItem.content);

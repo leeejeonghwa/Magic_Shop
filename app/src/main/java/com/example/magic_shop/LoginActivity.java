@@ -16,7 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText et_id, et_pass;
+    private EditText userIDEditText, passEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.loginpage);
         getWindow().setWindowAnimations(0);
 
-        et_id = findViewById(R.id.et_id);
-        et_pass = findViewById(R.id.et_pass);
-        Button btn_login = findViewById(R.id.btn_login);
-        Button btn_register = findViewById(R.id.btn_register);
-        Button btn_back = findViewById(R.id.btn_back);
-        Button btn_manage = findViewById(R.id.manage_btn);
+        userIDEditText = findViewById(R.id.et_id);
+        passEditText = findViewById(R.id.et_pass);
+        Button btnLogin = findViewById(R.id.btn_login);
+        Button btnRegister = findViewById(R.id.btn_register);
+        Button btnBack = findViewById(R.id.btn_back);
+        Button btnManage = findViewById(R.id.manage_btn);
 
-        btn_manage.setOnClickListener(new View.OnClickListener() {
+        btnManage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // 회원가입 버튼을 클릭 시 수행
-        btn_register.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
@@ -59,13 +59,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
-                String userID = et_id.getText().toString();
+                String userID = userIDEditText.getText().toString();
                 System.out.println(userID);
-                String userPassword = et_pass.getText().toString();
+                String userPassword = passEditText.getText().toString();
                 System.out.println(userPassword);
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {

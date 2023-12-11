@@ -31,8 +31,8 @@ public class Manager_SellerListActivity extends AppCompatActivity {
         setContentView(R.layout.manager_activity_seller_list);
         getWindow().setWindowAnimations(0);
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -111,7 +111,7 @@ public class Manager_SellerListActivity extends AppCompatActivity {
             }
 
             void bind(User user) {
-                dateTextView.setText("seller");
+                dateTextView.setText("<brand>");
                 sellerNameTextView.setText(user.getUserID());
             }
         }
