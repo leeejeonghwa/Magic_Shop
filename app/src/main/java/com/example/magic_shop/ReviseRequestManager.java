@@ -114,23 +114,41 @@ public class ReviseRequestManager {
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
-                    String productSizeM = productObject.getString("size_m");
-                    String productSizeL = productObject.getString("size_l");
-                    // 문자열이 "N"이 아니면 "/"를 추가하도록 조건문 사용
-                    String productSize = (!productSizeS.equals("N") ? productSizeS + " / " : "")
-                            + (!productSizeM.equals("N") ? productSizeM + " / " : "")
-                            + (!productSizeL.equals("N") ? productSizeL : "");
+                    if (productSizeS.equals("Y")) {
+                        productSizeS = "S";
+                    }
+                    else {
+                        productSizeS = "";
 
-                    String productColor1= productObject.getString("color_id1");
+                    }
+
+                    String productSizeM = productObject.getString("size_m");
+                    if (productSizeM.equals("Y")) {
+                        productSizeM = "M";
+                    }
+                    else {
+                        productSizeM = "";
+
+                    }
+                    String productSizeL = productObject.getString("size_l");
+                    if (productSizeL.equals("Y")) {
+                        productSizeL = "L";
+                    }
+                    else {
+                        productSizeL = "";
+
+                    }
+                    // 문자열이 "N"이 아니면 "/"를 추가하도록 조건문 사용
+                    String productSize = productSizeS + " " + productSizeM + " " + productSizeL;
+                    String productColor1 = productObject.getString("color_id1");
                     String productColor2 = productObject.getString("color_id2");
 
                     String productColor;
 
                     if (productColor2.equals("N")) {
                         productColor = productColor1;
-                    }
-                    else {
-                        productColor = productColor1 + " / " + productColor2;
+                    } else {
+                        productColor = productColor1 + " " + productColor2;
                     }
 
                     // main_image를 base64로 인코딩한 값
@@ -160,23 +178,41 @@ public class ReviseRequestManager {
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
-                    String productSizeM = productObject.getString("size_m");
-                    String productSizeL = productObject.getString("size_l");
-                    // 문자열이 "N"이 아니면 "/"를 추가하도록 조건문 사용
-                    String productSize = (!productSizeS.equals("N") ? productSizeS + " / " : "")
-                            + (!productSizeM.equals("N") ? productSizeM + " / " : "")
-                            + (!productSizeL.equals("N") ? productSizeL : "");
+                    if (productSizeS.equals("Y")) {
+                        productSizeS = "S";
+                    }
+                    else {
+                        productSizeS = "";
 
-                    String productColor1= productObject.getString("color_id1");
+                    }
+
+                    String productSizeM = productObject.getString("size_m");
+                    if (productSizeM.equals("Y")) {
+                        productSizeM = "M";
+                    }
+                    else {
+                        productSizeM = "";
+
+                    }
+                    String productSizeL = productObject.getString("size_l");
+                    if (productSizeL.equals("Y")) {
+                        productSizeL = "L";
+                    }
+                    else {
+                        productSizeL = "";
+
+                    }
+                    // 문자열이 "N"이 아니면 "/"를 추가하도록 조건문 사용
+                    String productSize = productSizeS + " " + productSizeM + " " + productSizeL;
+                    String productColor1 = productObject.getString("color_id1");
                     String productColor2 = productObject.getString("color_id2");
 
                     String productColor;
 
                     if (productColor2.equals("N")) {
                         productColor = productColor1;
-                    }
-                    else {
-                        productColor = productColor1 + " / " + productColor2;
+                    } else {
+                        productColor = productColor1 + " " + productColor2;
                     }
 
                     // main_image를 base64로 인코딩한 값
