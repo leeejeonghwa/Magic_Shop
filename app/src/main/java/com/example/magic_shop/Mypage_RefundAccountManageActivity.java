@@ -60,7 +60,7 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
         });
     }
 
-    private void performBankAccountRegistration(String userID, String username, String bankName, String accountNumber) {
+    private void performBankAccountRegistration(String userID, String userName, String bankName, String accountNumber) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -76,10 +76,10 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
 
                     if (accountExists) {
                         // 이미 등록된 계좌가 있으면 업데이트 수행
-                        updateBankAccount(userID, username, bankName, accountNumber);
+                        updateBankAccount(userID, userName, bankName, accountNumber);
                     } else {
                         // 등록된 계좌가 없으면 새로 등록
-                        registerBankAccount(userID, username, bankName, accountNumber);
+                        registerBankAccount(userID, userName, bankName, accountNumber);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -94,7 +94,7 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
         queue.add(checkAccountRequest);
     }
 
-    private void registerBankAccount(String userID, String username, String bankName, String accountNumber) {
+    private void registerBankAccount(String userID, String userName, String bankName, String accountNumber) {
         // 등록 요청 처리
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -132,12 +132,12 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
         };
 
         // BankAccountRegisterRequest 클래스를 이용해 서버 요청 처리
-        RefundAccountRegistrationRequest refundAccountRegistrationRequest = new RefundAccountRegistrationRequest(userID, username, bankName, accountNumber, responseListener, null, getApplicationContext());
+        RefundAccountRegistrationRequest refundAccountRegistrationRequest = new RefundAccountRegistrationRequest(userID, userName, bankName, accountNumber, responseListener, null, getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(Mypage_RefundAccountManageActivity.this);
         queue.add(refundAccountRegistrationRequest);
     }
 
-    private void updateBankAccount(String userID, String username, String bankName, String accountNumber) {
+    private void updateBankAccount(String userID, String userName, String bankName, String accountNumber) {
         // 업데이트 요청 처리
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -171,7 +171,7 @@ public class Mypage_RefundAccountManageActivity extends AppCompatActivity {
         };
 
         // UpdateAccountRequest 클래스를 이용해 서버 요청 처리
-        UpdateAccountRequest updateAccountRequest = new UpdateAccountRequest(userID, username, bankName, accountNumber, responseListener, null, getApplicationContext());
+        UpdateAccountRequest updateAccountRequest = new UpdateAccountRequest(userID, userName, bankName, accountNumber, responseListener, null, getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(Mypage_RefundAccountManageActivity.this);
         queue.add(updateAccountRequest);
     }

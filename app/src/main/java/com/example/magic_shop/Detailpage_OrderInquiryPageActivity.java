@@ -11,7 +11,7 @@ public class Detailpage_OrderInquiryPageActivity extends AppCompatActivity {
 
     private String productName;
     private String productPrice;
-    private String sellerId;
+    private String brandName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class Detailpage_OrderInquiryPageActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("product_name", productName);
-                resultIntent.putExtra("seller_id", sellerId);
+                resultIntent.putExtra("seller_id", brandName);
                 resultIntent.putExtra("product_price", productPrice);
 
                 // 결과를 설정하고 현재 활동을 종료합니다.

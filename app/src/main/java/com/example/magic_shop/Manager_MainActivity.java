@@ -13,8 +13,8 @@ public class Manager_MainActivity extends AppCompatActivity {
         setContentView(R.layout.manager_activity_main);
         getWindow().setWindowAnimations(0);
 
-        Button btnSellerList = (Button) findViewById(R.id.btn_seller_list);
-        btnSellerList.setOnClickListener(new View.OnClickListener() {
+        Button btnBrandName = (Button) findViewById(R.id.btn_seller_list);
+        btnBrandName.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

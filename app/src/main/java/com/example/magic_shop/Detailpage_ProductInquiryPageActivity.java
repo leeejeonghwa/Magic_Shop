@@ -176,7 +176,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusQuestion(String sellerID, String productID, String userID, String type, String subject, String content) {
+    private void plusQuestion(String brandName, String productID, String userID, String type, String subject, String content) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -214,7 +214,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         };
 
         try {
-            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(sellerID, productID, userID, type, subject,
+            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(brandName, productID, userID, type, subject,
                     content, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Detailpage_ProductInquiryPageActivity.this);
             queue.add(QuestionPlusRequest);

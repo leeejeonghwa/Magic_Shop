@@ -13,21 +13,27 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.magic_shop.ProductDetailedImageLoader;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Detailpage_MainActivity extends AppCompatActivity {
 
-    private ImageView mainImage;
+    private Button btnBuy;
+    private Button btnReview;
+    private Button btnSize;
+    private Button btnAsk;
+    private Button btnHome;
+    private Button btnSearch;
+    private Button btnBag;
+    private Button btnBack;
+    private ImageView productMainImage;
     private ImageView detailedImage1;
     private ImageView detailedImage2;
     private ImageView detailedImage3;
     private String productName;
     private String productPrice;
-    private String sellerId;
+    private String brandName;
     private String productID;
     private ProductDetailedImageLoader productDetailedImageLoader;
 
@@ -42,7 +48,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         if (intent != null) {
             this.productName = intent.getStringExtra("product_name");
             this.productPrice = intent.getStringExtra("product_price");
-            this.sellerId = intent.getStringExtra("seller_id");
+            this.brandName = intent.getStringExtra("seller_id");
             this.productID=intent.getStringExtra("id");
 
 
@@ -53,9 +59,9 @@ public class Detailpage_MainActivity extends AppCompatActivity {
 
             productTextView.setText(this.productName);
             priceTextView.setText(this.productPrice);
-            sellerTextView.setText(this.sellerId);
+            sellerTextView.setText(this.brandName);
 
-            mainImage = findViewById(R.id.mainImage);
+            productMainImage = findViewById(R.id.mainImage);
             detailedImage1 = findViewById(R.id.detailedImage1);
             detailedImage2 = findViewById(R.id.detailedImage2);
             detailedImage3 = findViewById(R.id.detailedImage3);
@@ -67,14 +73,13 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         }
 
 
-        Button btnBuy = findViewById(R.id.btn_buy);
-        Button btnReview = findViewById(R.id.reviewBtn);
-        Button btnSize = findViewById(R.id.sizeBtn);
-        Button btnAsk = findViewById(R.id.askBtn);
-        Button btnHome = findViewById(R.id.home_btn);
-        Button btnSearch = findViewById(R.id.search_btn);
-        Button btnBag = findViewById(R.id.bag_btn);
-        Button btnBack = findViewById(R.id.back_btn);
+        btnBuy = findViewById(R.id.btn_buy);btnReview = findViewById(R.id.reviewBtn);
+        btnSize = findViewById(R.id.sizeBtn);
+        btnAsk = findViewById(R.id.askBtn);
+        btnHome = findViewById(R.id.home_btn);
+        btnSearch = findViewById(R.id.search_btn);
+        btnBag = findViewById(R.id.bag_btn);
+        btnBack = findViewById(R.id.back_btn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);
@@ -93,7 +98,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainOptionSelectActivity.class);
                 intent.putExtra("id", productID);
-                intent.putExtra("seller_id",sellerId);
+                intent.putExtra("seller_id", brandName);
 
                 startActivity(intent);
             }
@@ -105,7 +110,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainReviewActivity.class);
                 intent.putExtra("product_name", productName);
                 intent.putExtra("product_price", productPrice);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("id",productID);
 
                 startActivity(intent);
@@ -119,7 +124,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
                 intent.putExtra("product_name", productName);
                 intent.putExtra("product_price", productPrice);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("id",productID);
 
                 startActivity(intent);
@@ -132,7 +137,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),Detailpage_MainAskActivity.class);
                 intent.putExtra("product_name", productName);
                 intent.putExtra("product_price", productPrice);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("id",productID);
 
                 startActivity(intent);
@@ -179,7 +184,7 @@ public class Detailpage_MainActivity extends AppCompatActivity {
                 try {
                     // 이미지를 디코딩하고 화면에 표시
                     JSONObject imagesObject = response.getJSONObject(0);
-                    setBase64Image(mainImage, imagesObject.getString("main_image"));
+                    setBase64Image(productMainImage, imagesObject.getString("main_image"));
                     setBase64Image(detailedImage1, imagesObject.getString("detailed_image1"));
                     setBase64Image(detailedImage2, imagesObject.getString("detailed_image2"));
                     setBase64Image(detailedImage3, imagesObject.getString("detailed_image3"));

@@ -41,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button btnMyPage;
     private Button btnCategorySearch;
 
+    private String productID;
     private String productID1;
     private String productID2;
     private String productID3;
@@ -238,11 +239,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void startActivityForProduct(String productName, String productBrand, String productPrice,String productID) {
+    private void startActivityForProduct(String productName, String brandName, String productPrice,String productID) {
         Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
         // 상품 정보 및 이미지를 Intent에 추가하여 Detail 페이지로 전달
         intent.putExtra("product_name", productName);
-        intent.putExtra("seller_id", productBrand);
+        intent.putExtra("seller_id", brandName);
         intent.putExtra("product_price", productPrice);
         intent.putExtra("id", productID);
         Log.d("IntentID", productID);

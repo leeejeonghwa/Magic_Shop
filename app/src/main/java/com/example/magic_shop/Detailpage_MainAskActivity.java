@@ -22,8 +22,8 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
 
     private String productName;
     private String productPrice;
-    private String sellerId;
-    private ImageView mainImage;
+    private String brandName;
+    private ImageView productMainImage;
     private ProductDetailedImageLoader productDetailedImageLoader;
     private String productID;
 
@@ -36,7 +36,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             productName = intent.getStringExtra("product_name");
-            sellerId = intent.getStringExtra("seller_id");
+            brandName = intent.getStringExtra("seller_id");
             productPrice = intent.getStringExtra("product_price");
             productID = intent.getStringExtra("id");
 
@@ -47,9 +47,9 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
 
             productTextView.setText(this.productName);
             priceTextView.setText(this.productPrice);
-            sellerTextView.setText(this.sellerId);
+            sellerTextView.setText(this.brandName);
 
-            mainImage = findViewById(R.id.mainImage);
+            productMainImage = findViewById(R.id.mainImage);
 
             productDetailedImageLoader = new ProductDetailedImageLoader(this);
 
@@ -94,7 +94,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainReviewActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
                 startActivity(intent);
             }
@@ -105,7 +105,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
                 startActivity(intent);
             }
@@ -116,7 +116,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),Detailpage_MainSizeActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
                 startActivity(intent);
             }
@@ -127,7 +127,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_ProductInquiryPageActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                startActivity(intent);
@@ -140,7 +140,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),Detailpage_OrderInquiryPageActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -206,7 +206,7 @@ public class Detailpage_MainAskActivity extends AppCompatActivity {
                 try {
                     // 이미지를 디코딩하고 화면에 표시
                     JSONObject imagesObject = response.getJSONObject(0);
-                    setBase64Image(mainImage, imagesObject.getString("main_image"));
+                    setBase64Image(productMainImage, imagesObject.getString("main_image"));
                     // 추가적인 이미지가 있다면 계속해서 설정해주면 됩니다.
                 } catch (JSONException e) {
                     e.printStackTrace();

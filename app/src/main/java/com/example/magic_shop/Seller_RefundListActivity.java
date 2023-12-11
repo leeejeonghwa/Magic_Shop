@@ -243,7 +243,7 @@ public class Seller_RefundListActivity extends AppCompatActivity {
                 String refundID = refundItem.refundID;
                 String orderID = refundItem.orderID;
                 String productID = refundItem.productID;
-                String sellerID = refundItem.brandName;
+                String brandName = refundItem.brandName;
                 String userID = refundItem.userID;
 
                 refundButton.setOnClickListener(new View.OnClickListener() {
@@ -252,7 +252,7 @@ public class Seller_RefundListActivity extends AppCompatActivity {
                         approveRefund(
                                 refundID,
                                 orderID,
-                                sellerID,
+                                brandName,
                                 productID,
                                 userID
                         );
@@ -283,7 +283,7 @@ public class Seller_RefundListActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void approveRefund(String refundID, String orderID, String sellerID, String productID, String userID) {
+    private void approveRefund(String refundID, String orderID, String brandName, String productID, String userID) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -320,7 +320,7 @@ public class Seller_RefundListActivity extends AppCompatActivity {
         };
 
         try {
-            ApproveRefundRequest approveRefundRequest = new ApproveRefundRequest(refundID, orderID, sellerID, productID, userID
+            ApproveRefundRequest approveRefundRequest = new ApproveRefundRequest(refundID, orderID, brandName, productID, userID
                     , responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Seller_RefundListActivity.this);
             queue.add(approveRefundRequest);

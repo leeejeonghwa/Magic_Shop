@@ -147,12 +147,12 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
                 String productID = productsObject.getString("productID");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
-                String brandName = productsObject.getString("seller_id");
+                String sellerID = productsObject.getString("seller_id");
 
 
                 // OrderItem 생성 및 목록에 추가
                 OrderItem orderItem = new OrderItem(exchangeStatus, refundStatus,orderID, paymentDate,
-                        totalAmount, productID, productName, productPrice, brandName ,productImage);
+                        totalAmount, productID, productName, productPrice, sellerID ,productImage);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
