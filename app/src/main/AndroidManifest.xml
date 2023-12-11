@@ -39,7 +39,7 @@
         <activity android:name=".Mypage_DeliveryAddressEditActivity"/>
         <activity android:name=".Mypage_DeliveryAddressPlusActivity"/>
         <activity android:name=".Mypage_RefundAccountManageActivity"/>
-        <activity android:name=".Mypage_OrderDeliveryListActivity"/>
+        <activity android:name=".Mypage_OrderListActivity"/>
         <activity android:name=".Mypage_DeliveryCheckActivity"/>
         <activity android:name=".Mypage_ExchangeWaitingListActivity"/>
         <activity android:name=".Mypage_RefundRequestActivity"/>
