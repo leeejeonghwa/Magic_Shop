@@ -227,7 +227,7 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
 
         public class OrderViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
-            private final TextView productNameTextView, productPriceTextView, productBrandTextView;
+            private final TextView productNameTextView, productPriceTextView, brandNameTextView;
             private final ImageView productMainImageView;
             private final Button reviewWriteButton;
             private final Context context;
@@ -238,7 +238,7 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
                 dateTextView = itemView.findViewById(R.id.order_date);
                 productNameTextView = itemView.findViewById(R.id.order_productName);
                 productPriceTextView = itemView.findViewById(R.id.order_productPrice);
-                productBrandTextView = itemView.findViewById(R.id.order_brandName);
+                brandNameTextView = itemView.findViewById(R.id.order_brandName);
                 productMainImageView = itemView.findViewById(R.id.productImage);
                 reviewWriteButton = itemView.findViewById(R.id.btn_review_write);
 
@@ -255,7 +255,7 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
                             intent.putExtra("sellerID", orderItem.brandName);
                             intent.putExtra("productID", orderItem.productID);
                             intent.putExtra("productName", orderItem.productName);
-                            intent.putExtra("productPrice", orderItem.productPrice);
+                            intent.putExtra("productPrice", String.valueOf(orderItem.productPrice));
                             intent.putExtra("productMainImage", orderItem.productMainImage);
                             context.startActivity(intent);
                         }
@@ -267,7 +267,7 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
                 productPriceTextView.setText((orderItem.productPrice) + "원");
-                productBrandTextView.setText(orderItem.brandName);
+                brandNameTextView.setText(orderItem.brandName);
 
                 byte[] decodedString = Base64.decode(orderItem.productMainImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
