@@ -8,10 +8,10 @@
 
     <ImageButton
         android:id="@+id/btn_product_id1"
-        android:layout_width="205dp"
-        android:layout_height="200dp"
-        android:layout_margin="0dp"
-        android:background="@drawable/mypage_clothes"
+        android:layout_width="140dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:contentDescription="My Button Description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_marginStart="25dp"
         android:gravity="center_vertical"
         android:layout_marginTop="15dp"
-        android:text="브랜드 명"
+        android:text=""
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/btn_product_id1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
         android:layout_marginStart="25dp"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
-        android:text="상품 이름"
+        android:text=""
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/btn_product_id1"
@@ -48,7 +48,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="80dp"
         android:gravity="center_vertical"
-        android:text="1000000"
+        android:text=""
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/btn_product_id1"
         app:layout_constraintTop_toBottomOf="@+id/product_name_text_id1" />
