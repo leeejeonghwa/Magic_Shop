@@ -284,7 +284,7 @@ public class MyPageOrderListActivity extends AppCompatActivity {
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText((orderItem.productPrice)+"원");
+                productPriceTextView.setText((String.valueOf(orderItem.productPrice)+"원"));
                 productBrandTextView.setText(orderItem.brandName);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);

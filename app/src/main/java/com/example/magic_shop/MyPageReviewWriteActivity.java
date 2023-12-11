@@ -30,7 +30,7 @@ import org.json.JSONObject;
 public class MyPageReviewWriteActivity extends AppCompatActivity {
 
     private EditText contentEditText;
-    private TextView brandNameTextView, productNameTextView;
+    private TextView brandNameTextView, productNameTextView, productPriceTextView;
     private String orderID, productID;
     private String productName;
     private String productPrice;
@@ -61,18 +61,21 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
             this.productID = intent.getStringExtra("productID");
             this.productName = intent.getStringExtra("productName");
             this.productPrice = intent.getStringExtra("productPrice");
+            this.productMainImage = intent.getStringExtra("productMainImage");
             this.brandName = intent.getStringExtra("sellerID");
 
+            Log.d("productPrice는 이거에요", productPrice);
+
             // 받아온 상품명을 화면에 표시
-            TextView productNameTextView = findViewById(R.id.productName);
-            TextView brandNameTextView = findViewById(R.id.brandName);
-            TextView productPriceTextView = findViewById(R.id.productPrice);
+            productNameTextView = findViewById(R.id.productName);
+            brandNameTextView = findViewById(R.id.sellerID);
+            productPriceTextView = findViewById(R.id.productPrice);
 
             productNameTextView.setText(this.productName);
             brandNameTextView.setText(this.brandName);
-            productPriceTextView.setText(this.brandName);
+            productPriceTextView.setText((this.productPrice)+"원");
 
-            productMainImageView = findViewById(R.id.mainImage);
+            productMainImageView = findViewById(R.id.productMainImage);
 
             productDetailedImageLoader = new ProductDetailedImageLoader(this);
 
