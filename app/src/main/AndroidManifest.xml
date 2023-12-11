@@ -78,7 +78,6 @@
         <activity android:name=".SellerProductDeleteActivity" />
         <activity android:name=".SellerOrderListActivity" />
         <activity android:name=".SellerReviewListActivity" />
-        <activity android:name=".SellerInputPasswordActivity" />
         <activity android:name=".SellerQuestionListActivity" />
         <activity android:name=".SellerAnswerWriteActivity" />
         <activity android:name=".SellerExchangeListActivity" />
