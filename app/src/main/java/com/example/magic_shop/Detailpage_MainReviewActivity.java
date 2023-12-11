@@ -20,9 +20,9 @@ import org.json.JSONObject;
 public class Detailpage_MainReviewActivity extends AppCompatActivity {
     private String productName;
     private String productPrice;
-    private String sellerId;
+    private String brandName;
     private String productID;
-    private ImageView mainImage;
+    private ImageView productMainImage;
     private ProductDetailedImageLoader productDetailedImageLoader;
 
 
@@ -35,7 +35,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             productName = intent.getStringExtra("product_name");
-            sellerId = intent.getStringExtra("seller_id");
+            brandName = intent.getStringExtra("seller_id");
             productPrice = intent.getStringExtra("product_price");
             productID = intent.getStringExtra("id");
 
@@ -46,9 +46,9 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
 
             productTextView.setText(this.productName);
             priceTextView.setText(this.productPrice);
-            sellerTextView.setText(this.sellerId);
+            sellerTextView.setText(this.brandName);
 
-            mainImage = findViewById(R.id.mainImage);
+            productMainImage = findViewById(R.id.mainImage);
 
             productDetailedImageLoader = new ProductDetailedImageLoader(this);
 
@@ -91,7 +91,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
                 // 이미 받아온 정보를 다시 추가
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -103,7 +103,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainSizeActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -115,7 +115,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -128,7 +128,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_AllReviewActivity.class);
                 intent.putExtra("product_id", productID);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -175,7 +175,7 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
                 try {
                     // 이미지를 디코딩하고 화면에 표시
                     JSONObject imagesObject = response.getJSONObject(0);
-                    setBase64Image(mainImage, imagesObject.getString("main_image"));
+                    setBase64Image(productMainImage, imagesObject.getString("main_image"));
                     // 추가적인 이미지가 있다면 계속해서 설정해주면 됩니다.
                 } catch (JSONException e) {
                     e.printStackTrace();

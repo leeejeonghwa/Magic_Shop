@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
                         JSONObject product = response.getJSONObject(i);
 
                         String productName = product.getString("product_name");
-                        String productBrand = product.getString("seller_id");
+                        String brandName = product.getString("seller_id");
                         String productPrice = product.getString("product_price");
                         String base64MainImage = product.getString("main_image");
                         Integer productId = product.getInt("id");
@@ -98,28 +98,28 @@ public class HomeActivity extends AppCompatActivity {
                             case 0:
                                 productID1 = productIdString;
                                 productName1.setText(productName);
-                                productBrand1.setText(productBrand);
+                                productBrand1.setText(brandName);
                                 productPrice1.setText(productPrice);
                                 setBase64Image(productBtn1, base64MainImage);
                                 break;
                             case 1:
                                 productID2 = productIdString;
                                 productName2.setText(productName);
-                                productBrand2.setText(productBrand);
+                                productBrand2.setText(brandName);
                                 productPrice2.setText(productPrice);
                                 setBase64Image(productBtn2, base64MainImage);
                                 break;
                             case 2:
                                 productID3 = productIdString;
                                 productName3.setText(productName);
-                                productBrand3.setText(productBrand);
+                                productBrand3.setText(brandName);
                                 productPrice3.setText(productPrice);
                                 setBase64Image(productBtn3, base64MainImage);
                                 break;
                             case 3:
                                 productID4 = productIdString;
                                 productName4.setText(productName);
-                                productBrand4.setText(productBrand);
+                                productBrand4.setText(brandName);
                                 productPrice4.setText(productPrice);
                                 setBase64Image(productBtn4, base64MainImage);
                                 break;
@@ -239,11 +239,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void startActivityForProduct(String productName, String productBrand, String productPrice,String productID) {
+    private void startActivityForProduct(String productName, String brandName, String productPrice,String productID) {
         Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
         // 상품 정보 및 이미지를 Intent에 추가하여 Detail 페이지로 전달
         intent.putExtra("product_name", productName);
-        intent.putExtra("seller_id", productBrand);
+        intent.putExtra("seller_id", brandName);
         intent.putExtra("product_price", productPrice);
         intent.putExtra("id", productID);
         Log.d("IntentID", productID);

@@ -28,7 +28,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     private Response.ErrorListener errorListener;
     private String productName;
     private String productPrice;
-    private String sellerId;
+    private String brandName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Detailpage_MainAskActivity.class);
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("product_name", productName);
-                resultIntent.putExtra("seller_id", sellerId);
+                resultIntent.putExtra("seller_id", brandName);
                 resultIntent.putExtra("product_price", productPrice);
 
                 // 결과를 설정하고 현재 활동을 종료합니다.
@@ -162,7 +162,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     private void handleNonJsonResponse(String response) {
         try {
             JSONObject jsonResponse = new JSONObject(response);
-            String sellerID = jsonResponse.getString("sellerID");
+            String brandName = jsonResponse.getString("sellerID");
             String productID = jsonResponse.getString("productID");
             String userID = jsonResponse.getString("userID");
             String type = jsonResponse.getString("type");
@@ -176,7 +176,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusQuestion(String sellerID, String productID, String userID, String type, String subject, String content) {
+    private void plusQuestion(String brandName, String productID, String userID, String type, String subject, String content) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -214,7 +214,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         };
 
         try {
-            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(sellerID, productID, userID, type, subject,
+            QuestionPlusRequest QuestionPlusRequest = new QuestionPlusRequest(brandName, productID, userID, type, subject,
                     content, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Detailpage_ProductInquiryPageActivity.this);
             queue.add(QuestionPlusRequest);

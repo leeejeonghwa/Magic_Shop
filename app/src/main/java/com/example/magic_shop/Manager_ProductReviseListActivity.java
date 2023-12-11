@@ -163,7 +163,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
 
         public class ProductReviseViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
-            private final TextView sellerNameTextView;
+            private final TextView brandNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productColorTextView;
@@ -175,7 +175,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 dateTextView = itemView.findViewById(R.id.date);
-                sellerNameTextView = itemView.findViewById(R.id.sellerName);
+                brandNameTextView = itemView.findViewById(R.id.sellerName);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productColorTextView = itemView.findViewById(R.id.productQuantity);
@@ -206,7 +206,7 @@ public class Manager_ProductReviseListActivity extends AppCompatActivity {
 
             void bind(ProductItem productUnregisteredItem) {
                 dateTextView.setText(productUnregisteredItem.date);
-                sellerNameTextView.setText(productUnregisteredItem.sellerId);
+                brandNameTextView.setText(productUnregisteredItem.sellerId);
                 productNameTextView.setText(productUnregisteredItem.productName);
                 productSizeTextView.setText(productUnregisteredItem.productSize);
                 productColorTextView.setText(productUnregisteredItem.productColor);

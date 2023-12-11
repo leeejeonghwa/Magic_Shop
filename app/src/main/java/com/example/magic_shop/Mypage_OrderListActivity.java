@@ -147,12 +147,12 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
                 String productID = productsObject.getString("productID");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
-                String sellerID = productsObject.getString("seller_id");
+                String brandName = productsObject.getString("seller_id");
 
 
                 // OrderItem 생성 및 목록에 추가
                 OrderItem orderItem = new OrderItem(exchangeStatus, refundStatus,orderID, paymentDate,
-                        totalAmount, productID, productName, productPrice, sellerID ,productImage);
+                        totalAmount, productID, productName, productPrice, brandName ,productImage);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -171,10 +171,10 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
         String productID;
         String productName;
         int productPrice;
-        String sellerID;
+        String brandName;
         String productImage;
 
-        public OrderItem(String exchangeStatus, String refundStatus, int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String sellerID, String productImage) {
+        public OrderItem(String exchangeStatus, String refundStatus, int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String brandName, String productImage) {
             this.exchangeStatus = exchangeStatus;
             this.refundStatus = refundStatus;
             this.orderID = orderID;
@@ -184,7 +184,7 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
             this.totalAmount = totalAmount;
             this.productName = productName;
             this.productPrice = productPrice;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
         }
     }
 
@@ -251,7 +251,7 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
                             OrderItem orderItem = orderList.get(position);
                             Intent intent = new Intent(context, Mypage_ExchangeRequestActivity.class);
                             intent.putExtra("orderID", String.valueOf(orderItem.orderID));
-                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("sellerID", orderItem.brandName);
                             intent.putExtra("productID", orderItem.productID);
                             intent.putExtra("productName", orderItem.productName);
                             intent.putExtra("productImage", orderItem.productImage);
@@ -270,7 +270,7 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
                             OrderItem orderItem = orderList.get(position);
                             Intent intent = new Intent(context, Mypage_RefundRequestActivity.class);
                             intent.putExtra("orderID", String.valueOf(orderItem.orderID));
-                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("sellerID", orderItem.brandName);
                             intent.putExtra("productID", orderItem.productID);
                             intent.putExtra("productName", orderItem.productName);
                             intent.putExtra("productImage", orderItem.productImage);
@@ -284,8 +284,8 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText((orderItem.productPrice)+"원");
-                productBrandTextView.setText(orderItem.sellerID);
+                productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
+                productBrandTextView.setText(orderItem.brandName);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
