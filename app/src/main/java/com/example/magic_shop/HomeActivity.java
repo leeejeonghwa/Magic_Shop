@@ -9,7 +9,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,35 +89,34 @@ public class HomeActivity extends AppCompatActivity {
                         String productBrand = product.getString("seller_id");
                         String productPrice = product.getString("product_price");
                         String base64MainImage = product.getString("main_image");
-                        Integer productId = product.getInt("id");
-                        String productIdString = String.valueOf(productId);
-                        Log.d("ID", productIdString);
+                        String productID = product.getString("id");
+                        Log.d("ID", productID);
 
                         // 버튼에 상품명 설정
                         switch (i) {
                             case 0:
-                                productID1 = productIdString;
+                                productID1 = productID;
                                 productName1.setText(productName);
                                 productBrand1.setText(productBrand);
                                 productPrice1.setText(productPrice);
                                 setBase64Image(productBtn1, base64MainImage);
                                 break;
                             case 1:
-                                productID2 = productIdString;
+                                productID2 = productID;
                                 productName2.setText(productName);
                                 productBrand2.setText(productBrand);
                                 productPrice2.setText(productPrice);
                                 setBase64Image(productBtn2, base64MainImage);
                                 break;
                             case 2:
-                                productID3 = productIdString;
+                                productID3 = productID;
                                 productName3.setText(productName);
                                 productBrand3.setText(productBrand);
                                 productPrice3.setText(productPrice);
                                 setBase64Image(productBtn3, base64MainImage);
                                 break;
                             case 3:
-                                productID4 = productIdString;
+                                productID4 = productID;
                                 productName4.setText(productName);
                                 productBrand4.setText(productBrand);
                                 productPrice4.setText(productPrice);
@@ -219,7 +217,7 @@ public class HomeActivity extends AppCompatActivity {
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 if (sessionManager.isLoggedIn()) {
                     // 이미 로그인된 경우 마이페이지로 이동
-                    Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MyPageMainActivity.class);
                     startActivity(intent);
                 } else {
                     // 로그인되지 않은 경우 로그인 페이지로 이동
@@ -241,7 +239,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void startActivityForProduct(String productName, String productBrand, String productPrice,String productID) {
-        Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DetailPageMainActivity.class);
         // 상품 정보 및 이미지를 Intent에 추가하여 Detail 페이지로 전달
         intent.putExtra("product_name", productName);
         intent.putExtra("seller_id", productBrand);

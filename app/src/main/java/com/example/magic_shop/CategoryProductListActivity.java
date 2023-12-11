@@ -25,7 +25,7 @@ public class CategoryProductListActivity extends AppCompatActivity {
     CategorySelectionManager categorySelectionManager;
 
     public Context context;
-    private Button productBtn;
+    private Button btnProduct;
 
     private ProductAdapter adapter;
 
@@ -80,8 +80,8 @@ public class CategoryProductListActivity extends AppCompatActivity {
         categoryTextChange();
         detailedCategoryTextChange();
 
-        Button backButton = findViewById(R.id.category_back_id);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = findViewById(R.id.category_back_id);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish(); // 현재 액티비티 종료
@@ -98,7 +98,7 @@ public class CategoryProductListActivity extends AppCompatActivity {
     }
 
     public void init() {
-        productBtn = findViewById(R.id.btn_product_id1);
+        btnProduct = findViewById(R.id.btn_product_id1);
     }
 
 
@@ -181,9 +181,8 @@ public class CategoryProductListActivity extends AppCompatActivity {
 
         public class ProductViewHolder extends RecyclerView.ViewHolder {
             private final TextView productNameTextView;
-            private final TextView productPriceView;
-
-            private final TextView sellerIdView;
+            private final TextView productPriceTextView;
+            private final TextView brandNameTextView;
 
             private final ImageButton productMainImageButton;
             private final Context context;
@@ -192,16 +191,16 @@ public class CategoryProductListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 productNameTextView = itemView.findViewById(R.id.product_name_text_id1);
-                productPriceView = itemView.findViewById(R.id.product_price_text_id1);
+                productPriceTextView = itemView.findViewById(R.id.product_price_text_id1);
                 productMainImageButton = itemView.findViewById(R.id.btn_product_id1);
-                sellerIdView = itemView.findViewById(R.id.product_brand_text_id1);
+                brandNameTextView = itemView.findViewById(R.id.product_brand_text_id1);
 
             }
 
             void bind(ProductItem productItem) {
                 productNameTextView.setText(productItem.productName);
-                productPriceView.setText(productItem.productPrice);
-                sellerIdView.setText(productItem.sellerId);
+                productPriceTextView.setText(productItem.productPrice);
+                brandNameTextView.setText(productItem.brandName);
                 if (productItem.mainImage == null) {
                     Log.d("이미지", "null");
                 }

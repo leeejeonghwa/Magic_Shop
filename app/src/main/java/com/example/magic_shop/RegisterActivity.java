@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void checkDuplicate(String userID) {
-        RefunddataRequest checkDuplicateRequest = new RefunddataRequest(userID,
+        CheckDuplicateRequest checkDuplicateRequest = new CheckDuplicateRequest(userID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

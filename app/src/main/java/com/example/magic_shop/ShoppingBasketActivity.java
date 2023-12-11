@@ -67,7 +67,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(layoutManager);
 
-            String userID = sessionManager.getUserId();
+            String userID = sessionManager.getUserID();
 
             basketList = new ArrayList<>();
             adapter = new BasketAdapter(basketList, this, checkedCountTextView);

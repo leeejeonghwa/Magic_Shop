@@ -37,7 +37,7 @@ public class SessionManager extends AppCompatActivity{
         return pref.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
-    public String getUserId() {
+    public String getUserID() {
         return pref.getString(KEY_USER_ID, "");
     }
 

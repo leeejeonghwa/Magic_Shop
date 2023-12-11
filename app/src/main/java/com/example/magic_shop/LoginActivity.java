@@ -15,9 +15,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
     private Button btn_login, btn_register, btn_back;
@@ -40,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_manage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Manager_MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ManagerMainActivity.class);
                 startActivity(intent);
             }
         });
@@ -96,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
                                 // 사용자 유형에 따라 리다이렉션 설정
                                 Intent intent;
                                 if ("A".equals(userType)) {
-                                    intent = new Intent(LoginActivity.this, Mypage_MainActivity.class);
+                                    intent = new Intent(LoginActivity.this, MyPageMainActivity.class);
                                 } else if ("B".equals(userType)) {
-                                    intent = new Intent(LoginActivity.this, Seller_MypageMainActivity.class);
+                                    intent = new Intent(LoginActivity.this, SellerMyPageMainActivity.class);
                                 } else {
                                     // 다른 사용자 유형 처리 또는 오류 표시
                                     Toast.makeText(getApplicationContext(), "유효하지 않은 사용자 유형", Toast.LENGTH_SHORT).show();

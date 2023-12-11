@@ -53,7 +53,7 @@
             totalPriceTextView = findViewById(R.id.purchase_all_cnt);
 
             SessionManager sessionManager = new SessionManager(getApplicationContext());
-            String userID = sessionManager.getUserId();
+            String userID = sessionManager.getUserID();
 
             findViewById(R.id.back_id).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -253,7 +253,7 @@
             };
 
             // 서버 요청 클래스
-            DefaultDeliveryAddressGetRequest defaultDeliveryAddressGetRequest = new DefaultDeliveryAddressGetRequest(userID, responseListener);
+            GetDefaultDeliveryAddressRequest defaultDeliveryAddressGetRequest = new GetDefaultDeliveryAddressRequest(userID, responseListener);
             RequestQueue queue = Volley.newRequestQueue(OrderFormActivity.this);
             queue.add(defaultDeliveryAddressGetRequest);
         }

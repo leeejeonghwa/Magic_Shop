@@ -4,18 +4,26 @@ import android.graphics.Bitmap;
 
 public class ProductItem {
 
-    String id;
+    String productID;
     String date;
     String productName;
     String productSize;
     String productColor;
     Bitmap mainImage;
-
     String productPrice;
+    String brandName;
 
-    String sellerId;
+    public ProductItem(String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName) {
+        this.date = date;
+        this.productName = productName;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.mainImage = mainImage;
+        this.brandName = brandName;
+    }
 
-    public ProductItem(String date, String productName, String productSize, String productColor , Bitmap mainImage) {
+    public ProductItem(String productID, String date, String productName, String productSize, String productColor , Bitmap mainImage) {
+        this.productID = productID;
         this.date = date;
         this.productName = productName;
         this.productSize = productSize;
@@ -23,33 +31,24 @@ public class ProductItem {
         this.mainImage = mainImage;
     }
 
-    public ProductItem(String id,String date, String productName, String productSize, String productColor , Bitmap mainImage) {
-        this.id = id;
+    public ProductItem(String productID, String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName) {
+        this.productID = productID;
         this.date = date;
         this.productName = productName;
         this.productSize = productSize;
         this.productColor = productColor;
         this.mainImage = mainImage;
+        this.brandName = brandName;
     }
 
-    public ProductItem(String id,String date, String productName, String productSize, String productColor , Bitmap mainImage, String sellerId) {
-        this.id = id;
+    public ProductItem(String productID, String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName, String productPrice) {
+        this.productID = productID;
         this.date = date;
         this.productName = productName;
         this.productSize = productSize;
         this.productColor = productColor;
         this.mainImage = mainImage;
-        this.sellerId = sellerId;
-    }
-
-    public ProductItem(String id,String date, String productName, String productSize, String productColor , Bitmap mainImage, String sellerId, String productPrice) {
-        this.id = id;
-        this.date = date;
-        this.productName = productName;
-        this.productSize = productSize;
-        this.productColor = productColor;
-        this.mainImage = mainImage;
-        this.sellerId = sellerId;
+        this.brandName = brandName;
         this.productPrice = productPrice;
     }
 }
