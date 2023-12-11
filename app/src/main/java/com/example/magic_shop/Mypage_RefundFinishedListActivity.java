@@ -44,8 +44,8 @@ public class Mypage_RefundFinishedListActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -54,8 +54,8 @@ public class Mypage_RefundFinishedListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_refund_waiting_list = (Button) findViewById(R.id.btn_refund_waiting_list);
-        btn_refund_waiting_list.setOnClickListener(new View.OnClickListener() {
+        Button btnRefundWaitingList = (Button) findViewById(R.id.btn_refund_waiting_list);
+        btnRefundWaitingList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

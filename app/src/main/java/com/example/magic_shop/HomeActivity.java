@@ -20,26 +20,26 @@ import org.json.JSONObject;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button productBtn1;
-    private Button productBtn2;
-    private Button productBtn3;
-    private Button productBtn4;
-    private TextView productName1;
-    private TextView productName2;
-    private TextView productName3;
-    private TextView productName4;
-    private TextView productBrand1;
-    private TextView productBrand2;
-    private TextView productBrand3;
-    private TextView productBrand4;
-    private TextView productPrice1;
-    private TextView productPrice2;
-    private TextView productPrice3;
-    private TextView productPrice4;
-    private Button search_btn;
-    private Button shoppingcart_btn;
-    private Button mypage_btn;
-    private Button categorySearch;
+    private Button btnProduct1;
+    private Button btnProduct2;
+    private Button btnProduct3;
+    private Button btnProduct4;
+    private TextView productName1TextView;
+    private TextView productName2TextView;
+    private TextView productName3TextView;
+    private TextView productName4TextView;
+    private TextView productBrand1TextView;
+    private TextView productBrand2TextView;
+    private TextView productBrand3TextView;
+    private TextView productBrand4TextView;
+    private TextView productPrice1TextView;
+    private TextView productPrice2TextView;
+    private TextView productPrice3TextView;
+    private TextView productPrice4TextView;
+    private Button btnSearch;
+    private Button btnShoppingCart;
+    private Button btnMyPage;
+    private Button btnCategorySearch;
 
     private String productID;
     private String productID1;
@@ -55,26 +55,26 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         getWindow().setWindowAnimations(0);
 
-        search_btn = findViewById(R.id.search_btn);
-        shoppingcart_btn = findViewById(R.id.shoppingcart_btn);
-        mypage_btn = findViewById(R.id.mypage_id);
-        categorySearch = findViewById(R.id.category_search_id);
-        productBtn1 = findViewById(R.id.btn_product_id1);
-        productBtn2 = findViewById(R.id.btn_product_id2);
-        productBtn3 = findViewById(R.id.btn_product_id3);
-        productBtn4 = findViewById(R.id.btn_product_id4);
-        productName1 = findViewById(R.id.product_name_text_id1);
-        productName2 = findViewById(R.id.product_name_text_id2);
-        productName3 = findViewById(R.id.product_name_text_id3);
-        productName4 = findViewById(R.id.product_name_text_id4);
-        productBrand1 = findViewById(R.id.product_brand_text_id1);
-        productBrand2 = findViewById(R.id.product_brand_text_id2);
-        productBrand3 = findViewById(R.id.product_brand_text_id3);
-        productBrand4 = findViewById(R.id.product_brand_text_id4);
-        productPrice1 = findViewById(R.id.product_price_text_id1);
-        productPrice2 = findViewById(R.id.product_price_text_id2);
-        productPrice3 = findViewById(R.id.product_price_text_id3);
-        productPrice4 = findViewById(R.id.product_price_text_id4);
+        btnSearch = findViewById(R.id.search_btn);
+        btnShoppingCart = findViewById(R.id.shoppingcart_btn);
+        btnMyPage = findViewById(R.id.mypage_id);
+        btnCategorySearch = findViewById(R.id.category_search_id);
+        btnProduct1 = findViewById(R.id.btn_product_id1);
+        btnProduct2 = findViewById(R.id.btn_product_id2);
+        btnProduct3 = findViewById(R.id.btn_product_id3);
+        btnProduct4 = findViewById(R.id.btn_product_id4);
+        productName1TextView = findViewById(R.id.product_name_text_id1);
+        productName2TextView = findViewById(R.id.product_name_text_id2);
+        productName3TextView = findViewById(R.id.product_name_text_id3);
+        productName4TextView = findViewById(R.id.product_name_text_id4);
+        productBrand1TextView = findViewById(R.id.product_brand_text_id1);
+        productBrand2TextView = findViewById(R.id.product_brand_text_id2);
+        productBrand3TextView = findViewById(R.id.product_brand_text_id3);
+        productBrand4TextView = findViewById(R.id.product_brand_text_id4);
+        productPrice1TextView = findViewById(R.id.product_price_text_id1);
+        productPrice2TextView = findViewById(R.id.product_price_text_id2);
+        productPrice3TextView = findViewById(R.id.product_price_text_id3);
+        productPrice4TextView = findViewById(R.id.product_price_text_id4);
 
         // ProductsLoader를 이용해 데이터를 불러오고, 버튼에 적용
         ProductsLoader productsLoader = new ProductsLoader(getApplicationContext());
@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
                         JSONObject product = response.getJSONObject(i);
 
                         String productName = product.getString("product_name");
-                        String brandName = product.getString("seller_id");
+                        String productBrand = product.getString("seller_id");
                         String productPrice = product.getString("product_price");
                         String base64MainImage = product.getString("main_image");
                         Integer productId = product.getInt("id");
@@ -97,31 +97,31 @@ public class HomeActivity extends AppCompatActivity {
                         switch (i) {
                             case 0:
                                 productID1 = productIdString;
-                                productName1.setText(productName);
-                                productBrand1.setText(brandName);
-                                productPrice1.setText(productPrice);
-                                setBase64Image(productBtn1, base64MainImage);
+                                productName1TextView.setText(productName);
+                                productBrand1TextView.setText(productBrand);
+                                productPrice1TextView.setText(productPrice);
+                                setBase64Image(btnProduct1, base64MainImage);
                                 break;
                             case 1:
                                 productID2 = productIdString;
-                                productName2.setText(productName);
-                                productBrand2.setText(brandName);
-                                productPrice2.setText(productPrice);
-                                setBase64Image(productBtn2, base64MainImage);
+                                productName2TextView.setText(productName);
+                                productBrand2TextView.setText(productBrand);
+                                productPrice2TextView.setText(productPrice);
+                                setBase64Image(btnProduct2, base64MainImage);
                                 break;
                             case 2:
                                 productID3 = productIdString;
-                                productName3.setText(productName);
-                                productBrand3.setText(brandName);
-                                productPrice3.setText(productPrice);
-                                setBase64Image(productBtn3, base64MainImage);
+                                productName3TextView.setText(productName);
+                                productBrand3TextView.setText(productBrand);
+                                productPrice3TextView.setText(productPrice);
+                                setBase64Image(btnProduct3, base64MainImage);
                                 break;
                             case 3:
                                 productID4 = productIdString;
-                                productName4.setText(productName);
-                                productBrand4.setText(brandName);
-                                productPrice4.setText(productPrice);
-                                setBase64Image(productBtn4, base64MainImage);
+                                productName4TextView.setText(productName);
+                                productBrand4TextView.setText(productBrand);
+                                productPrice4TextView.setText(productPrice);
+                                setBase64Image(btnProduct4, base64MainImage);
                                 break;
                         }
 
@@ -143,58 +143,58 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setButtonListeners() {
         // 각 버튼에 대한 클릭 리스너 설정
-        productBtn1.setOnClickListener(new View.OnClickListener() {
+        btnProduct1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 상품 정보를 이용하여 세부 이미지를 불러오는 메서드 호출
                 startActivityForProduct(
-                        productName1.getText().toString(),
-                        productBrand1.getText().toString(),
-                        productPrice1.getText().toString(),
+                        productName1TextView.getText().toString(),
+                        productBrand1TextView.getText().toString(),
+                        productPrice1TextView.getText().toString(),
                         productID1
 
                 );
             }
         });
 
-        productBtn2.setOnClickListener(new View.OnClickListener() {
+        btnProduct2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForProduct(
-                    productName2.getText().toString(),
-                    productBrand2.getText().toString(),
-                    productPrice2.getText().toString(),
+                    productName2TextView.getText().toString(),
+                    productBrand2TextView.getText().toString(),
+                    productPrice2TextView.getText().toString(),
                     productID2
                 );
             }
         });
 
-        productBtn3.setOnClickListener(new View.OnClickListener() {
+        btnProduct3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForProduct(
-                        productName3.getText().toString(),
-                        productBrand3.getText().toString(),
-                        productPrice3.getText().toString(),
+                        productName3TextView.getText().toString(),
+                        productBrand3TextView.getText().toString(),
+                        productPrice3TextView.getText().toString(),
                         productID3
                 );
             }
         });
 
-        productBtn4.setOnClickListener(new View.OnClickListener() {
+        btnProduct4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForProduct(
-                        productName4.getText().toString(),
-                        productBrand4.getText().toString(),
-                        productPrice4.getText().toString(),
+                        productName4TextView.getText().toString(),
+                        productBrand4TextView.getText().toString(),
+                        productPrice4TextView.getText().toString(),
                         productID3
                 );
             }
         });
 
         //검색 버튼
-        search_btn.setOnClickListener(new View.OnClickListener() {
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
@@ -203,7 +203,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //쇼핑카트 버튼
-        shoppingcart_btn.setOnClickListener(new View.OnClickListener() {
+        btnShoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ShoppingBasketActivity.class);
@@ -212,7 +212,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //마이페이지 버튼
-        mypage_btn.setOnClickListener(new View.OnClickListener() {
+        btnMyPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
@@ -229,7 +229,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //카테고리 검색 버튼
-        categorySearch.setOnClickListener(new View.OnClickListener() {
+        btnCategorySearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CategorySelectionActivity.class);

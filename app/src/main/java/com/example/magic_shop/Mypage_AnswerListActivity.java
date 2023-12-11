@@ -70,8 +70,8 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -80,8 +80,8 @@ public class Mypage_AnswerListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_question_list = (Button) findViewById(R.id.btn_question_list);
-        btn_question_list.setOnClickListener(new View.OnClickListener() {
+        Button btnQuestionList = (Button) findViewById(R.id.btn_question_list);
+        btnQuestionList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

@@ -15,8 +15,8 @@ public class PaymentCompleteActivity extends AppCompatActivity {
         setContentView(R.layout.payment_completed_page);
         getWindow().setWindowAnimations(0);
 
-        Button btn_home = findViewById(R.id.btn_home5);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = findViewById(R.id.btn_home5);
+        btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -24,8 +24,8 @@ public class PaymentCompleteActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_order_details = findViewById(R.id.btn_order_detail);
-        btn_order_details.setOnClickListener(new View.OnClickListener() {
+        Button btnOrderDetails = findViewById(R.id.btn_order_detail);
+        btnOrderDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Mypage_OrderListActivity.class);

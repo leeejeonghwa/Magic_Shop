@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
 
-    private EditText editTextSubject, editTextContent;
+    private EditText subjectEditText, contentEditText;
     private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
     private String productName;
@@ -49,8 +49,8 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         btnHome.setVisibility(View.VISIBLE);
         btnSearch.setVisibility(View.VISIBLE);
 
-        editTextSubject = findViewById(R.id.editTextSubject);
-        editTextContent = findViewById(R.id.editTextContent);
+        subjectEditText = findViewById(R.id.editTextSubject);
+        contentEditText = findViewById(R.id.editTextContent);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
@@ -132,11 +132,11 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO sellerID, productID intent로 가져온 걸 참조해야 함
-                String sellerID = "dlwjdghk";
+                String brandName = "dlwjdghk";
                 String productID = "1";
 
-                String content = editTextContent.getText().toString();
-                String subject = editTextSubject.getText().toString();
+                String content = contentEditText.getText().toString();
+                String subject = subjectEditText.getText().toString();
 
                 int checkedId = radioGroup.getCheckedRadioButtonId();
                 RadioButton checkedRadioButton = findViewById(checkedId);
@@ -145,7 +145,7 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
                     String type = checkedRadioButton.getText().toString();
 
                     if (!type.isEmpty() && !subject.isEmpty() && !content.isEmpty()) {
-                        plusQuestion(sellerID, productID, userID, type, subject, content);
+                        plusQuestion(brandName, productID, userID, type, subject, content);
 
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);

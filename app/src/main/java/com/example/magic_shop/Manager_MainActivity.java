@@ -24,8 +24,8 @@ public class Manager_MainActivity extends AppCompatActivity {
         });
 
 
-        Button btn_product_register_list = (Button) findViewById(R.id.btn_product_register_list);
-        btn_product_register_list.setOnClickListener(new View.OnClickListener() {
+        Button btnProductRegisterList = (Button) findViewById(R.id.btn_product_register_list);
+        btnProductRegisterList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -34,8 +34,8 @@ public class Manager_MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_product_revise_list = (Button) findViewById(R.id.btn_product_revise_list);
-        btn_product_revise_list.setOnClickListener(new View.OnClickListener() {
+        Button btnProductReviseList = (Button) findViewById(R.id.btn_product_revise_list);
+        btnProductReviseList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

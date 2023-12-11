@@ -44,8 +44,8 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
@@ -53,8 +53,8 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -147,12 +147,12 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
                 String productID = productsObject.getString("productID");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
-                String brandName = productsObject.getString("seller_id");
+                String sellerID = productsObject.getString("seller_id");
 
 
                 // OrderItem 생성 및 목록에 추가
                 OrderItem orderItem = new OrderItem(exchangeStatus, refundStatus,orderID, paymentDate,
-                        totalAmount, productID, productName, productPrice, brandName ,productImage);
+                        totalAmount, productID, productName, productPrice, sellerID ,productImage);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -284,7 +284,7 @@ public class Mypage_OrderListActivity extends AppCompatActivity {
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
+                productPriceTextView.setText((orderItem.productPrice)+"원");
                 productBrandTextView.setText(orderItem.brandName);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);

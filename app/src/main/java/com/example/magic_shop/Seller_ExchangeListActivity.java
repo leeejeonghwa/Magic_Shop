@@ -139,14 +139,14 @@ public class Seller_ExchangeListActivity extends AppCompatActivity {
 
                 String exchangeID = exchangeObject.getString("exchangeID");
                 String orderID = exchangeObject.getString("orderID");
-                String sellerID = exchangeObject.getString("seller_id");
+                String brandName = exchangeObject.getString("seller_id");
                 String productID = exchangeObject.getString("productID");
                 String userID = exchangeObject.getString("userID");
                 String productName = exchangeObject.getString("product_name");
                 String productImage = exchangeObject.getString("main_image");
                 String content = exchangeObject.getString("content");
 
-                ExchangeItem exchangeItem = new ExchangeItem(exchangeID, orderID, sellerID, productID, userID, productName, productImage, content);
+                ExchangeItem exchangeItem = new ExchangeItem(exchangeID, orderID, brandName, productID, userID, productName, productImage, content);
                 exchangeList.add(exchangeItem);
             }
         } catch (JSONException e) {

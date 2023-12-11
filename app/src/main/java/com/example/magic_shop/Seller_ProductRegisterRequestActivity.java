@@ -136,7 +136,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
         init();
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserId();
-        product.setSellerId(userID);
+        product.setBrandName(userID);
 
 
         main_image_btn.setOnClickListener(new productImageOnClickListener());
@@ -444,7 +444,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
 
 
             if (!nullValidate(product) && nullToString()) {
-                productRegisterRequest(product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getSellerId(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage());
+                productRegisterRequest(product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getBrandName(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage());
 
 
                 //detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
@@ -519,7 +519,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
             Log.d("사이즈이미지", "null");
             return true;
         }
-        else if (product.getSellerId() == null) {
+        else if (product.getBrandName() == null) {
             Log.d("셀러id", "null");
             return true;
         }
@@ -637,7 +637,7 @@ public class Seller_ProductRegisterRequestActivity extends AppCompatActivity {
         };
 
         Seller_ProductRegisterRequest sellerProductRegisterRequest = new Seller_ProductRegisterRequest(
-                product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getSellerId(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage(), responseListener, productErrorListener);
+                product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getBrandName(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage(), responseListener, productErrorListener);
         RequestQueue queue = Volley.newRequestQueue(Seller_ProductRegisterRequestActivity.this);
         queue.add(sellerProductRegisterRequest);
     }

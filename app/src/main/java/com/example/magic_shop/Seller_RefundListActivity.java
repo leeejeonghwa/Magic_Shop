@@ -139,7 +139,7 @@ public class Seller_RefundListActivity extends AppCompatActivity {
 
                 String refundID = refundObject.getString("refundID");
                 String orderID = refundObject.getString("orderID");
-                String brandName = refundObject.getString("brandName");
+                String brandName = refundObject.getString("seller_id");
                 String productID = refundObject.getString("productID");
                 String userID = refundObject.getString("userID");
                 String productName = refundObject.getString("product_name");

@@ -47,8 +47,8 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
         //registeredProductManager.setManager(true);
 
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -196,7 +196,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
 
             void bind(ProductItem productItem) {
                 dateTextView.setText(productItem.date);
-                sellerNameTextView.setText(productItem.sellerId);
+                sellerNameTextView.setText(productItem.brandName);
                 productNameTextView.setText(productItem.productName);
                 productSizeTextView.setText(productItem.productSize);
                 productColorTextView.setText(productItem.productColor);

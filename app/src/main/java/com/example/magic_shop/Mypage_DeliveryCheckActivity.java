@@ -15,8 +15,8 @@ public class Mypage_DeliveryCheckActivity extends AppCompatActivity {
         setContentView(R.layout.mypage_activity_delivery_check);
         getWindow().setWindowAnimations(0);
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -28,10 +28,10 @@ public class Mypage_DeliveryCheckActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        TextView product_name = findViewById(R.id.productName);
-        TextView trackingNumber = findViewById(R.id.trackingNumber);
+        TextView productNameTextView = findViewById(R.id.productName);
+        TextView trackingNumberTextView = findViewById(R.id.trackingNumber);
 
-        product_name.setText(intent.getStringExtra("productName"));
-        trackingNumber.setText(intent.getStringExtra("trackingNumber"));
+        productNameTextView.setText(intent.getStringExtra("productName"));
+        trackingNumberTextView.setText(intent.getStringExtra("trackingNumber"));
     }
 }

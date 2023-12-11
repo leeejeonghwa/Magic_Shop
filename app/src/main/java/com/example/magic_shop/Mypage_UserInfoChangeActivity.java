@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
 
     private SessionManager sessionManager;
-    private EditText et_nickname,et_name;
+    private EditText nicknameEditText, nameEditText;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +27,16 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_info_change);
         getWindow().setWindowAnimations(0);
 
-        et_name = findViewById(R.id.editTextName);
-        et_nickname = findViewById(R.id.editTextUserNickname);
-        Button bt_name_change = findViewById(R.id.btn_name_change);
-        Button bt_nickname_change = findViewById(R.id.btn_user_nickname_change);
+        nameEditText = findViewById(R.id.editTextName);
+        nicknameEditText = findViewById(R.id.editTextUserNickname);
+        Button btnNameChange = findViewById(R.id.btn_name_change);
+        Button btnNicknameChange = findViewById(R.id.btn_user_nickname_change);
 
         sessionManager = new SessionManager(getApplicationContext());
 
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -44,8 +44,8 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -55,15 +55,15 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
         });
 
 
-        bt_name_change.setOnClickListener(new View.OnClickListener() {
+        btnNameChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 사용자가 입력한 이름 가져오기
-                String name = et_name.getText().toString();
+                String name = nameEditText.getText().toString();
 
                 // 세션 매니저를 사용하여 사용자 ID 및 비밀번호 가져오기
                 String userID = sessionManager.getUserId();
-                String userPassword = sessionManager.getUserPassword();
+                //String userPassword = sessionManager.getUserPassword();
 
                 // 서버에 이름 변경 요청 보내기
                 ChangenameRequest changenameRequest = new ChangenameRequest(userID, name, new Response.Listener<String>() {
@@ -97,11 +97,11 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
             }
         });
 
-        bt_nickname_change.setOnClickListener(new View.OnClickListener() {
+        btnNicknameChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 사용자가 입력한 이름 가져오기
-                String nickname = et_nickname.getText().toString();
+                String nickname = nicknameEditText.getText().toString();
 
                 // 세션 매니저를 사용하여 사용자 ID 및 비밀번호 가져오기
                 String userID = sessionManager.getUserId();

@@ -24,9 +24,9 @@ import org.json.JSONObject;
 
 public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
-    private EditText editTextContent;
-    private TextView textViewSellerID, textViewProductName;
-    private RatingBar ratingBarProductScore;
+    private EditText contentEditText;
+    private TextView brandNameTextView, productNameTextView;
+    private RatingBar productScoreRatingBar;
     private Response.ErrorListener errorListener;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +39,18 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        textViewSellerID = findViewById(R.id.sellerID);
-        textViewProductName = findViewById(R.id.productName);
-        editTextContent = findViewById(R.id.editTextContent);
-        ratingBarProductScore = findViewById(R.id.productScore);
+        brandNameTextView = findViewById(R.id.sellerID);
+        productNameTextView = findViewById(R.id.productName);
+        contentEditText = findViewById(R.id.editTextContent);
+        productScoreRatingBar = findViewById(R.id.productScore);
 
         String orderID = intent.getStringExtra("orderID");
         String productID = intent.getStringExtra("productID");
-        textViewSellerID.setText(intent.getStringExtra("sellerID"));
-        textViewProductName.setText(intent.getStringExtra("productName"));
+        brandNameTextView.setText(intent.getStringExtra("sellerID"));
+        productNameTextView.setText(intent.getStringExtra("productName"));
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -59,14 +59,14 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_review_submit = (Button) findViewById(R.id.btn_review_submit);
-        btn_review_submit.setOnClickListener(new View.OnClickListener() {
+        Button btnReviewSubmit = (Button) findViewById(R.id.btn_review_submit);
+        btnReviewSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String sellerID = textViewSellerID.getText().toString();
-                String content = editTextContent.getText().toString();
-                float rating = ratingBarProductScore.getRating();
+                String brandName = brandNameTextView.getText().toString();
+                String content = contentEditText.getText().toString();
+                float rating = productScoreRatingBar.getRating();
                 int convertedRating = (int) rating;
                 String productScore = String.valueOf(convertedRating);
 
@@ -74,7 +74,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
                     plusReview(
                             orderID,
-                            sellerID,
+                            brandName,
                             productID,
                             userID,
                             content,
@@ -113,7 +113,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusReview(String orderID, String sellerID, String productID, String userID, String content, String productScore) {
+    private void plusReview(String orderID, String brandName, String productID, String userID, String content, String productScore) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -151,7 +151,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
         };
 
         try {
-            ReviewPlusRequest reviewPlusRequest = new ReviewPlusRequest(orderID, sellerID, productID, userID,
+            ReviewPlusRequest reviewPlusRequest = new ReviewPlusRequest(orderID, brandName, productID, userID,
                     content, productScore, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Mypage_ReviewWriteActivity.this);
             queue.add(reviewPlusRequest);

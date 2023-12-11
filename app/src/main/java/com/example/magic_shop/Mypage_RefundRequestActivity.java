@@ -28,8 +28,8 @@ import org.json.JSONObject;
 public class Mypage_RefundRequestActivity extends AppCompatActivity {
 
     private EditText editTextContent;
-    private TextView brandNameTextView, textViewProductName;
-    private ImageView imageViewProductImage;
+    private TextView brandNameTextView, productNameTextView;
+    private ImageView productMainImage;
     private Response.ErrorListener errorListener;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +43,19 @@ public class Mypage_RefundRequestActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         brandNameTextView = findViewById(R.id.sellerID);
-        textViewProductName = findViewById(R.id.productName);
-        imageViewProductImage = findViewById(R.id.productImage);
+        productNameTextView = findViewById(R.id.productName);
+        productMainImage = findViewById(R.id.productImage);
         editTextContent = findViewById(R.id.editTextContent);
 
         String orderID = intent.getStringExtra("orderID");
         String productID = intent.getStringExtra("productID");
         brandNameTextView.setText(intent.getStringExtra("sellerID"));
-        textViewProductName.setText(intent.getStringExtra("productName"));
+        productNameTextView.setText(intent.getStringExtra("productName"));
         String productImage = intent.getStringExtra("productImage");
 
         byte[] decodedString = Base64.decode(productImage, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        imageViewProductImage.setImageBitmap(decodedByte);
+        productMainImage.setImageBitmap(decodedByte);
 
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -116,7 +116,7 @@ public class Mypage_RefundRequestActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusRefund(String orderID, String sellerID, String productID, String userID, String content) {
+    private void plusRefund(String orderID, String brandName, String productID, String userID, String content) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -154,7 +154,7 @@ public class Mypage_RefundRequestActivity extends AppCompatActivity {
         };
 
         try {
-            RefundRequest refundRequest = new RefundRequest(orderID, sellerID, productID, userID,
+            RefundRequest refundRequest = new RefundRequest(orderID, brandName, productID, userID,
                     content, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(Mypage_RefundRequestActivity.this);
             queue.add(refundRequest);

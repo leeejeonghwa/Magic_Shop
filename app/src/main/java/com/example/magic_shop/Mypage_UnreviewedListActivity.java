@@ -157,10 +157,10 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
                 String productID = productsObject.getString("productID");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
-                String sellerID = productsObject.getString("seller_id");
+                String brandName = productsObject.getString("seller_id");
 
                 // OrderItem 생성 및 목록에 추가
-                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productImage, productPrice, sellerID);
+                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productImage, productPrice, brandName);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -179,9 +179,9 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
         String productName;
         String productImage;
         int productPrice;
-        String sellerID;
+        String brandName;
 
-        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, String productImage, int productPrice, String sellerID) {
+        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, String productImage, int productPrice, String brandName) {
             this.orderID = orderID;
             this.paymentDate = paymentDate;
             this.totalAmount = totalAmount;
@@ -189,7 +189,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
             this.productName = productName;
             this.productImage = productImage;
             this.productPrice = productPrice;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
         }
     }
 
@@ -252,7 +252,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
                             OrderItem orderItem = orderList.get(position);
                             Intent intent = new Intent(context, Mypage_ReviewWriteActivity.class);
                             intent.putExtra("orderID", String.valueOf(orderItem.orderID));
-                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("sellerID", orderItem.brandName);
                             intent.putExtra("productID", orderItem.productID);
                             intent.putExtra("productName", orderItem.productName);
                             context.startActivity(intent);
@@ -265,7 +265,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
                 productPriceTextView.setText((orderItem.productPrice) + "원");
-                productBrandTextView.setText(orderItem.sellerID);
+                productBrandTextView.setText(orderItem.brandName);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);

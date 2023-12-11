@@ -13,7 +13,7 @@ public class Seller_ProductRegisterRequest extends StringRequest {
 
     private final Map<String, String> map;
 
-    public Seller_ProductRegisterRequest(String productName, int categoryId, int detailedCategory, int productPrice, String allowance, String sellerId, String mainImage, String detailedImage1, String detailedImage2, String detailedImage3, String sizeImage, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+    public Seller_ProductRegisterRequest(String productName, int categoryId, int detailedCategory, int productPrice, String allowance, String brandName, String mainImage, String detailedImage1, String detailedImage2, String detailedImage3, String sizeImage, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(Method.POST, URL, listener, errorListener);
 
         map = new HashMap<>();
@@ -22,7 +22,7 @@ public class Seller_ProductRegisterRequest extends StringRequest {
         map.put("detailedCategoryId", String.valueOf(detailedCategory));
         map.put("productPrice", String.valueOf(productPrice));
         map.put("allowance", allowance);
-        map.put("sellerId", sellerId);
+        map.put("sellerId", brandName);
 
         // 여기에 이미지를 Base64로 인코딩하여 추가합니다.
         map.put("mainImage", mainImage);

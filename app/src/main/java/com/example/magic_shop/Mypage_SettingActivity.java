@@ -27,22 +27,12 @@ public class Mypage_SettingActivity extends AppCompatActivity {
 
         String userID = sessionManager.getUserId();
         String userPassword = sessionManager.getUserPassword();
-        String userName = sessionManager.getUserName();
-        String userNickname = sessionManager.getUserNickname();
-        String userType = sessionManager.getUserType();
+//        String userName = sessionManager.getUserName();
+//        String userNickname = sessionManager.getUserNickname();
+//        String userType = sessionManager.getUserType();
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -51,8 +41,18 @@ public class Mypage_SettingActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_user_info = (Button) findViewById(R.id.btn_user_info);
-        btn_user_info.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnUserInfo = (Button) findViewById(R.id.btn_user_info);
+        btnUserInfo.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -61,8 +61,8 @@ public class Mypage_SettingActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_change_password = (Button) findViewById(R.id.btn_change_password);
-        btn_change_password.setOnClickListener(new View.OnClickListener() {
+        Button btnChangePassword = (Button) findViewById(R.id.btn_change_password);
+        btnChangePassword.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -71,8 +71,8 @@ public class Mypage_SettingActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_delivery_address_manage = (Button) findViewById(R.id.btn_delivery_address_manage);
-        btn_delivery_address_manage.setOnClickListener(new View.OnClickListener() {
+        Button btnDeliveryAddressManage = (Button) findViewById(R.id.btn_delivery_address_manage);
+        btnDeliveryAddressManage.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -81,8 +81,8 @@ public class Mypage_SettingActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_refund_account_manage = (Button) findViewById(R.id.btn_refund_account_manage);
-        btn_refund_account_manage.setOnClickListener(new View.OnClickListener() {
+        Button btnRefundAccountManage = (Button) findViewById(R.id.btn_refund_account_manage);
+        btnRefundAccountManage.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
