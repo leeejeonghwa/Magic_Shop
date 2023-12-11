@@ -86,10 +86,6 @@ public class ReviseRequestManager {
         this.userId = userID;
     }
 
-    public boolean isManager() {
-        return isManager;
-    }
-
     public void setManager(boolean manager) {
         isManager = manager;
     }

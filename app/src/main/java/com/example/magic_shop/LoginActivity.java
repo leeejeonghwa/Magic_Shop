@@ -15,14 +15,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id, et_pass;
-    private Button btn_login, btn_register, btn_back;
-
-    private Button btn_manage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +26,10 @@ public class LoginActivity extends AppCompatActivity {
 
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
-        btn_login = findViewById(R.id.btn_login);
-        btn_register = findViewById(R.id.btn_register);
-        btn_back = findViewById(R.id.btn_back);
-        btn_manage = findViewById(R.id.manage_btn);
+        Button btn_login = findViewById(R.id.btn_login);
+        Button btn_register = findViewById(R.id.btn_register);
+        Button btn_back = findViewById(R.id.btn_back);
+        Button btn_manage = findViewById(R.id.manage_btn);
 
         btn_manage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +104,6 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                             } else { // 로그인에 실패한 경우
                                 Toast.makeText(getApplicationContext(),"로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-                                return;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

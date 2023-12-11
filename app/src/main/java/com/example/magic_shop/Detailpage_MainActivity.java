@@ -7,33 +7,20 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.example.magic_shop.ProductDetailedImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-
 public class Detailpage_MainActivity extends AppCompatActivity {
 
-    private Button btnBuy;
-    private Button btnReview;
-    private Button btnSize;
-    private Button btnAsk;
-    private Button btnHome;
-    private Button btnSearch;
-    private Button btnBag;
-    private Button btnBack;
     private ImageView mainImage;
     private ImageView detailedImage1;
     private ImageView detailedImage2;
@@ -80,13 +67,14 @@ public class Detailpage_MainActivity extends AppCompatActivity {
         }
 
 
-        btnBuy = findViewById(R.id.btn_buy);btnReview = findViewById(R.id.reviewBtn);
-        btnSize = findViewById(R.id.sizeBtn);
-        btnAsk = findViewById(R.id.askBtn);
-        btnHome = findViewById(R.id.home_btn);
-        btnSearch = findViewById(R.id.search_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnBack = findViewById(R.id.back_btn);
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnReview = findViewById(R.id.reviewBtn);
+        Button btnSize = findViewById(R.id.sizeBtn);
+        Button btnAsk = findViewById(R.id.askBtn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnBack = findViewById(R.id.back_btn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);

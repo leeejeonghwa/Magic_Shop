@@ -40,8 +40,6 @@ public class Seller_ProductDeleteActivity extends AppCompatActivity {
 
     public Context context;
 
-    private String userID;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seller_activity_product_delete);
@@ -61,7 +59,7 @@ public class Seller_ProductDeleteActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        userID = sessionManager.getUserId();
+        String userID = sessionManager.getUserId();
 
         registeredProductManager = RegisteredProductManager.getInstance(this);
         registeredProductManager.setManager(false);
@@ -167,7 +165,6 @@ public class Seller_ProductDeleteActivity extends AppCompatActivity {
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productColorTextView;
-            private final Button productDeleteButton;
 
             private final ImageView productMainImageView;
 
@@ -180,7 +177,7 @@ public class Seller_ProductDeleteActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productColorTextView = itemView.findViewById(R.id.productQuantity);
-                productDeleteButton = itemView.findViewById(R.id.btn_product_delete);
+                Button productDeleteButton = itemView.findViewById(R.id.btn_product_delete);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
                 productDeleteButton.setOnClickListener(new View.OnClickListener() {

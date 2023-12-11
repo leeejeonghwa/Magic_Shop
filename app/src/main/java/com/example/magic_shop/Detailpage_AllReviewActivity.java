@@ -34,17 +34,11 @@ import java.util.List;
 
 public class Detailpage_AllReviewActivity extends AppCompatActivity {
 
-    private Button btnBack;
-    private Button btnBag;
-    private Button btnBuy;
-    private Button btnHome;
-    private Button btnSearch;
     private String productID;
     private String productName;
     private String productPrice;
     private String sellerId;
 
-    private List<ReviewedItem> reviewedList;
     private ReviewedAdapter reviewedAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +53,11 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
             productPrice = intent.getStringExtra("product_price");
         }
 
-        btnBack = findViewById(R.id.back_btn);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
-        btnBuy = findViewById(R.id.btn_buy);
+        Button btnBack = findViewById(R.id.back_btn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
+        Button btnBuy = findViewById(R.id.btn_buy);
 
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +113,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        reviewedList = new ArrayList<>();
+        List<ReviewedItem> reviewedList = new ArrayList<>();
         reviewedAdapter = new ReviewedAdapter(reviewedList, this);
         recyclerView.setAdapter(reviewedAdapter);
 
@@ -127,7 +121,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
 
 
     }
-    public void getReviewedData(String productId, Context context) {
+    public void getReviewedData(String productID, Context context) {
         // Volley 요청 큐 생성
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -221,11 +215,9 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
 
     public class ReviewedAdapter extends RecyclerView.Adapter<ReviewedAdapter.ReviewedViewHolder> {
         private List<ReviewedItem> reviewedList;
-        private Context context;
 
         ReviewedAdapter(List<ReviewedItem> reviewedList, Context context) {
             this.reviewedList = reviewedList;
-            this.context = context;
         }
 
         @NonNull

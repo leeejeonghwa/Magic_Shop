@@ -9,17 +9,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
+
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,12 +21,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Seller_AnswerWriteActivity extends AppCompatActivity {
 
-    private TextView textViewSubject, textViewContent;
     private EditText editTextAnswerContent;
     private Response.ErrorListener errorListener;
 
@@ -60,8 +49,8 @@ public class Seller_AnswerWriteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        textViewSubject = findViewById(R.id.textViewSubject);
-        textViewContent = findViewById(R.id.textViewContent);
+        TextView textViewSubject = findViewById(R.id.textViewSubject);
+        TextView textViewContent = findViewById(R.id.textViewContent);
 
         String questionID = intent.getStringExtra("questionID");
         textViewSubject.setText(intent.getStringExtra("subject"));
@@ -86,7 +75,7 @@ public class Seller_AnswerWriteActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert();
                 }
             }
         });
@@ -152,9 +141,9 @@ public class Seller_AnswerWriteActivity extends AppCompatActivity {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(Seller_AnswerWriteActivity.this);
-        builder.setMessage(message)
+        builder.setMessage("모든 필드를 채워주세요.")
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();

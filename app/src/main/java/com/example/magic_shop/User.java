@@ -12,12 +12,12 @@ public class User {
         this.userType = userType;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     public String getUserID() {
@@ -35,4 +35,5 @@ public class User {
     public void setUserType(String userType) {
         this.userType = userType;
     }
+
 }

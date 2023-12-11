@@ -38,10 +38,10 @@
         private TextView TextViewAddressName, TextViewRecipient, TextViewCallNumber, TextViewAddress,
                 TextViewAddressDetail, TextViewDeliveryRequest;
 
-        private CheckBox checkBoxCreditCard, checkBoxAccount, checkBoxBankDeposit;
+        private CheckBox checkBoxAccount;
+        private CheckBox checkBoxBankDeposit;
         private String selectedPaymentMethod; // 사용자가 선택한 결제 수단을 저장하는 변수
         private Response.ErrorListener errorListener;
-        private TextView totalPriceTextView;
         private int totalAmount; // totalAmount 변수를 선언
 
         private PurchaseAdapter adapter; // 어댑터 변수를 여기에 선언
@@ -50,7 +50,7 @@
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.order_form);
-            totalPriceTextView = findViewById(R.id.purchase_all_cnt);
+            TextView totalPriceTextView = findViewById(R.id.purchase_all_cnt);
 
             SessionManager sessionManager = new SessionManager(getApplicationContext());
             String userID = sessionManager.getUserId();
@@ -63,7 +63,7 @@
             });
 
             // 2. 체크박스 초기화
-            checkBoxCreditCard = findViewById(R.id.check_card);
+            CheckBox checkBoxCreditCard = findViewById(R.id.check_card);
             checkBoxAccount = findViewById(R.id.check_account);
             checkBoxBankDeposit = findViewById(R.id.check_deposit);
 
@@ -341,12 +341,10 @@
         public class PurchaseAdapter extends RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder> {
             private List<PurchaseItem> purchaseList;
             private Context context;
-            private TextView checkedCountTextView;
 
             PurchaseAdapter(List<PurchaseItem> purchaseList, Context context, TextView checkedCountTextView) {
                 this.purchaseList = purchaseList;
                 this.context = context;
-                this.checkedCountTextView = checkedCountTextView;
             }
 
 
