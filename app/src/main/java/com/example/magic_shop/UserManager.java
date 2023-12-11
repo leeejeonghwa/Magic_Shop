@@ -38,7 +38,7 @@ public class UserManager {
         return instance;
     }
 
-    public List<User> getproductList() {
+    public List<User> getProductList() {
         return userList;
     }
 

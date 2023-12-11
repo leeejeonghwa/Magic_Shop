@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class GetOrderReviewedDataRequest extends StringRequest {
 
-    private static final String URL = "http://210.117.175.207:8976/Product_All_reviewed_details.php";
+    private static final String URL = "http://210.117.175.207:8976/Order_reviewed_details.php";
     private Map<String, String> params;
 
     public GetOrderReviewedDataRequest(String userID, Response.Listener<String> listener, Response.ErrorListener errorListener) {

@@ -4,18 +4,16 @@ import android.graphics.Bitmap;
 
 public class ProductItem {
 
-    String id;
+    String productID;
     String date;
     String productName;
     String productSize;
     String productColor;
     Bitmap mainImage;
-
     String productPrice;
-
     String brandName;
 
-    public ProductItem(String date, String productName, String productSize, String productColor , Bitmap mainImage) {
+    public ProductItem(String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName) {
         this.date = date;
         this.productName = productName;
         this.productSize = productSize;
@@ -23,8 +21,8 @@ public class ProductItem {
         this.mainImage = mainImage;
     }
 
-    public ProductItem(String id,String date, String productName, String productSize, String productColor , Bitmap mainImage) {
-        this.id = id;
+    public ProductItem(String productID, String date, String productName, String productSize, String productColor , Bitmap mainImage) {
+        this.productID = productID;
         this.date = date;
         this.productName = productName;
         this.productSize = productSize;
@@ -32,8 +30,8 @@ public class ProductItem {
         this.mainImage = mainImage;
     }
 
-    public ProductItem(String id,String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName) {
-        this.id = id;
+    public ProductItem(String productID, String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName) {
+        this.productID = productID;
         this.date = date;
         this.productName = productName;
         this.productSize = productSize;
@@ -42,8 +40,8 @@ public class ProductItem {
         this.brandName = brandName;
     }
 
-    public ProductItem(String id, String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName, String productPrice) {
-        this.id = id;
+    public ProductItem(String productID, String date, String productName, String productSize, String productColor , Bitmap mainImage, String brandName, String productPrice) {
+        this.productID = productID;
         this.date = date;
         this.productName = productName;
         this.productSize = productSize;

@@ -77,9 +77,9 @@ public class CategorySelectionActivity extends AppCompatActivity {
                 startActivity(intent); // Intent를 사용하여 SecondActivity 시작
             }
         });
-        Button searchButton = findViewById(R.id.search_window_id);
+        Button btnSearch = findViewById(R.id.search_window_id);
         // search_id 버튼에 클릭 리스너 추가
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
@@ -118,7 +118,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
         btnMypage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MyPageMainActivity.class);
                 startActivity(intent);
             }
         });

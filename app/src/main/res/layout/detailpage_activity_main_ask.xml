@@ -332,7 +332,7 @@
                 android:background="@color/white" />
 
             <Button
-                android:id="@+id/askProductBtn"
+                android:id="@+id/btnProductAsk"
                 android:layout_width="match_parent"
                 android:layout_height="82dp"
                 android:layout_above="@id/view8"
@@ -343,7 +343,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/askOrdertBtn"
+                android:id="@+id/btnOrderAsk"
                 android:layout_width="match_parent"
                 android:layout_height="82dp"
                 android:layout_above="@id/view8"

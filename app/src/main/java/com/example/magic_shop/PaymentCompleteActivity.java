@@ -28,7 +28,7 @@ public class PaymentCompleteActivity extends AppCompatActivity {
         btnOrderDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Mypage_OrderListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MyPageOrderListActivity.class);
                 startActivity(intent);
             }
         });
