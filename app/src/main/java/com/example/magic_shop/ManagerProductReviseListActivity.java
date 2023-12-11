@@ -46,8 +46,8 @@ public class ManagerProductReviseListActivity extends AppCompatActivity {
         getWindow().setWindowAnimations(0);
 
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -163,11 +163,10 @@ public class ManagerProductReviseListActivity extends AppCompatActivity {
 
         public class ProductReviseViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
-            private final TextView sellerNameTextView;
+            private final TextView brandNameTextView;
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productColorTextView;
-            private final Button productReviseButton;
 
             private final ImageView productMainImageView;
             private final Context context;
@@ -176,11 +175,11 @@ public class ManagerProductReviseListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 dateTextView = itemView.findViewById(R.id.date);
-                sellerNameTextView = itemView.findViewById(R.id.sellerName);
+                brandNameTextView = itemView.findViewById(R.id.sellerName);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productColorTextView = itemView.findViewById(R.id.productQuantity);
-                productReviseButton = itemView.findViewById(R.id.btn_product_revise_manager);
+                Button productReviseButton = itemView.findViewById(R.id.btn_product_revise_manager);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
                 productReviseButton.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +206,7 @@ public class ManagerProductReviseListActivity extends AppCompatActivity {
 
             void bind(ProductItem productUnregisteredItem) {
                 dateTextView.setText(productUnregisteredItem.date);
-                sellerNameTextView.setText(productUnregisteredItem.brandName);
+                brandNameTextView.setText(productUnregisteredItem.brandName);
                 productNameTextView.setText(productUnregisteredItem.productName);
                 productSizeTextView.setText(productUnregisteredItem.productSize);
                 productColorTextView.setText(productUnregisteredItem.productColor);

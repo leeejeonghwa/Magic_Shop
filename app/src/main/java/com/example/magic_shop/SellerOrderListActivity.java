@@ -62,18 +62,18 @@ public class SellerOrderListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         // 사용자 아이디 (실제 사용자 아이디로 변경)
-        String sellerID = sessionManager.getUserID();
+        String brandName = sessionManager.getUserID();
 
         // 주문 데이터 가져오기
-        getOrderData(sellerID, this);
+        getOrderData(brandName, this);
     }
 
-    public void getOrderData(String sellerID, Context context) {
+    public void getOrderData(String brandName, Context context) {
         // Volley 요청 큐 생성
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // 주문 데이터 요청
-        GetSellerOrderDataRequest request = new GetSellerOrderDataRequest(sellerID,
+        GetSellerOrderDataRequest request = new GetSellerOrderDataRequest(brandName,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -30,18 +30,17 @@ import org.json.JSONObject;
 
 public class DetailPageProductInquiryActivity extends AppCompatActivity {
 
-    private Button btnBack, btnEnroll, btnCancellation, btnBag, btnHome, btnSearch;
     private EditText subjectEditText, contentEditText;
     private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
     private String productID;
     private String productName;
     private String productPrice;
+    private String brandName;
     private String productMainImage;
     private ImageView productMainImageView;
     private ProductDetailedImageLoader productDetailedImageLoader;
     private TextView productNameTextView, brandNameTextView;
-    private String brandName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +48,12 @@ public class DetailPageProductInquiryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_inquiry_page);
 
-        btnBack = findViewById(R.id.back_btn);
-        btnEnroll = findViewById(R.id.btn_enroll);
-        btnCancellation = findViewById(R.id.btn_cancellation);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Button btnBack = findViewById(R.id.back_btn);
+        Button btnEnroll = findViewById(R.id.btn_enroll);
+        Button btnCancellation = findViewById(R.id.btn_cancellation);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
         btnBack.setVisibility(View.VISIBLE);
         btnEnroll.setVisibility(View.VISIBLE);
@@ -221,7 +220,7 @@ public class DetailPageProductInquiryActivity extends AppCompatActivity {
     private void handleNonJsonResponse (String response){
         try {
             JSONObject jsonResponse = new JSONObject(response);
-            String sellerID = jsonResponse.getString("sellerID");
+            String brandName = jsonResponse.getString("sellerID");
             String productID = jsonResponse.getString("productID");
             String userID = jsonResponse.getString("userID");
             String type = jsonResponse.getString("type");
@@ -235,8 +234,7 @@ public class DetailPageProductInquiryActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusQuestion (String brandName, String productID, String userID, String
-    type, String subject, String content){
+    private void plusQuestion(String brandName, String productID, String userID, String type, String subject, String content) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override

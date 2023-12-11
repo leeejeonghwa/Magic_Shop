@@ -1,8 +1,6 @@
 package com.example.magic_shop;
 
 import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,7 +26,7 @@ public class CategoryProductListActivity extends AppCompatActivity {
 
     private ProductAdapter adapter;
 
-    private int categoryTexts[] = {
+    private final int[] categoryTexts = {
             R.string.category_top,
             R.string.category_outer,
             R.string.category_pants,
@@ -38,7 +35,7 @@ public class CategoryProductListActivity extends AppCompatActivity {
             R.string.category_bag,
     };
 
-    private int detailedCategoryTexts[][] = {
+    private final int[][] detailedCategoryTexts = {
             {R.string.category_top_1, R.string.category_top_2, R.string.category_top_3,R.string.category_top_4, R.string.category_top_5, R.string.category_top_6, R.string.category_top_7, R.string.category_top_8, R.string.category_top_9, R.string.category_top_10, R.string.category_top_11, R.string.category_top_12},
             {R.string.category_outer_1, R.string.category_outer_2, R.string.category_outer_3, R.string.category_outer_4, R.string.category_outer_5, R.string.category_outer_6, R.string.category_outer_7, R.string.category_outer_8, R.string.category_outer_9, R.string.category_outer_10, R.string.category_outer_11, R.string.category_outer_12},
             {R.string.category_pants_1, R.string.category_pants_2, R.string.category_pants_3, R.string.category_pants_4, R.string.category_pants_5, R.string.category_pants_6, R.string.category_pants_7, R.string.category_pants_8, R.string.category_pants_9, R.string.category_pants_10, R.string.category_pants_11, R.string.category_pants_12},
@@ -47,7 +44,7 @@ public class CategoryProductListActivity extends AppCompatActivity {
             {R.string.category_bag_1, R.string.category_bag_2, R.string.category_bag_3, R.string.category_bag_4, R.string.category_bag_5, R.string.category_bag_6, R.string.category_bag_7, R.string.category_bag_8, R.string.category_bag_9, R.string.category_bag_10, R.string.category_bag_11, R.string.category_bag_12}
     };
 
-    private int detailedCategoryBtns[] = {
+    private final int []detailedCategoryBtns = {
             R.id.button1,
             R.id.button2,
             R.id.button3,

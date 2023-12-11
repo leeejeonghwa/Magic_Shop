@@ -19,16 +19,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DetailPageMainOptionSelectActivity extends AppCompatActivity {
-    private Button btnOption;
     private Button btnColor1;
     private Button btnColor2;
     private Button btnSizeS;
     private Button btnSizeM;
     private Button btnSizeL;
-    private Button btnBack;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
+
     private String productID;
     private String color;
 
@@ -38,7 +34,7 @@ public class DetailPageMainOptionSelectActivity extends AppCompatActivity {
 
     private String brandName;
     private String productPrice;
-    private String image, sellerId;
+    private String image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,18 +55,18 @@ public class DetailPageMainOptionSelectActivity extends AppCompatActivity {
         loadOptions(productID);
 
 
-        btnOption = findViewById(R.id.btn_option);
+        Button btnOption = findViewById(R.id.btn_option);
         btnColor1 = findViewById(R.id.btn_color1);
         btnColor2 = findViewById(R.id.btn_color2);
         btnSizeS = findViewById(R.id.btn_size_S);
         btnSizeM = findViewById(R.id.btn_size_M);
         btnSizeL = findViewById(R.id.btn_size_L);
-        btnBack = findViewById(R.id.back_btn);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
-        productNameTextView = findViewById(R.id.text_productName);
-        productPriceTextView = findViewById(R.id.text_productPrice);
+//        btnBack = findViewById(R.id.back_btn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
+//        productNameTextView = findViewById(R.id.text_productName);
+//        productPriceTextView = findViewById(R.id.text_productPrice);
 
 
 
@@ -133,7 +129,7 @@ public class DetailPageMainOptionSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DetailPageMainActivity.class);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_name",productName);
                 intent.putExtra("product_price",productPrice);
                 startActivity(intent);

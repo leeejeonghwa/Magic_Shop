@@ -23,7 +23,6 @@ public class SellerProductRegisterRequestListActivity extends AppCompatActivity 
 
 
     private ProductRegisterRequestManager productRegisterRequestManager;
-    private String userID;
 
     public Context context;
 
@@ -41,7 +40,7 @@ public class SellerProductRegisterRequestListActivity extends AppCompatActivity 
         productRegisterRequestManager.setManager(false);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        userID = sessionManager.getUserID();
+        String userID = sessionManager.getUserID();
 
 
 

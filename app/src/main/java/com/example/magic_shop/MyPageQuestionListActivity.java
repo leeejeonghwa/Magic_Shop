@@ -48,13 +48,13 @@ public class MyPageQuestionListActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             String questionID = jsonObject.getString(("questionID"));
-            String sellerID = jsonObject.getString(("sellerID"));
+            String brandName = jsonObject.getString(("sellerID"));
             String productID = jsonObject.getString(("productID"));
             String subject = jsonObject.getString(("subject"));
             String content = jsonObject.getString(("content"));
             String userID = jsonObject.getString(("userID"));
 
-            QuestionItem questionItem = new QuestionItem(questionID, sellerID, productID, subject, content, userID);
+            QuestionItem questionItem = new QuestionItem(questionID, brandName, productID, subject, content, userID);
 
             questionList.add(questionItem);
         }
@@ -127,15 +127,15 @@ public class MyPageQuestionListActivity extends AppCompatActivity {
 
     public class QuestionItem {
         String questionID;
-        String sellerID;
+        String brandName;
         String productID;
         String subject;
         String content;
         String userID;
 
-        public QuestionItem(String questionID, String sellerID, String productID, String subject, String content, String userID) {
+        public QuestionItem(String questionID, String brandName, String productID, String subject, String content, String userID) {
             this.questionID = questionID;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productID = productID;
             this.subject = subject;
             this.content = content;
@@ -193,7 +193,7 @@ public class MyPageQuestionListActivity extends AppCompatActivity {
             }
 
             void bind(QuestionItem questionItem) {
-                sellerIDTextView.setText(questionItem.sellerID);
+                sellerIDTextView.setText(questionItem.brandName);
                 productIDTextView.setText(questionItem.productID);
                 subjectTextView.setText(questionItem.subject);
                 contentTextView.setText(questionItem.content);

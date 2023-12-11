@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
-import android.widget.ImageView;
 
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
@@ -86,10 +85,6 @@ public class ProductRegisterRequestManager {
         this.userId = userID;
     }
 
-    public boolean isManager() {
-        return isManager;
-    }
-
     public void setManager(boolean manager) {
         isManager = manager;
     }
@@ -106,12 +101,12 @@ public class ProductRegisterRequestManager {
             try {
                 JSONObject productObject = jsonArray.getJSONObject(i);
 
-                String id = productObject.getString("seller_id");
+                String brandName = productObject.getString("seller_id");
 
-                String product_id = productObject.getString("id");
+                String productID = productObject.getString("id");
 
-                if (!isManager && id.equals(userId)) {
-                    Log.d("로그인한 유저의 상품", id);
+                if (!isManager && brandName.equals(userId)) {
+                    Log.d("로그인한 유저의 상품", brandName);
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
@@ -164,16 +159,16 @@ public class ProductRegisterRequestManager {
 
                     // 여기서 mainImageBytes를 사용하여 이미지 처리를 수행할 수 있음
 
-                    Log.d("로그인한 유저의 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
+                    Log.d("로그인한 유저의 상품", "id: " + brandName + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(product_id, date, productName, productSize, productColor, mainImage, id);
+                    ProductItem item = new ProductItem(productID, date, productName, productSize, productColor, mainImage, brandName);
                     productRegisterRequestList.add(item);
                     String numStr = Integer.toString(productRegisterRequestList.size());
                     Log.d("삽입된 상품 수", numStr);
 
 
                 } else if (isManager) {
-                    Log.d("관리자의 상품리스트", product_id);
+                    Log.d("관리자의 상품리스트", productID);
                     String date = productObject.getString("created_at");
                     String productName = productObject.getString("product_name");
                     String productSizeS = productObject.getString("size_s");
@@ -226,9 +221,9 @@ public class ProductRegisterRequestManager {
 
                     // 여기서 mainImageBytes를 사용하여 이미지 처리를 수행할 수 있음
 
-                    Log.d("관리자 상품", "id: " + id + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
+                    Log.d("관리자 상품", "id: " + brandName + ", date: " + date + ", name: " + productName + ", size: " + productSize + ", color: " + productColor);
 
-                    ProductItem item = new ProductItem(product_id, date, productName, productSize, productColor, mainImage, id);
+                    ProductItem item = new ProductItem(productID, date, productName, productSize, productColor, mainImage, brandName);
                     productRegisterRequestList.add(item);
                     String numStr = Integer.toString(productRegisterRequestList.size());
                     Log.d("삽입된 상품 수", numStr);

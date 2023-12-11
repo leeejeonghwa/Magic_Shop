@@ -63,8 +63,6 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
 
     private CheckBox[] sizeCheckBox;
 
-    private String userID;
-
     private Button submitBtn;
 
     private Response.ErrorListener productErrorListener;
@@ -96,7 +94,7 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
             R.id.radioButton10
     };
 
-    private int subCatRadio_name[][] = {
+    private int[][] subCatRadio_name = {
             {R.string.category_top_3,R.string.category_top_4, R.string.category_top_5, R.string.category_top_6, R.string.category_top_7, R.string.category_top_8, R.string.category_top_9, R.string.category_top_10, R.string.category_top_11, R.string.category_top_12},
             {R.string.category_outer_3, R.string.category_outer_4, R.string.category_outer_5, R.string.category_outer_6, R.string.category_outer_7, R.string.category_outer_8, R.string.category_outer_9, R.string.category_outer_10, R.string.category_outer_11, R.string.category_outer_12},
             { R.string.category_pants_3, R.string.category_pants_4, R.string.category_pants_5, R.string.category_pants_6, R.string.category_pants_7, R.string.category_pants_8, R.string.category_pants_9, R.string.category_pants_10, R.string.category_pants_11, R.string.category_pants_12},
@@ -137,8 +135,8 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
         // SessionManager를 통해 로그인 상태 확인
         init();
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        userID = sessionManager.getUserID();
-        product.setSellerId(userID);
+        String userID = sessionManager.getUserID();
+        product.setBrandName(userID);
 
 
         main_image_btn.setOnClickListener(new productImageOnClickListener());
@@ -446,7 +444,7 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
 
 
             if (!nullValidate(product) && nullToString()) {
-                productRegisterRequest(product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getSellerId(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage());
+                productRegisterRequest(product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getBrandName(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage());
 
 
                 //detailedProductRegisterRequest(product.getProductName(), product.getColor1(), product.getColor2(), product.getSizeS(), product.getSizeM(), product.getSizeL());
@@ -521,7 +519,7 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
             Log.d("사이즈이미지", "null");
             return true;
         }
-        else if (product.getSellerId() == null) {
+        else if (product.getBrandName() == null) {
             Log.d("셀러id", "null");
             return true;
         }
@@ -554,11 +552,7 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
             Log.d("사이즈l", "N");
         }
 
-        if (product.getSizeS() == null || product.getSizeM() == null || product.getSizeL() == null || product.getColor1().equals("") || product.getColor2().equals("")) {
-            return false;
-        }
-
-        return true;
+        return product.getSizeS() != null && product.getSizeM() != null && product.getSizeL() != null && !product.getColor1().equals("") && !product.getColor2().equals("");
     }
 
     private void detailedProductRegisterRequest(String productName, String color1, String color2, String size_s, String size_m, String size_l) {
@@ -643,7 +637,7 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
         };
 
         SellerProductRegisterRequest sellerProductRegisterRequest = new SellerProductRegisterRequest(
-                product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getSellerId(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage(), responseListener, productErrorListener);
+                product.getProductName(), product.getCategoryId(), product.getDetailedCategoryId(), product.getProductPrice(), product.getAllowance(), product.getBrandName(), product.getMainImage(), product.getDetailedImage1(), product.getDetailedImage2(), product.getDetailedImage3(), product.getSizeImage(), responseListener, productErrorListener);
         RequestQueue queue = Volley.newRequestQueue(SellerProductRegisterRequestActivity.this);
         queue.add(sellerProductRegisterRequest);
     }
@@ -659,20 +653,10 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
                 // 키에 기반하여 해당 필드를 업데이트합니다.
                 switch (key) {
                     case "[product_id]":
-
-                        break;
                     case "[color_id1]":
-
-                        break;
                     case "[color_id2]":
-
-                        break;
                     case "[size_s]":
-
-                        break;
                     case "[size_m]":
-
-                        break;
                     case "[size_l]":
 
                         break;
@@ -762,9 +746,8 @@ public class SellerProductRegisterRequestActivity extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
-        String imageToBase64 = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
-        return imageToBase64;
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
 

@@ -23,7 +23,6 @@ import org.json.JSONObject;
 
 public class SellerAnswerWriteActivity extends AppCompatActivity {
 
-    private TextView textViewSubject, textViewContent;
     private EditText editTextAnswerContent;
     private Response.ErrorListener errorListener;
 
@@ -50,8 +49,8 @@ public class SellerAnswerWriteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        textViewSubject = findViewById(R.id.textViewSubject);
-        textViewContent = findViewById(R.id.textViewContent);
+        TextView textViewSubject = findViewById(R.id.textViewSubject);
+        TextView textViewContent = findViewById(R.id.textViewContent);
 
         String questionID = intent.getStringExtra("questionID");
         textViewSubject.setText(intent.getStringExtra("subject"));
@@ -76,7 +75,7 @@ public class SellerAnswerWriteActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert();
                 }
             }
         });
@@ -142,9 +141,9 @@ public class SellerAnswerWriteActivity extends AppCompatActivity {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SellerAnswerWriteActivity.this);
-        builder.setMessage(message)
+        builder.setMessage("모든 필드를 채워주세요.")
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();

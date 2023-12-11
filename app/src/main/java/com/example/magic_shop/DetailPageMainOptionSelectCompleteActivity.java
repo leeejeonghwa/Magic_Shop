@@ -25,11 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class DetailPageMainOptionSelectCompleteActivity extends AppCompatActivity {
-    private Button btnBasket;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
-    private Button btnBuy;
+
     private String productPrice, productName ,brandName ,option;
     private String productImage;
 
@@ -85,11 +81,11 @@ public class DetailPageMainOptionSelectCompleteActivity extends AppCompatActivit
 
         }
 
-        btnBasket = findViewById(R.id.btn_basket);
-        btnBuy = findViewById(R.id.btn_buy);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Button btnBasket = findViewById(R.id.btn_basket);
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
 
         btnBag.setOnClickListener(new View.OnClickListener() {

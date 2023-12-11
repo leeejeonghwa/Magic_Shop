@@ -13,15 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CategorySelectionActivity extends AppCompatActivity {
 
 
-    private ImageView imageView;
-    private Button btnSearch;
-    private Button btnShoppingBasket;
-    private Button btnCatSearch;
-    private Button btnHome;
-    private Button btnMyPage;
-
-    private int selectedCategory = 0;
-
     public Context context;
 
     CategorySelectionManager categorySelectionManager;
@@ -86,7 +77,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
                 startActivity(intent); // Intent를 사용하여 SecondActivity 시작
             }
         });
-        btnSearch = findViewById(R.id.search_window_id);
+        Button btnSearch = findViewById(R.id.search_window_id);
         // search_id 버튼에 클릭 리스너 추가
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +87,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
             }
         });
 
-        btnShoppingBasket = findViewById(R.id.shopping_basket_id);
+        Button btnShoppingBasket = findViewById(R.id.shopping_basket_id);
         // search_id 버튼에 클릭 리스너 추가
         btnShoppingBasket.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,11 +98,10 @@ public class CategorySelectionActivity extends AppCompatActivity {
         });
 
         //카테고리 서치 버튼
-        btnCatSearch = findViewById(R.id.category_search_id);
         // search_id 버튼에 클릭 리스너 추가
 
         //홈버튼
-        btnHome = findViewById(R.id.go_home_id);
+        Button btnHome = findViewById(R.id.go_home_id);
         // search_id 버튼에 클릭 리스너 추가
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +113,9 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
 
         //마이페이지 버튼
-        btnMyPage = findViewById(R.id.mypage_id);
+        Button btnMypage = findViewById(R.id.mypage_id);
         // search_id 버튼에 클릭 리스너 추가
-        btnMyPage.setOnClickListener(new View.OnClickListener() {
+        btnMypage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MyPageMainActivity.class);
@@ -149,7 +139,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
 
             for (int i=0; i<6; i++) {
                 if (view.getId() == categoryButtonIds[i]) {
-                    imageView = findViewById(R.id.category_top_id);
+                    ImageView imageView = findViewById(R.id.category_top_id);
                     imageView.setImageResource(categoryImageSources[i]);
                     categorySelectionManager.changeCategory(i);
                     break;

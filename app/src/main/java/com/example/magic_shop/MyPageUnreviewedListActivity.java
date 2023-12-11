@@ -153,14 +153,14 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
                 JSONObject productsObject = orderObject.getJSONObject("products");
 
                 // 제품 세부 정보 추출
-                String productImage = productsObject.getString("main_image");
+                String productMainImage = productsObject.getString("main_image");
                 String productID = productsObject.getString("productID");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
-                String sellerID = productsObject.getString("seller_id");
+                String brandName = productsObject.getString("seller_id");
 
                 // OrderItem 생성 및 목록에 추가
-                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productImage, productPrice, sellerID);
+                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productMainImage, productPrice, brandName);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -177,19 +177,19 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
         int totalAmount;
         String productID;
         String productName;
-        String productImage;
+        String productMainImage;
         int productPrice;
-        String sellerID;
+        String brandName;
 
-        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, String productImage, int productPrice, String sellerID) {
+        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, String productMainImage, int productPrice, String brandName) {
             this.orderID = orderID;
             this.paymentDate = paymentDate;
             this.totalAmount = totalAmount;
             this.productID = productID;
             this.productName = productName;
-            this.productImage = productImage;
+            this.productMainImage = productMainImage;
             this.productPrice = productPrice;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
         }
     }
 
@@ -228,7 +228,7 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
         public class OrderViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
             private final TextView productNameTextView, productPriceTextView, productBrandTextView;
-            private final ImageView productImageView;
+            private final ImageView productMainImageView;
             private final Button reviewWriteButton;
             private final Context context;
 
@@ -239,7 +239,7 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.order_productName);
                 productPriceTextView = itemView.findViewById(R.id.order_productPrice);
                 productBrandTextView = itemView.findViewById(R.id.order_brandName);
-                productImageView= itemView.findViewById(R.id.productImage);
+                productMainImageView = itemView.findViewById(R.id.productImage);
                 reviewWriteButton = itemView.findViewById(R.id.btn_review_write);
 
                 reviewWriteButton.setOnClickListener(new View.OnClickListener() {
@@ -252,9 +252,11 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
                             OrderItem orderItem = orderList.get(position);
                             Intent intent = new Intent(context, MyPageReviewWriteActivity.class);
                             intent.putExtra("orderID", String.valueOf(orderItem.orderID));
-                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("sellerID", orderItem.brandName);
                             intent.putExtra("productID", orderItem.productID);
                             intent.putExtra("productName", orderItem.productName);
+                            intent.putExtra("productPrice", orderItem.productPrice);
+                            intent.putExtra("productMainImage", orderItem.productMainImage);
                             context.startActivity(intent);
                         }
                     }
@@ -264,12 +266,12 @@ public class MyPageUnreviewedListActivity extends AppCompatActivity {
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText((String.valueOf(orderItem.productPrice)) + "원");
-                productBrandTextView.setText(orderItem.sellerID);
+                productPriceTextView.setText((orderItem.productPrice) + "원");
+                productBrandTextView.setText(orderItem.brandName);
 
-                byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
+                byte[] decodedString = Base64.decode(orderItem.productMainImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                productImageView.setImageBitmap(decodedByte);
+                productMainImageView.setImageBitmap(decodedByte);
             }
         }
     }

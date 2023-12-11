@@ -45,8 +45,8 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -55,8 +55,8 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -65,8 +65,8 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_review_list = (Button) findViewById(R.id.btn_unreviewed_list);
-        btn_review_list.setOnClickListener(new View.OnClickListener() {
+        Button btnReviewList = (Button) findViewById(R.id.btn_unreviewed_list);
+        btnReviewList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -146,13 +146,13 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
                 JSONObject reviewedObject = jsonArray.getJSONObject(i);
 
                 String createdTime = reviewedObject.getString("createdTime");
-                String sellerID = reviewedObject.getString("sellerID");
+                String brandName = reviewedObject.getString("sellerID");
                 String productName = reviewedObject.getString("product_name");
                 String productImage = reviewedObject.getString("main_image");
                 String productScore = reviewedObject.getString("productScore");
                 String content = reviewedObject.getString("content");
 
-                ReviewedItem reviewedItem = new ReviewedItem(createdTime, sellerID, productName, productImage, productScore, content);
+                ReviewedItem reviewedItem = new ReviewedItem(createdTime, brandName, productName, productImage, productScore, content);
                 reviewedList.add(reviewedItem);
             }
         } catch (JSONException e) {
@@ -165,16 +165,16 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
 
     public class ReviewedItem {
         String createdTime;
-        String sellerID;
+        String brandName;
         String productName;
         String productImage;
         String productScore;
         String content;
 
-        public ReviewedItem(String createdTime, String sellerID, String productName, String productImage,
-                          String productScore, String content) {
+        public ReviewedItem(String createdTime, String brandName, String productName, String productImage,
+                            String productScore, String content) {
             this.createdTime = createdTime;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productName = productName;
             this.productImage = productImage;
             this.productScore = productScore;
@@ -216,7 +216,7 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
 
         public class ReviewedViewHolder extends RecyclerView.ViewHolder {
             private final TextView createdTimeTextView;
-            private final TextView sellerIDTextView;
+            private final TextView brandNameTextView;
             private final TextView productNameTextView;
             private final ImageView productImageView;
             private final TextView contentTextView;
@@ -227,7 +227,7 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 createdTimeTextView = itemView.findViewById(R.id.createdTime);
-                sellerIDTextView = itemView.findViewById(R.id.sellerID);
+                brandNameTextView = itemView.findViewById(R.id.sellerID);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productImageView = itemView.findViewById(R.id.productImage);
                 contentTextView = itemView.findViewById(R.id.content);
@@ -237,7 +237,7 @@ public class MyPageReviewedListActivity extends AppCompatActivity {
 
             void bind(ReviewedItem reviewedItem) {
                 createdTimeTextView.setText(reviewedItem.createdTime);
-                sellerIDTextView.setText(reviewedItem.sellerID);
+                brandNameTextView.setText(reviewedItem.brandName);
                 productNameTextView.setText(reviewedItem.productName);
                 productScoreRatingBar.setRating(Integer.valueOf(reviewedItem.productScore));
                 contentTextView.setText(reviewedItem.content);

@@ -23,8 +23,6 @@ public class SellerProductRegisterActivity extends AppCompatActivity {
 
     private RegisteredProductManager registeredProductManager;
 
-    private String userID;
-
     public Context context;
 
     private ProductAdapter adapter;
@@ -39,7 +37,7 @@ public class SellerProductRegisterActivity extends AppCompatActivity {
         registeredProductManager = RegisteredProductManager.getInstance(this);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        userID = sessionManager.getUserID();
+        String userID = sessionManager.getUserID();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {

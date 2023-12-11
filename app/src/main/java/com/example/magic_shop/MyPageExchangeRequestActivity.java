@@ -27,9 +27,9 @@ import org.json.JSONObject;
 
 public class MyPageExchangeRequestActivity extends AppCompatActivity {
 
-    private EditText editTextContent;
-    private TextView textViewSellerID, textViewProductName;
-    private ImageView imageViewProductImage;
+    private EditText contentEditText;
+    private TextView brandNameTextView, productNameTextView;
+    private ImageView productMainImage;
     private Response.ErrorListener errorListener;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +42,24 @@ public class MyPageExchangeRequestActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        textViewSellerID = findViewById(R.id.sellerID);
-        textViewProductName = findViewById(R.id.productName);
-        imageViewProductImage = findViewById(R.id.productImage);
-        editTextContent = findViewById(R.id.editTextContent);
+        brandNameTextView = findViewById(R.id.sellerID);
+        productNameTextView = findViewById(R.id.productName);
+        productMainImage = findViewById(R.id.productImage);
+        contentEditText = findViewById(R.id.editTextContent);
 
         String orderID = intent.getStringExtra("orderID");
         String productID = intent.getStringExtra("productID");
-        textViewSellerID.setText(intent.getStringExtra("sellerID"));
-        textViewProductName.setText(intent.getStringExtra("productName"));
+        brandNameTextView.setText(intent.getStringExtra("sellerID"));
+        productNameTextView.setText(intent.getStringExtra("productName"));
         String productImage = intent.getStringExtra("productImage");
 
         byte[] decodedString = Base64.decode(productImage, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        imageViewProductImage.setImageBitmap(decodedByte);
+        productMainImage.setImageBitmap(decodedByte);
 
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -67,19 +67,19 @@ public class MyPageExchangeRequestActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_exchange_request = (Button) findViewById(R.id.btn_exchange_request);
-        btn_exchange_request.setOnClickListener(new View.OnClickListener() {
+        Button btnExchangeRequest = (Button) findViewById(R.id.btn_exchange_request);
+        btnExchangeRequest.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String sellerID = textViewSellerID.getText().toString();
-                String content = editTextContent.getText().toString();
+                String brandName = brandNameTextView.getText().toString();
+                String content = contentEditText.getText().toString();
 
                 if (!content.isEmpty()) {
 
                     plusExchange(
                             orderID,
-                            sellerID,
+                            brandName,
                             productID,
                             userID,
                             content
@@ -89,7 +89,7 @@ public class MyPageExchangeRequestActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert();
                 }
             }
         });
@@ -116,7 +116,7 @@ public class MyPageExchangeRequestActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusExchange(String orderID, String sellerID, String productID, String userID, String content) {
+    private void plusExchange(String orderID, String brandName, String productID, String userID, String content) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -154,7 +154,7 @@ public class MyPageExchangeRequestActivity extends AppCompatActivity {
         };
 
         try {
-            ExchangeRequest exchangeRequest = new ExchangeRequest(orderID, sellerID, productID, userID,
+            ExchangeRequest exchangeRequest = new ExchangeRequest(orderID, brandName, productID, userID,
                     content, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(MyPageExchangeRequestActivity.this);
             queue.add(exchangeRequest);
@@ -165,9 +165,9 @@ public class MyPageExchangeRequestActivity extends AppCompatActivity {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MyPageExchangeRequestActivity.this);
-        builder.setMessage(message)
+        builder.setMessage("모든 필드를 채워주세요.")
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();

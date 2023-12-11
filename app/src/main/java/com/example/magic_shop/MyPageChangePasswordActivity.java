@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 public class MyPageChangePasswordActivity extends AppCompatActivity {
 
-    private EditText et_pass, et_newpass, et_newpass_check;
+    private EditText passEditText, newPassEditText, newPassCheckEditText;
     private SessionManager sessionManager;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,22 +27,22 @@ public class MyPageChangePasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_password);
         getWindow().setWindowAnimations(0);
 
-        et_pass = findViewById(R.id.editTextCurrentPassword);
-        et_newpass = findViewById(R.id.editTextNewPassword);
-        et_newpass_check = findViewById(R.id.editTextNewPasswordCheck);
+        passEditText = findViewById(R.id.editTextCurrentPassword);
+        newPassEditText = findViewById(R.id.editTextNewPassword);
+        newPassCheckEditText = findViewById(R.id.editTextNewPasswordCheck);
 
         sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
 
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -51,13 +51,13 @@ public class MyPageChangePasswordActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_change = findViewById(R.id.btn_change_password_confirm);
-        btn_change.setOnClickListener(new View.OnClickListener() {
+        Button btnChange = findViewById(R.id.btn_change_password_confirm);
+        btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String pass = et_pass.getText().toString();
-                String user_new_pass = et_newpass.getText().toString();
-                String user_new_pass_check = et_newpass_check.getText().toString();
+                String pass = passEditText.getText().toString();
+                String user_new_pass = newPassEditText.getText().toString();
+                String user_new_pass_check = newPassCheckEditText.getText().toString();
                 // 세션 매니저를 통해 현재 사용자 ID 및 비밀번호 가져오기
                 String userID = sessionManager.getUserID();
                 String userPassword = sessionManager.getUserPassword();

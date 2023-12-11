@@ -33,8 +33,6 @@ import java.util.List;
 
 public class ShoppingBasketActivity extends AppCompatActivity {
 
-    private SessionManager sessionManager;
-    private Button btnBack;
     private TextView checkedCountTextView;
 
     private List<BasketItem> basketList;
@@ -44,7 +42,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sessionManager = new SessionManager(getApplicationContext());
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
 
         if (sessionManager.isLoggedIn()) {
             setContentView(R.layout.shopping_basket);
@@ -52,7 +50,7 @@ public class ShoppingBasketActivity extends AppCompatActivity {
             checkedCountTextView = findViewById(R.id.purchase_cnt);
             TextView itemCountTextView = findViewById(R.id.all_cnt);
 
-            btnBack = findViewById(R.id.home_id);
+            Button btnBack = findViewById(R.id.home_id);
 
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override

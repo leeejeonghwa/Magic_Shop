@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,8 +36,6 @@ public class DetailPageMainAskActivity extends AppCompatActivity {
     private String productMainImage;
     private ImageView productMainImageView;
     private ProductDetailedImageLoader productDetailedImageLoader;
-    private static final int REQUEST_CODE_PRODUCT_INQUIRY = 1001;
-    private static final int REQUEST_CODE_ORDER_INQUIRY = 1002;
     private String productID;
 
     @Override
@@ -47,16 +44,39 @@ public class DetailPageMainAskActivity extends AppCompatActivity {
         setContentView(R.layout.detailpage_activity_main_ask);
         getWindow().setWindowAnimations(0);
 
-        btnBuy = findViewById(R.id.btn_buy);
-        btnReview = findViewById(R.id.reviewBtn);
-        btnProduct = findViewById(R.id.productBtn);
-        btnSize = findViewById(R.id.sizeBtn);
-        btnProductAsk = findViewById(R.id.btnProductAsk);
-        btnOrderAsk = findViewById(R.id.btnOrderAsk);
-        btnBack = findViewById(R.id.back_btn);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Intent intent = getIntent();
+        if (intent != null) {
+            productName = intent.getStringExtra("product_name");
+            brandName = intent.getStringExtra("seller_id");
+            productPrice = intent.getStringExtra("product_price");
+            productID = intent.getStringExtra("id");
+
+            // 받아온 상품명을 화면에 표시
+            TextView productTextView = findViewById(R.id.productText);
+            TextView priceTextView = findViewById(R.id.priceText);
+            TextView sellerTextView = findViewById(R.id.brandText);
+
+            productTextView.setText(this.productName);
+            priceTextView.setText(this.productPrice);
+            sellerTextView.setText(this.brandName);
+
+            productMainImageView = findViewById(R.id.mainImage);
+
+            productDetailedImageLoader = new ProductDetailedImageLoader(this);
+
+            loadDetailedImages(this.productName);
+        }
+
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnReview = findViewById(R.id.reviewBtn);
+        Button btnProduct = findViewById(R.id.productBtn);
+        Button btnSize = findViewById(R.id.sizeBtn);
+        Button btnProductAsk = findViewById(R.id.btnProductAsk);
+        Button btnOrderAsk = findViewById(R.id.btnOrderAsk);
+        Button btnBack = findViewById(R.id.back_btn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);
@@ -68,29 +88,6 @@ public class DetailPageMainAskActivity extends AppCompatActivity {
         btnBag.setVisibility(View.VISIBLE);
         btnHome.setVisibility(View.VISIBLE);
         btnSearch.setVisibility(View.VISIBLE);
-
-        Intent intent = getIntent();
-        if (intent != null) {
-            productName = intent.getStringExtra("product_name");
-            brandName = intent.getStringExtra("seller_id");
-            productPrice = intent.getStringExtra("product_price");
-            productID = intent.getStringExtra("id");
-
-            // 받아온 상품명을 화면에 표시
-            TextView productNameTextView = findViewById(R.id.productText);
-            TextView productPriceTextView = findViewById(R.id.priceText);
-            TextView sellerTextView = findViewById(R.id.brandText);
-
-            productNameTextView.setText(this.productName);
-            productPriceTextView.setText(this.productPrice);
-            sellerTextView.setText(this.brandName);
-
-            productMainImageView = findViewById(R.id.mainImage);
-
-            productDetailedImageLoader = new ProductDetailedImageLoader(this);
-
-            loadDetailedImages(this.productName);
-        }
 
         // btnBuy의 클릭 이벤트 처리
         btnBuy.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +134,6 @@ public class DetailPageMainAskActivity extends AppCompatActivity {
         });
 
         btnProductAsk.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DetailPageProductInquiryActivity.class);
@@ -145,7 +141,6 @@ public class DetailPageMainAskActivity extends AppCompatActivity {
                 intent.putExtra("product_name", productName);
                 intent.putExtra("seller_id", brandName);
                 intent.putExtra("productMainImage", productMainImage);
-
 
                startActivity(intent);
 

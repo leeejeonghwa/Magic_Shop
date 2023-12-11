@@ -77,8 +77,8 @@ public class MyPageDeliveryAddressManageActivity extends AppCompatActivity {
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserID();
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -87,8 +87,8 @@ public class MyPageDeliveryAddressManageActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -101,8 +101,8 @@ public class MyPageDeliveryAddressManageActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(MyPageDeliveryAddressManageActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        Button btn_delivery_address_plus = (Button) findViewById(R.id.btn_delivery_address_plus);
-        btn_delivery_address_plus.setOnClickListener(new View.OnClickListener() {
+        Button btnDeliveryAddressPlus = (Button) findViewById(R.id.btn_delivery_address_plus);
+        btnDeliveryAddressPlus.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

@@ -19,7 +19,6 @@ public class ProductItem {
         this.productSize = productSize;
         this.productColor = productColor;
         this.mainImage = mainImage;
-        this.brandName = brandName;
     }
 
     public ProductItem(String productID, String date, String productName, String productSize, String productColor , Bitmap mainImage) {

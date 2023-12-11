@@ -13,8 +13,8 @@ public class ManagerMainActivity extends AppCompatActivity {
         setContentView(R.layout.manager_activity_main);
         getWindow().setWindowAnimations(0);
 
-        Button btn_seller_list = (Button) findViewById(R.id.btn_seller_list);
-        btn_seller_list.setOnClickListener(new View.OnClickListener() {
+        Button btnBrandName = (Button) findViewById(R.id.btn_seller_list);
+        btnBrandName.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -24,8 +24,8 @@ public class ManagerMainActivity extends AppCompatActivity {
         });
 
 
-        Button btn_product_register_list = (Button) findViewById(R.id.btn_product_register_list);
-        btn_product_register_list.setOnClickListener(new View.OnClickListener() {
+        Button btnProductRegisterList = (Button) findViewById(R.id.btn_product_register_list);
+        btnProductRegisterList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -34,8 +34,8 @@ public class ManagerMainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_product_revise_list = (Button) findViewById(R.id.btn_product_revise_list);
-        btn_product_revise_list.setOnClickListener(new View.OnClickListener() {
+        Button btnProductReviseList = (Button) findViewById(R.id.btn_product_revise_list);
+        btnProductReviseList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

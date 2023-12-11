@@ -11,20 +11,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MyPageInputPasswordActivity extends AppCompatActivity {
-    private EditText et_pass;
+    private EditText passEditText;
     private SessionManager sessionManager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_input_password);
-        et_pass = findViewById(R.id.editTextCurrentPassword);
+        passEditText = findViewById(R.id.editTextCurrentPassword);
         getWindow().setWindowAnimations(0);
         sessionManager = new SessionManager(getApplicationContext());
 
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -32,8 +32,8 @@ public class MyPageInputPasswordActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = (Button) findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -42,12 +42,12 @@ public class MyPageInputPasswordActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_change_password_check = findViewById(R.id.btn_change_password_check);
-        btn_change_password_check.setOnClickListener(new View.OnClickListener() {
+        Button btnChangePasswordCheck = findViewById(R.id.btn_change_password_check);
+        btnChangePasswordCheck.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String pass = et_pass.getText().toString();
+                String pass = passEditText.getText().toString();
 
                 // 세션 매니저 초기화 및 널 체크
                 if (sessionManager != null) {

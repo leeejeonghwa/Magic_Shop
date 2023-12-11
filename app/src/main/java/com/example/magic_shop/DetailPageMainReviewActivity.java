@@ -18,22 +18,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DetailPageMainReviewActivity extends AppCompatActivity {
-    private Button btnBuy;
-    private Button btnProduct;
-    private Button btnSize;
-    private Button btnAsk;
-    private Button btnAllReview;
-    private Button btnBack;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
+
     private String productName;
     private String productPrice;
-    private String sellerId;
+    private String brandName;
     private String productID;
     private ImageView productMainImage;
     private ProductDetailedImageLoader productDetailedImageLoader;
-    private static final int REQUEST_CODE_ALL_REVIEW = 1003;
 
 
     @Override
@@ -45,7 +36,7 @@ public class DetailPageMainReviewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             productName = intent.getStringExtra("product_name");
-            sellerId = intent.getStringExtra("seller_id");
+            brandName = intent.getStringExtra("seller_id");
             productPrice = intent.getStringExtra("product_price");
             productID = intent.getStringExtra("id");
 
@@ -56,7 +47,7 @@ public class DetailPageMainReviewActivity extends AppCompatActivity {
 
             productTextView.setText(this.productName);
             priceTextView.setText(this.productPrice);
-            sellerTextView.setText(this.sellerId);
+            sellerTextView.setText(this.brandName);
 
             productMainImage = findViewById(R.id.mainImage);
 
@@ -65,15 +56,15 @@ public class DetailPageMainReviewActivity extends AppCompatActivity {
             loadDetailedImages(this.productName);
         }
 
-        btnBuy = findViewById(R.id.btn_buy);
-        btnProduct = findViewById(R.id.productBtn);
-        btnSize = findViewById(R.id.sizeBtn);
-        btnAsk = findViewById(R.id.askBtn);
-        btnAllReview = findViewById(R.id.allReviewBtn);
-        btnBack = findViewById(R.id.back_btn);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnProduct = findViewById(R.id.productBtn);
+        Button btnSize = findViewById(R.id.sizeBtn);
+        Button btnAsk = findViewById(R.id.askBtn);
+        Button btnAllReview = findViewById(R.id.allReviewBtn);
+        Button btnBack = findViewById(R.id.back_btn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
 
         btnBuy.setVisibility(View.VISIBLE);
@@ -101,7 +92,7 @@ public class DetailPageMainReviewActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DetailPageMainActivity.class);
                 // 이미 받아온 정보를 다시 추가
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -113,7 +104,7 @@ public class DetailPageMainReviewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DetailPageMainSizeActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -125,7 +116,7 @@ public class DetailPageMainReviewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DetailPageMainAskActivity.class);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);
@@ -138,7 +129,7 @@ public class DetailPageMainReviewActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DetailPageAllReviewActivity.class);
                 intent.putExtra("product_id", productID);
                 intent.putExtra("product_name", productName);
-                intent.putExtra("seller_id", sellerId);
+                intent.putExtra("seller_id", brandName);
                 intent.putExtra("product_price", productPrice);
 
                 startActivity(intent);

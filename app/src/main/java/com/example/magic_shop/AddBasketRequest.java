@@ -1,7 +1,5 @@
 package com.example.magic_shop;
 
-import android.util.Log;
-
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 

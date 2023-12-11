@@ -18,7 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MyPageRefundAccountManageActivity extends AppCompatActivity {
-    private EditText et_name, et_accountnumber, et_bank;
+    private EditText nameEditText, accountnumberEditText, bankEditText;
     private SessionManager sessionManager;
 
     @Override
@@ -27,27 +27,27 @@ public class MyPageRefundAccountManageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_refund_account_manage);
         getWindow().setWindowAnimations(0);
 
-        et_name = findViewById(R.id.editTextName);
-        et_accountnumber = findViewById(R.id.editTextAccountNumber);
-        et_bank = findViewById(R.id.editTextBank);
+        nameEditText = findViewById(R.id.editTextName);
+        accountnumberEditText = findViewById(R.id.editTextAccountNumber);
+        bankEditText = findViewById(R.id.editTextBank);
 
         sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
 
-        Button btn_refund_account_change = findViewById(R.id.btn_refund_account_change_confirm);
-        btn_refund_account_change.setOnClickListener(new View.OnClickListener() {
+        Button btnRefundAccountChange = findViewById(R.id.btn_refund_account_change_confirm);
+        btnRefundAccountChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = et_name.getText().toString();
-                String accountNumber = et_accountnumber.getText().toString();
-                String bankName = et_bank.getText().toString();
+                String name = nameEditText.getText().toString();
+                String accountNumber = accountnumberEditText.getText().toString();
+                String bankName = bankEditText.getText().toString();
                 String userID = sessionManager.getUserID();
 
                 if (name.isEmpty() || accountNumber.isEmpty() || bankName.isEmpty()) {
@@ -60,7 +60,7 @@ public class MyPageRefundAccountManageActivity extends AppCompatActivity {
         });
     }
 
-    private void performBankAccountRegistration(String userID, String username, String bankName, String accountNumber) {
+    private void performBankAccountRegistration(String userID, String userName, String bankName, String accountNumber) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -76,10 +76,10 @@ public class MyPageRefundAccountManageActivity extends AppCompatActivity {
 
                     if (accountExists) {
                         // 이미 등록된 계좌가 있으면 업데이트 수행
-                        updateBankAccount(userID, username, bankName, accountNumber);
+                        updateBankAccount(userID, userName, bankName, accountNumber);
                     } else {
                         // 등록된 계좌가 없으면 새로 등록
-                        registerBankAccount(userID, username, bankName, accountNumber);
+                        registerBankAccount(userID, userName, bankName, accountNumber);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -94,7 +94,7 @@ public class MyPageRefundAccountManageActivity extends AppCompatActivity {
         queue.add(checkAccountRequest);
     }
 
-    private void registerBankAccount(String userID, String username, String bankName, String accountNumber) {
+    private void registerBankAccount(String userID, String userName, String bankName, String accountNumber) {
         // 등록 요청 처리
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -132,12 +132,12 @@ public class MyPageRefundAccountManageActivity extends AppCompatActivity {
         };
 
         // BankAccountRegisterRequest 클래스를 이용해 서버 요청 처리
-        RefundAccountRegistrationRequest refundAccountRegistrationRequest = new RefundAccountRegistrationRequest(userID, username, bankName, accountNumber, responseListener, null, getApplicationContext());
+        RefundAccountRegistrationRequest refundAccountRegistrationRequest = new RefundAccountRegistrationRequest(userID, userName, bankName, accountNumber, responseListener, null, getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(MyPageRefundAccountManageActivity.this);
         queue.add(refundAccountRegistrationRequest);
     }
 
-    private void updateBankAccount(String userID, String username, String bankName, String accountNumber) {
+    private void updateBankAccount(String userID, String userName, String bankName, String accountNumber) {
         // 업데이트 요청 처리
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -171,7 +171,7 @@ public class MyPageRefundAccountManageActivity extends AppCompatActivity {
         };
 
         // UpdateAccountRequest 클래스를 이용해 서버 요청 처리
-        UpdateAccountRequest updateAccountRequest = new UpdateAccountRequest(userID, username, bankName, accountNumber, responseListener, null, getApplicationContext());
+        UpdateAccountRequest updateAccountRequest = new UpdateAccountRequest(userID, userName, bankName, accountNumber, responseListener, null, getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(MyPageRefundAccountManageActivity.this);
         queue.add(updateAccountRequest);
     }

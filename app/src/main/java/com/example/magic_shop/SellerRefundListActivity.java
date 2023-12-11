@@ -139,14 +139,14 @@ public class SellerRefundListActivity extends AppCompatActivity {
 
                 String refundID = refundObject.getString("refundID");
                 String orderID = refundObject.getString("orderID");
-                String sellerID = refundObject.getString("seller_id");
+                String brandName = refundObject.getString("seller_id");
                 String productID = refundObject.getString("productID");
                 String userID = refundObject.getString("userID");
                 String productName = refundObject.getString("product_name");
                 String productImage = refundObject.getString("main_image");
                 String content = refundObject.getString("content");
 
-                RefundItem refundItem = new RefundItem(refundID, orderID, sellerID, productID, userID, productName, productImage, content);
+                RefundItem refundItem = new RefundItem(refundID, orderID, brandName, productID, userID, productName, productImage, content);
                 refundList.add(refundItem);
             }
         } catch (JSONException e) {
@@ -160,17 +160,17 @@ public class SellerRefundListActivity extends AppCompatActivity {
     public class RefundItem {
         String refundID;
         String orderID;
-        String sellerID;
+        String brandName;
         String productID;
         String userID;
         String productName;
         String productImage;
         String content;
 
-        public RefundItem(String refundID, String orderID, String sellerID, String productID, String userID, String productName, String productImage, String content) {
+        public RefundItem(String refundID, String orderID, String brandName, String productID, String userID, String productName, String productImage, String content) {
             this.refundID = refundID;
             this.orderID = orderID;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productID = productID;
             this.userID = userID;
             this.productName = productName;
@@ -243,7 +243,7 @@ public class SellerRefundListActivity extends AppCompatActivity {
                 String refundID = refundItem.refundID;
                 String orderID = refundItem.orderID;
                 String productID = refundItem.productID;
-                String sellerID = refundItem.sellerID;
+                String brandName = refundItem.brandName;
                 String userID = refundItem.userID;
 
                 refundButton.setOnClickListener(new View.OnClickListener() {
@@ -252,7 +252,7 @@ public class SellerRefundListActivity extends AppCompatActivity {
                         approveRefund(
                                 refundID,
                                 orderID,
-                                sellerID,
+                                brandName,
                                 productID,
                                 userID
                         );
@@ -283,7 +283,7 @@ public class SellerRefundListActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void approveRefund(String refundID, String orderID, String sellerID, String productID, String userID) {
+    private void approveRefund(String refundID, String orderID, String brandName, String productID, String userID) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -320,7 +320,7 @@ public class SellerRefundListActivity extends AppCompatActivity {
         };
 
         try {
-            ApproveRefundRequest approveRefundRequest = new ApproveRefundRequest(refundID, orderID, sellerID, productID, userID
+            ApproveRefundRequest approveRefundRequest = new ApproveRefundRequest(refundID, orderID, brandName, productID, userID
                     , responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(SellerRefundListActivity.this);
             queue.add(approveRefundRequest);

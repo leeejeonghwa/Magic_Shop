@@ -10,7 +10,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -81,13 +80,13 @@ public class CategorySelectionManager {
         void onDataReceived();
     }
 
-    public void fetchDataFromServer(int categoryId, int detailedCategoryId, OnDataReceivedListener listener) {
+    public void fetchDataFromServer(int categoryID, int detailedCategoryID, OnDataReceivedListener listener) {
         String url = "http://210.117.175.207:8976/category_list.php";
 
         // 요청에 필요한 매개변수 설정
         HashMap<String, String> params = new HashMap<>();
-        params.put("category_id", String.valueOf(categoryId));
-        params.put("detailed_category_id", String.valueOf(detailedCategoryId));
+        params.put("categoryID", String.valueOf(categoryID));
+        params.put("detailedCategoryID", String.valueOf(detailedCategoryID));
         productList.clear();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -207,11 +206,6 @@ public class CategorySelectionManager {
 
     public int getSelectedDetailedCategory() {
         return selectedDetailedCategory;
-    }
-
-    private String removeBrTags(String jsonString) {
-        // Remove <br> tags from the JSON string
-        return jsonString.replaceAll("<br>", "");
     }
 
 }

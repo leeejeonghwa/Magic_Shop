@@ -44,8 +44,8 @@ public class MyPageOrderListActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
 
-        Button btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MyPageMainActivity.class);
@@ -53,8 +53,8 @@ public class MyPageOrderListActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_home = findViewById(R.id.btn_home);
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = findViewById(R.id.btn_home);
+        btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -171,10 +171,10 @@ public class MyPageOrderListActivity extends AppCompatActivity {
         String productID;
         String productName;
         int productPrice;
-        String sellerID;
+        String brandName;
         String productImage;
 
-        public OrderItem(String exchangeStatus, String refundStatus, int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String sellerID, String productImage) {
+        public OrderItem(String exchangeStatus, String refundStatus, int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String brandName, String productImage) {
             this.exchangeStatus = exchangeStatus;
             this.refundStatus = refundStatus;
             this.orderID = orderID;
@@ -184,7 +184,7 @@ public class MyPageOrderListActivity extends AppCompatActivity {
             this.totalAmount = totalAmount;
             this.productName = productName;
             this.productPrice = productPrice;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
         }
     }
 
@@ -251,7 +251,7 @@ public class MyPageOrderListActivity extends AppCompatActivity {
                             OrderItem orderItem = orderList.get(position);
                             Intent intent = new Intent(context, MyPageExchangeRequestActivity.class);
                             intent.putExtra("orderID", String.valueOf(orderItem.orderID));
-                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("sellerID", orderItem.brandName);
                             intent.putExtra("productID", orderItem.productID);
                             intent.putExtra("productName", orderItem.productName);
                             intent.putExtra("productImage", orderItem.productImage);
@@ -270,7 +270,7 @@ public class MyPageOrderListActivity extends AppCompatActivity {
                             OrderItem orderItem = orderList.get(position);
                             Intent intent = new Intent(context, MyPageRefundRequestActivity.class);
                             intent.putExtra("orderID", String.valueOf(orderItem.orderID));
-                            intent.putExtra("sellerID", orderItem.sellerID);
+                            intent.putExtra("sellerID", orderItem.brandName);
                             intent.putExtra("productID", orderItem.productID);
                             intent.putExtra("productName", orderItem.productName);
                             intent.putExtra("productImage", orderItem.productImage);
@@ -284,8 +284,8 @@ public class MyPageOrderListActivity extends AppCompatActivity {
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
-                productBrandTextView.setText(orderItem.sellerID);
+                productPriceTextView.setText((orderItem.productPrice)+"원");
+                productBrandTextView.setText(orderItem.brandName);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);

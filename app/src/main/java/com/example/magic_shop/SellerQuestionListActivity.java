@@ -48,13 +48,13 @@ public class SellerQuestionListActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             String questionID = jsonObject.getString(("questionID"));
-            String sellerID = jsonObject.getString(("sellerID"));
+            String brandName = jsonObject.getString(("sellerID"));
             String productID = jsonObject.getString(("productID"));
             String subject = jsonObject.getString(("subject"));
             String content = jsonObject.getString(("content"));
             String userID = jsonObject.getString(("userID"));
 
-            QuestionItem questionItem = new QuestionItem(questionID, sellerID, productID, subject, content, userID);
+            QuestionItem questionItem = new QuestionItem(questionID, brandName, productID, subject, content, userID);
 
             questionList.add(questionItem);
         }
@@ -68,7 +68,7 @@ public class SellerQuestionListActivity extends AppCompatActivity {
         getWindow().setWindowAnimations(0);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        String sellerID = sessionManager.getUserID();
+        String brandName = sessionManager.getUserID();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +110,7 @@ public class SellerQuestionListActivity extends AppCompatActivity {
             }
         };
 
-        GetSellerQuestionRequest sellerQuestionGetRequest = new GetSellerQuestionRequest(SellerQuestionListActivity.this, sellerID, responseListener);
+        GetSellerQuestionRequest sellerQuestionGetRequest = new GetSellerQuestionRequest(SellerQuestionListActivity.this, brandName, responseListener);
         RequestQueue queue = Volley.newRequestQueue(SellerQuestionListActivity.this);
         queue.add(sellerQuestionGetRequest);
     }
@@ -118,15 +118,15 @@ public class SellerQuestionListActivity extends AppCompatActivity {
 
     public class QuestionItem {
         String questionID;
-        String sellerID;
+        String brandName;
         String productID;
         String subject;
         String content;
         String userID;
 
-        public QuestionItem(String questionID, String sellerID, String productID, String subject, String content, String userID) {
+        public QuestionItem(String questionID, String brandName, String productID, String subject, String content, String userID) {
             this.questionID = questionID;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productID = productID;
             this.subject = subject;
             this.content = content;

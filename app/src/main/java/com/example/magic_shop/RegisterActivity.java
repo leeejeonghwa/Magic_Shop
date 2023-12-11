@@ -20,8 +20,7 @@ import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText et_id, et_pass, et_confirm_password, et_name, et_nickname;
-    private Button btn_register, btnCheckDuplicate,backButton;
+    private EditText userIDEditText, passEditText, confirmPasswordEditText, nameEditText, nicknameEditText;
     private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
 
@@ -31,19 +30,19 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_page);
 
-        et_id = findViewById(R.id.et_id);
-        et_pass = findViewById(R.id.et_password);
-        et_confirm_password = findViewById(R.id.et_confirm_pass);
-        et_name = findViewById(R.id.et_name);
-        et_nickname = findViewById(R.id.et_nickname);
+        userIDEditText = findViewById(R.id.et_id);
+        passEditText = findViewById(R.id.et_password);
+        confirmPasswordEditText = findViewById(R.id.et_confirm_pass);
+        nameEditText = findViewById(R.id.et_name);
+        nicknameEditText = findViewById(R.id.et_nickname);
         radioGroup = findViewById(R.id.radio_group);
 
-        btnCheckDuplicate = findViewById(R.id.btn_duplicate_confirmation);
+        Button btnCheckDuplicate = findViewById(R.id.btn_duplicate_confirmation);
         btnCheckDuplicate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("RegisterActivity", "중복확인 버튼 클릭됨");
-                String userID = et_id.getText().toString();
+                String userID = userIDEditText.getText().toString();
 
                 // 백그라운드 스레드에서 실행
                 new Thread(new Runnable() {
@@ -56,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        backButton = findViewById(R.id.back_btn);
+        Button backButton = findViewById(R.id.back_btn);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,14 +65,14 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);} });
 
 
-        btn_register = findViewById(R.id.register_button);
+        Button btn_register = findViewById(R.id.register_button);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("RegisterActivity", "회원가입 버튼 클릭됨");
-                String userID = et_id.getText().toString();
-                String password = et_pass.getText().toString();
-                String confirmPassword = et_confirm_password.getText().toString();
+                String userID = userIDEditText.getText().toString();
+                String password = passEditText.getText().toString();
+                String confirmPassword = confirmPasswordEditText.getText().toString();
 
                 if (!password.equals(confirmPassword)) {
                     showAlert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
@@ -81,10 +80,10 @@ public class RegisterActivity extends AppCompatActivity {
                     String userType = getUserType(); // Now returns a String ("A" or "B")
                     if (!userType.isEmpty()) {
                         performRegistration(
-                                et_name.getText().toString(),
+                                nameEditText.getText().toString(),
                                 userID,
                                 password,
-                                et_nickname.getText().toString(),
+                                nicknameEditText.getText().toString(),
                                 userType
                         );
                     } else {
@@ -158,13 +157,13 @@ public class RegisterActivity extends AppCompatActivity {
                 // 키에 기반하여 해당 필드를 업데이트합니다.
                 switch (key) {
                     case "[userPassword]":
-                        et_pass.setText(value);
+                        passEditText.setText(value);
                         break;
                     case "[userNickname]":
-                        et_nickname.setText(value);
+                        nicknameEditText.setText(value);
                         break;
                     case "[userName]":
-                        et_name.setText(value);
+                        nameEditText.setText(value);
                         break;
                     case "[userClassification]":
                         // 값에 따라 사용자 유형을 업데이트합니다.
@@ -175,7 +174,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         break;
                     case "[userID]":
-                        et_id.setText(value);
+                        userIDEditText.setText(value);
                         break;
                 }
             }

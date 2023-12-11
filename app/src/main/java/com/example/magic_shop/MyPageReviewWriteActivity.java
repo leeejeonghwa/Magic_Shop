@@ -2,7 +2,10 @@ package com.example.magic_shop;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,15 +23,24 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MyPageReviewWriteActivity extends AppCompatActivity {
 
-    private EditText editTextContent;
-    private TextView textViewSellerID, textViewProductName;
-    private RatingBar ratingBarProductScore;
+    private EditText contentEditText;
+    private TextView brandNameTextView, productNameTextView;
+    private String orderID, productID;
+    private String productName;
+    private String productPrice;
+    private String brandName;
+    private String productMainImage;
+    private ImageView productMainImageView;
+    private RatingBar productScoreRatingBar;
+    private ProductDetailedImageLoader productDetailedImageLoader;
     private Response.ErrorListener errorListener;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,20 +50,37 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         String userID = sessionManager.getUserID();
 
+        brandNameTextView = findViewById(R.id.sellerID);
+        productNameTextView = findViewById(R.id.productName);
+        contentEditText = findViewById(R.id.editTextContent);
+        productScoreRatingBar = findViewById(R.id.productScore);
+
         Intent intent = getIntent();
+        if (intent != null) {
+            this.orderID = intent.getStringExtra("orderID");
+            this.productID = intent.getStringExtra("productID");
+            this.productName = intent.getStringExtra("productName");
+            this.productPrice = intent.getStringExtra("productPrice");
+            this.brandName = intent.getStringExtra("sellerID");
 
-        textViewSellerID = findViewById(R.id.sellerID);
-        textViewProductName = findViewById(R.id.productName);
-        editTextContent = findViewById(R.id.editTextContent);
-        ratingBarProductScore = findViewById(R.id.productScore);
+            // 받아온 상품명을 화면에 표시
+            TextView productNameTextView = findViewById(R.id.productName);
+            TextView brandNameTextView = findViewById(R.id.brandName);
+            TextView productPriceTextView = findViewById(R.id.productPrice);
 
-        String orderID = intent.getStringExtra("orderID");
-        String productID = intent.getStringExtra("productID");
-        textViewSellerID.setText(intent.getStringExtra("sellerID"));
-        textViewProductName.setText(intent.getStringExtra("productName"));
+            productNameTextView.setText(this.productName);
+            brandNameTextView.setText(this.brandName);
+            productPriceTextView.setText(this.brandName);
 
-        Button btn_back = (Button) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+            productMainImageView = findViewById(R.id.mainImage);
+
+            productDetailedImageLoader = new ProductDetailedImageLoader(this);
+
+            loadDetailedImages(this.productName);
+        }
+
+        Button btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -59,14 +89,14 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_review_submit = (Button) findViewById(R.id.btn_review_submit);
-        btn_review_submit.setOnClickListener(new View.OnClickListener() {
+        Button btnReviewSubmit = (Button) findViewById(R.id.btn_review_submit);
+        btnReviewSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String sellerID = textViewSellerID.getText().toString();
-                String content = editTextContent.getText().toString();
-                float rating = ratingBarProductScore.getRating();
+                String brandName = brandNameTextView.getText().toString();
+                String content = contentEditText.getText().toString();
+                float rating = productScoreRatingBar.getRating();
                 int convertedRating = (int) rating;
                 String productScore = String.valueOf(convertedRating);
 
@@ -74,7 +104,7 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
 
                     plusReview(
                             orderID,
-                            sellerID,
+                            brandName,
                             productID,
                             userID,
                             content,
@@ -85,10 +115,41 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert();
                 }
             }
         });
+    }
+
+    private void loadDetailedImages(String productName) {
+        productDetailedImageLoader.loadDetailedImages(productName, new ProductDetailedImageLoader.DetailedImageResponseListener() {
+            @Override
+            public void onSuccess(JSONArray response) {
+                try {
+                    // 이미지를 디코딩하고 화면에 표시
+                    JSONObject imagesObject = response.getJSONObject(0);
+                    setBase64Image(productMainImageView, imagesObject.getString("main_image"));
+                    // 추가적인 이미지가 있다면 계속해서 설정해주면 됩니다.
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    // 에러 처리
+                    Toast.makeText(getApplicationContext(), "Failed to parse image data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                // 에러 처리
+                Toast.makeText(getApplicationContext(), "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setBase64Image(ImageView imageView, String base64Image) {
+        // Base64로 인코딩된 이미지를 디코딩하여 ImageView에 설정
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        imageView.setImageBitmap(decodedByte);
     }
 
     private void handleNonJsonResponse(String response) {
@@ -113,7 +174,7 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void plusReview(String orderID, String sellerID, String productID, String userID, String content, String productScore) {
+    private void plusReview(String orderID, String brandName, String productID, String userID, String content, String productScore) {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
@@ -151,7 +212,7 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
         };
 
         try {
-            PlusReviewRequest reviewPlusRequest = new PlusReviewRequest(orderID, sellerID, productID, userID,
+            PlusReviewRequest reviewPlusRequest = new PlusReviewRequest(orderID, brandName, productID, userID,
                     content, productScore, responseListener, errorListener);
             RequestQueue queue = Volley.newRequestQueue(MyPageReviewWriteActivity.this);
             queue.add(reviewPlusRequest);
@@ -162,9 +223,9 @@ public class MyPageReviewWriteActivity extends AppCompatActivity {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MyPageReviewWriteActivity.this);
-        builder.setMessage(message)
+        builder.setMessage("모든 필드를 채워주세요.")
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();
