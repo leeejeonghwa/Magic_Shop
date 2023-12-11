@@ -42,7 +42,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
     private String productID;
     private String productName;
     private String productPrice;
-    private String sellerId;
+    private String brandName;
 
     private List<ReviewedItem> reviewedList;
     private ReviewedAdapter reviewedAdapter;
@@ -55,7 +55,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
         if (intent != null) {
             productID = intent.getStringExtra("product_id");
             productName = intent.getStringExtra("product_name");
-            sellerId = intent.getStringExtra("seller_id");
+            brandName = intent.getStringExtra("seller_id");
             productPrice = intent.getStringExtra("product_price");
         }
 
@@ -72,7 +72,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
                 // 정보를 담을 Intent 생성
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("product_name", productName);
-                resultIntent.putExtra("seller_id", sellerId);
+                resultIntent.putExtra("seller_id", brandName);
                 resultIntent.putExtra("product_price", productPrice);
 
                 // 결과를 설정하고 현재 활동을 종료합니다.
@@ -183,13 +183,13 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
                 JSONObject reviewedObject = jsonArray.getJSONObject(i);
 
                 String createdTime = reviewedObject.getString("createdTime");
-                String sellerID = reviewedObject.getString("sellerID");
+                String brandName = reviewedObject.getString("sellerID");
                 String productName = reviewedObject.getString("product_name");
                 String productImage = reviewedObject.getString("main_image");
                 String productScore = reviewedObject.getString("productScore");
                 String content = reviewedObject.getString("content");
 
-                ReviewedItem reviewedItem = new ReviewedItem(createdTime, sellerID, productName, productImage, productScore, content);
+                ReviewedItem reviewedItem = new ReviewedItem(createdTime, brandName, productName, productImage, productScore, content);
                 reviewedList.add(reviewedItem);
             }
         } catch (JSONException e) {
@@ -202,16 +202,16 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
 
     public class ReviewedItem {
         String createdTime;
-        String sellerID;
+        String brandName;
         String productName;
         String productImage;
         String productScore;
         String content;
 
-        public ReviewedItem(String createdTime, String sellerID, String productName, String productImage,
+        public ReviewedItem(String createdTime, String brandName, String productName, String productImage,
                             String productScore, String content) {
             this.createdTime = createdTime;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productName = productName;
             this.productImage = productImage;
             this.productScore = productScore;
@@ -253,7 +253,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
 
         public class ReviewedViewHolder extends RecyclerView.ViewHolder {
             private final TextView createdTimeTextView;
-            private final TextView sellerIDTextView;
+            private final TextView brandNameTextView;
             private final TextView productNameTextView;
             private final ImageView productImageView;
             private final TextView contentTextView;
@@ -264,7 +264,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 createdTimeTextView = itemView.findViewById(R.id.createdTime);
-                sellerIDTextView = itemView.findViewById(R.id.sellerID);
+                brandNameTextView = itemView.findViewById(R.id.sellerID);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productImageView = itemView.findViewById(R.id.productImage);
                 contentTextView = itemView.findViewById(R.id.content);
@@ -274,7 +274,7 @@ public class Detailpage_AllReviewActivity extends AppCompatActivity {
 
             void bind(ReviewedItem reviewedItem) {
                 createdTimeTextView.setText(reviewedItem.createdTime);
-                sellerIDTextView.setText(reviewedItem.sellerID);
+                brandNameTextView.setText(reviewedItem.brandName);
                 productNameTextView.setText(reviewedItem.productName);
                 productScoreRatingBar.setRating(Integer.valueOf(reviewedItem.productScore));
                 contentTextView.setText(reviewedItem.content);

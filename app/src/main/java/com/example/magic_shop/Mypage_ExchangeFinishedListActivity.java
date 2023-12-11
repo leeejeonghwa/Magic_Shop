@@ -1,6 +1,5 @@
 package com.example.magic_shop;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,7 +14,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -138,13 +136,13 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
                 JSONObject exchangeObject = jsonArray.getJSONObject(i);
 
                 String exchangeTime = exchangeObject.getString("createdTime");
-                String sellerID = exchangeObject.getString("sellerID");
+                String brandName = exchangeObject.getString("sellerID");
                 String productName = exchangeObject.getString("product_name");
                 String productPrice = exchangeObject.getString("product_price");
                 String productImage = exchangeObject.getString("main_image");
                 String content = exchangeObject.getString("content");
 
-                ExchangeItem exchangeItem = new ExchangeItem(exchangeTime, sellerID, productName, productPrice, productImage, content);
+                ExchangeItem exchangeItem = new ExchangeItem(exchangeTime, brandName, productName, productPrice, productImage, content);
                 exchangeList.add(exchangeItem);
             }
         } catch (JSONException e) {
@@ -157,15 +155,15 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
     public class ExchangeItem {
         String exchangeTime;
-        String sellerID;
+        String brandName;
         String productName;
         String productPrice;
         String productImage;
         String content;
 
-        public ExchangeItem(String exchangeTime, String sellerID, String productName, String productPrice, String productImage, String content) {
+        public ExchangeItem(String exchangeTime, String brandName, String productName, String productPrice, String productImage, String content) {
             this.exchangeTime = exchangeTime;
-            this.sellerID = sellerID;
+            this.brandName = brandName;
             this.productName = productName;
             this.productPrice = productPrice;
             this.productImage = productImage;
@@ -208,7 +206,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
         public class ExchangeViewHolder extends RecyclerView.ViewHolder {
             private final TextView exchangeTimeTextView;
-            private final TextView sellerIDTextView;
+            private final TextView brandNameTextView;
             private final TextView productNameTextView;
             private final TextView productPriceTextView;
             private final ImageView productImageView;
@@ -219,7 +217,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
                 super(itemView);
                 this.context = context;
                 exchangeTimeTextView = itemView.findViewById(R.id.exchangeTime);
-                sellerIDTextView = itemView.findViewById(R.id.sellerID);
+                brandNameTextView = itemView.findViewById(R.id.sellerID);
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productPriceTextView = itemView.findViewById(R.id.productPrice);
                 productImageView = itemView.findViewById(R.id.productImage);
@@ -229,7 +227,7 @@ public class Mypage_ExchangeFinishedListActivity extends AppCompatActivity {
 
             void bind(ExchangeItem exchangeItem) {
                 exchangeTimeTextView.setText(exchangeItem.exchangeTime);
-                sellerIDTextView.setText(exchangeItem.sellerID);
+                brandNameTextView.setText(exchangeItem.brandName);
                 productNameTextView.setText(exchangeItem.productName);
                 productPriceTextView.setText((String.valueOf(exchangeItem.productPrice))+"원");
                 contentTextView.setText(exchangeItem.content);

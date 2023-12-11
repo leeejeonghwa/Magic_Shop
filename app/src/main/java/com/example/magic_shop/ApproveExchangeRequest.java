@@ -12,14 +12,14 @@ public class ApproveExchangeRequest extends StringRequest {
     final static private String URL = "http://210.117.175.207:8976/approveExchange.php";
     private final Map<String, String> map;
 
-    public ApproveExchangeRequest(String exchangeID, String orderID, String sellerID, String productID, String userID,
+    public ApproveExchangeRequest(String exchangeID, String orderID, String brandName, String productID, String userID,
                                   Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(Method.POST, URL, listener, errorListener);
 
         map = new HashMap<>();
         map.put("exchangeID", exchangeID);
         map.put("orderID", orderID);
-        map.put("sellerID", sellerID);
+        map.put("brandName", brandName);
         map.put("productID", productID);
         map.put("userID", userID);
     }

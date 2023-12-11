@@ -39,7 +39,7 @@ import java.util.List;
 public class Mypage_RefundRequestActivity extends AppCompatActivity {
 
     private EditText editTextContent;
-    private TextView textViewSellerID, textViewProductName;
+    private TextView brandNameTextView, textViewProductName;
     private ImageView imageViewProductImage;
     private Response.ErrorListener errorListener;
 
@@ -53,14 +53,14 @@ public class Mypage_RefundRequestActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        textViewSellerID = findViewById(R.id.sellerID);
+        brandNameTextView = findViewById(R.id.sellerID);
         textViewProductName = findViewById(R.id.productName);
         imageViewProductImage = findViewById(R.id.productImage);
         editTextContent = findViewById(R.id.editTextContent);
 
         String orderID = intent.getStringExtra("orderID");
         String productID = intent.getStringExtra("productID");
-        textViewSellerID.setText(intent.getStringExtra("sellerID"));
+        brandNameTextView.setText(intent.getStringExtra("sellerID"));
         textViewProductName.setText(intent.getStringExtra("productName"));
         String productImage = intent.getStringExtra("productImage");
 
@@ -83,14 +83,14 @@ public class Mypage_RefundRequestActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String sellerID = textViewSellerID.getText().toString();
+                String brandName = brandNameTextView.getText().toString();
                 String content = editTextContent.getText().toString();
 
                 if (!content.isEmpty()) {
 
                     plusRefund(
                             orderID,
-                            sellerID,
+                            brandName,
                             productID,
                             userID,
                             content
