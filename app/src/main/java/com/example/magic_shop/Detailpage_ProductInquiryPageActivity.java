@@ -23,7 +23,6 @@ import org.json.JSONObject;
 
 public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
 
-    private Button btnBack, btnEnroll, btnCancellation, btnBag, btnHome, btnSearch;
     private EditText editTextSubject, editTextContent;
     private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
@@ -36,12 +35,12 @@ public class Detailpage_ProductInquiryPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_inquiry_page);
 
-        btnBack = findViewById(R.id.back_btn);
-        btnEnroll = findViewById(R.id.btn_enroll);
-        btnCancellation = findViewById(R.id.btn_cancellation);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Button btnBack = findViewById(R.id.back_btn);
+        Button btnEnroll = findViewById(R.id.btn_enroll);
+        Button btnCancellation = findViewById(R.id.btn_cancellation);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
         btnBack.setVisibility(View.VISIBLE);
         btnEnroll.setVisibility(View.VISIBLE);

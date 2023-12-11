@@ -20,11 +20,6 @@ import org.json.JSONObject;
 
 public class Detailpage_MainSizeActivity extends AppCompatActivity {
 
-    private Button btnBuy;
-    private Button btnReview;
-    private Button btnAsk;
-    private Button btnProduct;
-    private Button btnBack;
     private String productName;
     private String productPrice, productID;
     private String sellerId;
@@ -64,11 +59,11 @@ public class Detailpage_MainSizeActivity extends AppCompatActivity {
         }
 
 
-        btnBuy = findViewById(R.id.btn_buy);
-        btnReview = findViewById(R.id.reviewBtn);
-        btnProduct = findViewById(R.id.productBtn);
-        btnAsk = findViewById(R.id.askBtn);
-        btnBack = findViewById(R.id.back_btn);
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnReview = findViewById(R.id.reviewBtn);
+        Button btnProduct = findViewById(R.id.productBtn);
+        Button btnAsk = findViewById(R.id.askBtn);
+        Button btnBack = findViewById(R.id.back_btn);
 
         btnBuy.setVisibility(View.VISIBLE);
         btnReview.setVisibility(View.VISIBLE);

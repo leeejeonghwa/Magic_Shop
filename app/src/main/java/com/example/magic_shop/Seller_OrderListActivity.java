@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -30,7 +29,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Seller_OrderListActivity extends AppCompatActivity {
@@ -234,7 +232,7 @@ public class Seller_OrderListActivity extends AppCompatActivity {
             void bind(OrderItem orderItem) {
                 dateTextView.setText(orderItem.paymentDate);
                 productNameTextView.setText(orderItem.productName);
-                productPriceTextView.setText((String.valueOf(orderItem.productPrice))+"원");
+                productPriceTextView.setText((orderItem.productPrice)+"원");
                 userIDTextView.setText(orderItem.userID);
 
                 byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);

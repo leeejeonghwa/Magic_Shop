@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,22 +18,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Detailpage_MainReviewActivity extends AppCompatActivity {
-    private Button btnBuy;
-    private Button btnProduct;
-    private Button btnSize;
-    private Button btnAsk;
-    private Button btnAllReview;
-    private Button btnBack;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
     private String productName;
     private String productPrice;
     private String sellerId;
     private String productID;
     private ImageView mainImage;
     private ProductDetailedImageLoader productDetailedImageLoader;
-    private static final int REQUEST_CODE_ALL_REVIEW = 1003;
 
 
     @Override
@@ -66,15 +55,15 @@ public class Detailpage_MainReviewActivity extends AppCompatActivity {
             loadDetailedImages(this.productName);
         }
 
-        btnBuy = findViewById(R.id.btn_buy);
-        btnProduct = findViewById(R.id.productBtn);
-        btnSize = findViewById(R.id.sizeBtn);
-        btnAsk = findViewById(R.id.askBtn);
-        btnAllReview = findViewById(R.id.allReviewBtn);
-        btnBack = findViewById(R.id.back_btn);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnProduct = findViewById(R.id.productBtn);
+        Button btnSize = findViewById(R.id.sizeBtn);
+        Button btnAsk = findViewById(R.id.askBtn);
+        Button btnAllReview = findViewById(R.id.allReviewBtn);
+        Button btnBack = findViewById(R.id.back_btn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
 
         btnBuy.setVisibility(View.VISIBLE);

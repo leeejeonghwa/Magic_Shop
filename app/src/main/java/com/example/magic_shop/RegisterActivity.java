@@ -21,7 +21,6 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass, et_confirm_password, et_name, et_nickname;
-    private Button btn_register, btnCheckDuplicate,backButton;
     private RadioGroup radioGroup;
     private Response.ErrorListener errorListener;
 
@@ -38,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         et_nickname = findViewById(R.id.et_nickname);
         radioGroup = findViewById(R.id.radio_group);
 
-        btnCheckDuplicate = findViewById(R.id.btn_duplicate_confirmation);
+        Button btnCheckDuplicate = findViewById(R.id.btn_duplicate_confirmation);
         btnCheckDuplicate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        backButton = findViewById(R.id.back_btn);
+        Button backButton = findViewById(R.id.back_btn);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);} });
 
 
-        btn_register = findViewById(R.id.register_button);
+        Button btn_register = findViewById(R.id.register_button);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

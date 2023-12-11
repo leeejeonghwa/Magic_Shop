@@ -166,7 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
->
+
 
                     <TextView
                         android:id="@+id/no_search0"
@@ -179,7 +179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
-                    >ㅇ
+
 
                     <TextView
                         android:id="@+id/no_search1"
@@ -338,7 +338,7 @@
         app:layout_constraintStart_toEndOf="@+id/magic_shop"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
-    />
+
 
     <Button
         android:id="@+id/shoppingcart_btn"

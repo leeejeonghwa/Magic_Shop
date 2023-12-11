@@ -25,8 +25,6 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
 
     public Context context;
 
-    private String userID;
-
     private ProductReviseAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +35,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
         registeredProductManager = RegisteredProductManager.getInstance(this);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        userID = sessionManager.getUserId();
+        String userID = sessionManager.getUserId();
 
         Button btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +119,6 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
             private final TextView productColorTextView;
 
             private final ImageView productMainImageView;
-            private final Button productReviseButton;
             private final Context context;
 
             public ProductReviseViewHolder(View itemView, Context context) {
@@ -131,7 +128,7 @@ public class Seller_ProductReviseActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.productName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productColorTextView = itemView.findViewById(R.id.productQuantity);
-                productReviseButton = itemView.findViewById(R.id.btn_product_revise);
+                Button productReviseButton = itemView.findViewById(R.id.btn_product_revise);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
                 productReviseButton.setOnClickListener(new View.OnClickListener() {

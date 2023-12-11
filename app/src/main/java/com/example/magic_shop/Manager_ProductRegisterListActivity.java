@@ -25,7 +25,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -162,7 +161,6 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
             private final TextView productNameTextView;
             private final TextView productSizeTextView;
             private final TextView productColorTextView;
-            private final Button productRegisterButton;
 
             private final ImageView productMainImageView;
             private final Context context;
@@ -175,7 +173,7 @@ public class Manager_ProductRegisterListActivity extends AppCompatActivity {
                 sellerNameTextView = itemView.findViewById(R.id.sellerName);
                 productSizeTextView = itemView.findViewById(R.id.productSize);
                 productColorTextView = itemView.findViewById(R.id.productQuantity);
-                productRegisterButton = itemView.findViewById(R.id.btn_product_register);
+                Button productRegisterButton = itemView.findViewById(R.id.btn_product_register);
                 productMainImageView = itemView.findViewById(R.id.productImage);
 
                 productRegisterButton.setOnClickListener(new View.OnClickListener() {

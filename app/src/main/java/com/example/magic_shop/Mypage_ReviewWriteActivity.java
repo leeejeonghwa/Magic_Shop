@@ -9,18 +9,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
+
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,9 +21,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Mypage_ReviewWriteActivity extends AppCompatActivity {
 
@@ -95,7 +85,7 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert();
                 }
             }
         });
@@ -172,9 +162,9 @@ public class Mypage_ReviewWriteActivity extends AppCompatActivity {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(Mypage_ReviewWriteActivity.this);
-        builder.setMessage(message)
+        builder.setMessage("모든 필드를 채워주세요.")
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();

@@ -25,20 +25,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivity {
-    private Button btnBasket;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
-    private Button btnBuy;
     private String productPrice, productName ,brandName ,option;
     private String productImage;
 
     private SessionManager sessionManager;
 
     private int productID;
-    private TextView textProductName, textProductPrice, textBrandName;
-    private ImageView main;
-
 
 
     @Override
@@ -59,10 +51,10 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
             productName = intent.getStringExtra("product_name");
             productImage = intent.getStringExtra("main_image");
 
-            textProductName = findViewById(R.id.text_productName);
-            textBrandName = findViewById(R.id.text_brandName);
-            textProductPrice = findViewById(R.id.text_productPrice);
-            main = findViewById(R.id.mainImage);
+            TextView textProductName = findViewById(R.id.text_productName);
+            TextView textBrandName = findViewById(R.id.text_brandName);
+            TextView textProductPrice = findViewById(R.id.text_productPrice);
+            ImageView main = findViewById(R.id.mainImage);
 
             textBrandName.setText(brandName);
             textProductName.setText(productName);
@@ -85,11 +77,11 @@ public class Detailpage_MainOptionSelectCompleteActivity extends AppCompatActivi
 
         }
 
-        btnBasket = findViewById(R.id.btn_basket);
-        btnBuy = findViewById(R.id.btn_buy);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
+        Button btnBasket = findViewById(R.id.btn_basket);
+        Button btnBuy = findViewById(R.id.btn_buy);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
 
 
         btnBag.setOnClickListener(new View.OnClickListener() {

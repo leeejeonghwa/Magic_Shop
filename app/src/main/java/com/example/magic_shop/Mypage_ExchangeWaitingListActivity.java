@@ -1,6 +1,5 @@
 package com.example.magic_shop;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,7 +14,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -231,7 +229,7 @@ public class Mypage_ExchangeWaitingListActivity extends AppCompatActivity {
                 exchangeTimeTextView.setText(exchangeItem.exchangeTime);
                 sellerIDTextView.setText(exchangeItem.sellerID);
                 productNameTextView.setText(exchangeItem.productName);
-                productPriceTextView.setText((String.valueOf(exchangeItem.productPrice))+"원");
+                productPriceTextView.setText((exchangeItem.productPrice)+"원");
                 contentTextView.setText(exchangeItem.content);
 
                 byte[] decodedString = Base64.decode(exchangeItem.productImage, Base64.DEFAULT);
