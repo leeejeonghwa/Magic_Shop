@@ -25,8 +25,6 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
 
     private ProductReviseRequestAdapter adapter;
 
-    private String userID;
-
 
     public Context context;
 
@@ -40,7 +38,7 @@ public class Seller_ProductReviseRequestListActivity extends AppCompatActivity {
         reviseRequestManager.setManager(false);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
-        userID = sessionManager.getUserId();
+        String userID = sessionManager.getUserId();
         reviseRequestManager.checkUserId(userID);
 
         Button btn_back = (Button) findViewById(R.id.btn_back);

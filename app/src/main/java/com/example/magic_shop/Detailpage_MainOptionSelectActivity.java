@@ -1,15 +1,10 @@
 package com.example.magic_shop;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.widget.Button;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,16 +19,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
-    private Button btnOption;
     private Button btnColor1;
     private Button btnColor2;
     private Button btnSize_S;
     private Button btnSize_M;
     private Button btnSize_L;
-    private Button btnBack;
-    private Button btnBag;
-    private Button btnHome;
-    private Button btnSearch;
+
     private String productID;
     private String color;
 
@@ -64,18 +55,18 @@ public class Detailpage_MainOptionSelectActivity extends AppCompatActivity {
         loadOptions(productID);
 
 
-        btnOption = findViewById(R.id.btn_option);
+        Button btnOption = findViewById(R.id.btn_option);
         btnColor1 = findViewById(R.id.btn_color1);
         btnColor2 = findViewById(R.id.btn_color2);
         btnSize_S = findViewById(R.id.btn_size_S);
         btnSize_M = findViewById(R.id.btn_size_M);
         btnSize_L = findViewById(R.id.btn_size_L);
-        btnBack=findViewById(R.id.back_btn);
-        btnHome = findViewById(R.id.home_btn);
-        btnBag = findViewById(R.id.bag_btn);
-        btnSearch = findViewById(R.id.search_btn);
-        textProductName =findViewById(R.id.text_productName);
-        textProductPrice=findViewById(R.id.text_productPrice);
+//        btnBack=findViewById(R.id.back_btn);
+        Button btnHome = findViewById(R.id.home_btn);
+        Button btnBag = findViewById(R.id.bag_btn);
+        Button btnSearch = findViewById(R.id.search_btn);
+//        textProductName =findViewById(R.id.text_productName);
+//        textProductPrice=findViewById(R.id.text_productPrice);
 
 
 

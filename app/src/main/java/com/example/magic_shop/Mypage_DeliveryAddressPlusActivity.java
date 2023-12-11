@@ -118,7 +118,7 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert();
                 }
             }
         });
@@ -260,9 +260,9 @@ public class Mypage_DeliveryAddressPlusActivity extends AppCompatActivity {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(Mypage_DeliveryAddressPlusActivity.this);
-        builder.setMessage(message)
+        builder.setMessage("모든 필드를 채워주세요.")
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();

@@ -451,7 +451,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="대표이미지"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_sizeinfo_find"
@@ -459,7 +459,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="사이즈정보"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_detail1_find"
@@ -467,7 +467,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="세부1"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_detail2_find"
@@ -475,7 +475,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="세부2"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_detail3_find"
@@ -483,7 +483,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="세부3"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
 

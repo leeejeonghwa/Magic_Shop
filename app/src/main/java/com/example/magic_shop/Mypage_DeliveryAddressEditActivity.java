@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -130,7 +129,7 @@ public class Mypage_DeliveryAddressEditActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    showAlert("모든 필드를 채워주세요.");
+                    showAlert();
                 }
             }
         });
@@ -278,9 +277,9 @@ public class Mypage_DeliveryAddressEditActivity extends AppCompatActivity {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(Mypage_DeliveryAddressEditActivity.this);
-        builder.setMessage(message)
+        builder.setMessage("모든 필드를 채워주세요.")
                 .setNegativeButton("다시 시도", null)
                 .create()
                 .show();

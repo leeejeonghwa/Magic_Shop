@@ -1,6 +1,5 @@
 package com.example.magic_shop;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,7 +14,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -230,7 +228,7 @@ public class Mypage_RefundWaitingListActivity extends AppCompatActivity {
                 refundTimeTextView.setText(refundItem.refundTime);
                 sellerIDTextView.setText(refundItem.sellerID);
                 productNameTextView.setText(refundItem.productName);
-                productPriceTextView.setText((String.valueOf(refundItem.productPrice))+"원");
+                productPriceTextView.setText((refundItem.productPrice)+"원");
                 contentTextView.setText(refundItem.content);
 
                 byte[] decodedString = Base64.decode(refundItem.productImage, Base64.DEFAULT);

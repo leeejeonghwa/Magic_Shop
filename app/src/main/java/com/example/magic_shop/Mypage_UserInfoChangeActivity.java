@@ -21,8 +21,6 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private EditText et_nickname,et_name;
 
-    private Button bt_name_change,bt_nickname_change;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +29,8 @@ public class Mypage_UserInfoChangeActivity extends AppCompatActivity {
 
         et_name = findViewById(R.id.editTextName);
         et_nickname = findViewById(R.id.editTextUserNickname);
-        bt_name_change = findViewById(R.id.btn_name_change);
-        bt_nickname_change = findViewById(R.id.btn_user_nickname_change);
+        Button bt_name_change = findViewById(R.id.btn_name_change);
+        Button bt_nickname_change = findViewById(R.id.btn_user_nickname_change);
 
         sessionManager = new SessionManager(getApplicationContext());
 
