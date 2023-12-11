@@ -152,20 +152,58 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/no_items_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="50pt"
+                android:layout_centerInParent="true"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/no_items_layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+>
+
+                    <TextView
+                        android:id="@+id/no_search0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="판매중인 상품이 없습니다." />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/no_items_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    >ㅇ
+
+                    <TextView
+                        android:id="@+id/no_search1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="검색어를 변경해 보세요." />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/search_list"
                 android:layout_width="match_parent"
                 android:layout_height="552dp"
                 tools:listitem="@layout/search_list_re"/>
-<!--            <TextView-->
-<!--                android:id="@+id/testQuery"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="검색어: "/>-->
+
+            <!-- TextView -->
+
+
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="534dp" />
+                android:layout_height="200dp" />
 
 
 

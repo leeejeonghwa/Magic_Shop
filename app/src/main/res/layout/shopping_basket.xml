@@ -13,11 +13,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.widget.Button
-            android:id="@+id/back_id"
+            android:id="@+id/home_id"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="14dp"
-            android:background="@drawable/category_back"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/mypage_btn_home"
             android:contentDescription="My Button Description" />
 
         <TextView

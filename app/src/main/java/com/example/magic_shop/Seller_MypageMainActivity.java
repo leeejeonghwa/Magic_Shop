@@ -54,16 +54,6 @@ public class Seller_MypageMainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        Button imageButton = (Button) findViewById(R.id.btn_setting);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_SettingActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Button btn_product_list = (Button) findViewById(R.id.btn_product_list);
         btn_product_list.setOnClickListener(new View.OnClickListener() {
 
@@ -104,22 +94,22 @@ public class Seller_MypageMainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_order_delivery_list = (Button) findViewById(R.id.btn_order_delivery_list);
-        btn_order_delivery_list.setOnClickListener(new View.OnClickListener() {
+        Button btn_order_list = (Button) findViewById(R.id.btn_order_list);
+        btn_order_list.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_OrderDeliveryListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_OrderListActivity.class);
                 startActivity(intent);
             }
         });
 
-        Button btn_refund_exchange_list = (Button) findViewById(R.id.btn_refund_exchange_list);
-        btn_refund_exchange_list.setOnClickListener(new View.OnClickListener() {
+        Button btn_exchange_refund_list = (Button) findViewById(R.id.btn_exchange_refund_list);
+        btn_exchange_refund_list.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Seller_RefundExchangeListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Seller_ExchangeListActivity.class);
                 startActivity(intent);
             }
         });

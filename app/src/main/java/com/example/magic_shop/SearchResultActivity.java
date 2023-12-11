@@ -4,14 +4,19 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,8 +60,9 @@ public class SearchResultActivity extends AppCompatActivity {
             String product_name = jsonObject.getString(("product_name"));
             String product_price = jsonObject.getString(("product_price"));
             String seller_id = jsonObject.getString("seller_id");
+            String base64MainImage = jsonObject.getString("main_image");
 
-            SearchItem searchItem = new SearchItem(product_name, product_price, seller_id);
+            SearchItem searchItem = new SearchItem(product_name, product_price, seller_id, base64MainImage);
 
             searchList.add(searchItem);
         }
@@ -71,6 +77,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
 
         Button search_btn = (Button) findViewById(R.id.search_btn);
+        Button home_btn = (Button) findViewById(R.id.go_home_id);
         Button mypage_btn = (Button) findViewById(R.id.mypage_id);
         Button categorySearch = (Button) findViewById(R.id.category_search_id);
         Button topCat_btn = (Button) findViewById(R.id.btn_top_id);
@@ -79,6 +86,7 @@ public class SearchResultActivity extends AppCompatActivity {
         Button outerCat_btn = (Button) findViewById(R.id.btn_outer_id);
         Button bagCat_btn = (Button) findViewById(R.id.btn_bag_id);
         Button shoesCat_btn = (Button) findViewById(R.id.btn_shoes_id);
+
 
         Intent intent = getIntent();
 
@@ -93,6 +101,14 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -211,6 +227,13 @@ public class SearchResultActivity extends AppCompatActivity {
                         searchAdapter.notifyDataSetChanged();
                     }
 
+                    // 여기에 검색 결과가 없을 때 메시지를 표시하는 코드 추가
+                    if (searchList.isEmpty()) {
+                        findViewById(R.id.no_items_layout).setVisibility(View.VISIBLE);
+                    } else {
+                        findViewById(R.id.no_items_layout).setVisibility(View.GONE);
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -227,12 +250,13 @@ public class SearchResultActivity extends AppCompatActivity {
         String productName;
         String productPrice;
         String productBrand;
+        String productImage;
 
-
-        public SearchItem(String productName, String productPrice, String productBrand) {
+        public SearchItem(String productName, String productPrice, String productBrand, String productImage) {
             this.productName = productName;
             this.productPrice = productPrice;
             this.productBrand = productBrand;
+            this.productImage = productImage;
         }
     }
     // AddressAdapter 클래스는 RecyclerView 데이터를 바인딩합니다.
@@ -262,21 +286,42 @@ public class SearchResultActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull SearchAdapter.SearchViewHolder holder, int position) {
             SearchItem searchItem = searchList.get(position);
-
             holder.bind(searchItem);
 
+            // 아이템 뷰에 클릭 리스너 설정
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // 여기에서 아이템 클릭 처리, 예를 들어 새로운 활동 시작
+                    startActivityForProduct(searchItem.productName, searchItem.productBrand, searchItem.productPrice);
+                }
+                private void startActivityForProduct(String productName, String productBrand, String productPrice) {
+                    Intent intent = new Intent(getApplicationContext(), Detailpage_MainActivity.class);
+                    // 상품 정보 및 이미지를 Intent에 추가하여 Detail 페이지로 전달
+                    intent.putExtra("product_name", productName);
+                    intent.putExtra("seller_id", productBrand);
+                    intent.putExtra("product_price", productPrice);
+
+                    startActivity(intent);
+                }
+
+
+            });
+
         }
+
+
 
         @Override
         public int getItemCount() {
             return searchList != null ? searchList.size() : 0;
         }
-
         public class SearchViewHolder extends RecyclerView.ViewHolder {
             private final TextView productNameTextView;
             private final TextView productBrandTextView;
             private final TextView productPriceTextView;
-//            public final Button btn_product;
+            private final ImageView productImageView;
+
             private final Context context;
 
             public SearchViewHolder(View itemView, Context context) {
@@ -285,14 +330,25 @@ public class SearchResultActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.product_name_text);
                 productBrandTextView = itemView.findViewById(R.id.product_brand_text);
                 productPriceTextView = itemView.findViewById(R.id.product_price_text);
+                productImageView = itemView.findViewById(R.id.product_image);
             }
-
             void bind(SearchItem searchItem) {
                 // 각 TextView에 해당하는 데이터를 설정
                 productNameTextView.setText(searchItem.productName);
                 productBrandTextView.setText(searchItem.productBrand);
                 productPriceTextView.setText(searchItem.productPrice);
+                setBase64Image(productImageView, searchItem.productImage);
             }
         }
     }
+
+    private void setBase64Image(ImageView imageView, String base64Image) {
+        // Base64로 인코딩된 이미지를 디코딩하여 버튼의 이미지뷰에 설정
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        imageView.setBackground(new BitmapDrawable(getResources(), decodedByte));
+    }
+
+
+//
 }

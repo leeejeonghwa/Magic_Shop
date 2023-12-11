@@ -2,7 +2,10 @@ package com.example.magic_shop;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -151,13 +155,14 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
                 JSONObject productsObject = orderObject.getJSONObject("products");
 
                 // 제품 세부 정보 추출
+                String productImage = productsObject.getString("main_image");
                 String productID = productsObject.getString("productID");
                 String productName = productsObject.getString("product_name");
                 int productPrice = productsObject.getInt("product_price");
                 String sellerID = productsObject.getString("seller_id");
 
                 // OrderItem 생성 및 목록에 추가
-                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productPrice, sellerID);
+                OrderItem orderItem = new OrderItem(orderID, paymentDate, totalAmount, productID, productName, productImage, productPrice, sellerID);
                 orderList.add(orderItem);
             }
         } catch (JSONException e) {
@@ -174,15 +179,17 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
         int totalAmount;
         String productID;
         String productName;
+        String productImage;
         int productPrice;
         String sellerID;
 
-        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, int productPrice, String sellerID) {
+        public OrderItem(int orderID, String paymentDate, int totalAmount, String productID, String productName, String productImage, int productPrice, String sellerID) {
             this.orderID = orderID;
             this.paymentDate = paymentDate;
             this.totalAmount = totalAmount;
             this.productID = productID;
             this.productName = productName;
+            this.productImage = productImage;
             this.productPrice = productPrice;
             this.sellerID = sellerID;
         }
@@ -223,6 +230,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
         public class OrderViewHolder extends RecyclerView.ViewHolder {
             private final TextView dateTextView;
             private final TextView productNameTextView, productPriceTextView, productBrandTextView;
+            private final ImageView productImageView;
             private final Button reviewWriteButton;
             private final Context context;
 
@@ -233,6 +241,7 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
                 productNameTextView = itemView.findViewById(R.id.order_productName);
                 productPriceTextView = itemView.findViewById(R.id.order_productPrice);
                 productBrandTextView = itemView.findViewById(R.id.order_brandName);
+                productImageView= itemView.findViewById(R.id.productImage);
                 reviewWriteButton = itemView.findViewById(R.id.btn_review_write);
 
                 reviewWriteButton.setOnClickListener(new View.OnClickListener() {
@@ -259,6 +268,10 @@ public class Mypage_UnreviewedListActivity extends AppCompatActivity {
                 productNameTextView.setText(orderItem.productName);
                 productPriceTextView.setText((String.valueOf(orderItem.productPrice)) + "원");
                 productBrandTextView.setText(orderItem.sellerID);
+
+                byte[] decodedString = Base64.decode(orderItem.productImage, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                productImageView.setImageBitmap(decodedByte);
             }
         }
     }

@@ -7,39 +7,8 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
     <TextView
-        android:id="@+id/order_productName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="84dp"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/order_productPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="120dp"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/order_date"
+        android:id="@+id/order_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -51,25 +20,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/productImage"
-        android:layout_width="123dp"
-        android:layout_height="149dp"
-        android:layout_margin="20dp"
-        android:background="@color/category_light_gray_color"
-        android:contentDescription="My Button Description"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/order_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/order_status" />
+
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/category_light_gray_color"
+        android:contentDescription="My Button Description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_date"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/order_brandName"
+        android:id="@+id/order_productName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="34dp"
         android:text=""
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -77,6 +60,73 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/order_date" />
+
+    <TextView
+        android:id="@+id/order_brandName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@+id/order_productName" />
+
+    <TextView
+        android:id="@+id/order_productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@id/order_brandName" />
+
+    <Button
+        android:id="@+id/btn_exchange"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/main"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="교환 신청"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+    <Button
+        android:id="@+id/btn_refund"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/main"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="환불 신청"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toEndOf="@+id/btn_exchange"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
