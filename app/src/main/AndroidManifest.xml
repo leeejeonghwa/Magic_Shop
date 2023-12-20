@@ -37,7 +37,7 @@
         <activity android:name=".MyPageChangePasswordActivity"/>
         <activity android:name=".MyPageDeliveryAddressManageActivity"/>
         <activity android:name=".MyPageDeliveryAddressEditActivity"/>
-        <activity android:name=".MypageDeliveryAddressPlusActivity"/>
+        <activity android:name=".MyPageDeliveryAddressPlusActivity"/>
         <activity android:name=".MyPageRefundAccountManageActivity"/>
         <activity android:name=".MyPageOrderListActivity"/>
         <activity android:name=".MyPageExchangeWaitingListActivity"/>
@@ -67,7 +67,6 @@
         <activity android:name=".ManagerProductReviseListActivity" />
         <activity android:name=".ManagerSellerListActivity" />
         <activity android:name=".SellerMyPageMainActivity" />
-        <activity android:name=".SellerChangePasswordActivity" />
         <activity android:name=".SellerProductListActivity" />
         <activity android:name=".SellerProductRegisterActivity" />
         <activity android:name=".SellerProductRegisterRequestActivity" />
