@@ -124,14 +124,18 @@ public class MyPageSettingActivity extends AppCompatActivity {
         Response.Listener<String> responseListener1 = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("ServerResponse", response);
                 try {
                     Log.d("refund", "서버 응답1");
-                    JSONObject jsonObject = new JSONObject(response);
+
+                    // HTML 태그 제거
+                    String cleanedResponse = response.replaceAll("\\<.*?\\>", "");
+
+                    JSONObject jsonObject = new JSONObject(cleanedResponse);
                     boolean success = jsonObject.getBoolean("success");
                     if (success) {
-                        String bank = jsonObject.getString("bank");
-                        String account = jsonObject.getString("account_number");
-
+                        String bank = jsonObject.getString("bank_name");
+                        String account = jsonObject.getString("bank_account");
 
                         TextView accountview = findViewById(R.id.account_view);
                         TextView bankview = findViewById(R.id.bankname_view);
@@ -139,6 +143,7 @@ public class MyPageSettingActivity extends AppCompatActivity {
                         bankview.setText(bank);
                         accountview.setText(account);
                     } else {
+                        // 처리할 내용이 있으면 추가
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -146,7 +151,7 @@ public class MyPageSettingActivity extends AppCompatActivity {
             }
         };
 
-        RefundDataRequest refunddataRequest= new RefundDataRequest(userID, responseListener1, null );
+        RefundDataRequest refunddataRequest = new RefundDataRequest(userID, responseListener1, null);
         RequestQueue queue1 = Volley.newRequestQueue(MyPageSettingActivity.this);
         queue1.add(refunddataRequest);
     }

@@ -20,9 +20,9 @@ public class UpdateAccountRequest extends StringRequest {
 
         params = new HashMap<>();
         params.put("userID", userID);
-        params.put("account_holder", account_holder);
-        params.put("bank", bank);
-        params.put("account_number", account_number);
+        params.put("bank_holder", account_holder);
+        params.put("bank_name", bank);
+        params.put("bank_account", account_number);
     }
 
     @Override

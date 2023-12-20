@@ -23,9 +23,9 @@ public class RefundAccountRegistrationRequest extends StringRequest {
 
         map = new HashMap<>();
         map.put("userID", userID);
-        map.put("account_holder", account_holder);
-        map.put("bank", bank);
-        map.put("account_number", account_number);
+        map.put("bank_holder", account_holder);
+        map.put("bank_name", bank);
+        map.put("bank_account", account_number);
     }
 
     @Override
