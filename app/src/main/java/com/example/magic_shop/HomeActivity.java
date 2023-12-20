@@ -187,7 +187,7 @@ public class HomeActivity extends AppCompatActivity {
                         productName4TextView.getText().toString(),
                         productBrand4TextView.getText().toString(),
                         productPrice4TextView.getText().toString(),
-                        productID3
+                        productID4
                 );
             }
         });

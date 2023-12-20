@@ -67,7 +67,6 @@
         <activity android:name=".ManagerProductReviseListActivity" />
         <activity android:name=".ManagerSellerListActivity" />
         <activity android:name=".SellerMyPageMainActivity" />
-        <activity android:name=".SellerChangePasswordActivity" />
         <activity android:name=".SellerProductListActivity" />
         <activity android:name=".SellerProductRegisterActivity" />
         <activity android:name=".SellerProductRegisterRequestActivity" />
